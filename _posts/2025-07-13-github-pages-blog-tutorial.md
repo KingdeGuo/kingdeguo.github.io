@@ -1,9 +1,11 @@
 ---
+title: "GitHub Pages博客搭建教程"
+date: 2025-07-13
 layout: post
-title: "手把手教你用GitHub Pages搭建个人博客"
-date: 2025-07-13 23:18:53 +0800
-categories: tutorial
-tags: [github-pages, jekyll, blog]
+comments: true
+author_profile: true
+categories: [技术教程]
+tags: [GitHub, Jekyll, 博客搭建]
 ---
 
 嗨，最近有不少朋友问我怎么用GitHub Pages搭建个人博客。其实我之前也是折腾了好久才搞明白，今天就把我的经验分享给大家，希望能帮你少走弯路～
