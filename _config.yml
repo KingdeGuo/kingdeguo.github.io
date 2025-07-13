@@ -64,6 +64,9 @@ plugins:
   - jekyll-paginate
   - jekyll-include-cache
 
+# Permalinks
+permalink: /:category/:year/:month/:day/:title.html
+
 # Syntax highlighting
 highlighter: rouge
 markdown: kramdown
