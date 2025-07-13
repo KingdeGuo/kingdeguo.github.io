@@ -8,6 +8,7 @@ layout: minimal
     {% include head.html %}
     {% include head/custom.html %}
     <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   </head>
 
   <body class="layout--{{ page.layout | default: layout.layout }}{% if page.classes or layout.classes %}{{ page.classes | default: layout.classes | join: ' ' | prepend: ' ' }}{% endif %}">
@@ -32,5 +33,36 @@ layout: minimal
     </div>
 
     {% include scripts.html %}
+    <script>
+    // Back to top button
+    document.addEventListener('DOMContentLoaded', function() {
+      const backToTop = document.createElement('div');
+      backToTop.id = 'back-to-top';
+      backToTop.innerHTML = '&uarr;';
+      document.body.appendChild(backToTop);
+      
+      backToTop.addEventListener('click', function() {
+        window.scrollTo({top: 0, behavior: 'smooth'});
+      });
+      
+      window.addEventListener('scroll', function() {
+        if (window.pageYOffset > 300) {
+          backToTop.classList.add('show');
+        } else {
+          backToTop.classList.remove('show');
+        }
+      });
+    });
+    </script>
+    {% if site.google_analytics %}
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics }}"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', '{{ site.google_analytics }}');
+    </script>
+    {% endif %}
   </body>
 </html>
