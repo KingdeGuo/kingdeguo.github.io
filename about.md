@@ -4,14 +4,19 @@ layout: single
 permalink: /about/
 ---
 
-# About Me
+# 关于我
 
-Welcome to my blog! This is where I share my thoughts and experiences.
+我是一名软件工程师，这里分享技术、生活和读书等相关内容。
 
-## My Interests
-- Technology
-- Programming
-- Open Source
+## 技术方向
+- 软件开发
+- 系统架构
+- 开源项目
 
-## Contact
-You can reach me at: your-email@example.com
+## 兴趣爱好
+- 阅读
+- 旅行
+- 摄影
+
+## 联系方式
+邮箱: your-email@example.com
