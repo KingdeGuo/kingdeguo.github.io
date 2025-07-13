@@ -214,7 +214,8 @@ body {
   --text-color: #f0f0f0;
   --bg-color: #121212;
   --card-bg: #1e1e1e;
-  --border-color: #333;
+  --border-color: #444;
+  --link-color: #58a6ff;
 }
 
 [data-theme="dark"] body {
@@ -226,12 +227,30 @@ body {
   background: var(--card-bg);
   border-color: var(--border-color);
   color: var(--text-color);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.3);
 }
 
 [data-theme="dark"] .post-card h3 a,
 [data-theme="dark"] .archive-item a,
 [data-theme="dark"] .post-navigation a {
-  color: var(--text-color);
+  color: var(--link-color);
+}
+
+[data-theme="dark"] a {
+  color: var(--link-color);
+}
+
+[data-theme="dark"] .post-meta {
+  color: #aaa;
+}
+
+[data-theme="dark"] .social-share a {
+  color: var(--link-color);
+}
+
+[data-theme="dark"] .highlight {
+  background: #0d1117;
+  border: 1px solid #30363d;
 }
 
 /* Hide theme credits */
