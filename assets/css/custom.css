@@ -8,8 +8,10 @@ body {
 .home-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 60px 30px;
+  padding: 20px;
   background-color: #ffffff;
+  min-height: 100vh;
+  box-sizing: border-box;
 }
 
 .home-header {
@@ -20,11 +22,11 @@ body {
 .home-title {
   font-size: 3rem;
   color: #000000;
-  margin-bottom: 20px;
+  margin: 0;
+  padding: 20px 0;
   font-weight: 700;
   line-height: 1.2;
-  text-shadow: 0 1px 1px rgba(0,0,0,0.1),
-               0 0 1px rgba(0,0,0,0.3);
+  text-shadow: none;
 }
 
 .home-description {
@@ -159,10 +161,10 @@ body {
 }
 
 .category-head, .tag-head {
-  color: #333;
-  border-bottom: 2px solid #999999;
-  padding-bottom: 5px;
-  margin-bottom: 20px;
+  color: #000000;
+  border-bottom: 1px solid #e0e0e0;
+  padding: 10px 0;
+  margin: 20px 0;
 }
 
 .archive-item {
