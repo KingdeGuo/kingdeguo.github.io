@@ -4,4 +4,4 @@ title: 我的技术博客
 author_profile: true
 ---
 
-欢迎来到我的技术博客，这里主要分享GitHub Pages搭建、Jekyll使用等技术内容。
+我是一名软件工程师，这里分享技术、生活和读书等相关内容。
