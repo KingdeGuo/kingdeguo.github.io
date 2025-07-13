@@ -33,10 +33,10 @@ minimal_mistakes_skin: default # "default", "air", "aqua", "contrast", "dark", "
 
 # Giscus comments
 giscus:
-  repo: kingdeguo/kingdeguo.github.io
-  repo-id: R_kgDOK... # 需要从Giscus配置获取
+  repo: KingdeGuo/kingdeguo.github.io
+  repo-id: R_kgDOPLxeEQ
   category: General
-  category-id: DIC_kwDOK... # 需要从Giscus配置获取
+  category-id: DIC_kwDOPLxeEc4Cs5E6
   theme: light
   lang: zh-CN
 
