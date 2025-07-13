@@ -460,6 +460,32 @@ body {
   border-bottom-color: #333;
 }
 
+/* Reading Progress Bar */
+.reading-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: rgba(0,0,0,0.1);
+  z-index: 9999;
+}
+
+.reading-progress-bar {
+  height: 100%;
+  width: 0;
+  background: linear-gradient(90deg, #ff6600, #ff9e00);
+  transition: width 0.2s ease-out;
+}
+
+[data-theme="dark"] .reading-progress {
+  background: rgba(255,255,255,0.1);
+}
+
+[data-theme="dark"] .reading-progress-bar {
+  background: linear-gradient(90deg, #ff9e00, #ffcc00);
+}
+
 /* Back to top button */
 #back-to-top {
   position: fixed;
