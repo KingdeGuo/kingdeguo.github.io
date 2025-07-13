@@ -4,8 +4,7 @@ date: 2025-07-13
 layout: post
 comments: true
 author_profile: true
-category: tutorial
-categories: [技术教程]
+categories: [技术教程, tutorial]
 tags: [GitHub, Jekyll, 博客搭建]
 ---
 
