@@ -30,6 +30,18 @@ github_username: kingdeguo
 # Theme settings
 remote_theme: mmistakes/minimal-mistakes
 minimal_mistakes_skin: default # "default", "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
+theme_switcher: true
+theme_switcher_default: "light"
+theme_switcher_location: "footer"
+
+# Categories & Tags
+collections:
+  categories:
+    output: true
+    permalink: /categories/:name/
+  tags:
+    output: true
+    permalink: /tags/:name/
 
 # Giscus comments
 giscus:
@@ -37,7 +49,7 @@ giscus:
   repo-id: R_kgDOPLxeEQ
   category: General
   category-id: DIC_kwDOPLxeEc4Cs5E6
-  theme: light
+  theme: preferred_color_scheme
   lang: zh-CN
 
 # Build settings
@@ -47,6 +59,19 @@ plugins:
   - jekyll-sitemap
   - jekyll-paginate
   - jekyll-include-cache
+
+# Syntax highlighting
+highlighter: rouge
+markdown: kramdown
+kramdown:
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    css_class: 'highlight'
+    span:
+      line_numbers: false
+    block:
+      line_numbers: true
+      start_line: 1
 
 # Exclude from processing.
 # The following items will not be processed, by default.
