@@ -32,10 +32,14 @@ google_analytics: UA-XXXXX-Y  # Replace with your GA tracking ID
 
 # Theme settings
 remote_theme: mmistakes/minimal-mistakes
-minimal_mistakes_skin: default # "default", "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
+minimal_mistakes_skin: plum # "default", "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
 theme_switcher: true
 theme_switcher_default: "light"
 theme_switcher_location: "footer"
+
+# Custom CSS
+stylesheets:
+  - assets/css/custom.css
 
 # Categories & Tags
 collections:

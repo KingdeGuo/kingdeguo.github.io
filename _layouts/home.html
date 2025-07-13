@@ -1,0 +1,27 @@
+---
+layout: default
+---
+
+<div class="home-container">
+  <header class="home-header">
+    <h1 class="home-title">{{ site.title }}</h1>
+    <p class="home-description">{{ site.description }}</p>
+  </header>
+
+  <div class="featured-posts">
+    <h2>Featured Posts</h2>
+    <div class="posts-grid">
+      {% for post in site.posts limit:3 %}
+        <article class="post-card">
+          <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+          <p class="post-meta">{{ post.date | date: "%b %d, %Y" }}</p>
+          <p>{{ post.excerpt | strip_html | truncatewords: 30 }}</p>
+        </article>
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="home-content">
+    {{ content }}
+  </div>
+</div>
