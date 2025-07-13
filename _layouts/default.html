@@ -43,7 +43,9 @@ layout: minimal
     <script>
       // Reading progress bar
       document.addEventListener('DOMContentLoaded', function() {
-        const progressBar = document.querySelector('.reading-progress-bar');
+        const progressBar = document.querySelector('.layout--post .reading-progress-bar');
+        if (!progressBar) return;
+        
         const updateProgress = () => {
           const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
           const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;

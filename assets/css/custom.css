@@ -480,7 +480,7 @@ body {
 }
 
 /* Reading Progress Bar - Only show on post pages */
-.post .reading-progress {
+.layout--post .reading-progress {
   position: fixed;
   top: 0;
   left: 0;
@@ -490,18 +490,18 @@ body {
   z-index: 9999;
 }
 
-.post .reading-progress-bar {
+.layout--post .reading-progress-bar {
   height: 100%;
   width: 0;
   background: linear-gradient(90deg, #ff6600, #ff9e00);
   transition: width 0.2s ease-out;
 }
 
-[data-theme="dark"] .post .reading-progress {
+[data-theme="dark"] .layout--post .reading-progress {
   background: rgba(255,255,255,0.1);
 }
 
-[data-theme="dark"] .post .reading-progress-bar {
+[data-theme="dark"] .layout--post .reading-progress-bar {
   background: linear-gradient(90deg, #ff9e00, #ffcc00);
 }
 
