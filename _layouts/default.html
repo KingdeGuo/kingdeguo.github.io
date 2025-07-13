@@ -7,7 +7,10 @@ layout: minimal
   <head>
     {% include head.html %}
     {% include head/custom.html %}
+    <!-- Load theme CSS first -->
     <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+    <!-- Then load custom CSS -->
+    <link rel="stylesheet" href="{{ site.remote_theme | prepend: 'https://github.com/' | append: '/blob/master/assets/css/main.css' }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   </head>
 

@@ -5,6 +5,8 @@ permalink: /tags/
 author_profile: true
 ---
 
+{% include base_path %}
+
 {% for tag in site.tags %}
   {% capture tag_name %}{{ tag | first }}{% endcapture %}
   <div id="#{{ tag_name | slugize }}"></div>

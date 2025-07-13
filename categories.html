@@ -5,6 +5,8 @@ permalink: /categories/
 author_profile: true
 ---
 
+{% include base_path %}
+
 {% for category in site.categories %}
   {% capture category_name %}{{ category | first }}{% endcapture %}
   <div id="#{{ category_name | slugize }}"></div>
