@@ -29,7 +29,7 @@ github_username: kingdeguo
 
 # Theme settings
 remote_theme: mmistakes/minimal-mistakes
-minimal_mistakes_skin: plum # "default", "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
+minimal_mistakes_skin: default # "default", "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
 theme_switcher: true
 theme_switcher_default: "light"
 theme_switcher_location: "footer"
