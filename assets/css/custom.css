@@ -412,6 +412,54 @@ body {
 .highlight .vi { color: #79c0ff } /* Name.Variable.Instance */
 .highlight .il { color: #a5d6ff } /* Literal.Number.Integer.Long */
 
+/* Posts List Page */
+.posts-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.posts-list {
+  list-style: none;
+  padding: 0;
+}
+
+.posts-list li {
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #eee;
+}
+
+.posts-list a {
+  color: #555;
+  text-decoration: none;
+  font-size: 1.1rem;
+}
+
+.posts-list a:hover {
+  color: #333;
+  text-decoration: underline;
+}
+
+.post-date {
+  display: block;
+  color: #666;
+  font-size: 0.9rem;
+  margin-top: 5px;
+}
+
+[data-theme="dark"] .posts-list a {
+  color: #f0f0f0;
+}
+
+[data-theme="dark"] .posts-list a:hover {
+  color: #fff;
+}
+
+[data-theme="dark"] .posts-list li {
+  border-bottom-color: #333;
+}
+
 /* Back to top button */
 #back-to-top {
   position: fixed;
