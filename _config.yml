@@ -27,9 +27,6 @@ url: "https://kingdeguo.github.io"
 twitter_username: ""
 github_username: kingdeguo
 
-# Analytics
-google_analytics: UA-XXXXX-Y  # Replace with your GA tracking ID
-
 # Theme settings
 remote_theme: mmistakes/minimal-mistakes
 minimal_mistakes_skin: plum # "default", "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
