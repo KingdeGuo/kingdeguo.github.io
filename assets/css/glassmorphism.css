@@ -17,11 +17,7 @@ body {
   transition: all 0.3s ease-in-out;
 }
 
-.home-container:hover,
-.post-card:hover,
-.archive-group:hover {
-  box-shadow: inset 7px 7px 15px rgb(163,177,198,0.6), inset -7px -7px 15px    rgba(255,255,255, 0.5);
-}
+/* Removed hover effects for better readability */
 
 .post-card h3 a,
 .archive-item h4 a {
