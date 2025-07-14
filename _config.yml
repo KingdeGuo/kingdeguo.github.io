@@ -71,6 +71,18 @@ permalink: /:year/:month/:day/:title.html
 # Syntax highlighting
 highlighter: rouge
 markdown: kramdown
+mermaid:
+  # Mermaid diagram configuration
+  theme: default
+  startOnLoad: true
+  flowchart:
+    useMaxWidth: true
+    htmlLabels: true
+  sequence:
+    useMaxWidth: true
+    wrap: true
+  uml:
+    useMaxWidth: true
 kramdown:
   syntax_highlighter: rouge
   syntax_highlighter_opts:

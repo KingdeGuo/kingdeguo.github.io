@@ -17,7 +17,7 @@ og_image: "/assets/images/llm-agent-hr-demo.png"
 
 ### Agent的核心组件：
 
-```mermaid
+<div class="mermaid">
 classDiagram
     class Agent {
         +LLM: 大语言模型
@@ -30,14 +30,13 @@ classDiagram
     Agent --> Memory: 读写
     Agent --> Planner: 执行
     note for Agent "核心协调组件\n管理所有子模块"
-```
-
+</div>
 1. **大脑**：GPT-4等大语言模型
 2. **工具**：搜索、计算、数据库访问等能力
 3. **记忆**：对话历史和任务上下文
 4. **决策**：任务分解和计划能力
 
-```mermaid
+<div class="mermaid">
 flowchart TD
     A[用户问题] --> B(Agent大脑)
     B --> C{需要工具?}
@@ -52,11 +51,10 @@ flowchart TD
     style E fill:#f5f5f5,stroke:#333
     style F fill:#f5f5f5,stroke:#333
     style G fill:#f5f5f5,stroke:#333
-```
-
+</div>
 ## HR领域的Agent应用场景
 
-```mermaid
+<div class="mermaid">
 graph LR
     subgraph 智能招聘助手
         A1[自动筛选简历] --> A2[安排面试]
@@ -82,8 +80,7 @@ graph LR
     style C1 fill:#e8f5e9,stroke:#2e7d32
     style C2 fill:#e8f5e9,stroke:#2e7d32
     style C3 fill:#e8f5e9,stroke:#2e7d32
-```
-
+</div>
 ### 1. 智能招聘助手
 - 自动筛选简历
 - 安排面试
