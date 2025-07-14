@@ -13,6 +13,47 @@ tags: [大模型, Agent, Python, HR, 人工智能]
 想象你有一个超级助手，它能理解自然语言、访问各种工具，并能自主完成任务——这就是大模型Agent！Agent = 大语言模型 + 工具使用能力 + 记忆系统 + 决策能力。
 
 ### Agent的核心组件：
+
+<svg width="100%" height="250" viewBox="0 0 600 250" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .component { fill: #e3f2fd; stroke: #1976d2; stroke-width: 2; rx: 5; ry: 5; }
+    .center { fill: #bbdefb; stroke: #0d47a1; }
+    .text { font-family: Arial; font-size: 14px; text-anchor: middle; dominant-baseline: middle; }
+    .arrow { stroke: #555; stroke-width: 1.5; fill: none; marker-end: url(#arrowhead); }
+  </style>
+
+  <!-- Center: Agent -->
+  <rect x="250" y="75" width="100" height="50" class="center"/>
+  <text x="300" y="100" class="text">Agent</text>
+
+  <!-- Components -->
+  <rect x="100" y="50" width="100" height="50" class="component"/>
+  <text x="150" y="75" class="text">大脑<br>(LLM)</text>
+
+  <rect x="400" y="50" width="100" height="50" class="component"/>
+  <text x="450" y="75" class="text">工具集</text>
+
+  <rect x="100" y="150" width="100" height="50" class="component"/>
+  <text x="150" y="175" class="text">记忆系统</text>
+
+  <rect x="400" y="150" width="100" height="50" class="component"/>
+  <text x="450" y="175" class="text">决策引擎</text>
+
+  <!-- Arrows -->
+  <path d="M200 75 L250 75" class="arrow"/>
+  <path d="M350 75 L400 75" class="arrow"/>
+  <path d="M150 100 L150 150" class="arrow"/>
+  <path d="M450 100 L450 150" class="arrow"/>
+  <path d="M200 175 L250 175" class="arrow"/>
+  <path d="M350 175 L400 175" class="arrow"/>
+
+  <defs>
+    <marker id="arrowhead" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#555"/>
+    </marker>
+  </defs>
+</svg>
+
 1. **大脑**：GPT-4等大语言模型
 2. **工具**：搜索、计算、数据库访问等能力
 3. **记忆**：对话历史和任务上下文
@@ -65,6 +106,39 @@ tags: [大模型, Agent, Python, HR, 人工智能]
 </svg>
 
 ## HR领域的Agent应用场景
+
+<svg width="100%" height="300" viewBox="0 0 600 300" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .scene { fill: #e8f5e9; stroke: #2e7d32; stroke-width: 2; rx: 5; ry: 5; }
+    .icon { font-family: Arial; font-size: 30px; text-anchor: middle; dominant-baseline: middle; }
+    .title { font-family: Arial; font-size: 14px; text-anchor: middle; font-weight: bold; }
+    .desc { font-family: Arial; font-size: 12px; text-anchor: middle; }
+  </style>
+
+  <!-- 招聘场景 -->
+  <rect x="50" y="50" width="150" height="200" class="scene"/>
+  <text x="125" y="80" class="icon">📄</text>
+  <text x="125" y="110" class="title">智能招聘助手</text>
+  <text x="125" y="140" class="desc">自动筛选简历</text>
+  <text x="125" y="160" class="desc">安排面试</text>
+  <text x="125" y="180" class="desc">回答候选人问题</text>
+
+  <!-- 自助服务场景 -->
+  <rect x="225" y="50" width="150" height="200" class="scene"/>
+  <text x="300" y="80" class="icon">👩‍💼</text>
+  <text x="300" y="110" class="title">员工自助服务</text>
+  <text x="300" y="140" class="desc">解答HR政策</text>
+  <text x="300" y="160" class="desc">办理休假申请</text>
+  <text x="300" y="180" class="desc">福利查询</text>
+
+  <!-- 培训场景 -->
+  <rect x="400" y="50" width="150" height="200" class="scene"/>
+  <text x="475" y="80" class="icon">🎓</text>
+  <text x="475" y="110" class="title">培训与发展</text>
+  <text x="475" y="140" class="desc">个性化学习推荐</text>
+  <text x="475" y="160" class="desc">培训需求分析</text>
+  <text x="475" y="180" class="desc">技能评估</text>
+</svg>
 
 ### 1. 智能招聘助手
 - 自动筛选简历
