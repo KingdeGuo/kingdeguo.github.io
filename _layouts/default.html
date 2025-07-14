@@ -21,18 +21,6 @@ layout: minimal
   </head>
 
   <body class="layout--{{ page.layout | default: layout.layout }}{% if page.classes or layout.classes %}{{ page.classes | default: layout.classes | join: ' ' | prepend: ' ' }}{% endif %}">
-    <div id="loader-wrapper">
-      <div class="loader-content">
-        <div id="loader">
-          <div class="loader-circle"></div>
-          <div class="loader-circle"></div>
-          <div class="loader-circle"></div>
-        </div>
-        <div class="loader-progress">
-          <div class="loader-progress-bar"></div>
-        </div>
-      </div>
-    </div>
     <div id="particles-js"></div>
     {% include_cached skip-links.html %}
     {% include_cached masthead.html %}

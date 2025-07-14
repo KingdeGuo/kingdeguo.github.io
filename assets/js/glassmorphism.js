@@ -1,15 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const progressBar = document.querySelector('.loader-progress-bar');
-  let progress = 0;
-  const interval = setInterval(() => {
-    progress += Math.random() * 10;
-    if (progress >= 100) {
-      progress = 100;
-      clearInterval(interval);
-      document.body.classList.add('loaded');
-    }
-    progressBar.style.width = `${progress}%`;
-  }, 300);
 
   const themeSwitcher = document.querySelector('.theme-switcher a');
 
