@@ -1,5 +1,5 @@
 body {
-  background: #e0e5ec;
+  background: #ffffff;
   font-family: 'Poppins', sans-serif;
   color: #555;
   line-height: 1.6;
@@ -9,11 +9,11 @@ body {
 .home-container,
 .post-card,
 .archive-group {
-  background: #e0e5ec;
+  background: #f8f9fa;
   border-radius: 30px;
   padding: 2rem;
   margin-bottom: 2rem;
-  box-shadow: 7px 7px 15px rgb(163,177,198,0.6), -7px -7px 15px    rgba(255,255,255, 0.5);
+  box-shadow: 7px 7px 15px rgba(0,0,0,0.05), -7px -7px 15px rgba(255,255,255, 0.9);
   transition: all 0.3s ease-in-out;
 }
 
