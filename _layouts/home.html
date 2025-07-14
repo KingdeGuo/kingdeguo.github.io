@@ -17,11 +17,22 @@ layout: default
     <h2>Featured Posts</h2>
     <div class="posts-grid">
       {% for post in site.posts limit:3 %}
-        <article class="post-card">
-          <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
-          <p class="post-meta">{{ post.date | date: "%b %d, %Y" }}</p>
-          <p>{{ post.excerpt | strip_html | truncatewords: 30 }}</p>
-        </article>
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <article class="post-card">
+                <h3>{{ post.title }}</h3>
+                <p class="post-meta">{{ post.date | date: "%b %d, %Y" }}</p>
+              </article>
+            </div>
+            <div class="flip-card-back">
+              <article class="post-card">
+                <p>{{ post.excerpt | strip_html | truncatewords: 30 }}</p>
+                <a href="{{ post.url | relative_url }}" class="read-more">Read More</a>
+              </article>
+            </div>
+          </div>
+        </div>
       {% endfor %}
     </div>
   </div>
