@@ -1,9 +1,10 @@
 ---
 title: About
-layout: single
+layout: default
 permalink: /about/
 ---
 
+<div class="home-container">
 # 关于我
 
 我是一名软件工程师，这里分享技术、生活和读书等相关内容。
@@ -20,3 +21,4 @@ permalink: /about/
 
 ## 联系方式
 邮箱: your-email@example.com
+</div>
