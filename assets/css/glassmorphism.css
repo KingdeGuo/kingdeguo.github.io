@@ -1,27 +1,26 @@
 body {
-  background: #f5f5f5;
-  font-family: 'Georgia', 'Times New Roman', serif;
-  color: #333;
+  background: #e0e5ec;
+  font-family: 'Poppins', sans-serif;
+  color: #555;
+  line-height: 1.6;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .home-container,
 .post-card,
 .archive-group {
-  background: #f5f5f5;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  background: #e0e5ec;
+  border-radius: 20px;
   padding: 2rem;
   margin-bottom: 2rem;
-  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+  box-shadow: 9px 9px 16px rgb(163,177,198,0.6), -9px -9px 16px    rgba(255,255,255, 0.5);
+  transition: all 0.3s ease-in-out;
 }
 
 .home-container:hover,
 .post-card:hover,
 .archive-group:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 12px 40px 0 rgba(31, 38, 135, 0.5);
+  box-shadow: inset 9px 9px 16px rgb(163,177,198,0.6), inset -9px -9px 16px    rgba(255,255,255, 0.5);
 }
 
 .post-card h3 a,
