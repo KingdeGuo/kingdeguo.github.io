@@ -1,4 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
+  setTimeout(function() {
+    document.body.classList.add('loaded');
+  }, 1000);
+
   const themeSwitcher = document.querySelector('.theme-switcher a');
 
   const setTheme = (theme) => {
