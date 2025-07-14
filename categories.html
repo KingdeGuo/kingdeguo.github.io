@@ -5,6 +5,7 @@ permalink: /categories/
 ---
 
 
+<div class="home-container">
 {% for category in site.categories %}
   {% assign category_name = category | first %}
   <div id="#{{ category_name | slugize }}"></div>
@@ -18,5 +19,6 @@ permalink: /categories/
         <p class="post-meta">{{ post.date | date: "%b %d, %Y" }}</p>
       </article>
     {% endfor %}
+</div>
   </div>
 {% endfor %}
