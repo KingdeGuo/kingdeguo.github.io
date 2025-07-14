@@ -1,20 +1,18 @@
 ---
-layout: archive
+layout: default
 title: "Tags"
 permalink: /tags/
-author_profile: true
 ---
 
-{% include base_path %}
 
 {% for tag in site.tags %}
-  {% capture tag_name %}{{ tag | first }}{% endcapture %}
+  {% assign tag_name = tag | first %}
   <div id="#{{ tag_name | slugize }}"></div>
   
   <div class="archive-group">
     <h3 class="tag-head">{{ tag_name }}</h3>
     <a name="{{ tag_name | slugize }}"></a>
-    {% for post in site.tags[tag_name] %}
+    {% for post in tag.last %}
       <article class="archive-item">
         <h4><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h4>
         <p class="post-meta">{{ post.date | date: "%b %d, %Y" }}</p>
