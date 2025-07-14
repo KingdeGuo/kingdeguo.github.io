@@ -17,131 +17,72 @@ og_image: "/assets/images/llm-agent-hr-demo.png"
 
 ### Agent的核心组件：
 
-<svg width="100%" height="250" viewBox="0 0 600 250" xmlns="http://www.w3.org/2000/svg">
-  <style>
-    .component { fill: #e3f2fd; stroke: #1976d2; stroke-width: 2; rx: 5; ry: 5; }
-    .center { fill: #bbdefb; stroke: #0d47a1; }
-    .text { font-family: Arial; font-size: 14px; text-anchor: middle; dominant-baseline: middle; }
-    .arrow { stroke: #555; stroke-width: 1.5; fill: none; marker-end: url(#arrowhead); }
-  </style>
-
-  <!-- Center: Agent -->
-  <rect x="250" y="75" width="100" height="50" class="center"/>
-  <text x="300" y="100" class="text">Agent</text>
-
-  <!-- Components -->
-  <rect x="100" y="50" width="100" height="50" class="component"/>
-  <text x="150" y="75" class="text">大脑<br>(LLM)</text>
-
-  <rect x="400" y="50" width="100" height="50" class="component"/>
-  <text x="450" y="75" class="text">工具集</text>
-
-  <rect x="100" y="150" width="100" height="50" class="component"/>
-  <text x="150" y="175" class="text">记忆系统</text>
-
-  <rect x="400" y="150" width="100" height="50" class="component"/>
-  <text x="450" y="175" class="text">决策引擎</text>
-
-  <!-- Arrows -->
-  <path d="M200 75 L250 75" class="arrow"/>
-  <path d="M350 75 L400 75" class="arrow"/>
-  <path d="M150 100 L150 150" class="arrow"/>
-  <path d="M450 100 L450 150" class="arrow"/>
-  <path d="M200 175 L250 175" class="arrow"/>
-  <path d="M350 175 L400 175" class="arrow"/>
-
-  <defs>
-    <marker id="arrowhead" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
-      <polygon points="0 0, 8 3, 0 6" fill="#555"/>
-    </marker>
-  </defs>
-</svg>
+```mermaid
+classDiagram
+    class Agent {
+        +LLM: 大语言模型
+        +Tools: 工具集合
+        +Memory: 记忆系统
+        +Planner: 决策引擎
+    }
+    Agent --> LLM: 使用
+    Agent --> Tools: 调用
+    Agent --> Memory: 读写
+    Agent --> Planner: 执行
+    note for Agent "核心协调组件\n管理所有子模块"
+```
 
 1. **大脑**：GPT-4等大语言模型
 2. **工具**：搜索、计算、数据库访问等能力
 3. **记忆**：对话历史和任务上下文
 4. **决策**：任务分解和计划能力
 
-<svg width="100%" height="300" viewBox="0 0 600 300" xmlns="http://www.w3.org/2000/svg">
-  <style>
-    .node { fill: #f5f5f5; stroke: #333; stroke-width: 2; rx: 5; ry: 5; }
-    .diamond { fill: #f5f5f5; stroke: #333; stroke-width: 2; }
-    .arrow { stroke: #333; stroke-width: 2; fill: none; marker-end: url(#arrowhead); }
-    .text { font-family: Arial; font-size: 14px; text-anchor: middle; dominant-baseline: middle; }
-    .yes { font-size: 12px; fill: #666; }
-  </style>
-  
-  <!-- Nodes -->
-  <rect x="50" y="50" width="100" height="50" class="node"/>
-  <text x="100" y="75" class="text">用户问题</text>
-  
-  <rect x="200" y="50" width="100" height="50" class="node"/>
-  <text x="250" y="75" class="text">Agent大脑</text>
-  
-  <path d="M350 50 L400 75 L350 100 L300 75 Z" class="diamond"/>
-  <text x="350" y="75" class="text">需要工具?</text>
-  
-  <rect x="200" y="150" width="100" height="50" class="node"/>
-  <text x="250" y="175" class="text">直接回答</text>
-  
-  <rect x="350" y="150" width="100" height="50" class="node"/>
-  <text x="400" y="175" class="text">使用工具</text>
-  
-  <rect x="450" y="150" width="100" height="50" class="node"/>
-  <text x="500" y="175" class="text">整合结果</text>
-  
-  <rect x="350" y="230" width="100" height="50" class="node"/>
-  <text x="400" y="255" class="text">生成回复</text>
-  
-  <!-- Arrows -->
-  <path d="M150 75 L200 75" class="arrow"/>
-  <path d="M300 75 L350 75" class="arrow"/>
-  <path d="M375 100 L375 150" class="arrow"/>
-  <path d="M350 85 L250 150" class="arrow"/>
-  <text x="300" y="120" class="yes">否</text>
-  <path d="M450 175 L400 230" class="arrow"/>
-  
-  <defs>
-    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
-      <polygon points="0 0, 10 3.5, 0 7" fill="#333"/>
-    </marker>
-  </defs>
-</svg>
+```mermaid
+flowchart TD
+    A[用户问题] --> B(Agent大脑)
+    B --> C{需要工具?}
+    C -->|是| D[使用工具]
+    C -->|否| E[直接回答]
+    D --> F[整合结果]
+    F --> G[生成回复]
+    style A fill:#f5f5f5,stroke:#333
+    style B fill:#f5f5f5,stroke:#333
+    style C fill:#f5f5f5,stroke:#333,shape:diamond
+    style D fill:#f5f5f5,stroke:#333
+    style E fill:#f5f5f5,stroke:#333
+    style F fill:#f5f5f5,stroke:#333
+    style G fill:#f5f5f5,stroke:#333
+```
 
 ## HR领域的Agent应用场景
 
-<svg width="100%" height="300" viewBox="0 0 600 300" xmlns="http://www.w3.org/2000/svg">
-  <style>
-    .scene { fill: #e8f5e9; stroke: #2e7d32; stroke-width: 2; rx: 5; ry: 5; }
-    .icon { font-family: Arial; font-size: 30px; text-anchor: middle; dominant-baseline: middle; }
-    .title { font-family: Arial; font-size: 14px; text-anchor: middle; font-weight: bold; }
-    .desc { font-family: Arial; font-size: 12px; text-anchor: middle; }
-  </style>
-
-  <!-- 招聘场景 -->
-  <rect x="50" y="50" width="150" height="200" class="scene"/>
-  <text x="125" y="80" class="icon">📄</text>
-  <text x="125" y="110" class="title">智能招聘助手</text>
-  <text x="125" y="140" class="desc">自动筛选简历</text>
-  <text x="125" y="160" class="desc">安排面试</text>
-  <text x="125" y="180" class="desc">回答候选人问题</text>
-
-  <!-- 自助服务场景 -->
-  <rect x="225" y="50" width="150" height="200" class="scene"/>
-  <text x="300" y="80" class="icon">👩‍💼</text>
-  <text x="300" y="110" class="title">员工自助服务</text>
-  <text x="300" y="140" class="desc">解答HR政策</text>
-  <text x="300" y="160" class="desc">办理休假申请</text>
-  <text x="300" y="180" class="desc">福利查询</text>
-
-  <!-- 培训场景 -->
-  <rect x="400" y="50" width="150" height="200" class="scene"/>
-  <text x="475" y="80" class="icon">🎓</text>
-  <text x="475" y="110" class="title">培训与发展</text>
-  <text x="475" y="140" class="desc">个性化学习推荐</text>
-  <text x="475" y="160" class="desc">培训需求分析</text>
-  <text x="475" y="180" class="desc">技能评估</text>
-</svg>
+```mermaid
+graph LR
+    subgraph 智能招聘助手
+        A1[自动筛选简历] --> A2[安排面试]
+        A2 --> A3[回答候选人问题]
+    end
+    
+    subgraph 员工自助服务
+        B1[解答HR政策] --> B2[办理休假申请]
+        B2 --> B3[福利查询]
+    end
+    
+    subgraph 培训与发展
+        C1[个性化学习推荐] --> C2[培训需求分析]
+        C2 --> C3[技能评估]
+    end
+    
+    style A1 fill:#e8f5e9,stroke:#2e7d32
+    style A2 fill:#e8f5e9,stroke:#2e7d32
+    style A3 fill:#e8f5e9,stroke:#2e7d32
+    style B1 fill:#e8f5e9,stroke:#2e7d32
+    style B2 fill:#e8f5e9,stroke:#2e7d32
+    style B3 fill:#e8f5e9,stroke:#2e7d32
+    style C1 fill:#e8f5e9,stroke:#2e7d32
+    style C2 fill:#e8f5e9,stroke:#2e7d32
+    style C3 fill:#e8f5e9,stroke:#2e7d32
+```
 
 ### 1. 智能招聘助手
 - 自动筛选简历

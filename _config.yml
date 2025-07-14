@@ -55,6 +55,16 @@ plugins:
   - jekyll-sitemap
   - jekyll-paginate
   - jekyll-include-cache
+  - jekyll-mermaid  # 添加Mermaid UML支持
+
+# Mermaid配置
+mermaid:
+  version: "9.4.3"
+  theme: "default"
+  darkTheme: "dark"
+  flowchart:
+    useMaxWidth: true
+    htmlLabels: true
 
 # Permalinks
 permalink: /:year/:month/:day/:title.html
