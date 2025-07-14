@@ -58,7 +58,7 @@ plugins:
 
 # Mermaid配置 - 使用前端渲染
 mermaid:
-  version: "9.4.3"
+  version: "10.7.0"
   theme: "default"
   darkTheme: "dark"
   flowchart:
