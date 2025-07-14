@@ -1,0 +1,58 @@
+{% if include.posts %}
+<div class="related-posts">
+  <h3>相关文章</h3>
+  <ul>
+    {% for post_ref in include.posts %}
+      {% assign post = site.posts | where: "path", post_ref | first %}
+      {% if post %}
+        <li>
+          <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+          <span class="post-date">{{ post.date | date: "%Y-%m-%d" }}</span>
+        </li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+</div>
+
+<style>
+.related-posts {
+  margin: 2rem 0;
+  padding: 1rem;
+  background: rgba(0,0,0,0.03);
+  border-radius: 4px;
+}
+
+.related-posts h3 {
+  margin-top: 0;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 0.5rem;
+}
+
+.related-posts ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.related-posts li {
+  margin-bottom: 0.5rem;
+}
+
+.related-posts .post-date {
+  color: #666;
+  font-size: 0.8em;
+  margin-left: 0.5rem;
+}
+
+[data-theme="dark"] .related-posts {
+  background: rgba(255,255,255,0.05);
+}
+
+[data-theme="dark"] .related-posts h3 {
+  border-bottom-color: #444;
+}
+
+[data-theme="dark"] .related-posts .post-date {
+  color: #aaa;
+}
+</style>
+{% endif %}
