@@ -18,15 +18,51 @@ tags: [大模型, Agent, Python, HR, 人工智能]
 3. **记忆**：对话历史和任务上下文
 4. **决策**：任务分解和计划能力
 
-```mermaid
-graph LR
-A[用户问题] --> B(Agent大脑)
-B --> C{需要工具吗？}
-C -->|是| D[使用工具]
-C -->|否| E[直接回答]
-D --> F[整合工具结果]
-F --> G[生成最终回复]
-```
+<svg width="100%" height="300" viewBox="0 0 600 300" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .node { fill: #f5f5f5; stroke: #333; stroke-width: 2; rx: 5; ry: 5; }
+    .diamond { fill: #f5f5f5; stroke: #333; stroke-width: 2; }
+    .arrow { stroke: #333; stroke-width: 2; fill: none; marker-end: url(#arrowhead); }
+    .text { font-family: Arial; font-size: 14px; text-anchor: middle; dominant-baseline: middle; }
+    .yes { font-size: 12px; fill: #666; }
+  </style>
+  
+  <!-- Nodes -->
+  <rect x="50" y="50" width="100" height="50" class="node"/>
+  <text x="100" y="75" class="text">用户问题</text>
+  
+  <rect x="200" y="50" width="100" height="50" class="node"/>
+  <text x="250" y="75" class="text">Agent大脑</text>
+  
+  <path d="M350 50 L400 75 L350 100 L300 75 Z" class="diamond"/>
+  <text x="350" y="75" class="text">需要工具?</text>
+  
+  <rect x="200" y="150" width="100" height="50" class="node"/>
+  <text x="250" y="175" class="text">直接回答</text>
+  
+  <rect x="350" y="150" width="100" height="50" class="node"/>
+  <text x="400" y="175" class="text">使用工具</text>
+  
+  <rect x="450" y="150" width="100" height="50" class="node"/>
+  <text x="500" y="175" class="text">整合结果</text>
+  
+  <rect x="350" y="230" width="100" height="50" class="node"/>
+  <text x="400" y="255" class="text">生成回复</text>
+  
+  <!-- Arrows -->
+  <path d="M150 75 L200 75" class="arrow"/>
+  <path d="M300 75 L350 75" class="arrow"/>
+  <path d="M375 100 L375 150" class="arrow"/>
+  <path d="M350 85 L250 150" class="arrow"/>
+  <text x="300" y="120" class="yes">否</text>
+  <path d="M450 175 L400 230" class="arrow"/>
+  
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#333"/>
+    </marker>
+  </defs>
+</svg>
 
 ## HR领域的Agent应用场景
 
