@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mermaid UML Test</title>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10.7.0/dist/mermaid.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .mermaid {
+            margin: 20px 0;
+            border: 1px solid #eee;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Mermaid UML Diagram Test</h1>
+    
+    <div class="mermaid">
+        classDiagram
+            class Person {
+                -name: string
+                -age: int
+                +getName(): string
+                +getAge(): int
+            }
+            
+            class Student {
+                -studentId: string
+                +getStudentId(): string
+            }
+            
+            Person <|-- Student
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            mermaid.initialize({
+                startOnLoad: true,
+                theme: 'default',
+                themeVariables: {
+                    primaryColor: '#f9f9f9',
+                    primaryTextColor: '#333',
+                    primaryBorderColor: '#333',
+                    lineColor: '#333',
+                    secondaryColor: '#e0e0e0',
+                    tertiaryColor: '#fff'
+                },
+                flowchart: {
+                    useMaxWidth: true,
+                    htmlLabels: true
+                },
+                sequence: {
+                    useMaxWidth: true,
+                    wrap: true
+                },
+                uml: {
+                    useMaxWidth: true
+                }
+            });
+        });
+    </script>
+</body>
+</html>
