@@ -38,14 +38,6 @@ theme_switcher_location: "footer"
 stylesheets:
   - assets/css/custom.css
 
-# Categories & Tags
-collections:
-  categories:
-    output: true
-    permalink: /categories/:name/
-  tags:
-    output: true
-    permalink: /tags/:name/
 
 # Giscus comments
 giscus:
@@ -65,7 +57,7 @@ plugins:
   - jekyll-include-cache
 
 # Permalinks
-permalink: /:categories/:year/:month/:day/:title.html
+permalink: /:year/:month/:day/:title.html
 
 # Syntax highlighting
 highlighter: rouge
