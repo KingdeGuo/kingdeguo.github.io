@@ -1,11 +1,14 @@
 ---
-title: "大模型Agent入门指南：用Python构建HR智能助手"
+title: "大模型Agent开发指南：Python构建HR智能助手完整教程"
 date: 2025-07-14
 layout: post
 comments: true
 author_profile: true
-categories: [人工智能, HR科技]
-tags: [大模型, Agent, Python, HR, 人工智能]
+description: "手把手教你使用Python和LangChain开发HR领域大模型Agent，包含代码示例、部署方案和最佳实践"
+keywords: "大模型Agent开发,Python AI编程,HR智能助手,LangChain教程,LLM应用开发"
+categories: [人工智能开发, HR数字化转型]
+tags: [大语言模型, Agent系统, Python编程, HR科技, LangChain, OpenAI]
+og_image: "/assets/images/llm-agent-hr-demo.png"
 ---
 
 ## 什么是大模型Agent？
@@ -287,3 +290,23 @@ for q in questions:
 - [LangChain官方文档](https://langchain.readthedocs.io)
 - [HR科技趋势报告](https://example.com/hr-tech-report)
 - [AI伦理指南](https://example.com/ai-ethics)
+
+{% include related_posts.html 
+   posts="2025-07-13-github-pages-blog-tutorial.md,2025-07-13-test-categories-tags.md"
+   titles="GitHub Pages博客搭建教程,博客分类标签管理"
+%}
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "大模型Agent开发指南：Python构建HR智能助手完整教程",
+  "description": "手把手教你使用Python和LangChain开发HR领域大模型Agent",
+  "author": {
+    "@type": "Person",
+    "name": "KingdeGuo"
+  },
+  "datePublished": "2025-07-14",
+  "keywords": "大语言模型,Agent系统,Python编程,HR科技"
+}
+</script>

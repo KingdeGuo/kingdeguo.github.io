@@ -1,11 +1,14 @@
 ---
-title: "GitHub Pages博客搭建完整指南"
+title: "GitHub Pages博客搭建教程 - 从零开始创建个人技术博客"
 date: 2025-07-13
 layout: post
 comments: true
 author_profile: true
-categories: [技术教程, tutorial]
-tags: [GitHub, Jekyll, 博客搭建, 静态网站]
+description: "手把手教你使用GitHub Pages和Jekyll搭建免费个人博客，包含详细步骤、常见问题解决和SEO优化技巧"
+keywords: "GitHub Pages教程,Jekyll博客搭建,免费个人博客,技术博客搭建,GitHub静态网站"
+categories: [GitHub教程, 博客搭建]
+tags: [GitHub Pages, Jekyll, 静态网站, 博客搭建, 技术博客]
+og_image: "/assets/images/github-pages-demo.png"
 ---
 
 本文将从零开始教你搭建一个功能完整的GitHub Pages博客，包含详细配置示例、常见问题解决方案和进阶技巧。
@@ -181,3 +184,8 @@ google_analytics: UA-XXXXX-Y
 - [免费Jekyll主题](https://jekyllthemes.io/free)
 
 希望这篇指南能帮你顺利搭建博客！遇到问题欢迎在评论区留言讨论。
+
+{% include related_posts.html 
+   posts="2025-07-14-intro-to-llm-agent-hr.md,2025-07-13-test-categories-tags.md"
+   titles="大模型Agent开发指南,博客分类标签管理"
+%}
