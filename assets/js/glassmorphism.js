@@ -56,4 +56,40 @@ document.addEventListener('DOMContentLoaded', () => {
       }, 1000);
     });
   });
+
+  // --- Proactive UX Improvements by Cline ---
+
+  // 1. Lazy Loading for post images
+  const postContent = document.querySelector('.post-content');
+  if (postContent) {
+    const images = postContent.querySelectorAll('img');
+    images.forEach(img => {
+      if (img.src) {
+        img.setAttribute('data-src', img.src);
+        img.removeAttribute('src');
+        img.classList.add('lazyload');
+      }
+    });
+  }
+
+  // 2. Back to Top Button
+  const backToTopButton = document.getElementById('back-to-top');
+  if (backToTopButton) {
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        backToTopButton.style.visibility = 'visible';
+        backToTopButton.style.opacity = '1';
+      } else {
+        backToTopButton.style.visibility = 'hidden';
+        backToTopButton.style.opacity = '0';
+      }
+    });
+
+    backToTopButton.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+  }
 });

@@ -637,6 +637,16 @@ body {
     inset 0 2px 4px rgba(255,255,255,0.9);
 }
 
+/* Lazy-loaded image fade-in effect */
+img.lazyload {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+img.lazyloaded {
+  opacity: 1;
+}
+
 /* --- New Post Card and Pagination Styles --- */
 
 .posts-section-title {
