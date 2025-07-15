@@ -5,23 +5,32 @@ permalink: /categories/
 ---
 
 <div class="home-container">
-  {% for category in site.categories %}
-    {% assign category_name = category | first %}
-    <div id="#{{ category_name | slugize }}"></div>
-    
-    <div class="archive-group post-card">
-      <h3 class="category-head"><a href="{{ site.baseurl }}/categories/{{ category_name | slugize }}/">{{ category_name }}</a></h3>
-      <div class="archive-list">
-        {% for post in category.last limit:5 %}
-          <article class="archive-item">
-            <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
-            <span class="post-meta">{{ post.date | date: "%b %d, %Y" }}</span>
-          </article>
-        {% endfor %}
-        {% if category.last.size > 5 %}
-          <a href="{{ site.baseurl }}/categories/{{ category_name | slugize }}/" class="archive-more">... and {{ category.last.size | minus: 5 }} more</a>
-        {% endif %}
+  <header class="page-header">
+    <h1 class="page-title">Categories</h1>
+  </header>
+
+  <div class="archive-container">
+    {% for category in site.categories %}
+      {% assign category_name = category | first %}
+      <div class="archive-section">
+        <h2 class="archive-title">
+          <a href="{{ site.baseurl }}/categories/{{ category_name | slugize }}/">{{ category_name }}</a>
+          <span class="archive-count">({{ category.last.size }})</span>
+        </h2>
+        <ul class="archive-posts">
+          {% for post in category.last limit:5 %}
+            <li class="archive-post">
+              <a href="{{ site.baseurl }}{{ post.url }}" class="archive-post-title">{{ post.title }}</a>
+              <span class="archive-post-date">{{ post.date | date: "%Y-%m-%d" }}</span>
+            </li>
+          {% endfor %}
+          {% if category.last.size > 5 %}
+            <li class="archive-more">
+              <a href="{{ site.baseurl }}/categories/{{ category_name | slugize }}/">View all {{ category.last.size }} posts →</a>
+            </li>
+          {% endif %}
+        </ul>
       </div>
-    </div>
-  {% endfor %}
+    {% endfor %}
+  </div>
 </div>

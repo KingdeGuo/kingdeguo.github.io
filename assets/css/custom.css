@@ -883,3 +883,166 @@ img.lazyloaded {
 [data-theme="dark"] .archive-item .post-meta {
   color: #aaa;
 }
+
+/* --- Unified Archive Styles for Categories, Tags, and Posts --- */
+.page-header {
+  text-align: center;
+  margin-bottom: 2rem;
+  padding: 1rem 0;
+}
+
+.page-title {
+  font-size: 2.2rem;
+  margin: 0;
+  color: #111;
+}
+
+.archive-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.archive-section {
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 8px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.archive-title {
+  font-size: 1.4rem;
+  margin: 0 0 1rem 0;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.archive-title a {
+  color: #333;
+  text-decoration: none;
+}
+
+.archive-title a:hover {
+  color: #007bff;
+}
+
+.archive-count {
+  font-size: 0.9rem;
+  color: #666;
+  font-weight: normal;
+  margin-left: 0.5rem;
+}
+
+.archive-posts {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.archive-post {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.archive-post:last-child {
+  border-bottom: none;
+}
+
+.archive-post-title {
+  color: #444;
+  text-decoration: none;
+  font-size: 1rem;
+  line-height: 1.4;
+  flex: 1;
+  margin-right: 1rem;
+}
+
+.archive-post-title:hover {
+  color: #007bff;
+  text-decoration: underline;
+}
+
+.archive-post-date {
+  color: #666;
+  font-size: 0.85rem;
+  white-space: nowrap;
+  font-family: var(--font-family-mono);
+}
+
+.archive-more {
+  text-align: right;
+  margin-top: 0.5rem;
+}
+
+.archive-more a {
+  color: #007bff;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.archive-more a:hover {
+  text-decoration: underline;
+}
+
+.all-posts .archive-post {
+  padding: 0.5rem 0;
+}
+
+/* Dark mode styles */
+[data-theme="dark"] .archive-section {
+  background: rgba(30, 30, 30, 0.5);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .archive-title {
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .archive-title a {
+  color: #f0f0f0;
+}
+
+[data-theme="dark"] .archive-post {
+  border-color: rgba(255, 255, 255, 0.05);
+}
+
+[data-theme="dark"] .archive-post-title {
+  color: #e0e0e0;
+}
+
+[data-theme="dark"] .archive-post-date {
+  color: #aaa;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .archive-container {
+    padding: 0 15px;
+  }
+  
+  .archive-section {
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .archive-title {
+    font-size: 1.2rem;
+  }
+  
+  .archive-post {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0.8rem 0;
+  }
+  
+  .archive-post-date {
+    margin-top: 0.25rem;
+    font-size: 0.8rem;
+  }
+}

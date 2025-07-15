@@ -5,14 +5,18 @@ permalink: /posts/
 ---
 
 <div class="home-container">
-  <h1>所有文章</h1>
-  
-  <ul class="posts-list">
-    {% for post in site.posts %}
-      <li>
-        <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
-        <span class="post-date">{{ post.date | date: "%Y-%m-%d" }}</span>
-      </li>
-    {% endfor %}
-  </ul>
+  <header class="page-header">
+    <h1 class="page-title">所有文章</h1>
+  </header>
+
+  <div class="archive-container">
+    <ul class="archive-posts all-posts">
+      {% for post in site.posts %}
+        <li class="archive-post">
+          <a href="{{ post.url | relative_url }}" class="archive-post-title">{{ post.title }}</a>
+          <span class="archive-post-date">{{ post.date | date: "%Y-%m-%d" }}</span>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
 </div>
