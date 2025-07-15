@@ -29,6 +29,9 @@ layout: minimal
       gtag('config', '{{ site.google_analytics.tracking_id }}');
     </script>
     {% endif %}
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2370953792797102"
+     crossorigin="anonymous"></script>
   </head>
 
   <body class="layout--{{ page.layout | default: layout.layout }}{% if page.classes or layout.classes %}{{ page.classes | default: layout.classes | join: ' ' | prepend: ' ' }}{% endif %}">
