@@ -68,6 +68,10 @@ mermaid:
 # Permalinks
 permalink: /:year/:month/:day/:title.html
 
+# Pagination
+paginate: 6
+paginate_path: "/page/:num/"
+
 # Syntax highlighting
 highlighter: rouge
 markdown: kramdown
