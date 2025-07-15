@@ -53,8 +53,6 @@ plugins:
   - jekyll-feed
   - jekyll-seo-tag
   - jekyll-sitemap
-  - jekyll-paginate
-  - jekyll-include-cache
 
 # Mermaid配置 - 使用前端渲染
 mermaid:
@@ -74,9 +72,9 @@ mermaid:
 # Permalinks
 permalink: /:year/:month/:day/:title.html
 
-# Pagination
-paginate: 6
-paginate_path: "/page/:num/"
+# Pagination (disabled - using simple listing instead)
+# paginate: 6
+# paginate_path: "/page/:num/"
 
 # Syntax highlighting
 highlighter: rouge
