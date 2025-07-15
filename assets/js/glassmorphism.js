@@ -48,13 +48,17 @@ document.addEventListener('DOMContentLoaded', () => {
   const cards = document.querySelectorAll('.home-container, .post-card, .archive-group');
 
   cards.forEach(card => {
-    // Removed parallax effect for better readability
+    // Add dynamic shine effect
     card.addEventListener('mousemove', (e) => {
-      // Empty to prevent movement effect
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      card.style.setProperty('--x', `${x}px`);
+      card.style.setProperty('--y', `${y}px`);
     });
 
     card.addEventListener('mouseleave', () => {
-      // Empty to prevent movement effect
+      // Reset properties if needed, though opacity change handles hiding
     });
 
     card.addEventListener('click', (e) => {

@@ -64,17 +64,6 @@ layout: minimal
         updateProgress();
       });
     </script>
-  <!-- Mermaid JS -->
-  <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
-  <script>
-    mermaid.initialize({
-      theme: 'default',
-      startOnLoad: true,
-      flowchart: {
-        useMaxWidth: true,
-        htmlLabels: true
-      }
-    });
-  </script>
+  {% include mermaid.html %}
   </body>
 </html>

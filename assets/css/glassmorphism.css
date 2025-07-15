@@ -9,12 +9,39 @@ body {
 .home-container,
 .post-card,
 .archive-group {
-  background: #f8f9fa;
-  border-radius: 30px;
+  position: relative;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
   padding: 2rem;
   margin-bottom: 2rem;
-  box-shadow: 7px 7px 15px rgba(0,0,0,0.05), -7px -7px 15px rgba(255,255,255, 0.9);
   transition: all 0.3s ease-in-out;
+}
+
+.home-container::before,
+.post-card::before,
+.archive-group::before {
+  content: '';
+  position: absolute;
+  top: var(--y, 0);
+  left: var(--x, 0);
+  transform: translate(-50%, -50%);
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0) 60%);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.home-container:hover::before,
+.post-card:hover::before,
+.archive-group:hover::before {
+  opacity: 1;
 }
 
 /* Removed hover effects for better readability */
