@@ -18,14 +18,8 @@ jobs:
           ruby-version: '3.0' # Or the version you use
           bundler-cache: true # runs 'bundle install' and caches installed gems
 
-      - name: Update RubyGems
-        run: gem update --system
-
-      - name: Ensure clean Gemfile.lock
-        run: rm -f Gemfile.lock
-
       - name: Build the site
-        run: bundle exec jekyll build
+        run: bundle exec jekyll build --trace
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
