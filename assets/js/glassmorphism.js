@@ -85,11 +85,41 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-    backToTopButton.addEventListener('click', () => {
+    backToTopButton.addEventListener('click', (e) => {
+      e.preventDefault();
       window.scrollTo({
         top: 0,
         behavior: 'smooth'
       });
     });
   }
+
+  // 3. Code Block Copy Button
+  const highlights = document.querySelectorAll('.highlight');
+  highlights.forEach((highlight, index) => {
+    const code = highlight.querySelector('pre').innerText;
+    const btn = document.createElement('button');
+    btn.className = 'copy-btn';
+    btn.innerText = 'Copy';
+    btn.setAttribute('data-clipboard-text', code);
+    
+    highlight.appendChild(btn);
+  });
+
+  const clipboard = new ClipboardJS('.copy-btn');
+
+  clipboard.on('success', function(e) {
+    e.clearSelection();
+    e.trigger.innerText = 'Copied!';
+    setTimeout(() => {
+      e.trigger.innerText = 'Copy';
+    }, 2000);
+  });
+
+  clipboard.on('error', function(e) {
+    e.trigger.innerText = 'Error';
+    setTimeout(() => {
+      e.trigger.innerText = 'Copy';
+    }, 2000);
+  });
 });
