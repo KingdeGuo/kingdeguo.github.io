@@ -48,6 +48,10 @@ giscus:
   theme: preferred_color_scheme
   lang: zh-CN
 
+# Google Analytics
+google_analytics:
+  tracking_id: G-HXENT9GH1J
+
 # Build settings
 plugins:
   - jekyll-feed

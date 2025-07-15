@@ -19,14 +19,16 @@ layout: minimal
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Lora:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono&display=swap">
     <link rel="stylesheet" href="{{ '/assets/css/glassmorphism.css' | relative_url }}">
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HXENT9GH1J"></script>
+    {% if site.google_analytics.tracking_id %}
+    <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics.tracking_id }}"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
 
-      gtag('config', 'G-HXENT9GH1J');
+      gtag('config', '{{ site.google_analytics.tracking_id }}');
     </script>
+    {% endif %}
   </head>
 
   <body class="layout--{{ page.layout | default: layout.layout }}{% if page.classes or layout.classes %}{{ page.classes | default: layout.classes | join: ' ' | prepend: ' ' }}{% endif %}">
