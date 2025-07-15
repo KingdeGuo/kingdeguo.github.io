@@ -55,16 +55,21 @@ plugins:
   - jekyll-sitemap
   - jekyll-paginate
   - jekyll-include-cache
-  - jekyll-archives
 
 # Mermaid配置 - 使用前端渲染
 mermaid:
   version: "10.7.0"
   theme: "default"
   darkTheme: "dark"
+  startOnLoad: true
   flowchart:
     useMaxWidth: true
     htmlLabels: true
+  sequence:
+    useMaxWidth: true
+    wrap: true
+  uml:
+    useMaxWidth: true
 
 # Permalinks
 permalink: /:year/:month/:day/:title.html
@@ -76,18 +81,6 @@ paginate_path: "/page/:num/"
 # Syntax highlighting
 highlighter: rouge
 markdown: kramdown
-mermaid:
-  # Mermaid diagram configuration
-  theme: default
-  startOnLoad: true
-  flowchart:
-    useMaxWidth: true
-    htmlLabels: true
-  sequence:
-    useMaxWidth: true
-    wrap: true
-  uml:
-    useMaxWidth: true
 kramdown:
   syntax_highlighter: rouge
   syntax_highlighter_opts:
@@ -118,12 +111,5 @@ kramdown:
 #   - vendor/gems/
 #   - vendor/ruby/
 
-# Jekyll Archives
-jekyll-archives:
-  enabled:
-    - categories
-    - tags
-  layout: archive
-  permalinks:
-    category: /categories/:name/
-    tag: /tags/:name/
+# Categories and tags configuration
+# Using simple page-based approach for categories and tags
