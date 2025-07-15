@@ -1,9 +1,50 @@
+@keyframes move-aurora {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg) scale(1.2);
+  }
+  50% {
+    transform: translate(-50%, -50%) rotate(180deg) scale(1.5);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg) scale(1.2);
+  }
+}
+
 body {
-  background: #ffffff;
+  position: relative;
+  background: #f0f2f5;
   font-family: 'Poppins', sans-serif;
   color: #555;
   line-height: 1.6;
   transition: background-color 0.3s ease, color 0.3s ease;
+  overflow-x: hidden;
+}
+
+body::before, body::after {
+  content: '';
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 100vw;
+  height: 100vw;
+  max-width: 800px;
+  max-height: 800px;
+  border-radius: 50%;
+  z-index: -1;
+  filter: blur(100px);
+  opacity: 0.3;
+}
+
+body::before {
+  background: radial-gradient(circle, #ffafbd, #ffc3a0);
+  animation: move-aurora 20s linear infinite;
+}
+
+body::after {
+  background: radial-gradient(circle, #2193b0, #6dd5ed);
+  animation: move-aurora 25s linear infinite reverse;
+  top: 60%;
+  left: 40%;
 }
 
 .home-container,
@@ -92,12 +133,22 @@ body {
 
 /* Dark Mode */
 body.dark {
-  background: #000;
-  color: #fff;
+  background: #121212;
+  color: #e0e0e0;
+}
+
+body.dark::before {
+  background: radial-gradient(circle, #8e2de2, #4a00e0);
+  opacity: 0.4;
+}
+
+body.dark::after {
+  background: radial-gradient(circle, #ff0084, #33001b);
+  opacity: 0.4;
 }
 
 body.dark #particles-js {
-  display: block;
+  display: none; /* Disable particles in dark mode to favor Aurora */
 }
 
 body:not(.dark) #particles-js {
