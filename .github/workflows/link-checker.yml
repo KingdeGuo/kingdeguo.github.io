@@ -17,7 +17,7 @@ jobs:
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.1' # 使用与 Jekyll 4.x 兼容性更好的 Ruby 版本
+          ruby-version: '3.2' # 满足 sass-embedded gem 的版本要求
           bundler-cache: true
 
       - name: Build Jekyll site
