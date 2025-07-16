@@ -17,11 +17,8 @@ jobs:
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.2' # 满足 sass-embedded gem 的版本要求
-          bundler-cache: false # 禁用缓存，允许更新 lockfile
-
-      - name: Install dependencies
-        run: bundle install
+          ruby-version: '3.0' # 使用 GitHub Pages 兼容的 Ruby 版本
+          bundler-cache: true
 
       - name: Build Jekyll site
         run: bundle exec jekyll build --trace
