@@ -20,6 +20,12 @@ jobs:
           ruby-version: '3.2' # 满足 sass-embedded gem 的版本要求
           bundler-cache: true
 
+      - name: Configure Bundler
+        run: bundle config set frozen false
+
+      - name: Install dependencies
+        run: bundle install
+
       - name: Build Jekyll site
         run: bundle exec jekyll build --trace
 
