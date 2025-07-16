@@ -1,5 +1,5 @@
 ---
-layout: minimal
+layout: base
 ---
 
 <!doctype html>
@@ -7,83 +7,82 @@ layout: minimal
   <head>
     {% include head.html %}
     {% include head/custom.html %}
-    <!-- Load theme CSS -->
-    <link rel="stylesheet" href="{{ site.remote_theme | prepend: 'https://github.com/' | append: '/blob/master/assets/css/main.css' }}">
-    <!-- Load custom CSS -->
-    {% if site.stylesheets %}
-      {% for stylesheet in site.stylesheets %}
-        <link rel="stylesheet" href="{{ stylesheet | relative_url }}">
-      {% endfor %}
-    {% endif %}
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Lora:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono&display=swap">
+    <link rel="stylesheet" href="{{ '/assets/css/custom.css' | relative_url }}">
     <link rel="stylesheet" href="{{ '/assets/css/glassmorphism.css' | relative_url }}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css" integrity="sha512-ZKX+BvQihRJPA8CROKBhDNvoc2aDMOdAlcm7TUQY+35XYtrd3yh95QOOhsPDQY996sciacLAplzhSjZaYhUIcQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <!-- Google tag (gtag.js) -->
-    {% if site.google_analytics.tracking_id %}
-    <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics.tracking_id }}"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', '{{ site.google_analytics.tracking_id }}');
-    </script>
-    {% endif %}
-    <!-- Google AdSense -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2370953792797102"
-     crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css">
   </head>
 
-  <body class="layout--{{ page.layout | default: layout.layout }}{% if page.classes or layout.classes %}{{ page.classes | default: layout.classes | join: ' ' | prepend: ' ' }}{% endif %}">
+  <body class="layout--{{ page.layout | default: layout.layout }}">
+    <!-- 粒子背景 -->
+    <div id="particles-js"></div>
+    
+    <!-- 主题切换器 -->
     <div class="theme-switcher">
-      <button title="Toggle Theme">
+      <button id="theme-toggle" title="Toggle Theme">
         <i class="fas fa-sun"></i>
         <i class="fas fa-moon"></i>
       </button>
     </div>
-    <div id="particles-js"></div>
-    {% include_cached skip-links.html %}
+
+    <!-- 导航栏 -->
     {% include_cached masthead.html %}
 
-    <div id="search-container" style="padding: 0 2rem; max-width: 800px; margin: 1rem auto;">
-      <input type="text" id="search-input" placeholder="Search posts..." style="width: 100%; padding: 0.5rem; font-size: 1rem; border: 1px solid #ccc; border-radius: 5px;">
-      <ul id="search-results" style="list-style: none; padding: 0; margin-top: 1rem;"></ul>
+    <!-- 搜索框 -->
+    <div id="search-container">
+      <input type="text" id="search-input" placeholder="搜索文章...">
+      <ul id="search-results"></ul>
     </div>
 
+    <!-- 主要内容 -->
     <div class="initial-content">
       {{ content }}
     </div>
 
-
-    <!-- {% include scripts.html %} -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js" integrity="sha512-Ixzuzfxv1EqafeQlTCufWfaC6ful6WFqIz4G+dWvK0beHw0NVJwvCKSgafpy5gwNqKmgUfIBraVwkKI+Cz0SEQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- 脚本文件 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="{{ '/assets/js/particles.min.js' | relative_url }}"></script>
     <script src="{{ '/assets/js/particles-config.js' | relative_url }}"></script>
     <script src="{{ '/assets/js/glassmorphism.js' | relative_url }}"></script>
     <script src="https://unpkg.com/lunr/lunr.min.js"></script>
     <script src="{{ '/assets/js/search.js' | relative_url }}"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.3.2/lazysizes.min.js" async=""></script>
-    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script>
+    
+    <!-- 主题切换脚本 -->
     <script>
-      // Reading progress bar
       document.addEventListener('DOMContentLoaded', function() {
-        const progressBar = document.querySelector('.layout--post .reading-progress-bar');
-        if (!progressBar) return;
+        const toggle = document.getElementById('theme-toggle');
+        const html = document.documentElement;
         
-        const updateProgress = () => {
-          const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-          const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-          const progress = (scrollTop / scrollHeight) * 100;
-          progressBar.style.width = progress + '%';
-        };
-        window.addEventListener('scroll', updateProgress);
-        updateProgress();
+        // 初始化主题
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        html.setAttribute('data-theme', savedTheme);
+        updateThemeIcon(savedTheme);
+        
+        // 主题切换
+        toggle.addEventListener('click', function() {
+          const currentTheme = html.getAttribute('data-theme');
+          const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+          html.setAttribute('data-theme', newTheme);
+          localStorage.setItem('theme', newTheme);
+          updateThemeIcon(newTheme);
+        });
+        
+        function updateThemeIcon(theme) {
+          const sunIcon = toggle.querySelector('.fa-sun');
+          const moonIcon = toggle.querySelector('.fa-moon');
+          if (theme === 'dark') {
+            sunIcon.style.display = 'none';
+            moonIcon.style.display = 'block';
+          } else {
+            sunIcon.style.display = 'block';
+            moonIcon.style.display = 'none';
+          }
+        }
       });
     </script>
-  {% include mermaid.html %}
-  <a id="back-to-top" href="#"><i class="fas fa-arrow-up"></i></a>
+    
+    {% include mermaid.html %}
   </body>
 </html>
