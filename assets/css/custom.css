@@ -475,7 +475,7 @@ body {
 .highlight .c, .highlight .c1, .highlight .cm { color: #5c6370; font-style: italic; } /* Comment */
 .highlight .p, .highlight .pi { color: #abb2bf; } /* Punctuation */
 .highlight .k, .highlight .kc, .highlight .kd, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .kt { color: #c678dd; } /* Keyword */
-.highlight .n, .highlight .nb, .highlight .nc, .highlight .no, .highlight .nd, .highlight .ni, .highlight .ne, .highlight .nf, .highlight .nl, .highlight .nn, .highlight .nx, .highlight .py, .highlight .nt { color: #e06c75; } /* Name */
+.highlight .n, .highlight .nb, .highlight .nc, .highlight .no, .highlight .nd, .highlight .ni, .highlight .ne, .highlight .nf, .highlight .nl, .highlight .nn, .highlight .nx, .highlight .py, .highlight .nt { color: #61afef; } /* Name */
 .highlight .s, .highlight .s1, .highlight .s2, .highlight .sb, .highlight .sc, .highlight .sd, .highlight .se, .highlight .sh, .highlight .si, .highlight .sx, .highlight .sr, .highlight .ss { color: #98c379; } /* String */
 .highlight .m, .highlight .mf, .highlight .mh, .highlight .mi, .highlight .mo, .highlight .il { color: #d19a66; } /* Number */
 .highlight .o, .highlight .ow { color: #56b6c2; } /* Operator */
@@ -508,7 +508,7 @@ body {
 :not([data-theme="dark"]) .highlight .nn, 
 :not([data-theme="dark"]) .highlight .nx, 
 :not([data-theme="dark"]) .highlight .py, 
-:not([data-theme="dark"]) .highlight .nt { color: #ca1243; }
+:not([data-theme="dark"]) .highlight .nt { color: #005cc5; }
 :not([data-theme="dark"]) .highlight .s, 
 :not([data-theme="dark"]) .highlight .s1, 
 :not([data-theme="dark"]) .highlight .s2, 
