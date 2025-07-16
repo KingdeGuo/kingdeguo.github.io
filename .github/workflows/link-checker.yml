@@ -17,7 +17,7 @@ jobs:
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.0' # 请根据你的 Gemfile.lock 调整
+          ruby-version: '3.1' # 使用与 Jekyll 4.x 兼容性更好的 Ruby 版本
           bundler-cache: true
 
       - name: Build Jekyll site
