@@ -21,7 +21,7 @@ jobs:
           bundler-cache: true
 
       - name: Build Jekyll site
-        run: bundle exec jekyll build
+        run: bundle exec jekyll build --trace
 
       - name: Check for broken links
         uses: lycheeverse/lychee-action@v1
