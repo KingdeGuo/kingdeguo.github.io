@@ -18,6 +18,7 @@ layout: minimal
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Lora:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono&display=swap">
     <link rel="stylesheet" href="{{ '/assets/css/glassmorphism.css' | relative_url }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css" integrity="sha512-ZKX+BvQihRJPA8CROKBhDNvoc2aDMOdAlcm7TUQY+35XYtrd3yh95QOOhsPDQY996sciacLAplzhSjZaYhUIcQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- Google tag (gtag.js) -->
     {% if site.google_analytics.tracking_id %}
     <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics.tracking_id }}"></script>
@@ -35,25 +36,35 @@ layout: minimal
   </head>
 
   <body class="layout--{{ page.layout | default: layout.layout }}{% if page.classes or layout.classes %}{{ page.classes | default: layout.classes | join: ' ' | prepend: ' ' }}{% endif %}">
+    <div class="theme-switcher">
+      <button title="Toggle Theme">
+        <i class="fas fa-sun"></i>
+        <i class="fas fa-moon"></i>
+      </button>
+    </div>
     <div id="particles-js"></div>
     {% include_cached skip-links.html %}
     {% include_cached masthead.html %}
+
+    <div id="search-container" style="padding: 0 2rem; max-width: 800px; margin: 1rem auto;">
+      <input type="text" id="search-input" placeholder="Search posts..." style="width: 100%; padding: 0.5rem; font-size: 1rem; border: 1px solid #ccc; border-radius: 5px;">
+      <ul id="search-results" style="list-style: none; padding: 0; margin-top: 1rem;"></ul>
+    </div>
 
     <div class="initial-content">
       {{ content }}
     </div>
 
-    {% if site.search == true %}
-      <div class="search-content">
-        {% include_cached search/search_form.html %}
-      </div>
-    {% endif %}
-
 
     <!-- {% include scripts.html %} -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js" integrity="sha512-Ixzuzfxv1EqafeQlTCufWfaC6ful6WFqIz4G+dWvK0beHw0NVJwvCKSgafpy5gwNqKmgUfIBraVwkKI+Cz0SEQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="{{ '/assets/js/particles.min.js' | relative_url }}"></script>
     <script src="{{ '/assets/js/particles-config.js' | relative_url }}"></script>
     <script src="{{ '/assets/js/glassmorphism.js' | relative_url }}"></script>
+    <script src="https://unpkg.com/lunr/lunr.min.js"></script>
+    <script src="{{ '/assets/js/search.js' | relative_url }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.3.2/lazysizes.min.js" async=""></script>
     <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script>
     <script>

@@ -66,5 +66,45 @@ layout: default
       <i class="fab fa-weibo"></i>
     </a>
   </div>
+
+  {% assign related_posts_list = "" | split: "," %}
+  {% if page.tags.size > 0 %}
+    {% assign max_related = 5 %}
+    {% assign min_common_tags = 1 %}
+    
+    {% for post in site.posts %}
+      {% if post.url == page.url %}
+        {% continue %}
+      {% endif %}
+      
+      {% assign combined_tags_size = page.tags.size | plus: post.tags.size %}
+      {% assign unique_tags_size = page.tags | concat: post.tags | uniq | size %}
+      {% assign common_tags_count = combined_tags_size | minus: unique_tags_size %}
+      
+      {% if common_tags_count >= min_common_tags %}
+        {% assign common_tags_padded = common_tags_count | prepend: "00" | slice: -2, 2 %}
+        {% assign post_data = common_tags_padded | append: ":::" | append: post.url | append: ":::" | append: post.title %}
+        {% assign related_posts_list = related_posts_list | push: post_data %}
+      {% endif %}
+    {% endfor %}
+    
+    {% assign related_posts_list = related_posts_list | sort | reverse %}
+  {% endif %}
+
+  {% if related_posts_list.size > 0 %}
+    <div class="related-posts">
+      <h3>相关文章</h3>
+      <ul>
+        {% for post_data in related_posts_list limit:max_related %}
+          {% assign post_parts = post_data | split: ":::" %}
+          {% assign post_url = post_parts[1] %}
+          {% assign post_title = post_parts[2] %}
+          <li>
+            <a href="{{ post_url | relative_url }}">{{ post_title }}</a>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  {% endif %}
 </article>
 </div>

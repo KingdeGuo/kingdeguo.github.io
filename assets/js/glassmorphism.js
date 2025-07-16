@@ -1,21 +1,16 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-  const themeSwitcher = document.querySelector('.theme-switcher a');
+  const themeSwitcher = document.querySelector('.theme-switcher button');
 
   const setTheme = (theme) => {
-    if (theme === 'dark') {
-      document.body.classList.add('dark');
-    } else {
-      document.body.classList.remove('dark');
-    }
-    // particles.js is no longer used, so its handling logic is removed.
+    document.documentElement.setAttribute('data-theme', theme);
     localStorage.setItem('theme', theme);
   };
 
   if (themeSwitcher) {
     themeSwitcher.addEventListener('click', (e) => {
       e.preventDefault();
-      const currentTheme = document.body.classList.contains('dark') ? 'light' : 'dark';
+      const currentTheme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
       setTheme(currentTheme);
     });
   }

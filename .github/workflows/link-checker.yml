@@ -1,0 +1,32 @@
+name: Check for Broken Links
+
+on:
+  push:
+    branches:
+      - master
+  schedule:
+    - cron: '0 0 * * 0' # 每周日午夜运行
+
+jobs:
+  link-checker:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.0' # 请根据你的 Gemfile.lock 调整
+          bundler-cache: true
+
+      - name: Build Jekyll site
+        run: bundle exec jekyll build
+
+      - name: Check for broken links
+        uses: lycheeverse/lychee-action@v1
+        with:
+          args: --verbose --no-progress './_site/**/*.html'
+          fail: true # 如果发现死链，则让工作流失败
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}

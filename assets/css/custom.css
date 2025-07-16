@@ -261,6 +261,12 @@ body {
     inset 0 2px 4px rgba(255,255,255,0.9);
 }
 
+.theme-switcher .fa-moon { display: none; }
+.theme-switcher .fa-sun { display: block; }
+
+[data-theme="dark"] .theme-switcher .fa-moon { display: block; }
+[data-theme="dark"] .theme-switcher .fa-sun { display: none; }
+
 /* Dark Mode Styles */
 [data-theme="dark"] {
   --text-color: #f0f0f0;
@@ -1060,4 +1066,44 @@ img.lazyloaded {
 
 [data-theme="dark"] #particles-js {
     background-color: #000000; /* 暗黑模式下的背景色 */
+}
+
+.related-posts {
+  margin: 2rem 0;
+  padding: 1rem;
+  background: rgba(0,0,0,0.03);
+  border-radius: 4px;
+}
+
+.related-posts h3 {
+  margin-top: 0;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 0.5rem;
+}
+
+.related-posts ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.related-posts li {
+  margin-bottom: 0.5rem;
+}
+
+.related-posts .post-date {
+  color: #666;
+  font-size: 0.8em;
+  margin-left: 0.5rem;
+}
+
+[data-theme="dark"] .related-posts {
+  background: rgba(255,255,255,0.05);
+}
+
+[data-theme="dark"] .related-posts h3 {
+  border-bottom-color: #444;
+}
+
+[data-theme="dark"] .related-posts .post-date {
+  color: #aaa;
 }
