@@ -4,6 +4,7 @@ date: 2025-07-14
 layout: post
 comments: true
 author_profile: true
+mermaid: true
 description: "超详细Python大模型Agent开发教程，手把手教你用LangChain+OpenAI构建HR智能招聘助手，包含完整代码、部署方案、性能优化和企业级最佳实践，适合AI开发者和HR科技从业者"
 keywords: "Python大模型Agent开发,HR智能招聘助手,LangChain教程,OpenAI API,AI Agent开发,Python聊天机器人,HR自动化系统,LangChain Agent,大语言模型应用,企业级AI部署"
 categories: [人工智能开发, HR数字化转型, Python教程, 大模型应用]

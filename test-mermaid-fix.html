@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mermaid Test</title>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10.9.1/dist/mermaid.min.js"></script>
+</head>
+<body>
+    <h1>Mermaid Test</h1>
+    
+    <div class="mermaid">
+    graph TD
+        A[用户查询] --> B[CDN缓存]
+        B --> C{缓存命中?}
+        C -->|是| D[直接返回]
+        C -->|否| E[应用缓存]
+        E --> F{缓存命中?}
+        F -->|是| G[返回并更新CDN]
+        F -->|否| H[向量检索]
+        H --> I[大模型生成]
+        I --> J[更新多级缓存]
+    </div>
+
+    <div class="mermaid">
+    graph TB
+        subgraph "用户层"
+            A[Web Portal] 
+            B[Mobile App]
+            C[API/SDK]
+        end
+        
+        subgraph "接入层"
+            D[API Gateway]
+            E[负载均衡]
+            F[限流熔断]
+        end
+        
+        subgraph "应用层"
+            G[对话管理]
+            H[上下文管理]
+            I[多轮对话]
+        end
+        
+        subgraph "智能层"
+            J[意图识别]
+            K[路由分发]
+            L[Agent编排]
+        end
+        
+        subgraph "知识引擎"
+            M[向量化服务]
+            N[检索服务]
+            O[重排序]
+            P[知识融合]
+        end
+        
+        subgraph "存储层"
+            Q[向量数据库]
+            R[图数据库]
+            S[对象存储]
+            T[缓存层]
+        end
+        
+        subgraph "模型层"
+            U[大模型集群]
+            V[微调服务]
+            W[模型管理]
+        end
+        
+        A --> D
+        B --> D
+        C --> D
+        D --> E
+        E --> F
+        F --> G
+        G --> H
+        H --> I
+        I --> J
+        J --> K
+        K --> L
+        L --> M
+        M --> N
+        N --> O
+        O --> P
+        P --> U
+        Q --> N
+        R --> P
+        S --> M
+        T --> Q
+        U --> W
+        V --> U
+    </div>
+
+    <script>
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: 'default',
+            themeVariables: {
+                primaryColor: '#f9f9f9',
+                primaryTextColor: '#333',
+                primaryBorderColor: '#333',
+                lineColor: '#333',
+                secondaryColor: '#e0e0e0',
+                tertiaryColor: '#fff'
+            },
+            flowchart: {
+                useMaxWidth: true,
+                htmlLabels: true
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,28 +1,29 @@
 <!-- Mermaid图表支持 -->
 <script src="https://cdn.jsdelivr.net/npm/mermaid@10.9.1/dist/mermaid.min.js"></script>
 <script>
-  mermaid.initialize({
-    startOnLoad: false,
-    theme: 'default',
-    themeVariables: {
-      primaryColor: '#f9f9f9',
-      primaryTextColor: '#333',
-      primaryBorderColor: '#333',
-      lineColor: '#333',
-      secondaryColor: '#e0e0e0',
-      tertiaryColor: '#fff'
-    },
-    flowchart: {
-      useMaxWidth: true,
-      htmlLabels: true
-    },
-    sequence: {
-      useMaxWidth: true,
-      wrap: true
-    },
-    uml: {
-      useMaxWidth: true
-    }
+  document.addEventListener('DOMContentLoaded', function () {
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: 'default',
+      themeVariables: {
+        primaryColor: '#f9f9f9',
+        primaryTextColor: '#333',
+        primaryBorderColor: '#333',
+        lineColor: '#333',
+        secondaryColor: '#e0e0e0',
+        tertiaryColor: '#fff'
+      },
+      flowchart: {
+        useMaxWidth: true,
+        htmlLabels: true
+      },
+      sequence: {
+        useMaxWidth: true,
+        wrap: true
+      },
+      uml: {
+        useMaxWidth: true
+      }
+    });
   });
-  mermaid.run();
 </script>

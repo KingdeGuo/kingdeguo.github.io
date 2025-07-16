@@ -34,7 +34,9 @@ layout: default
     {{ content }}
   </div>
 
-  {% include mermaid.html %}
+  {% if page.mermaid %}
+    {% include mermaid.html %}
+  {% endif %}
 
   {% if site.giscus.repo %}
     {% include giscus_comments.html %}
