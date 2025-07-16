@@ -26,7 +26,7 @@ mermaid: true
 
 ### 1.1 整体架构概览
 
-```mermaid
+<div class="mermaid">
 graph TB
     subgraph "用户层"
         A[Web Portal] 
@@ -94,7 +94,7 @@ graph TB
     T --> Q
     U --> W
     V --> U
-```
+</div>
 
 ### 1.2 关键设计原则
 
@@ -110,7 +110,7 @@ graph TB
 
 ### 2.1 数据接入与处理流水线
 
-```mermaid
+<div class="mermaid">
 flowchart LR
     A[多源数据] --> B[数据连接器]
     B --> C[格式标准化]
@@ -122,7 +122,7 @@ flowchart LR
     
     style A fill:#f9f,stroke:#333
     style H fill:#9f9,stroke:#333
-```
+</div>
 
 **支持的数据源类型**：
 - **文档类**：PDF、Word、PPT、Excel、TXT
@@ -303,7 +303,7 @@ class ContinuousLearner:
 
 ### 4.1 多级缓存架构
 
-```mermaid
+<div class="mermaid">
 graph TD
     A[用户查询] --> B[CDN缓存]
     B --> C{缓存命中?}
@@ -314,7 +314,7 @@ graph TD
     F -->|否| H[向量检索]
     H --> I[大模型生成]
     I --> J[更新多级缓存]
-```
+</div>
 
 **缓存策略矩阵**：
 
@@ -371,7 +371,7 @@ class QueryOptimizer:
 
 ### 5.1 多层安全防护
 
-```mermaid
+<div class="mermaid">
 graph LR
     A[用户输入] --> B[内容过滤]
     B --> C[权限验证]
@@ -383,7 +383,7 @@ graph LR
     style C fill:#ccffcc
     style D fill:#ccccff
     style E fill:#ffffcc
-```
+</div>
 
 ### 5.2 数据隐私保护
 
