@@ -3,62 +3,66 @@
 <script>
   document.addEventListener('DOMContentLoaded', function () {
     const html = document.documentElement;
-    
-    function initMermaid() {
-      const isDark = html.getAttribute('data-theme') === 'dark';
-      const theme = isDark ? 'dark' : 'default';
-      const primaryColor = isDark ? '#2d3748' : '#f9f9f9';
-      const textColor = isDark ? '#f0f0f0' : '#333';
-      const borderColor = isDark ? '#4a5568' : '#333';
-      const lineColor = isDark ? '#a0aec0' : '#333';
-      
-      mermaid.initialize({
-        startOnLoad: true,
-        theme: theme,
-        themeVariables: {
-          primaryColor: primaryColor,
-          primaryTextColor: textColor,
-          primaryBorderColor: borderColor,
-          lineColor: lineColor,
-          secondaryColor: isDark ? '#4a5568' : '#e0e0e0',
-          tertiaryColor: isDark ? '#2d3748' : '#fff',
-          background: isDark ? '#1a202c' : '#ffffff',
-          mainBkg: primaryColor,
-          secondBkg: isDark ? '#4a5568' : '#e0e0e0',
-          tertiaryColor: isDark ? '#2d3748' : '#f9f9f9'
-        },
-        flowchart: {
-          useMaxWidth: true,
-          htmlLabels: true
-        },
-        sequence: {
-          useMaxWidth: true,
-          wrap: true
-        },
-        uml: {
-          useMaxWidth: true
-        }
-      });
-      
-      // Re-render existing diagrams when theme changes
-      const mermaidElements = document.querySelectorAll('.mermaid');
-      mermaidElements.forEach(el => {
-        el.removeAttribute('data-processed');
-      });
-      mermaid.run();
-    }
-    
-    initMermaid();
-    
-    // Listen for theme changes
-    const observer = new MutationObserver(function(mutations) {
-      mutations.forEach(function(mutation) {
-        if (mutation.type === 'attributes' && mutation.attributeName === 'data-theme') {
-          initMermaid();
-        }
-      });
-    });
-    
-    observer.observe(html, { attributes: true });
+    const isDark = html.getAttribute('data-theme') === 'dark';
+
+    const mermaidConfig = {
+      startOnLoad: true,
+      theme: isDark ? 'dark' : 'default',
+      themeVariables: {
+        // General
+        background: isDark ? '#1a202c' : '#ffffff',
+        primaryColor: isDark ? '#2d3748' : '#f9f9f9', // main background
+        secondaryColor: isDark ? '#4a5568' : '#e0e0e0', // secondary background
+        tertiaryColor: isDark ? '#2d3748' : '#f9f9f9', // alt background
+        
+        // Text
+        primaryTextColor: isDark ? '#f0f0f0' : '#333',
+        secondaryTextColor: isDark ? '#a0aec0' : '#555',
+        tertiaryTextColor: isDark ? '#718096' : '#777',
+
+        // Borders and Lines
+        primaryBorderColor: isDark ? '#4a5568' : '#333',
+        secondaryBorderColor: isDark ? '#a0aec0' : '#ddd',
+        tertiaryBorderColor: isDark ? '#718096' : '#eee',
+        lineColor: isDark ? '#a0aec0' : '#333',
+
+        // Node-specific (can be overridden by styles)
+        nodeBkg: isDark ? '#2d3748' : '#f9f9f9',
+        nodeBorder: isDark ? '#a0aec0' : '#333',
+        
+        // Cluster
+        clusterBkg: isDark ? 'rgba(74, 85, 104, 0.3)' : 'rgba(238, 238, 238, 0.5)',
+        clusterBorder: isDark ? '#a0aec0' : '#aaa',
+
+        // Arrows
+        arrowheadColor: isDark ? '#a0aec0' : '#333',
+        
+        // Class diagrams
+        classText: isDark ? '#f0f0f0' : '#333',
+      },
+      flowchart: {
+        useMaxWidth: true,
+        htmlLabels: true
+      },
+      sequence: {
+        useMaxWidth: true,
+        wrap: true
+      },
+      gantt: {
+        useMaxWidth: true
+      },
+      journey: {
+        useMaxWidth: true
+      },
+      state: {
+        useMaxWidth: true
+      },
+      pie: {
+        useMaxWidth: true
+      }
+    };
+
+    mermaid.initialize(mermaidConfig);
+    mermaid.run();
   });
 </script>
