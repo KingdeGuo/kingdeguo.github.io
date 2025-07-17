@@ -13,58 +13,22 @@ layout: default
     </div>
   </header>
 
-  <div class="posts-section">
-    <h2 class="posts-section-title">Recent Posts</h2>
-    <div class="posts-grid">
-      {% for post in paginator.posts %}
-        <article class="post-card">
-          <h3 class="post-card-title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
-          <p class="post-card-meta">
-            <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %d, %Y" }}</time>
-            {% if post.categories.size > 0 %}
-              <span class="post-card-categories">
-                in {{ post.categories | join: ', ' }}
-              </span>
-            {% endif %}
-          </p>
-          <div class="post-card-excerpt">
-            <p>{{ post.excerpt | strip_html | truncatewords: 25 }}</p>
-          </div>
-          <a href="{{ post.url | relative_url }}" class="post-card-readmore">Read More &rarr;</a>
-        </article>
-      {% endfor %}
-    </div>
-
-    {% if paginator.total_pages > 1 %}
-    <nav class="pagination">
-      <ul>
-        {% if paginator.previous_page %}
-          <li><a href="{{ paginator.previous_page_path | relative_url }}" class="prev">&laquo; Previous</a></li>
-        {% else %}
-          <li class="disabled"><span>&laquo; Previous</span></li>
-        {% endif %}
-
-        {% for page in (1..paginator.total_pages) %}
-          {% if page == paginator.page %}
-            <li class="active"><span>{{ page }}</span></li>
-          {% elsif page == 1 %}
-            <li><a href="{{ '/' | relative_url }}">{{ page }}</a></li>
-          {% else %}
-            <li><a href="{{ site.paginate_path | relative_url | replace: ':num', page }}">{{ page }}</a></li>
-          {% endif %}
-        {% endfor %}
-
-        {% if paginator.next_page %}
-          <li><a href="{{ paginator.next_page_path | relative_url }}" class="next">Next &raquo;</a></li>
-        {% else %}
-          <li class="disabled"><span>Next &raquo;</span></li>
-        {% endif %}
-      </ul>
-    </nav>
-    {% endif %}
-  </div>
-
   <div class="home-content">
     {{ content }}
   </div>
+
+  <div class="welcome-message">
+    <h2>Welcome to My Blog</h2>
+    <p>I write about <span id="typed-text"></span></p>
+  </div>
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+<script>
+  var typed = new Typed('#typed-text', {
+    strings: ["Technology.", "Life.", "Books.", "and everything in between."],
+    typeSpeed: 50,
+    backSpeed: 30,
+    loop: true
+  });
+</script>

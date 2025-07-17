@@ -1296,3 +1296,50 @@ img.lazyloaded {
 [data-theme="dark"] .related-posts .post-date {
   color: #aaa;
 }
+
+/* Welcome Message Styles */
+.welcome-message {
+  text-align: center;
+  padding: 4rem 1rem;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 12px;
+  margin: 2rem auto;
+  max-width: 800px;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.welcome-message h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: #111;
+}
+
+.welcome-message p {
+  font-size: 1.5rem;
+  color: #555;
+  min-height: 50px; /* To prevent layout shift */
+}
+
+#typed-text {
+  font-weight: bold;
+  color: #007bff;
+}
+
+[data-theme="dark"] .welcome-message {
+  background: rgba(40, 40, 40, 0.6);
+  border-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+}
+
+[data-theme="dark"] .welcome-message h2 {
+  color: #f0f0f0;
+}
+
+[data-theme="dark"] .welcome-message p {
+  color: #ccc;
+}
+
+[data-theme="dark"] #typed-text {
+  color: #58a6ff;
+}
