@@ -7,13 +7,13 @@ layout: base
   <head>
     {% include head.html %}
     {% include head/custom.html %}
-    <link rel="stylesheet" href="{{ '/assets/css/custom.css' | relative_url }}">
-    <link rel="stylesheet" href="{{ '/assets/css/glassmorphism.css' | relative_url }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css">
+    <link rel="stylesheet" href="{{ '/assets/css/glassmorphism.css' | relative_url }}">
+    <link rel="stylesheet" href="{{ '/assets/css/custom.css' | relative_url }}">
   </head>
 
-  <body class="layout--{{ page.layout | default: layout.layout }}">
+  <body class="layout--{{ page.layout | default: layout.layout }} glass-bg">
     <!-- 粒子背景 -->
     <div id="particles-js"></div>
     

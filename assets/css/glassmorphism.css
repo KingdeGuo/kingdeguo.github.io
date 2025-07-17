@@ -10,46 +10,8 @@
   }
 }
 
-body {
-  position: relative;
-  background: #f0f2f5;
-  font-family: 'Poppins', sans-serif;
-  color: #555;
-  line-height: 1.6;
-  transition: background-color 0.3s ease, color 0.3s ease;
-  overflow-x: hidden;
-}
-
-body::before, body::after {
-  content: '';
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  width: 100vw;
-  height: 100vw;
-  max-width: 800px;
-  max-height: 800px;
-  border-radius: 50%;
-  z-index: -1;
-  filter: blur(100px);
-  opacity: 0.3;
-}
-
-body::before {
-  background: radial-gradient(circle, #ffafbd, #ffc3a0);
-  animation: move-aurora 20s linear infinite;
-}
-
-body::after {
-  background: radial-gradient(circle, #2193b0, #6dd5ed);
-  animation: move-aurora 25s linear infinite reverse;
-  top: 60%;
-  left: 40%;
-}
-
-.home-container,
-.post-card,
-.archive-group {
+/* Glassmorphism effects - only apply to specific elements to avoid conflicts */
+.glass-container {
   position: relative;
   overflow: hidden;
   background: rgba(255, 255, 255, 0.3);
@@ -63,9 +25,58 @@ body::after {
   transition: all 0.3s ease-in-out;
 }
 
-.home-container::before,
-.post-card::before,
-.archive-group::before {
+/* Aurora background effects */
+.glass-bg::before,
+.glass-bg::after {
+  content: '';
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 100vw;
+  height: 100vw;
+  max-width: 800px;
+  max-height: 800px;
+  border-radius: 50%;
+  z-index: -1;
+  filter: blur(100px);
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+.glass-bg::before {
+  background: radial-gradient(circle, #ffafbd, #ffc3a0);
+  animation: move-aurora 20s linear infinite;
+}
+
+.glass-bg::after {
+  background: radial-gradient(circle, #2193b0, #6dd5ed);
+  animation: move-aurora 25s linear infinite reverse;
+  top: 60%;
+  left: 40%;
+}
+
+/* Dark Mode Aurora */
+[data-theme="dark"] .glass-bg::before {
+  background: radial-gradient(circle, #8e2de2, #4a00e0);
+  opacity: 0.4;
+}
+
+[data-theme="dark"] .glass-bg::after {
+  background: radial-gradient(circle, #ff0084, #33001b);
+  opacity: 0.4;
+}
+
+/* Dark Mode Glass Effect */
+[data-theme="dark"] .glass-container {
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+/* Hover effects for glass elements */
+.glass-container::before {
   content: '';
   position: absolute;
   top: var(--y, 0);
@@ -79,103 +90,15 @@ body::after {
   transition: opacity 0.3s ease;
 }
 
-.home-container:hover::before,
-.post-card:hover::before,
-.archive-group:hover::before {
+.glass-container:hover::before {
   opacity: 1;
 }
 
-/* Removed hover effects for better readability */
-
-.post-card h3 a,
-.archive-item h4 a {
-  color: #333;
-  text-decoration: none;
-  transition: color 0.3s ease;
+[data-theme="dark"] .glass-container:hover::before {
+  background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 60%);
 }
 
-.post-card h3 a:hover,
-.archive-item h4 a:hover {
-  color: #007bff;
-}
-
-.flip-card {
-  background-color: transparent;
-  width: 300px;
-  height: 200px;
-  perspective: 1000px;
-}
-
-.flip-card-inner {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  text-align: center;
-  transition: transform 0.8s;
-  transform-style: preserve-3d;
-}
-
-.flip-card:hover .flip-card-inner {
-  transform: rotateY(180deg);
-}
-
-.flip-card-front, .flip-card-back {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-}
-
-.flip-card-back {
-  transform: rotateY(180deg);
-}
-
-/* Dark Mode */
-body.dark {
-  background: #121212;
-  color: #e0e0e0;
-}
-
-body.dark::before {
-  background: radial-gradient(circle, #8e2de2, #4a00e0);
-  opacity: 0.4;
-}
-
-body.dark::after {
-  background: radial-gradient(circle, #ff0084, #33001b);
-  opacity: 0.4;
-}
-
-body.dark #particles-js {
-  display: none; /* Disable particles in dark mode to favor Aurora */
-}
-
-body:not(.dark) #particles-js {
-  display: none;
-}
-
-body.dark .home-container,
-body.dark .post-card,
-body.dark .archive-group {
-  background: rgba(0, 0, 0, 0.3);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-  color: #fff;
-}
-
-body.dark .post-card h3 a,
-body.dark .archive-item h4 a {
-  color: #fff;
-}
-
-body.dark .post-card h3 a:hover,
-body.dark .archive-item h4 a:hover {
-  color: #17a2b8;
-}
-
+/* Ripple effect */
 .ripple {
   position: absolute;
   border-radius: 50%;
@@ -190,4 +113,9 @@ body.dark .archive-item h4 a:hover {
     transform: scale(4);
     opacity: 0;
   }
+}
+
+/* Ensure glass effects don't interfere with existing styles */
+body {
+  transition: background-color 0.3s ease, color 0.3s ease;
 }

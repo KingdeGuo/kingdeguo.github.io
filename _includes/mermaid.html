@@ -2,29 +2,63 @@
 <script src="https://cdn.jsdelivr.net/npm/mermaid@10.9.1/dist/mermaid.min.js"></script>
 <script>
   document.addEventListener('DOMContentLoaded', function () {
-    mermaid.initialize({
-      startOnLoad: true,
-      theme: 'default',
-      themeVariables: {
-        primaryColor: '#f9f9f9',
-        primaryTextColor: '#333',
-        primaryBorderColor: '#333',
-        lineColor: '#333',
-        secondaryColor: '#e0e0e0',
-        tertiaryColor: '#fff'
-      },
-      flowchart: {
-        useMaxWidth: true,
-        htmlLabels: true
-      },
-      sequence: {
-        useMaxWidth: true,
-        wrap: true
-      },
-      uml: {
-        useMaxWidth: true
-      }
+    const html = document.documentElement;
+    
+    function initMermaid() {
+      const isDark = html.getAttribute('data-theme') === 'dark';
+      const theme = isDark ? 'dark' : 'default';
+      const primaryColor = isDark ? '#2d3748' : '#f9f9f9';
+      const textColor = isDark ? '#f0f0f0' : '#333';
+      const borderColor = isDark ? '#4a5568' : '#333';
+      const lineColor = isDark ? '#a0aec0' : '#333';
+      
+      mermaid.initialize({
+        startOnLoad: true,
+        theme: theme,
+        themeVariables: {
+          primaryColor: primaryColor,
+          primaryTextColor: textColor,
+          primaryBorderColor: borderColor,
+          lineColor: lineColor,
+          secondaryColor: isDark ? '#4a5568' : '#e0e0e0',
+          tertiaryColor: isDark ? '#2d3748' : '#fff',
+          background: isDark ? '#1a202c' : '#ffffff',
+          mainBkg: primaryColor,
+          secondBkg: isDark ? '#4a5568' : '#e0e0e0',
+          tertiaryColor: isDark ? '#2d3748' : '#f9f9f9'
+        },
+        flowchart: {
+          useMaxWidth: true,
+          htmlLabels: true
+        },
+        sequence: {
+          useMaxWidth: true,
+          wrap: true
+        },
+        uml: {
+          useMaxWidth: true
+        }
+      });
+      
+      // Re-render existing diagrams when theme changes
+      const mermaidElements = document.querySelectorAll('.mermaid');
+      mermaidElements.forEach(el => {
+        el.removeAttribute('data-processed');
+      });
+      mermaid.run();
+    }
+    
+    initMermaid();
+    
+    // Listen for theme changes
+    const observer = new MutationObserver(function(mutations) {
+      mutations.forEach(function(mutation) {
+        if (mutation.type === 'attributes' && mutation.attributeName === 'data-theme') {
+          initMermaid();
+        }
+      });
     });
-    mermaid.run();
+    
+    observer.observe(html, { attributes: true });
   });
 </script>
