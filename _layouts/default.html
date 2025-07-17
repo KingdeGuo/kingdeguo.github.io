@@ -14,25 +14,12 @@ layout: base
   </head>
 
   <body class="layout--{{ page.layout | default: layout.layout }} glass-bg">
+    {% include search.html %}
     <!-- 粒子背景 -->
     <div id="particles-js"></div>
     
-    <!-- 主题切换器 -->
-    <div class="theme-switcher">
-      <button id="theme-toggle" title="Toggle Theme">
-        <i class="fas fa-sun"></i>
-        <i class="fas fa-moon"></i>
-      </button>
-    </div>
-
     <!-- 导航栏 -->
     {% include_cached masthead.html %}
-
-    <!-- 搜索框 -->
-    <div id="search-container">
-      <input type="text" id="search-input" placeholder="搜索文章...">
-      <ul id="search-results"></ul>
-    </div>
 
     <!-- 主要内容 -->
     <div class="initial-content">
@@ -50,39 +37,6 @@ layout: base
     <script src="{{ '/assets/js/search.js' | relative_url }}"></script>
     <script src="{{ '/assets/js/main.min.js' | relative_url }}"></script>
     
-    <!-- 主题切换脚本 -->
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        const toggle = document.getElementById('theme-toggle');
-        const html = document.documentElement;
-        
-        // 初始化主题
-        const savedTheme = localStorage.getItem('theme') || 'light';
-        html.setAttribute('data-theme', savedTheme);
-        updateThemeIcon(savedTheme);
-        
-        // 主题切换
-        toggle.addEventListener('click', function() {
-          const currentTheme = html.getAttribute('data-theme');
-          const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-          html.setAttribute('data-theme', newTheme);
-          localStorage.setItem('theme', newTheme);
-          updateThemeIcon(newTheme);
-        });
-        
-        function updateThemeIcon(theme) {
-          const sunIcon = toggle.querySelector('.fa-sun');
-          const moonIcon = toggle.querySelector('.fa-moon');
-          if (theme === 'dark') {
-            sunIcon.style.display = 'none';
-            moonIcon.style.display = 'block';
-          } else {
-            sunIcon.style.display = 'block';
-            moonIcon.style.display = 'none';
-          }
-        }
-      });
-    </script>
     
     {% include mermaid.html %}
   </body>
