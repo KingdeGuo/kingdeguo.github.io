@@ -851,6 +851,23 @@ img.lazyloaded {
   color: #007bff;
 }
 
+#search-container {
+  display: inline-block;
+  margin-left: 20px;
+  vertical-align: middle;
+}
+
+#search-input {
+  border: 1px solid #ccc;
+  padding: 5px 10px;
+  border-radius: 20px;
+  width: 150px;
+}
+
+.greedy-nav__toggle {
+  display: none;
+}
+
 [data-theme="dark"] .masthead__menu-item a {
   color: #f0f0f0;
 }
@@ -867,8 +884,8 @@ img.lazyloaded {
 .theme-switcher {
   position: fixed;
   top: 20px;
-  right: 20px;
-  z-index: 1000;
+  right: 30px;
+  z-index: 999;
 }
 
 /* Responsive navigation */
