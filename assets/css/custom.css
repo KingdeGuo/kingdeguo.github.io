@@ -1343,3 +1343,19 @@ img.lazyloaded {
 [data-theme="dark"] #typed-text {
   color: #58a6ff;
 }
+
+.home-content {
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 12px;
+  margin: 2rem auto;
+  max-width: 800px;
+  padding: 2rem;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+[data-theme="dark"] .home-content {
+  background: rgba(40, 40, 40, 0.6);
+  border-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+}
