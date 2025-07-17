@@ -826,7 +826,16 @@ img.lazyloaded {
 .masthead__menu {
   display: flex;
   align-items: center;
+  width: 100%; /* Make sure it takes full width */
 }
+
+.greedy-nav {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between; /* This will push items to the ends */
+}
+
 
 .masthead__menu ul {
   display: flex;
@@ -851,9 +860,10 @@ img.lazyloaded {
   color: #007bff;
 }
 
-#search-container {
+#search-container.search-container-header {
   display: inline-block;
-  margin-left: 20px;
+  margin-left: auto; /* This will push it to the right */
+  padding-left: 20px;
   vertical-align: middle;
 }
 

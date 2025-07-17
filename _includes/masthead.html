@@ -17,6 +17,10 @@
           </svg>
         </button>
         {% endif %}
+        <div id="search-container" class="search-container-header">
+          <input type="text" id="search-input" placeholder="搜索文章...">
+          <ul id="search-results"></ul>
+        </div>
         {% if site.theme_switcher == true and site.theme_switcher_location == 'header' %}
           <div class="theme-switcher">
             <a href="#" class="theme-toggle" title="Toggle theme">
