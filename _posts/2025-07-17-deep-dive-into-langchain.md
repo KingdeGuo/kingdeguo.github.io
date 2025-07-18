@@ -17,7 +17,7 @@ mermaid: true
 
 这就是今天的大语言模型面临的困境！
 
-<div class="mermaid">
+```mermaid
 graph TD
     A[米其林厨师<br>LLM] -->|知道所有菜谱| B[理论知识]
     A -->|但不会| C[查看你的冰箱<br>私有数据]
@@ -29,7 +29,7 @@ graph TD
     style C fill:#ffcccc
     style D fill:#ffcccc
     style E fill:#ffcccc
-</div>
+```
 
 **LangChain 就是打开厨房门的钥匙** 🔑
 
@@ -46,7 +46,7 @@ graph TD
 
 LangChain 就像一个魔法工具箱，里面装满了各种乐高积木。每个积木都有特定的功能，你可以自由组合它们来建造任何你想要的东西。
 
-<div class="mermaid">
+```mermaid
 graph TB
     subgraph "LangChain 魔法工具箱"
         A[Models<br>🤖 大脑] 
@@ -72,7 +72,7 @@ graph TB
     style E fill:#fff8e1
     style F fill:#fce4ec
     style G fill:#e0f2f1
-</div>
+```
 
 ### 1.2 从5行代码开始：你的第一个LLM调用
 
@@ -104,7 +104,7 @@ print(response.content)
 
 现在让我们升级一下，加入提示模板，就像给厨师一个详细的订单：
 
-<div class="mermaid">
+```mermaid
 graph LR
     A[用户问题] --> B[提示模板]
     B --> C[格式化的问题]
@@ -113,7 +113,7 @@ graph LR
     
     style B fill:#fff3e0
     style C fill:#e3f2fd
-</div>
+```
 
 ```python
 from langchain_openai import ChatOpenAI
@@ -141,7 +141,7 @@ print(response.content)
 
 ### 2.2 加入记忆：让厨师记住你的喜好
 
-<div class="mermaid">
+```mermaid
 sequenceDiagram
     participant User
     participant Chain
@@ -158,7 +158,7 @@ sequenceDiagram
     Memory-->>Chain: 喜欢川菜
     Chain->>LLM: 基于川菜偏好推荐
     LLM-->>User: 我推荐麻婆豆腐...
-</div>
+```
 ```
 
 ```python
@@ -190,7 +190,7 @@ print(conversation.predict(input="那你能推荐一道菜给我吗？"))
 
 **RAG (Retrieval-Augmented Generation)** 就像给厨师一本你的私人食谱，让他根据食谱来回答问题。
 
-<div class="mermaid">
+```mermaid
 graph TD
     A[用户问题] --> B[搜索相关食谱段落]
     B --> C[找到相关内容]
@@ -202,7 +202,7 @@ graph TD
     style C fill:#e3f2fd
     style D fill:#f3e5f5
     style E fill:#e8f5e9
-</div>
+```
 
 ### 3.2 实战：构建文档问答系统
 
@@ -283,7 +283,7 @@ for doc in result["source_documents"]:
 
 如果说RAG是让厨师读书，那么Agent就是让厨师**动手做事** - 搜索信息、计算数据、调用API等等。
 
-<div class="mermaid">
+```mermaid
 stateDiagram-v2
     [*] --> 接收任务
     接收任务 --> 思考需要什么工具
@@ -294,7 +294,7 @@ stateDiagram-v2
     任务完成？ --> 是: 返回结果
     任务完成？ --> 否: 思考需要什么工具
     返回结果 --> [*]
-</div>
+```
 ```
 
 ### 4.2 实战：创建能上网搜索的助手
@@ -584,7 +584,7 @@ print(review.content)
 
 恭喜你！你已经从"小白"成长为能够构建实用LLM应用的开发者。让我们回顾一下学到的内容：
 
-<div class="mermaid">
+```mermaid
 journey
     title 你的LangChain学习之旅
     section 基础入门
@@ -596,7 +596,7 @@ journey
     section 优化进阶
       性能调优: 2: 熟练
       生产部署: 1: 专家
-</div>
+```
 ```
 
 记住：

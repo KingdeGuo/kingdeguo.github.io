@@ -30,7 +30,7 @@ og_image: "/assets/images/llm-agent-hr-seo-2025.png"
 ### 🔍 Agent定义与工作原理
 大模型Agent是基于大语言模型（LLM）的智能系统，能够**自主理解、规划、执行复杂任务**。相比传统聊天机器人，Agent具备以下核心能力：
 
-<div class="mermaid">
+```mermaid
 graph TD
     A[用户输入] --> B[意图识别]
     B --> C[任务规划]
@@ -48,11 +48,11 @@ graph TD
     style G fill:#e8f5e9,stroke:#388e3c
     style H fill:#fff3e0,stroke:#f57c00
     style I fill:#fce4ec,stroke:#c2185b
-</div>
+```
 
 ### Agent核心组件架构
 
-<div class="mermaid">
+```mermaid
 classDiagram
     class LLMAgent {
         +model_name: str
@@ -85,7 +85,7 @@ classDiagram
     LLMAgent --> PlanningEngine : uses
     ToolManager --> Tool : manages
     MemorySystem --> VectorStore : uses
-</div>
+```
 
 ### 与传统聊天机器人的区别
 
@@ -101,7 +101,7 @@ classDiagram
 
 ### 💼 核心应用场景分析
 
-<div class="mermaid">
+```mermaid
 graph LR
     subgraph 智能招聘自动化
         A1[AI简历筛选] --> A2[智能面试安排]
@@ -124,7 +124,7 @@ graph LR
     style A1 fill:#e8f5e9,stroke:#2e7d32
     style B1 fill:#e3f2fd,stroke:#1976d2
     style C1 fill:#fce4ec,stroke:#c218b5
-</div>
+```
 
 ### 📊 实际商业价值案例
 
@@ -321,7 +321,7 @@ HR助手：病假政策：每年享有12天带薪病假，需提供医疗证明�
 
 ### 📋 系统架构设计
 
-<div class="mermaid">
+```mermaid
 graph TD
     A[PDF/Word简历上传] --> B[文档解析引擎]
     B --> C[信息提取NLP]
@@ -335,7 +335,7 @@ graph TD
     style A fill:#e3f2fd,stroke:#1976d2
     style F fill:#e8f5e9,stroke:#388e3c
     style G fill:#fff3e0,stroke:#f57c00
-</div>
+```
 
 ### 📄 完整代码实现
 
@@ -594,7 +594,7 @@ $ python resume_parser.py
 
 ### 🏗️ 系统功能模块
 
-<div class="mermaid">
+```mermaid
 graph TD
     A[Offer接受确认] --> B[入职材料清单]
     B --> C[账号权限申请]
@@ -609,7 +609,7 @@ graph TD
     
     style A fill:#e3f2fd,stroke:#1976d2
     style G fill:#e8f5e9,stroke:#388e3c
-</div>
+```
 
 ### 📋 完整代码实现
 
@@ -900,7 +900,7 @@ if __name__ == "__main__":
 
 ### 🏗️ 微服务架构设计
 
-<div class="mermaid">
+```mermaid
 graph TB
     subgraph 前端层
         A[Web界面] --> B[移动端App]
@@ -947,7 +947,7 @@ graph TB
     F --> N
     G --> O
     H --> P
-</div>
+```
 
 ### 📊 性能优化策略
 

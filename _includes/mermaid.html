@@ -1,67 +1,67 @@
-<!-- Mermaid图表支持 -->
+<!-- Mermaid图表支持 (Robust Version 2) -->
 <script src="https://cdn.jsdelivr.net/npm/mermaid@10.9.1/dist/mermaid.min.js"></script>
 <script>
-  document.addEventListener('DOMContentLoaded', function () {
+  document.addEventListener('DOMContentLoaded', () => {
     const html = document.documentElement;
     const isDark = html.getAttribute('data-theme') === 'dark';
 
-    const mermaidConfig = {
-      startOnLoad: true,
+    mermaid.initialize({
+      startOnLoad: false, // We will render manually
       theme: isDark ? 'dark' : 'default',
       themeVariables: {
-        // General
         background: isDark ? '#1a202c' : '#ffffff',
-        primaryColor: isDark ? '#2d3748' : '#f9f9f9', // main background
-        secondaryColor: isDark ? '#4a5568' : '#e0e0e0', // secondary background
-        tertiaryColor: isDark ? '#2d3748' : '#f9f9f9', // alt background
-        
-        // Text
+        primaryColor: isDark ? '#2d3748' : '#f9f9f9',
+        secondaryColor: isDark ? '#4a5568' : '#e0e0e0',
+        tertiaryColor: isDark ? '#2d3748' : '#f9f9f9',
         primaryTextColor: isDark ? '#f0f0f0' : '#333',
         secondaryTextColor: isDark ? '#a0aec0' : '#555',
         tertiaryTextColor: isDark ? '#718096' : '#777',
-
-        // Borders and Lines
         primaryBorderColor: isDark ? '#4a5568' : '#333',
         secondaryBorderColor: isDark ? '#a0aec0' : '#ddd',
         tertiaryBorderColor: isDark ? '#718096' : '#eee',
         lineColor: isDark ? '#a0aec0' : '#333',
-
-        // Node-specific (can be overridden by styles)
         nodeBkg: isDark ? '#2d3748' : '#f9f9f9',
         nodeBorder: isDark ? '#a0aec0' : '#333',
-        
-        // Cluster
         clusterBkg: isDark ? 'rgba(74, 85, 104, 0.3)' : 'rgba(238, 238, 238, 0.5)',
         clusterBorder: isDark ? '#a0aec0' : '#aaa',
-
-        // Arrows
         arrowheadColor: isDark ? '#a0aec0' : '#333',
-        
-        // Class diagrams
         classText: isDark ? '#f0f0f0' : '#333',
-      },
-      flowchart: {
-        useMaxWidth: true,
-        htmlLabels: true
-      },
-      sequence: {
-        useMaxWidth: true,
-        wrap: true
-      },
-      gantt: {
-        useMaxWidth: true
-      },
-      journey: {
-        useMaxWidth: true
-      },
-      state: {
-        useMaxWidth: true
-      },
-      pie: {
-        useMaxWidth: true
+      }
+    });
+
+    const renderMermaidDiagrams = async () => {
+      const mermaidCodeBlocks = document.querySelectorAll('code.language-mermaid');
+      for (const [index, codeBlock] of mermaidCodeBlocks.entries()) {
+        const code = codeBlock.innerText;
+        const id = `mermaid-graph-${index}`;
+        
+        const container = document.createElement('div');
+        container.className = 'mermaid-diagram-container';
+        
+        const codeWrapper = codeBlock.closest('.highlighter-rouge') || codeBlock.parentElement;
+        codeWrapper.parentNode.replaceChild(container, codeWrapper);
+        
+        try {
+          const { svg } = await mermaid.render(id, code);
+          container.innerHTML = svg;
+        } catch (e) {
+          console.error(`Mermaid render error for diagram ${index}:`, e);
+          
+          const errorDiv = document.createElement('div');
+          errorDiv.style.cssText = 'padding: 15px; background-color: #ffdddd; border: 1px solid #ff0000; color: #d8000c; border-radius: 5px; margin-bottom: 20px; font-family: sans-serif;';
+          
+          const sanitizedCode = code.replace(/</g, '<').replace(/>/g, '>');
+          errorDiv.innerHTML = `
+            <strong style="font-size: 1.1em;">Mermaid 图表渲染失败</strong>
+            <p style="margin-top: 10px;">错误: ${e.message}</p>
+            <p style="margin-top: 10px;"><strong>问题代码:</strong></p>
+            <pre style="background-color: #f1f1f1; padding: 10px; border-radius: 3px; white-space: pre-wrap; word-wrap: break-word; color: #333;">${sanitizedCode}</pre>
+          `;
+          container.appendChild(errorDiv);
+        }
       }
     };
 
-    mermaid.initialize(mermaidConfig);
+    renderMermaidDiagrams();
   });
 </script>
