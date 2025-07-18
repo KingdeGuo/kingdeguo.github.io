@@ -55,11 +55,11 @@ mathjax: true
 ```mermaid
 %% 无状态调用的问题
 graph TD
-    A[用户: "设置提醒下午3点开会"] --> B[LLM API调用];
-    B --> C[AI: "好的，已设置提醒"];
+    A["用户: '设置提醒下午3点开会'"] --> B[LLM API调用];
+    B --> C["AI: '好的，已设置提醒'"];
     
-    D[用户: "我设置了什么提醒？"] --> E[新的LLM API调用];
-    E --> F[AI: "我不知道您设置了什么提醒"];
+    D["用户: '我设置了什么提醒？'"] --> E[新的LLM API调用];
+    E --> F["AI: '我不知道您设置了什么提醒'"];
     
     style B fill:#ffcccc
     style E fill:#ffcccc
