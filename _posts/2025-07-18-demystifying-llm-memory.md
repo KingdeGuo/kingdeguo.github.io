@@ -1120,11 +1120,11 @@ print(json.dumps(recommendation, indent=2, ensure_ascii=False))
 
 ```mermaid
 graph TD
-    A[Transformer O(n²)] --> B[Mamba O(n)]
-    B --> C[RWKV 线性注意力]
-    C --> D[RetNet Retentive网络]
-    D --> E[Hyena 次二次复杂度]
-    E --> F[无限上下文 新范式]
+    A[Transformer] --> B[Mamba]
+    B --> C[RWKV]
+    C --> D[RetNet]
+    D --> E[Hyena]
+    E --> F[无限上下文]
     
     style A fill:#ffcccc
     style C fill:#ccffcc
