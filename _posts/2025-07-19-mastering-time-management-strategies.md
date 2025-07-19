@@ -15,14 +15,23 @@ tags: time-management efficiency productivity-tools
 ### 时间贫困的现代困境：工程师视角
 作为十年经验效率工程师，我在客户系统审计中发现：
 1. **认知超载实证**：技术团队每日决策点分布
-   ```mermaid
-   pie
-       title 技术团队每日决策类型分布
-       "代码设计"： 35
-       "问题排查"： 25
-       "会议决策"： 20
-       "流程审批"： 15
-       "其他"： 5
+   ```echarts
+   {
+     "title": {"text": "技术团队每日决策类型分布"},
+     "tooltip": {"trigger": "item"},
+     "series": [{
+       "name": "决策类型",
+       "type": "pie",
+       "radius": "50%",
+       "data": [
+         {"value": 35, "name": "代码设计"},
+         {"value": 25, "name": "问题排查"},
+         {"value": 20, "name": "会议决策"},
+         {"value": 15, "name": "流程审批"},
+         {"value": 5, "name": "其他"}
+       ]
+     }]
+   }
    ```
 2. **注意力碎片化解决方案**：实施"深度工作协议"
    - 禁用通知时段：10-12AM, 2-4PM
@@ -67,18 +76,31 @@ D --> E[意义感重建]
 
 ### 番茄工作法工程化实践
 作为效率工程师，我为客户设计的实施框架：
-```mermaid
-journey
-    title 番茄工作法工业级实施
-    section 诊断阶段
-      基因检测： 2： 确定chronotype
-      工作模式分析： 2： 识别高价值任务
-    section 实施阶段
-      环境配置： 3： 创建无干扰空间
-      工具链集成： 3： 时间追踪+自动阻断
-    section 优化阶段
-      周度复盘： 2： 专注效率分析
-      参数调优： 2： 调整专注时长
+```echarts
+{
+  "title": {"text": "番茄工作法工业级实施流程"},
+  "tooltip": {"trigger": "item", "triggerOn": "mousemove"},
+  "series": [
+    {
+      "type": "sankey",
+      "layout": "none",
+      "data": [
+        {"name": "基因检测"},
+        {"name": "工作模式分析"},
+        {"name": "环境配置"},
+        {"name": "工具链集成"},
+        {"name": "周度复盘"},
+        {"name": "参数调优"}
+      ],
+      "links": [
+        {"source": "基因检测", "target": "环境配置", "value": 1},
+        {"source": "工作模式分析", "target": "工具链集成", "value": 1},
+        {"source": "环境配置", "target": "周度复盘", "value": 1},
+        {"source": "工具链集成", "target": "参数调优", "value": 1}
+      ]
+    }
+  ]
+}
 ```
 **客户案例：某SaaS研发团队**
 - 原状：平均每日深度工作1.7小时
@@ -176,15 +198,11 @@ flowchart TD
 - 管理者：体现"结构主义"时间观（时间作为组织框架）
 
 ### 四维时间系统构建法
-```mermaid
-quadrantChart
-    title 时间系统四维度
-    x-axis 内在 --> 外在
-    y-axis 实体 --> 抽象
-    quadrant-1 内在实体： “生物节律”
-    quadrant-2 外在实体： “环境设计”
-    quadrant-3 内在抽象： “意义框架”
-    quadrant-4 外在抽象： “社会时钟”
+```markdown
+|          | 内在         | 外在         |
+|----------|--------------|--------------|
+| **实体** | 生物节律     | 环境设计     |
+| **抽象** | 意义框架     | 社会时钟     |
 ```
 1. **生物节律适配**：根据基因型（CLOCK基因变体）确定chronotype
 2. **环境设计**：创建物理/数字空间的"注意力保护区"
