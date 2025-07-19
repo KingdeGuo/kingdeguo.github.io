@@ -223,11 +223,16 @@
       // 行号
       const lines = document.createElement('div');
       lines.className = 'code-block-lines';
-      lines.innerHTML = linesArr.map((_,i)=>`<span class="line-number">${i+1}</span>`).join('');
+      lines.style.display = 'flex';
+      lines.style.flexDirection = 'column';
+      lines.innerHTML = linesArr.map((_,i)=>`<div class=\"line-number\">${i+1}</div>`).join('');
       // 代码内容
       const content = document.createElement('div');
       content.className = 'code-block-content';
-      content.innerHTML = linesArr.map(line=>`<span class="code-line">${line.replace(/</g,'&lt;').replace(/>/g,'&gt;')}</span>`).join('');
+      content.style.display = 'flex';
+      content.style.flexDirection = 'column';
+      content.style.whiteSpace = 'pre';
+      content.innerHTML = linesArr.map(line=>`<div class=\"code-line\">${line.replace(/</g,'&lt;').replace(/>/g,'&gt;')}</div>`).join('');
       // 滚动同步
       content.onscroll = function() { lines.scrollTop = content.scrollTop; };
       // 行号高亮
