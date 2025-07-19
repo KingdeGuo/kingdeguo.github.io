@@ -15,24 +15,15 @@ tags: time-management efficiency productivity-tools
 ### 时间贫困的现代困境：工程师视角
 作为十年经验效率工程师，我在客户系统审计中发现：
 1. **认知超载实证**：技术团队每日决策点分布
-   ```echarts
-   {
-     "title": {"text": "技术团队每日决策类型分布"},
-     "tooltip": {"trigger": "item"},
-     "series": [{
-       "name": "决策类型",
-       "type": "pie",
-       "radius": "50%",
-       "data": [
-         {"value": 35, "name": "代码设计"},
-         {"value": 25, "name": "问题排查"},
-         {"value": 20, "name": "会议决策"},
-         {"value": 15, "name": "流程审批"},
-         {"value": 5, "name": "其他"}
-       ]
-     }]
-   }
-   ```
+```mermaid
+pie
+    title 技术团队每日决策类型分布
+    "代码设计" : 35
+    "问题排查" : 25
+    "会议决策" : 20
+    "流程审批" : 15
+    "其他" : 5
+```
 2. **注意力碎片化解决方案**：实施"深度工作协议"
    - 禁用通知时段：10-12AM, 2-4PM
    - 紧急通道：仅限生产事故
@@ -76,31 +67,13 @@ flowchart LR
 
 ### 番茄工作法工程化实践
 作为效率工程师，我为客户设计的实施框架：
-```echarts
-{
-  "title": {"text": "番茄工作法工业级实施流程"},
-  "tooltip": {"trigger": "item", "triggerOn": "mousemove"},
-  "series": [
-    {
-      "type": "sankey",
-      "layout": "none",
-      "data": [
-        {"name": "基因检测"},
-        {"name": "工作模式分析"},
-        {"name": "环境配置"},
-        {"name": "工具链集成"},
-        {"name": "周度复盘"},
-        {"name": "参数调优"}
-      ],
-      "links": [
-        {"source": "基因检测", "target": "环境配置", "value": 1},
-        {"source": "工作模式分析", "target": "工具链集成", "value": 1},
-        {"source": "环境配置", "target": "周度复盘", "value": 1},
-        {"source": "工具链集成", "target": "参数调优", "value": 1}
-      ]
-    }
-  ]
-}
+```mermaid
+graph TD
+    A[基因检测] --> B[工作模式分析]
+    B --> C[环境配置]
+    B --> D[工具链集成]
+    C --> E[周度复盘]
+    D --> F[参数调优]
 ```
 **客户案例：某SaaS研发团队**
 - 原状：平均每日深度工作1.7小时
