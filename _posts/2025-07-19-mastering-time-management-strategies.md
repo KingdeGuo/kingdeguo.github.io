@@ -133,12 +133,38 @@ flowchart TD
 基于50+企业咨询经验总结的实施框架：
 
 ```markdown
-| 实施措施               | 关键指标               | 改善效果          |
-|------------------------|------------------------|-------------------|
-| 上下文切换成本量化     | 年节省时间             | 2140小时          |
-| 深度工作区块设计       | 每日深度工作时间增加   | 2.1小时           |
-| 会议能量管理           | 会议时间减少           | 68%               |
-|                        | 功能交付周期缩短       | 40%               |
+```echarts
+{
+  "title": {"text": "批处理系统实施效果"},
+  "tooltip": {"trigger": "axis", "axisPointer": {"type": "shadow"}},
+  "legend": {"data": ["改善效果"]},
+  "grid": {"left": "3%", "right": "4%", "bottom": "3%", "containLabel": true},
+  "xAxis": {
+    "type": "category",
+    "data": [
+      "上下文切换成本量化", 
+      "深度工作区块设计", 
+      "会议时间减少", 
+      "功能交付周期缩短"
+    ]
+  },
+  "yAxis": {"type": "value"},
+  "series": [
+    {
+      "name": "改善效果",
+      "type": "bar",
+      "data": [2140, 2.1, 68, 40],
+      "label": {
+        "show": true,
+        "position": "top",
+        "formatter": function(params) {
+          return params.value + (params.dataIndex < 2 ? '小时' : '%');
+        }
+      }
+    }
+  ]
+}
+```
 ```
 
 1. **上下文切换成本量化**：
