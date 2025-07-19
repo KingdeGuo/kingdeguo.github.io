@@ -69,32 +69,17 @@ assets/js/image-loader.js
       }
     });
   }
-  // 修复图片控制器注册问题
-  function fixImageControllers() {
-    // 移除可能存在的错误控制器
-    const images = document.querySelectorAll('img');
-    images.forEach(img => {
-      // 清理可能存在的错误属性
-      if (img.hasAttribute('data-controller')) {
-        const controller = img.getAttribute('data-controller');
-        if (controller === 'undefined' || controller === 'null') {
-          img.removeAttribute('data-controller');
-        }
-      }
-      
-      // 确保每个图片都有自己的控制器
-      if (!img.controller) {
-        img.controller = new AbortController();
-      }
-    });
-  }
-    
+  // 图片加载完成后的回调
+  function loadImage(img) {
+    const src = img.dataset.src || img.dataset.lazy;
+    if (!src) return;
+
     // 检查是否已经加载过
     if (img.src === src) {
       return;
     }
 
-    // 注册控制器
+    // 确保每个图片都有自己的控制器
     if (!img.controller) {
       img.controller = new AbortController();
     }
@@ -114,21 +99,6 @@ assets/js/image-loader.js
 
     // 开始加载
     img.src = src;
-  }
-
-  // 修复图片控制器注册问题
-  function fixImageControllers() {
-    // 移除可能存在的错误控制器
-    const images = document.querySelectorAll('img');
-    images.forEach(img => {
-      // 清理可能存在的错误属性
-      if (img.hasAttribute('data-controller')) {
-        const controller = img.getAttribute('data-controller');
-        if (controller === 'undefined' || controller === 'null') {
-          img.removeAttribute('data-controller');
-        }
-      }
-    });
   }
 
   // 优化图片加载性能
@@ -240,7 +210,6 @@ assets/js/image-loader.js
 
   // 初始化所有功能
   function init() {
-    fixImageControllers();
     initLazyLoading();
     optimizeImageLoading();
     handleResponsiveImages();
