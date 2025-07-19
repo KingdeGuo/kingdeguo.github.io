@@ -50,29 +50,6 @@
       img.controller.abort();
       img.controller = new AbortController();
     }
-```
-
-assets/js/image-loader.js
-```javascript
-<<<<<<< SEARCH
-  // 修复图片控制器注册问题
-  function fixImageControllers() {
-    // 移除可能存在的错误控制器
-    const images = document.querySelectorAll('img');
-    images.forEach(img => {
-      // 清理可能存在的错误属性
-      if (img.hasAttribute('data-controller')) {
-        const controller = img.getAttribute('data-controller');
-        if (controller === 'undefined' || controller === 'null') {
-          img.removeAttribute('data-controller');
-        }
-      }
-    });
-  }
-  // 图片加载完成后的回调
-  function loadImage(img) {
-    const src = img.dataset.src || img.dataset.lazy;
-    if (!src) return;
 
     // 检查是否已经加载过
     if (img.src === src) {
@@ -99,6 +76,21 @@ assets/js/image-loader.js
 
     // 开始加载
     img.src = src;
+  }
+
+  // 修复图片控制器注册问题
+  function fixImageControllers() {
+    // 移除可能存在的错误控制器
+    const images = document.querySelectorAll('img');
+    images.forEach(img => {
+      // 清理可能存在的错误属性
+      if (img.hasAttribute('data-controller')) {
+        const controller = img.getAttribute('data-controller');
+        if (controller === 'undefined' || controller === 'null') {
+          img.removeAttribute('data-controller');
+        }
+      }
+    });
   }
 
   // 优化图片加载性能

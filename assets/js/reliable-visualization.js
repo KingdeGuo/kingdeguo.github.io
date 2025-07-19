@@ -251,21 +251,19 @@
     }
 
     async _doRender(element, config) {
+      // 渲染前清空内容，彻底去除loading
+      element.innerHTML = '';
       const echarts = await this.loader.loadScript(CONFIG.localResources.echarts, 'echarts');
-      
       const chart = echarts.init(element);
       chart.setOption(config.options || config.echarts || {});
-      
       // 响应式处理
       const resizeHandler = () => chart.resize();
       window.addEventListener('resize', resizeHandler);
-      
       // 清理函数
       element._rvCleanup = () => {
         window.removeEventListener('resize', resizeHandler);
         chart.dispose();
       };
-      
       return Promise.resolve();
     }
   }
