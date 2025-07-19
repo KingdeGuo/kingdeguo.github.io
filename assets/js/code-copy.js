@@ -189,7 +189,7 @@
     document.querySelectorAll('pre > code').forEach(function(codeEl) {
       if (codeEl.closest('.code-block-wrapper')) return;
       const pre = codeEl.parentElement;
-      const code = codeEl.textContent;
+      const code = codeEl.textContent.replace(/^\n+/, '');
       const lang = (codeEl.className.match(/language-(\w+)/) || [])[1] || '';
       const linesArr = code.split(/\n/);
       // 结构
@@ -281,4 +281,4 @@
     cleanup: cleanupDuplicateButtons
   };
 
-})(); 
+})();
