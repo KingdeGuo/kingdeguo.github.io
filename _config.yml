@@ -52,13 +52,12 @@ giscus:
 google_analytics:
   tracking_id: G-HXENT9GH1J
 
-# Build settings
+# Build settings - GitHub Pages compatible plugins
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
   - jekyll-sitemap
   - jekyll-include-cache
-  - jekyll-archives
 
 # 可视化配置 - 统一前端渲染
 visualization:
@@ -116,17 +115,34 @@ kramdown:
 # Excluded items can be processed by explicitly listing the directories or
 # their entries' file path in the `include:` list.
 #
-# exclude:
-#   - .sass-cache/
-#   - .jekyll-cache/
-#   - gemfiles/
-#   - Gemfile
-#   - Gemfile.lock
-#   - node_modules/
-#   - vendor/bundle/
-#   - vendor/cache/
-#   - vendor/gems/
-#   - vendor/ruby/
+exclude:
+  - .sass-cache/
+  - .jekyll-cache/
+  - gemfiles/
+  - Gemfile
+  - Gemfile.lock
+  - node_modules/
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+  - migrate_visualization.py
+  - performance_monitor.py
+  - VISUALIZATION_GUIDE.md
+  - VISUALIZATION_OPTIMIZATION.md
+  - performance_report.json
+
+# Include files that should be processed
+include:
+  - _posts
+  - _pages
+  - _layouts
+  - _includes
+  - assets
+  - images
+  - favicon.ico
+  - robots.txt
+  - sitemap.xml
 
 # Categories and tags configuration
 # Using jekyll-archives for automatic category/tag page generation

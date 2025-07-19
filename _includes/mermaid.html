@@ -1,0 +1,58 @@
+<!-- Mermaid Diagram Support -->
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10.7.0/dist/mermaid.min.js"></script>
+<script>
+  mermaid.initialize({
+    startOnLoad: true,
+    theme: document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default',
+    flowchart: {
+      useMaxWidth: true,
+      htmlLabels: true,
+      curve: 'basis'
+    },
+    sequence: {
+      useMaxWidth: true,
+      wrap: true
+    },
+    gantt: {
+      useMaxWidth: true
+    },
+    journey: {
+      useMaxWidth: true
+    },
+    gitGraph: {
+      useMaxWidth: true
+    },
+    pie: {
+      useMaxWidth: true
+    },
+    er: {
+      useMaxWidth: true
+    },
+    class: {
+      useMaxWidth: true
+    },
+    state: {
+      useMaxWidth: true
+    }
+  });
+</script>
+
+<style>
+.mermaid {
+  text-align: center;
+  margin: 20px 0;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  padding: 20px;
+  overflow-x: auto;
+}
+
+[data-theme="dark"] .mermaid {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.mermaid svg {
+  max-width: 100%;
+  height: auto;
+}
+</style> 

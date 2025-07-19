@@ -1,36 +1,104 @@
 ---
-layout: default
-title: "Categories"
+layout: page
+title: "分类"
 permalink: /categories/
 ---
 
-<div class="home-container">
-  <header class="page-header">
-    <h1 class="page-title">Categories</h1>
-  </header>
-
-  <div class="archive-container">
-    {% for category in site.categories %}
-      {% assign category_name = category | first %}
-      <div class="archive-section">
-        <h2 class="archive-title">
-          <a href="{{ site.baseurl }}/categories/{{ category_name | slugize }}/">{{ category_name }}</a>
-          <span class="archive-count">({{ category.last.size }})</span>
-        </h2>
-        <ul class="archive-posts">
-          {% for post in category.last limit:5 %}
-            <li class="archive-post">
-              <a href="{{ site.baseurl }}{{ post.url }}" class="archive-post-title">{{ post.title }}</a>
-              <span class="archive-post-date">{{ post.date | date: "%Y-%m-%d" }}</span>
-            </li>
-          {% endfor %}
-          {% if category.last.size > 5 %}
-            <li class="archive-more">
-              <a href="{{ site.baseurl }}/categories/{{ category_name | slugize }}/">View all {{ category.last.size }} posts →</a>
-            </li>
-          {% endif %}
-        </ul>
+<div class="archive">
+  <div class="archive__title">所有分类</div>
+  <div class="archive__subtitle">{{ site.posts.size }} 篇文章</div>
+  
+  {% assign categories = site.categories | sort %}
+  {% for category in categories %}
+    <div class="archive__item">
+      <div class="archive__item-title">
+        <a href="#{{ category[0] | slugify }}">{{ category[0] }}</a>
+        <span class="archive__item-count">{{ category[1].size }} 篇</span>
       </div>
-    {% endfor %}
-  </div>
+    </div>
+  {% endfor %}
+  
+  <hr>
+  
+  {% for category in categories %}
+    <div class="archive__item" id="{{ category[0] | slugify }}">
+      <div class="archive__item-title">
+        <h2>{{ category[0] }}</h2>
+        <span class="archive__item-count">{{ category[1].size }} 篇文章</span>
+      </div>
+      <div class="archive__item-excerpt">
+        {% for post in category[1] %}
+          <div class="archive__item-post">
+            <span class="archive__item-post-date">{{ post.date | date: "%Y-%m-%d" }}</span>
+            <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  {% endfor %}
 </div>
+
+<style>
+.archive {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.archive__title {
+  font-size: 2em;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.archive__subtitle {
+  color: #666;
+  margin-bottom: 30px;
+}
+
+.archive__item {
+  margin-bottom: 30px;
+}
+
+.archive__item-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.archive__item-title h2 {
+  margin: 0;
+  color: #333;
+}
+
+.archive__item-count {
+  background: #007acc;
+  color: white;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 0.8em;
+}
+
+.archive__item-post {
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+}
+
+.archive__item-post-date {
+  color: #666;
+  font-size: 0.9em;
+  margin-right: 15px;
+  min-width: 80px;
+}
+
+.archive__item-post a {
+  color: #007acc;
+  text-decoration: none;
+}
+
+.archive__item-post a:hover {
+  text-decoration: underline;
+}
+</style>
