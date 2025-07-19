@@ -133,38 +133,32 @@ flowchart TD
 基于50+企业咨询经验总结的实施框架：
 
 ```markdown
-```echarts
-{
-  "title": {"text": "批处理系统实施效果"},
-  "tooltip": {"trigger": "axis", "axisPointer": {"type": "shadow"}},
-  "legend": {"data": ["改善效果"]},
-  "grid": {"left": "3%", "right": "4%", "bottom": "3%", "containLabel": true},
-  "xAxis": {
-    "type": "category",
-    "data": [
-      "上下文切换成本量化", 
-      "深度工作区块设计", 
-      "会议时间减少", 
-      "功能交付周期缩短"
-    ]
-  },
-  "yAxis": {"type": "value"},
-  "series": [
-    {
-      "name": "改善效果",
-      "type": "bar",
-      "data": [2140, 2.1, 68, 40],
-      "label": {
-        "show": true,
-        "position": "top",
-        "formatter": function(params) {
-          return params.value + (params.dataIndex < 2 ? '小时' : '%');
-        }
-      }
-    }
-  ]
-}
-```
+<div style="width: 100%; height: 400px; margin: 20px 0;">
+  <div id="batchSystemChart" style="width: 100%; height: 400px;"></div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const chart = echarts.init(document.getElementById('batchSystemChart'));
+  const option = {
+    title: {text: '批处理系统实施效果'},
+    tooltip: {trigger: 'axis', axisPointer: {type: 'shadow'}},
+    grid: {left: '3%', right: '4%', bottom: '3%', containLabel: true},
+    xAxis: {
+      type: 'category',
+      data: ['上下文切换成本量化', '深度工作区块设计', '会议时间减少', '功能交付周期缩短']
+    },
+    yAxis: {type: 'value'},
+    series: [{
+      name: '改善效果',
+      type: 'bar',
+      data: [2140, 2.1, 68, 40],
+      label: {show: true, position: 'top'}
+    }]
+  };
+  chart.setOption(option);
+});
+</script>
 ```
 
 1. **上下文切换成本量化**：
@@ -285,3 +279,5 @@ flowchart TD
 **终极实践**：建立个人《时间宪章》，明确核心价值与时间分配原则
 
 > 时间革命不是技巧积累，而是存在方式的转变
+
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
