@@ -4,101 +4,691 @@ title: "标签"
 permalink: /tags/
 ---
 
-<div class="archive">
-  <div class="archive__title">所有标签</div>
-  <div class="archive__subtitle">{{ site.posts.size }} 篇文章</div>
-  
-  {% assign tags = site.tags | sort %}
-  {% for tag in tags %}
-    <div class="archive__item">
-      <div class="archive__item-title">
-        <a href="#{{ tag[0] | slugify }}">{{ tag[0] }}</a>
-        <span class="archive__item-count">{{ tag[1].size }} 篇</span>
-      </div>
+<div class="tags-page">
+  <!-- 页面头部 -->
+  <div class="page-header">
+    <div class="header-content">
+      <h1 class="page-title">
+        <span class="title-icon">🏷️</span>
+        文章标签
+      </h1>
+      <p class="page-subtitle">
+        按标签浏览感兴趣的内容，共 {{ site.posts.size }} 篇文章
+      </p>
     </div>
-  {% endfor %}
-  
-  <hr>
-  
-  {% for tag in tags %}
-    <div class="archive__item" id="{{ tag[0] | slugify }}">
-      <div class="archive__item-title">
-        <h2>{{ tag[0] }}</h2>
-        <span class="archive__item-count">{{ tag[1].size }} 篇文章</span>
-      </div>
-      <div class="archive__item-excerpt">
-        {% for post in tag[1] %}
-          <div class="archive__item-post">
-            <span class="archive__item-post-date">{{ post.date | date: "%Y-%m-%d" }}</span>
-            <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+  </div>
+
+  <!-- 标签云 -->
+  <div class="tags-cloud">
+    <div class="cloud-container">
+      {% assign tags = site.tags | sort %}
+      {% for tag in tags %}
+        <a href="#{{ tag[0] | slugify }}" class="tag-item" data-count="{{ tag[1].size }}">
+          {{ tag[0] }}
+          <span class="tag-count">{{ tag[1].size }}</span>
+        </a>
+      {% endfor %}
+    </div>
+  </div>
+
+  <!-- 标签详情 -->
+  <div class="tags-detail">
+    {% for tag in tags %}
+      <div class="tag-section" id="{{ tag[0] | slugify }}">
+        <div class="section-header">
+          <div class="section-title">
+            <div class="title-icon">🏷️</div>
+            <div class="title-content">
+              <h2>{{ tag[0] }}</h2>
+              <span class="post-count">{{ tag[1].size }} 篇文章</span>
+            </div>
           </div>
-        {% endfor %}
+          <div class="section-actions">
+            <a href="/tags/#{{ tag[0] | slugify }}" class="rss-link" title="RSS订阅">
+              📡
+            </a>
+          </div>
+        </div>
+        
+        <div class="posts-grid">
+          {% for post in tag[1] %}
+            <article class="post-card">
+              <div class="post-meta">
+                <time class="post-date">{{ post.date | date: "%Y-%m-%d" }}</time>
+                {% if post.categories %}
+                  <div class="post-categories">
+                    {% for category in post.categories limit: 2 %}
+                      <span class="category">{{ category }}</span>
+                    {% endfor %}
+                  </div>
+                {% endif %}
+              </div>
+              
+              <h3 class="post-title">
+                <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+              </h3>
+              
+              {% if post.description %}
+                <p class="post-excerpt">{{ post.description }}</p>
+              {% endif %}
+              
+              <div class="post-footer">
+                <div class="post-tags">
+                  {% for postTag in post.tags limit: 3 %}
+                    {% if postTag != tag[0] %}
+                      <span class="tag">{{ postTag }}</span>
+                    {% endif %}
+                  {% endfor %}
+                </div>
+                <a href="{{ post.url | relative_url }}" class="read-more">
+                  阅读全文 <span class="arrow">→</span>
+                </a>
+              </div>
+            </article>
+          {% endfor %}
+        </div>
       </div>
-    </div>
-  {% endfor %}
+    {% endfor %}
+  </div>
 </div>
 
 <style>
-.archive {
-  max-width: 800px;
+/* 页面样式 */
+.tags-page {
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 20px;
+  padding: 0 20px;
 }
 
-.archive__title {
-  font-size: 2em;
-  font-weight: bold;
-  margin-bottom: 10px;
+/* 页面头部 */
+.page-header {
+  text-align: center;
+  padding: 4rem 0 3rem;
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  color: white;
+  border-radius: 0 0 20px 20px;
+  margin-bottom: 3rem;
 }
 
-.archive__subtitle {
-  color: #666;
-  margin-bottom: 30px;
+.header-content {
+  max-width: 600px;
+  margin: 0 auto;
 }
 
-.archive__item {
-  margin-bottom: 30px;
+.page-title {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
 }
 
-.archive__item-title {
+.title-icon {
+  font-size: 2.5rem;
+}
+
+.page-subtitle {
+  font-size: 1.2rem;
+  opacity: 0.9;
+  line-height: 1.6;
+}
+
+/* 标签云 */
+.tags-cloud {
+  margin-bottom: 4rem;
+  padding: 2rem;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e2e8f0;
+}
+
+.cloud-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
+}
+
+.tag-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  text-decoration: none;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(102, 126, 234, 0.3);
+}
+
+.tag-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.tag-item:hover::before {
+  left: 100%;
+}
+
+.tag-item:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 4px 20px rgba(102, 126, 234, 0.4);
+}
+
+.tag-count {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 0.25rem 0.5rem;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+/* 根据文章数量调整标签大小 */
+.tag-item[data-count="1"] { font-size: 0.8rem; padding: 0.5rem 1rem; }
+.tag-item[data-count="2"] { font-size: 0.85rem; padding: 0.6rem 1.2rem; }
+.tag-item[data-count="3"] { font-size: 0.9rem; padding: 0.7rem 1.3rem; }
+.tag-item[data-count="4"] { font-size: 0.95rem; padding: 0.75rem 1.4rem; }
+.tag-item[data-count="5"] { font-size: 1rem; padding: 0.8rem 1.5rem; }
+.tag-item[data-count="6"] { font-size: 1.05rem; padding: 0.85rem 1.6rem; }
+.tag-item[data-count="7"] { font-size: 1.1rem; padding: 0.9rem 1.7rem; }
+.tag-item[data-count="8"] { font-size: 1.15rem; padding: 0.95rem 1.8rem; }
+.tag-item[data-count="9"] { font-size: 1.2rem; padding: 1rem 1.9rem; }
+.tag-item[data-count="10"] { font-size: 1.25rem; padding: 1.05rem 2rem; }
+
+/* 标签详情 */
+.tags-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.tag-section {
+  background: white;
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e2e8f0;
+}
+
+.section-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 15px;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid #f7fafc;
 }
 
-.archive__item-title h2 {
-  margin: 0;
-  color: #333;
-}
-
-.archive__item-count {
-  background: #007acc;
-  color: white;
-  padding: 2px 8px;
-  border-radius: 12px;
-  font-size: 0.8em;
-}
-
-.archive__item-post {
-  margin-bottom: 8px;
+.section-title {
   display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.section-title .title-icon {
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  color: white;
+}
+
+.title-content h2 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin: 0 0 0.25rem 0;
+  color: #2d3748;
+}
+
+.post-count {
+  font-size: 0.9rem;
+  color: #718096;
+  font-weight: 500;
+}
+
+.section-actions {
+  display: flex;
+  gap: 1rem;
+}
+
+.rss-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: #f7fafc;
+  border-radius: 50%;
+  text-decoration: none;
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+}
+
+.rss-link:hover {
+  background: #f093fb;
+  color: white;
+  transform: scale(1.1);
+}
+
+/* 文章网格 */
+.posts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 1.5rem;
+}
+
+.post-card {
+  background: #f7fafc;
+  border-radius: 12px;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+  border: 1px solid #e2e8f0;
+}
+
+.post-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  background: white;
+}
+
+.post-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.post-date {
+  font-size: 0.85rem;
+  color: #718096;
+  font-weight: 500;
+}
+
+.post-categories {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.category {
+  background: rgba(240, 147, 251, 0.1);
+  color: #f093fb;
+  padding: 0.25rem 0.5rem;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.post-title {
+  margin-bottom: 0.75rem;
+}
+
+.post-title a {
+  color: #2d3748;
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: 600;
+  line-height: 1.4;
+  transition: color 0.3s ease;
+}
+
+.post-title a:hover {
+  color: #f093fb;
+}
+
+.post-excerpt {
+  color: #4a5568;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.post-footer {
+  display: flex;
+  justify-content: space-between;
   align-items: center;
 }
 
-.archive__item-post-date {
-  color: #666;
-  font-size: 0.9em;
-  margin-right: 15px;
-  min-width: 80px;
+.post-tags {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
 }
 
-.archive__item-post a {
-  color: #007acc;
+.tag {
+  background: rgba(102, 126, 234, 0.1);
+  color: #667eea;
+  padding: 0.25rem 0.5rem;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.read-more {
+  color: #f093fb;
   text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  transition: gap 0.3s ease;
 }
 
-.archive__item-post a:hover {
-  text-decoration: underline;
+.read-more:hover {
+  gap: 0.5rem;
+}
+
+.arrow {
+  transition: transform 0.3s ease;
+}
+
+.read-more:hover .arrow {
+  transform: translateX(5px);
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .tags-page {
+    padding: 0 15px;
+  }
+  
+  .page-header {
+    padding: 3rem 0 2rem;
+    border-radius: 0 0 15px 15px;
+  }
+  
+  .page-title {
+    font-size: 2.5rem;
+  }
+  
+  .cloud-container {
+    min-height: 150px;
+    gap: 0.75rem;
+  }
+  
+  .tag-item {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.85rem;
+  }
+  
+  .posts-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .section-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  
+  .tag-section {
+    padding: 1.5rem;
+  }
+  
+  .post-footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .page-title {
+    font-size: 2rem;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .tags-cloud {
+    padding: 1rem;
+  }
+  
+  .cloud-container {
+    gap: 0.5rem;
+  }
+  
+  .tag-item {
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
+  }
+  
+  .tag-section {
+    padding: 1rem;
+  }
+}
+
+/* 暗色主题 */
+[data-theme="dark"] {
+  .tags-cloud,
+  .tag-section {
+    background: #2d3748;
+    border-color: #4a5568;
+  }
+  
+  .post-card {
+    background: #1a202c;
+    border-color: #4a5568;
+  }
+  
+  .post-card:hover {
+    background: #2d3748;
+  }
+  
+  .title-content h2,
+  .post-title a {
+    color: #e2e8f0;
+  }
+  
+  .post-count,
+  .post-date {
+    color: #a0aec0;
+  }
+  
+  .post-excerpt {
+    color: #cbd5e0;
+  }
+  
+  .rss-link {
+    background: #4a5568;
+    color: #e2e8f0;
+  }
+  
+  .rss-link:hover {
+    background: #f093fb;
+  }
+  
+  .section-header {
+    border-bottom-color: #4a5568;
+  }
+}
+
+/* 动画效果 */
+.tag-item {
+  animation: fadeInScale 0.6s ease-out;
+}
+
+.tag-section {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 滚动到顶部按钮 */
+.scroll-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.scroll-to-top.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.scroll-to-top:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: 768px) {
+  .scroll-to-top {
+    bottom: 20px;
+    right: 20px;
+    width: 45px;
+    height: 45px;
+    font-size: 1rem;
+  }
 }
 </style>
+
+<script>
+// 滚动到顶部功能
+function initScrollToTop() {
+  const scrollBtn = document.createElement('button');
+  scrollBtn.className = 'scroll-to-top';
+  scrollBtn.innerHTML = '↑';
+  scrollBtn.title = '回到顶部';
+  document.body.appendChild(scrollBtn);
+
+  window.addEventListener('scroll', () => {
+    if (window.pageYOffset > 300) {
+      scrollBtn.classList.add('visible');
+    } else {
+      scrollBtn.classList.remove('visible');
+    }
+  });
+
+  scrollBtn.addEventListener('click', () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  });
+}
+
+// 平滑滚动到锚点
+function initSmoothScroll() {
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        target.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
+    });
+  });
+}
+
+// 标签云动画
+function initTagCloud() {
+  const tags = document.querySelectorAll('.tag-item');
+  
+  tags.forEach((tag, index) => {
+    tag.style.animationDelay = `${index * 0.1}s`;
+    
+    tag.addEventListener('mouseenter', () => {
+      tag.style.transform = 'translateY(-3px) scale(1.05)';
+    });
+    
+    tag.addEventListener('mouseleave', () => {
+      tag.style.transform = 'translateY(0) scale(1)';
+    });
+  });
+}
+
+// 标签云随机位置
+function randomizeTagPositions() {
+  const container = document.querySelector('.cloud-container');
+  const tags = document.querySelectorAll('.tag-item');
+  
+  tags.forEach(tag => {
+    const randomX = Math.random() * 20 - 10;
+    const randomY = Math.random() * 20 - 10;
+    tag.style.transform = `translate(${randomX}px, ${randomY}px)`;
+  });
+}
+
+// 页面加载完成后初始化
+document.addEventListener('DOMContentLoaded', () => {
+  initScrollToTop();
+  initSmoothScroll();
+  initTagCloud();
+  randomizeTagPositions();
+  
+  // 添加滚动动画
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.tag-section').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(30px)';
+    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    observer.observe(el);
+  });
+});
+</script>
