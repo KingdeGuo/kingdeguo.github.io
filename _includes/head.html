@@ -9,3 +9,15 @@
 {% seo %}
 <!-- Visualization Libraries and Configuration -->
 {% include visualization-libs.html %}
+
+<!-- Performance Optimization -->
+<script src="{{ '/assets/js/performance.js' | relative_url }}" defer></script>
+
+<!-- Preload critical resources -->
+<link rel="preload" href="{{ '/assets/css/custom.css' | relative_url }}" as="style">
+<link rel="preload" href="{{ '/assets/js/main.min.js' | relative_url }}" as="script">
+
+<!-- DNS prefetch for external resources -->
+<link rel="dns-prefetch" href="//cdn.jsdelivr.net">
+<link rel="dns-prefetch" href="//fonts.googleapis.com">
+<link rel="dns-prefetch" href="//www.google-analytics.com">

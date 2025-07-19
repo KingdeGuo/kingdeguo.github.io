@@ -1359,3 +1359,388 @@ img.lazyloaded {
   border-color: rgba(255, 255, 255, 0.1);
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
 }
+
+/* 搜索功能样式 */
+#search-container {
+  position: relative;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+#search-input {
+  width: 100%;
+  padding: 12px 20px;
+  border: 2px solid #e0e0e0;
+  border-radius: 25px;
+  font-size: 16px;
+  background: white;
+  transition: all 0.3s ease;
+}
+
+#search-input:focus {
+  outline: none;
+  border-color: #007acc;
+  box-shadow: 0 0 0 3px rgba(0, 122, 204, 0.1);
+}
+
+#search-results {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  max-height: 400px;
+  overflow-y: auto;
+  z-index: 1000;
+  display: none;
+}
+
+#search-container.focused #search-results {
+  display: block;
+}
+
+.search-result-item {
+  padding: 15px;
+  border-bottom: 1px solid #f0f0f0;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.search-result-item:hover,
+.search-result-item.selected {
+  background-color: #f8f9fa;
+}
+
+.search-result-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 8px;
+}
+
+.search-result-title {
+  color: #333;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.1em;
+  line-height: 1.3;
+}
+
+.search-result-title:hover {
+  color: #007acc;
+}
+
+.search-result-date {
+  color: #666;
+  font-size: 0.9em;
+  white-space: nowrap;
+  margin-left: 10px;
+}
+
+.search-result-snippet {
+  color: #555;
+  font-size: 0.9em;
+  line-height: 1.5;
+  margin-bottom: 8px;
+}
+
+.search-result-categories {
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+}
+
+.search-category {
+  background: #e3f2fd;
+  color: #1976d2;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 0.8em;
+}
+
+.search-highlight {
+  background: #fff3cd;
+  color: #856404;
+  padding: 1px 2px;
+  border-radius: 2px;
+  font-weight: 600;
+}
+
+.search-suggestion {
+  padding: 12px 15px;
+  border-bottom: 1px solid #f0f0f0;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.search-suggestion:hover,
+.search-suggestion.selected {
+  background-color: #f8f9fa;
+}
+
+.search-suggestion a {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-decoration: none;
+  color: #333;
+}
+
+.suggestion-title {
+  font-weight: 500;
+}
+
+.suggestion-type {
+  background: #e8f5e8;
+  color: #2e7d32;
+  padding: 2px 6px;
+  border-radius: 8px;
+  font-size: 0.8em;
+}
+
+.no-results {
+  padding: 30px 20px;
+  text-align: center;
+  color: #666;
+}
+
+.no-results-icon {
+  font-size: 2em;
+  margin-bottom: 10px;
+}
+
+.no-results-text p {
+  margin: 5px 0;
+}
+
+.no-results-suggestions {
+  font-size: 0.9em;
+  color: #999;
+}
+
+.search-error {
+  padding: 20px;
+  text-align: center;
+  color: #d32f2f;
+  background: #ffebee;
+  border-radius: 8px;
+  margin: 10px 0;
+}
+
+/* 性能优化样式 */
+.lazy-load {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.lazy-load.loaded {
+  opacity: 1;
+}
+
+/* 图片懒加载 */
+img[data-src] {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+img[data-src].loaded {
+  opacity: 1;
+}
+
+/* 代码块优化 */
+.highlight {
+  position: relative;
+  margin: 20px 0;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.highlight pre {
+  margin: 0;
+  padding: 20px;
+  overflow-x: auto;
+  font-size: 0.9em;
+  line-height: 1.5;
+}
+
+/* 表格优化 */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+table th,
+table td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+table th {
+  background: #f8f9fa;
+  font-weight: 600;
+  color: #333;
+}
+
+table tr:hover {
+  background: #f8f9fa;
+}
+
+/* 响应式优化 */
+@media (max-width: 768px) {
+  .highlight pre {
+    font-size: 0.8em;
+    padding: 15px;
+  }
+  
+  table {
+    font-size: 0.9em;
+  }
+  
+  table th,
+  table td {
+    padding: 8px 10px;
+  }
+  
+  #search-input {
+    font-size: 16px; /* 防止iOS缩放 */
+  }
+}
+
+/* 暗色主题适配 */
+[data-theme="dark"] #search-input {
+  background: #2d3748;
+  border-color: #4a5568;
+  color: #e2e8f0;
+}
+
+[data-theme="dark"] #search-results {
+  background: #2d3748;
+  border-color: #4a5568;
+}
+
+[data-theme="dark"] .search-result-item {
+  border-bottom-color: #4a5568;
+}
+
+[data-theme="dark"] .search-result-item:hover,
+[data-theme="dark"] .search-result-item.selected {
+  background-color: #4a5568;
+}
+
+[data-theme="dark"] .search-result-title {
+  color: #e2e8f0;
+}
+
+[data-theme="dark"] .search-result-title:hover {
+  color: #81e6d9;
+}
+
+[data-theme="dark"] .search-result-snippet {
+  color: #cbd5e0;
+}
+
+[data-theme="dark"] .search-category {
+  background: #2d3748;
+  color: #81e6d9;
+}
+
+[data-theme="dark"] .search-highlight {
+  background: #744210;
+  color: #fbd38d;
+}
+
+[data-theme="dark"] .search-suggestion a {
+  color: #e2e8f0;
+}
+
+[data-theme="dark"] .suggestion-type {
+  background: #2d3748;
+  color: #68d391;
+}
+
+[data-theme="dark"] .no-results {
+  color: #cbd5e0;
+}
+
+[data-theme="dark"] .search-error {
+  background: #742a2a;
+  color: #feb2b2;
+}
+
+[data-theme="dark"] table {
+  background: #2d3748;
+}
+
+[data-theme="dark"] table th {
+  background: #4a5568;
+  color: #e2e8f0;
+}
+
+[data-theme="dark"] table td {
+  border-bottom-color: #4a5568;
+  color: #e2e8f0;
+}
+
+[data-theme="dark"] table tr:hover {
+  background: #4a5568;
+}
+
+/* 动画优化 */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+/* 滚动优化 */
+.smooth-scroll {
+  scroll-behavior: smooth;
+}
+
+/* 字体优化 */
+.font-display {
+  font-display: swap;
+}
+
+/* 关键CSS内联 */
+.critical {
+  display: block;
+}
+
+/* 预加载优化 */
+.preload {
+  rel: preload;
+  as: style;
+}
+
+/* 缓存优化 */
+.cache-control {
+  max-age: 31536000;
+}
+
+/* 压缩优化 */
+.gzip {
+  content-encoding: gzip;
+}
+
+/* CDN优化 */
+.cdn {
+  crossorigin: anonymous;
+}
