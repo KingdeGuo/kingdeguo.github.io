@@ -209,8 +209,39 @@
       // 主题适配
       if (utils.getTheme() === 'dark') {
         option.backgroundColor = 'transparent';
-        if (option.textStyle) {
-          option.textStyle.color = '#e2e8f0';
+        
+        // 全局文本样式
+        option.textStyle = { ...option.textStyle, color: '#e2e8f0' };
+
+        // 标题
+        if (option.title) {
+          option.title.textStyle = { ...option.title.textStyle, color: '#e2e8f0' };
+        }
+
+        // 图例
+        if (option.legend) {
+          option.legend.textStyle = { ...option.legend.textStyle, color: '#e2e8f0' };
+        }
+
+        // 坐标轴
+        const axes = ['xAxis', 'yAxis'];
+        axes.forEach(axis => {
+          if (option[axis]) {
+            const axisConfig = Array.isArray(option[axis]) ? option[axis] : [option[axis]];
+            axisConfig.forEach(ac => {
+              ac.axisLine = { ...ac.axisLine, lineStyle: { color: '#4a5568' } };
+              ac.axisTick = { ...ac.axisTick, lineStyle: { color: '#4a5568' } };
+              ac.axisLabel = { ...ac.axisLabel, color: '#a0aec0' };
+              ac.splitLine = { ...ac.splitLine, lineStyle: { color: '#3b4557' } };
+            });
+          }
+        });
+        
+        // 提示框
+        if (option.tooltip) {
+            option.tooltip.backgroundColor = 'rgba(26, 32, 44, 0.9)';
+            option.tooltip.borderColor = '#4a5568';
+            option.tooltip.textStyle = { ...option.tooltip.textStyle, color: '#e2e8f0' };
         }
       }
 
