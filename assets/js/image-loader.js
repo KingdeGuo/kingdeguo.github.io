@@ -42,30 +42,78 @@
     const src = img.dataset.src || img.dataset.lazy;
     if (!src) return;
 
-    // 创建新的图片对象来预加载
-    const tempImg = new Image();
+    // 使用AbortController来管理加载
+    const signal = img.controller.signal;
     
-    tempImg.onload = function() {
-      img.src = src;
-      img.classList.remove('lazyload');
-      img.classList.add('lazyloaded');
+    // 如果已经有加载请求，先中止
+    if (img.loadingPromise) {
+      img.controller.abort();
+      img.controller = new AbortController();
+    }
+```
+
+assets/js/image-loader.js
+```javascript
+<<<<<<< SEARCH
+  // 修复图片控制器注册问题
+  function fixImageControllers() {
+    // 移除可能存在的错误控制器
+    const images = document.querySelectorAll('img');
+    images.forEach(img => {
+      // 清理可能存在的错误属性
+      if (img.hasAttribute('data-controller')) {
+        const controller = img.getAttribute('data-controller');
+        if (controller === 'undefined' || controller === 'null') {
+          img.removeAttribute('data-controller');
+        }
+      }
+    });
+  }
+  // 修复图片控制器注册问题
+  function fixImageControllers() {
+    // 移除可能存在的错误控制器
+    const images = document.querySelectorAll('img');
+    images.forEach(img => {
+      // 清理可能存在的错误属性
+      if (img.hasAttribute('data-controller')) {
+        const controller = img.getAttribute('data-controller');
+        if (controller === 'undefined' || controller === 'null') {
+          img.removeAttribute('data-controller');
+        }
+      }
       
-      // 触发加载完成事件
-      const event = new CustomEvent('imageLoaded', {
-        detail: { img: img, src: src }
-      });
-      document.dispatchEvent(event);
+      // 确保每个图片都有自己的控制器
+      if (!img.controller) {
+        img.controller = new AbortController();
+      }
+    });
+  }
+    
+    // 检查是否已经加载过
+    if (img.src === src) {
+      return;
+    }
+
+    // 注册控制器
+    if (!img.controller) {
+      img.controller = new AbortController();
+    }
+
+    // 添加加载完成的类
+    img.onload = () => {
+      img.classList.add('loaded');
+      img.setAttribute('loading', 'eager');
     };
 
-    tempImg.onerror = function() {
-      console.warn('图片加载失败:', src);
-      img.classList.add('lazy-error');
-      
-      // 设置默认图片
-      img.src = '/assets/images/placeholder.png';
+    // 添加错误处理
+    img.onerror = () => {
+      console.error(`图片加载失败: ${src}`);
+      img.src = '/assets/images/placeholder.svg';
+      img.alt = '加载失败';
     };
 
-    tempImg.src = src;
+    // 开始加载
+    img.src = src;
   }
 
   // 修复图片控制器注册问题

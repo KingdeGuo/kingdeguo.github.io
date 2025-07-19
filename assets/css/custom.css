@@ -1106,81 +1106,52 @@ img.lazyloaded {
 /* --- Code Copy Button --- */
 .highlight {
   position: relative;
+  margin: 1.5rem 0;
+  padding: 1rem;
+  background-color: #f8f9fa;
+  border-radius: 0.5rem;
+  overflow: auto;
+  border: 1px solid #e9ecef;
+  box-shadow: none !important; /* 移除可能的重复阴影 */
 }
 
-/* 代码块复制按钮 */
+/* 复制按钮样式 */
 .copy-btn {
   position: absolute;
-  top: 12px;
-  right: 12px;
-  background: rgba(255, 255, 255, 0.95);
-  border: 1px solid #e2e8f0;
-  border-radius: 6px;
-  padding: 6px 12px;
-  font-size: 0.75rem;
-  color: #4a5568;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  opacity: 0;
-  visibility: hidden;
-  font-weight: 500;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  top: 0.5rem;
+  right: 0.5rem;
   z-index: 10;
-  font-family: var(--font-family-sans);
-  line-height: 1;
-  min-width: 50px;
-  text-align: center;
-}
-
-.highlight:hover .copy-btn {
-  opacity: 1;
-  visibility: visible;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.875rem;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
 }
 
 .copy-btn:hover {
-  background: #667eea;
-  color: white;
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+  background-color: #0056b3;
 }
 
-.copy-btn.copied {
-  background: #10b981;
-  color: white;
-  border-color: #10b981;
+/* 防止代码块底部显示多余内容 */
+.highlight::after {
+  content: '';
+  display: block;
+  clear: both;
 }
 
-[data-theme="dark"] .copy-btn {
-  background: rgba(45, 55, 72, 0.95);
-  border-color: #4a5568;
-  color: #e2e8f0;
+/* 修复代码块数字显示问题 */
+.gutter {
+  user-select: none;
+  opacity: 0.6;
 }
 
-[data-theme="dark"] .copy-btn:hover {
-  background: #667eea;
-  color: white;
-}
-
-[data-theme="dark"] .copy-btn.copied {
-  background: #34d399;
-  color: white;
-  border-color: #34d399;
-}
-
-/* 确保代码块有正确的定位 */
-.highlight {
-  position: relative;
-  margin: 1.5rem 0;
-  border-radius: 8px;
-  overflow: hidden;
-  background: #f8f9fa;
-  border: 1px solid #e9ecef;
-}
-
-/* 移除可能存在的重复按钮 */
-.highlight .copy-btn + .copy-btn {
-  display: none !important;
+/* 修复代码块复制按钮重复问题 */
+.highlight .copy-btn {
+  pointer-events: auto;
+  user-select: auto;
 }
 
 /* --- Archive Page Specific Styles --- */

@@ -19,17 +19,21 @@
   function initHomeAnimations() {
     // 数字动画
     const statNumbers = document.querySelectorAll('.stat-number');
-    statNumbers.forEach(number => {
-      const target = parseInt(number.getAttribute('data-target')) || 0;
-      animateNumber(number, target);
-    });
+    if (statNumbers.length > 0) {
+      statNumbers.forEach(number => {
+        const target = parseInt(number.getAttribute('data-target')) || 0;
+        animateNumber(number, target);
+      });
+    }
 
     // 3D卡片动画
     const cards = document.querySelectorAll('.card-3d');
-    cards.forEach((card, index) => {
-      card.style.animationDelay = `${index * 0.2}s`;
-      card.classList.add('animate-in');
-    });
+    if (cards.length > 0) {
+      cards.forEach((card, index) => {
+        card.style.animationDelay = `${index * 0.2}s`;
+        card.classList.add('animate-in');
+      });
+    }
 
     // 滚动动画
     const observerOptions = {
@@ -47,7 +51,9 @@
 
     // 观察需要动画的元素
     const animatedElements = document.querySelectorAll('.featured-card, .category-card, .skill-category');
-    animatedElements.forEach(el => observer.observe(el));
+    if (animatedElements.length > 0) {
+      animatedElements.forEach(el => observer.observe(el));
+    }
   }
 
   // 数字动画函数
@@ -212,18 +218,18 @@
     });
   }
 
-  // 初始化所有功能
+  // 初始化函数
   function init() {
-    initHomeAnimations();
-    initSmoothScroll();
-    initThemeToggle();
-    initSearch();
-    initBackToTop();
-    initLazyLoading();
-    initMobileMenu();
+    initLazyLoading(); // 首先初始化懒加载，避免图片加载影响动画
+    initHomeAnimations(); // 首页动画
+    initSmoothScroll(); // 平滑滚动
+    initThemeToggle(); // 主题切换
+    initSearch(); // 搜索功能
+    initBackToTop(); // 返回顶部
+    initMobileMenu(); // 移动端菜单
   }
 
-  // 启动
+  // 确保DOM加载完成后初始化
   ready(init);
 
   // 导出到全局

@@ -1,7 +1,16 @@
-<!-- 自定义头部内容 -->
-<!-- Google Fonts -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <!-- Mermaid 图表支持 -->
+  {% if page.mermaid %}
+    <script type="module">
+      import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+      mermaid.initialize({startOnLoad:true, theme: 'default'});
+    </script>
+  {% endif %}
 
-<!-- Custom Fonts and Styles -->
+  <!-- MathJax 数学公式支持 -->
+  {% if page.mathjax %}
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+  {% endif %}
+</head>
