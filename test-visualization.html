@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>高可靠性可视化系统测试</title>
+    <link rel="stylesheet" href="/assets/css/reliable-visualization.css">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .test-section {
+            margin: 40px 0;
+            padding: 20px;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        .status {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+            font-family: monospace;
+        }
+        .success { background: #d4edda; color: #155724; }
+        .error { background: #f8d7da; color: #721c24; }
+    </style>
+</head>
+<body>
+    <h1>🚀 高可靠性可视化系统测试</h1>
+    
+    <div class="test-section">
+        <h2>1. Mermaid 图表测试</h2>
+        <div class="chart-container" data-chart='{"type":"mermaid","code":"graph TD\n    A[开始] --> B{条件判断}\n    B -->|是| C[执行操作]\n    B -->|否| D[跳过操作]\n    C --> E[结束]\n    D --> E"}'></div>
+    </div>
+
+    <div class="test-section">
+        <h2>2. ECharts 图表测试</h2>
+        <div class="chart-container" data-chart='{"type":"echarts","options":{"title":{"text":"示例图表"},"tooltip":{},"xAxis":{"data":["A","B","C","D","E"]},"yAxis":{},"series":[{"type":"bar","data":[5,20,36,10,10]}]}}'></div>
+    </div>
+
+    <div class="test-section">
+        <h2>3. Chart.js 图表测试</h2>
