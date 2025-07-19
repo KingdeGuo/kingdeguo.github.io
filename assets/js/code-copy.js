@@ -226,7 +226,7 @@
       content.style.display = 'flex';
       content.style.flexDirection = 'column';
       content.style.whiteSpace = 'pre';
-      content.innerHTML = linesArr.map(line=>`<div class=\"code-line\">${line.replace(/</g,'&lt;').replace(/>/g,'&gt;')}</div>`).join('');
+      content.innerHTML = linesArr.map(line=>`<div class='code-line'>${line.replace(/</g,'&lt;').replace(/>/g,'&gt;')}</div>`).join('');
       // 组装
       body.appendChild(content);
       wrapper.appendChild(header);
