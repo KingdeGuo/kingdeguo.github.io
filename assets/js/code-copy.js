@@ -6,6 +6,12 @@
 (function() {
   'use strict';
 
+  // 获取当前语言环境
+  function getLang() {
+    const lang = document.documentElement.lang || navigator.language || 'zh';
+    return lang.startsWith('zh') ? 'zh' : 'en';
+  }
+
   // 初始化代码块复制功能
   function initCodeCopy() {
     const codeBlocks = document.querySelectorAll('.highlight');
@@ -19,7 +25,7 @@
       // 创建复制按钮
       const copyBtn = document.createElement('button');
       copyBtn.className = 'copy-btn';
-      copyBtn.textContent = '复制';
+      copyBtn.textContent = getLang() === 'zh' ? '复制' : 'Copy';
       copyBtn.setAttribute('data-index', index);
       copyBtn.setAttribute('type', 'button'); // 防止表单提交
       
@@ -40,52 +46,25 @@
   }
 
   // 复制到剪贴板
-  async function copyToClipboard(text, button) {
-    try {
-      // 尝试使用现代API
-      if (navigator.clipboard && window.isSecureContext) {
-        await navigator.clipboard.writeText(text);
-        showCopySuccess(button);
-      } else {
-        // 回退到传统方法
-        fallbackCopyTextToClipboard(text, button);
-      }
-    } catch (err) {
-      console.error('复制失败:', err);
-      fallbackCopyTextToClipboard(text, button);
+  function copyToClipboard(text) {
+    if (navigator.clipboard) {
+      return navigator.clipboard.writeText(text);
+    } else {
+      // 兼容旧浏览器
+      const textarea = document.createElement('textarea');
+      textarea.value = text;
+      document.body.appendChild(textarea);
+      textarea.select();
+      document.execCommand('copy');
+      document.body.removeChild(textarea);
+      return Promise.resolve();
     }
-  }
-
-  // 回退复制方法
-  function fallbackCopyTextToClipboard(text, button) {
-    const textArea = document.createElement('textarea');
-    textArea.value = text;
-    textArea.style.position = 'fixed';
-    textArea.style.left = '-999999px';
-    textArea.style.top = '-999999px';
-    document.body.appendChild(textArea);
-    textArea.focus();
-    textArea.select();
-    
-    try {
-      const successful = document.execCommand('copy');
-      if (successful) {
-        showCopySuccess(button);
-      } else {
-        showCopyError(button);
-      }
-    } catch (err) {
-      console.error('回退复制失败:', err);
-      showCopyError(button);
-    }
-    
-    document.body.removeChild(textArea);
   }
 
   // 显示复制成功
   function showCopySuccess(button) {
     const originalText = button.textContent;
-    button.textContent = '已复制!';
+    button.textContent = getLang() === 'zh' ? '已复制!' : 'Copied!';
     button.classList.add('copied');
     
     // 2秒后恢复
@@ -98,7 +77,7 @@
   // 显示复制错误
   function showCopyError(button) {
     const originalText = button.textContent;
-    button.textContent = '复制失败';
+    button.textContent = getLang() === 'zh' ? '复制失败' : 'Copy failed';
     button.style.background = '#ef4444';
     button.style.color = 'white';
     
@@ -200,7 +179,7 @@
     const lines = code.split('\n').length;
     let html = '';
     for (let i = 1; i <= lines; i++) {
-      html += `<span class="line-number">${i}</span>\n`;
+      html += `<span class="line-number" data-line="${i}">${i}</span>\n`;
     }
     return html;
   }
@@ -215,12 +194,12 @@
       // 获取语言
       let lang = code.className.match(/language-([\w\d]+)/);
       lang = lang ? lang[1] : '';
-      const langLabel = lang ? lang.toUpperCase() : 'CODE';
+      const langLabel = lang ? lang.toUpperCase() : (getLang() === 'zh' ? '代码' : 'CODE');
 
       // 代码内容
       const codeText = code.textContent;
       const lines = codeText.split('\n');
-      const numberedCode = lines.map((line, idx) => `<span>${line}</span>`).join('\n');
+      const numberedCode = lines.map((line, idx) => `<span class="code-line" data-line="${idx+1}">${line}</span>`).join('\n');
       const lineNumbers = generateLineNumbers(codeText);
 
       // 构建卡片结构
@@ -229,23 +208,32 @@
       wrapper.innerHTML = `
         <div class="code-block-header">
           <span class="code-block-lang">${langLabel}</span>
-          <button class="code-block-copy" title="复制代码">复制</button>
+          <button class="code-block-copy" title="${getLang()==='zh'?'复制代码':'Copy'}">${getLang()==='zh'?'复制':'Copy'}</button>
         </div>
-        <pre class="code-block-inner"><code>${numberedCode}</code></pre>
+        <div class="code-block-flex">
+          <div class="code-block-lines">${lineNumbers}</div>
+          <pre class="code-block-inner"><code>${numberedCode}</code></pre>
+        </div>
       `;
-      // 插入行号
-      const preEl = wrapper.querySelector('.code-block-inner');
-      const lineNumDiv = document.createElement('div');
-      lineNumDiv.style.position = 'absolute';
-      lineNumDiv.style.left = '0';
-      lineNumDiv.style.top = '1.2em';
-      lineNumDiv.style.textAlign = 'right';
-      lineNumDiv.style.pointerEvents = 'none';
-      lineNumDiv.innerHTML = lineNumbers;
-      preEl.appendChild(lineNumDiv);
-
       // 替换原有pre
       pre.replaceWith(wrapper);
+    });
+    // 行号点击高亮
+    document.querySelectorAll('.code-block-lines .line-number').forEach(ln => {
+      ln.addEventListener('click', function() {
+        const line = this.getAttribute('data-line');
+        const codeLine = this.closest('.code-block-flex').querySelector(`.code-line[data-line="${line}"]`);
+        document.querySelectorAll('.code-line.active').forEach(el => el.classList.remove('active'));
+        if (codeLine) codeLine.classList.add('active');
+      });
+    });
+    // 行号与代码滚动同步
+    document.querySelectorAll('.code-block-flex').forEach(flex => {
+      const lines = flex.querySelector('.code-block-lines');
+      const pre = flex.querySelector('.code-block-inner');
+      pre.addEventListener('scroll', () => {
+        lines.scrollTop = pre.scrollTop;
+      });
     });
   }
 
@@ -256,9 +244,11 @@
         const wrapper = e.target.closest('.code-block-wrapper');
         const code = wrapper.querySelector('pre code').innerText;
         copyToClipboard(code).then(() => {
-          e.target.textContent = '已复制!';
+          e.target.textContent = getLang()==='zh'?'已复制!':'Copied!';
+          e.target.classList.add('copied');
           setTimeout(() => {
-            e.target.textContent = '复制';
+            e.target.textContent = getLang()==='zh'?'复制':'Copy';
+            e.target.classList.remove('copied');
           }, 1200);
         });
       }
