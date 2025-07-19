@@ -30,62 +30,17 @@ og_image: "/assets/images/llm-agent-hr-seo-2025.png"
 ### 🔍 Agent定义与工作原理
 大模型Agent是基于大语言模型（LLM）的智能系统，能够**自主理解、规划、执行复杂任务**。相比传统聊天机器人，Agent具备以下核心能力：
 
-```mermaid
-graph TD
-    A[用户输入] --> B[意图识别]
-    B --> C[任务规划]
-    C --> D[工具选择]
-    D --> E[执行操作]
-    E --> F[结果整合]
-    F --> G[生成回复]
-    
-    H[记忆系统] --> B
-    H --> C
-    I[知识库] --> D
-    I --> F
-    
-    style A fill:#e3f2fd,stroke:#1976d2
-    style G fill:#e8f5e9,stroke:#388e3c
-    style H fill:#fff3e0,stroke:#f57c00
-    style I fill:#fce4ec,stroke:#c2185b
-```
+<div class="chart-container" data-chart='{
+  "type": "mermaid",
+  "code": "graph TD\n    A[用户输入] --> B[意图识别]\n    B --> C[任务规划]\n    C --> D[工具选择]\n    D --> E[执行操作]\n    E --> F[结果整合]\n    F --> G[生成回复]\n    \n    H[记忆系统] --> B\n    H --> C\n    I[知识库] --> D\n    I --> F\n    \n    style A fill:#e3f2fd,stroke:#1976d2\n    style G fill:#e8f5e9,stroke:#388e3c\n    style H fill:#fff3e0,stroke:#f57c00\n    style I fill:#fce4ec,stroke:#c2185b"
+}'></div>
 
 ### Agent核心组件架构
 
-```mermaid
-classDiagram
-    class LLMAgent {
-        +model_name: str
-        +temperature: float
-        +max_tokens: int
-        +execute_task(task): str
-    }
-    
-    class ToolManager {
-        +tools: List[Tool]
-        +select_tool(query): Tool
-        +execute_tool(tool, input): Any
-    }
-    
-    class MemorySystem {
-        +short_term: ConversationBuffer
-        +long_term: VectorStore
-        +store_interaction(data)
-        +retrieve_context(query): str
-    }
-    
-    class PlanningEngine {
-        +decompose_task(task): List[str]
-        +create_workflow(steps): Workflow
-        +optimize_plan(plan): Plan
-    }
-    
-    LLMAgent --> ToolManager : uses
-    LLMAgent --> MemorySystem : uses
-    LLMAgent --> PlanningEngine : uses
-    ToolManager --> Tool : manages
-    MemorySystem --> VectorStore : uses
-```
+<div class="chart-container" data-chart='{
+  "type": "mermaid",
+  "code": "classDiagram\n    class LLMAgent {\n        +model_name: str\n        +temperature: float\n        +max_tokens: int\n        +execute_task(task): str\n    }\n    \n    class ToolManager {\n        +tools: List[Tool]\n        +select_tool(query): Tool\n        +execute_tool(tool, input): Any\n    }\n    \n    class MemorySystem {\n        +short_term: ConversationBuffer\n        +long_term: VectorStore\n        +store_interaction(data)\n        +retrieve_context(query): str\n    }\n    \n    class PlanningEngine {\n        +decompose_task(task): List[str]\n        +create_workflow(steps): Workflow\n        +optimize_plan(plan): Plan\n    }\n    \n    LLMAgent --> ToolManager : uses\n    LLMAgent --> MemorySystem : uses\n    LLMAgent --> PlanningEngine : uses\n    ToolManager --> Tool : manages\n    MemorySystem --> VectorStore : uses"
+}'></div>
 
 ### 与传统聊天机器人的区别
 
@@ -101,30 +56,7 @@ classDiagram
 
 ### 💼 核心应用场景分析
 
-```mermaid
-graph LR
-    subgraph 智能招聘自动化
-        A1[AI简历筛选] --> A2[智能面试安排]
-        A2 --> A3[候选人评估报告]
-        A3 --> A4[offer自动生成]
-    end
-    
-    subgraph 员工服务智能化
-        B1[24/7智能客服] --> B2[政策自动解答]
-        B2 --> B3[休假流程自动化]
-        B3 --> B4[福利智能推荐]
-    end
-    
-    subgraph 人才发展AI
-        C1[技能差距分析] --> C2[个性化培训路径]
-        C2 --> C3[学习效果评估]
-        C3 --> C4[职业发展规划]
-    end
-    
-    style A1 fill:#e8f5e9,stroke:#2e7d32
-    style B1 fill:#e3f2fd,stroke:#1976d2
-    style C1 fill:#fce4ec,stroke:#c218b5
-```
+<div class="phoenix-chart-container" data-chart='{"type":"mermaid","code":"graph LR\n    subgraph 智能招聘自动化\n        A1[AI简历筛选] --> A2[智能面试安排]\n        A2 --> A3[候选人评估报告]\n        A3 --> A4[offer自动生成]\n    end\n    \n    subgraph 员工服务智能化\n        B1[24/7智能客服] --> B2[政策自动解答]\n        B2 --> B3[休假流程自动化]\n        B3 --> B4[福利智能推荐]\n    end\n    \n    subgraph 人才发展AI\n        C1[技能差距分析] --> C2[个性化培训路径]\n        C2 --> C3[学习效果评估]\n        C3 --> C4[职业发展规划]\n    end\n    \n    style A1 fill:#e8f5e9,stroke:#2e7d32\n    style B1 fill:#e3f2fd,stroke:#1976d2\n    style C1 fill:#fce4ec,stroke:#c218b5"}'></div>
 
 ### 📊 实际商业价值案例
 
@@ -311,28 +243,7 @@ HR助手：根据公司政策，员工享有15天带薪年假，工作满3年增
 HR助手：可以的！公司支持远程办公政策：每周可申请2天远程办公，需提前1天申请。
 --------------------------------------------------
 用户：如果生病了，病假怎么计算？
-HR助手：病假政策：每年享有12天带薪病假，需提供医疗证明。
-```
-
-## 实战项目2：智能简历解析系统
-
-### 🎯 项目目标
-开发一个能够自动解析简历、提取关键信息、评估候选人匹配度的智能系统。
-
-### 📋 系统架构设计
-
-```mermaid
-graph TD
-    A[PDF/Word简历上传] --> B[文档解析引擎]
-    B --> C[信息提取NLP]
-    C --> D[技能关键词匹配]
-    D --> E[候选人评分]
-    E --> F[生成评估报告]
-    
-    G[职位需求库] --> D
-    H[技能词典] --> C
-    
-    style A fill:#e3f2fd,stroke:#1976d2
+HR助手：病假政策：每年享有12天带薪病假，需提供医疗<div class="phoenix-chart-container" data-chart='{"type":"mermaid","code":"graph TD\n    A[PDF/Word简历上传] --> B[文档解析引擎]\n    B --> C[信息提取NLP]\n    C --> D[技能关键词匹配]\n    D --> E[候选人评分]\n    E --> F[生成评估报告]\n    \n    G[职位需求库] --> D\n    H[技能词典] --> C\n    \n    style A fill:#e3f2fd,stroke:#1976d2\n    style F fill:#e8f5e9,stroke:#388e3c\n    style G fill:#fff3e0,stroke:#f57c00"}'></div>#1976d2
     style F fill:#e8f5e9,stroke:#388e3c
     style G fill:#fff3e0,stroke:#f57c00
 ```
@@ -583,24 +494,7 @@ $ python resume_parser.py
             filename        name  score recommendation
 0     zhang_san.pdf      张三   85.0         推荐面试
 1     li_si_resume.pdf    李四   72.0         推荐面试
-2     wang_wu.pdf        王五   65.0         不推荐
-3     zhao_liu.docx      赵六   45.0         不推荐
-```
-
-## 实战项目3：员工入职助手完整方案
-
-### 🎯 项目目标
-构建一个全流程的员工入职自动化助手，从offer接受到正式入职的完整引导系统。
-
-### 🏗️ 系统功能模块
-
-```mermaid
-graph TD
-    A[Offer接受确认] --> B[入职材料清单]
-    B --> C[账号权限申请]
-    C --> D[办公设备预订]
-    D --> E[入职培训安排]
-    E --> F[导师匹配]
+2     wang_wu.pd<div class="phoenix-chart-container" data-chart='{"type":"mermaid","code":"graph TD\n    A[Offer接受确认] --> B[入职材料清单]\n    B --> C[账号权限申请]\n    C --> D[办公设备预订]\n    D --> E[入职培训安排]\n    E --> F[导师匹配]\n    F --> G[入职日提醒]\n    \n    H[HR系统] --> A\n    I[IT系统] --> C\n    J[行政部门] --> D\n    \n    style A fill:#e3f2fd,stroke:#1976d2\n    style G fill:#e8f5e9,stroke:#388e3c"}'></div>[导师匹配]
     F --> G[入职日提醒]
     
     H[HR系统] --> A
@@ -888,45 +782,7 @@ if __name__ == "__main__":
     assistant.register_employee(new_employee)
     
     # 获取下一步行动
-    next_action = assistant.get_next_action("liming@example.com")
-    print("下一步行动：", next_action)
-    
-    # 生成进度报告
-    report = assistant.generate_onboarding_report("liming@example.com")
-    print("入职进度报告：", report)
-```
-
-## 企业级部署架构与性能优化
-
-### 🏗️ 微服务架构设计
-
-```mermaid
-graph TB
-    subgraph 前端层
-        A[Web界面] --> B[移动端App]
-        B --> C[小程序]
-    end
-    
-    subgraph API网关
-        D[Nginx负载均衡]
-        E[API Gateway]
-    end
-    
-    subgraph 服务层
-        F[HR问答服务]
-        G[简历解析服务]
-        H[入职助手服务]
-        I[用户管理服务]
-    end
-    
-    subgraph 数据层
-        J[PostgreSQL]
-        K[Redis缓存]
-        L[Elasticsearch]
-        M[MinIO文件存储]
-    end
-    
-    subgraph AI模型层
+ <div class="phoenix-chart-container" data-chart='{"type":"mermaid","code":"graph TB\n    subgraph 前端层\n        A[Web界面] --> B[移动端App]\n        B --> C[小程序]\n    end\n    \n    subgraph API网关\n        D[Nginx负载均衡]\n        E[API Gateway]\n    end\n    \n    subgraph 服务层\n        F[HR问答服务]\n        G[简历解析服务]\n        H[入职助手服务]\n        I[用户管理服务]\n    end\n    \n    subgraph 数据层\n        J[PostgreSQL]\n        K[Redis缓存]\n        L[Elasticsearch]\n        M[MinIO文件存储]\n    end\n    \n    subgraph AI模型层\n        N[OpenAI API]\n        O[本地模型服务]\n        P[向量数据库]\n    end\n    \n    A --> D\n    D --> E\n    E --> F\n    E --> G\n    E --> H\n    E --> I\n    \n    F --> J\n    G --> M\n    H --> K\n    I --> J\n    \n    F --> N\n    G --> O\n    H --> P"}'></div>  subgraph AI模型层
         N[OpenAI API]
         O[本地模型服务]
         P[向量数据库]

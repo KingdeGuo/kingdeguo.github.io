@@ -26,95 +26,14 @@ mermaid: true
 
 ### 1.1 整体架构概览
 
-```mermaid
-graph TB
-    subgraph "用户层"
-        A[Web Portal] 
-        B[Mobile App]
-        C[API/SDK]
-    end
-    
-    subgraph "接入层"
-        D[API Gateway]
-        E[负载均衡]
-        F[限流熔断]
-    end
-    
-    subgraph "应用层"
-        G[对话管理]
-        H[上下文管理]
-        I[多轮对话]
-    end
-    
-    subgraph "智能层"
-        J[意图识别]
-        K[路由分发]
-        L[Agent编排]
-    end
-    
-    subgraph "知识引擎"
-        M[向量化服务]
-        N[检索服务]
-        O[重排序]
-        P[知识融合]
-    end
-    
-    subgraph "存储层"
-        Q[向量数据库]
-        R[图数据库]
-        S[对象存储]
-        T[缓存层]
-    end
-    
-    subgraph "模型层"
-        U[大模型集群]
-        V[微调服务]
-        W[模型管理]
-    end
-    
-    A --> D
-    B --> D
-    C --> D
-    D --> E
-    E --> F
-    F --> G
-    G --> H
-    H --> I
-    I --> J
-    J --> K
-    K --> L
-    L --> M
-    M --> N
-    N --> O
-    O --> P
-    P --> U
-    Q --> N
-    R --> P
-    S --> M
-    T --> Q
-    U --> W
-    V --> U
-```
+<div class="phoenix-chart-container" data-chart='{"type":"mermaid","code":"graph TB\n    subgraph \"用户层\"\n        A[Web Portal] \n        B[Mobile App]\n        C[API/SDK]\n    end\n    \n    subgraph \"接入层\"\n        D[API Gateway]\n        E[负载均衡]\n        F[限流熔断]\n    end\n    \n    subgraph \"应用层\"\n        G[对话管理]\n        H[上下文管理]\n        I[多轮对话]\n    end\n    \n    subgraph \"智能层\"\n        J[意图识别]\n        K[路由分发]\n        L[Agent编排]\n    end\n    \n    subgraph \"知识引擎\"\n        M[向量化服务]\n        N[检索服务]\n        O[重排序]\n        P[知识融合]\n    end\n    \n    subgraph \"存储层\"\n        Q[向量数据库]\n        R[图数据库]\n        S[对象存储]\n        T[缓存层]\n    end\n    \n    subgraph \"模型层\"\n        U[大模型集群]\n        V[微调服务]\n        W[模型管理]\n    end\n    \n    A --> D\n    B --> D\n    C --> D\n    D --> E\n    E --> F\n    F --> G\n    G --> H\n    H --> I\n    I --> J\n    J --> K\n    K --> L\n    L --> M\n    M --> N\n    N --> O\n    O --> P\n    P --> U\n    Q --> N\n    R --> P\n    S --> M\n    T --> Q\n    U --> W\n    V --> U"}'></div>
 
 ### 1.2 关键设计原则
 
 | 设计维度 | 生产级要求 | 实验室级别 |
 |---------|------------|------------|
 | **可用性** | 99.9%+ SLA | 无要求 |
-| **延迟** | <500ms P99 | 2-5秒可接受 |
-| **并发** | 1000+ QPS | 单用户测试 |
-| **安全** | 企业级加密+审计 | 基础认证 |
-| **扩展性** | 水平扩展 | 单机部署 |
-
-## 二、知识库构建：从数据到智能
-
-### 2.1 数据接入与处理流水线
-
-```mermaid
-flowchart LR
-    A[多源数据] --> B[数据连接器]
-    B --> C[格式标准化]
-    C --> D[内容分块]
+| **延迟** |<div class="phoenix-chart-container" data-chart='{"type":"mermaid","code":"flowchart LR\n    A[多源数据] --> B[数据连接器]\n    B --> C[格式标准化]\n    C --> D[内容分块]\n    D --> E[质量评估]\n    E --> F[向量化]\n    F --> G[索引构建]\n    G --> H[知识图谱]\n    \n    style A fill:#f9f,stroke:#333\n    style H fill:#9f9,stroke:#333"}'></div>块]
     D --> E[质量评估]
     E --> F[向量化]
     F --> G[索引构建]
@@ -290,17 +209,7 @@ class ContinuousLearner:
         high_quality = [f for f in self.feedback_buffer if f['rating'] >= 4]
         
         if len(high_quality) > 100:
-            # 增量微调
-            self.incremental_finetune(high_quality)
-            
-            # 更新知识库
-            self.update_knowledge_base(high_quality)
-        
-        self.feedback_buffer = []
-```
-
-## 四、性能优化：从可用到好用
-
+         <div class="phoenix-chart-container" data-chart='{"type":"mermaid","code":"graph TD\n    A[用户查询] --> B[CDN缓存]\n    B --> C{缓存命中?}\n    C -->|是| D[直接返回]\n    C -->|否| E[应用缓存]\n    E --> F{缓存命中?}\n    F -->|是| G[返回并更新CDN]\n    F -->|否| H[向量检索]\n    H --> I[大模型生成]\n    I --> J[更新多级缓存]"}'></div>
 ### 4.1 多级缓存架构
 
 ```mermaid
@@ -350,21 +259,7 @@ class QueryOptimizer:
         rewritten = self.rewrite_query(query)
         
         return {
-            'optimized_query': rewritten,
-            'use_cache': True,
-            'parallel_search': True
-        }
-```
-
-### 4.3 成本控制策略
-
-**智能降本机制**：
-
-| 策略 | 降本效果 | 质量影响 |
-|------|----------|----------|
-| **模型降级** | 节省70% | 轻微下降 |
-| **缓存优化** | 节省50% | 无影响 |
-| **查询合并** | 节省30% | 无影响 |
+            'optimized_query': rewritten<div class="phoenix-chart-container" data-chart='{"type":"mermaid","code":"graph LR\n    A[用户输入] --> B[内容过滤]\n    B --> C[权限验证]\n    C --> D[数据脱敏]\n    D --> E[审计日志]\n    E --> F[响应过滤]\n    \n    style B fill:#ffcccc\n    style C fill:#ccffcc\n    style D fill:#ccccff\n    style E fill:#ffffcc"}'></div>查询合并** | 节省30% | 无影响 |
 | **预计算** | 节省80% | 无影响 |
 
 ## 五、安全与合规：从功能到信任

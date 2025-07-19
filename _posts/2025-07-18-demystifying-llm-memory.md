@@ -105,17 +105,7 @@ print(f"保留的话题: {[msg['content'][:20] + '...' for msg in chat.conversat
 
 大语言模型的记忆主要体现在两个层面：
 
-```mermaid
-graph TD
-    A[模型权重] --> B(长期知识存储)
-    C[上下文窗口] --> D(短期记忆)
-    E[外部向量存储] --> F(扩展记忆)
-    G[知识图谱] --> F
-    style A fill:#4ECDC4
-    style C fill:#45B7D1
-    style E fill:#96CEB4
-    style G fill:#FFEEAD
-```
+<div class="phoenix-chart-container" data-chart='{"type":"mermaid","code":"graph TD\n    A[模型权重] --> B(长期知识存储)\n    C[上下文窗口] --> D(短期记忆)\n    E[外部向量存储] --> F(扩展记忆)\n    G[知识图谱] --> F\n    style A fill:#4ECDC4\n    style C fill:#45B7D1\n    style E fill:#96CEB4\n    style G fill:#FFEEAD"}'></div>
 
 ### 2.2 记忆的分类
 
@@ -132,38 +122,7 @@ $$ \text{有效记忆长度} = \min(\text{上下文窗口长度}, \frac{\text{�
 
 这个公式表明：
 - 有效记忆长度受限于上下文窗口的物理限制
-- 模型参数量越大，理论上能存储的知识越多
-- 信息密度越高（即信息复杂度越高），实际可存储的有效内容越少
-
-### 2.4 记忆层次结构
-
-让我们通过一个更清晰的图表来理解大模型的记忆层次：
-
-```mermaid
-graph TD
-    subgraph "记忆层次结构"
-        subgraph "核心记忆"
-            PM[模型权重<br/>长期存储]
-        end
-        
-        subgraph "短期记忆"
-            CM[上下文窗口<br/>临时存储]
-        end
-        
-        subgraph "扩展记忆"
-            EM[向量数据库<br/>长期存储]
-            KB[知识图谱<br/>结构化记忆]
-        end
-    end
-    
-    User[用户输入] --> CM
-    CM --> |推理| PM
-    CM --> |检索| EM
-    EM --> |增强| CM
-    KB --> |补充| EM
-    
-    style PM fill:#e1f5fe
-    style CM fill:#fff3e0
+- 模型参数量越大，理论上能存储的知识越<div class="phoenix-chart-container" data-chart='{"type":"mermaid","code":"graph TD\n    subgraph \"记忆层次结构\"\n        subgraph \"核心记忆\"\n            PM[模型权重<br/>长期存储]\n        end\n        \n        subgraph \"短期记忆\"\n            CM[上下文窗口<br/>临时存储]\n        end\n        \n        subgraph \"扩展记忆\"\n            EM[向量数据库<br/>长期存储]\n            KB[知识图谱<br/>结构化记忆]\n        end\n    end\n    \n    User[用户输入] --> CM\n    CM --> |推理| PM\n    CM --> |检索| EM\n    EM --> |增强| CM\n    KB --> |补充| EM\n    \n    style PM fill:#e1f5fe\n    style CM fill:#fff3e0\n    style EM fill:#f3e5f5\n    style KB fill:#d1c4e9"}'></div> style CM fill:#fff3e0
     style EM fill:#f3e5f5
     style KB fill:#d1c4e9
 ```
@@ -203,21 +162,7 @@ demonstrate_attention_complexity()
 序列长度 vs 计算复杂度:
 序列长度:  512 | 计算量:   262144 | 内存(MB): 0.06
 序列长度: 1024 | 计算量:  1048576 | 内存(MB): 0.25
-序列长度: 2048 | 计算量:  4194304 | 内存(MB): 1.00
-序列长度: 4096 | 计算量: 16777216 | 内存(MB): 4.00
-序列长度: 8192 | 计算量: 67108864 | 内存(MB): 16.00
-```
-
-### 3.2 位置编码与序列长度限制
-
-不同的大模型采用不同的位置编码方案来扩展上下文长度：
-
-```mermaid
-graph LR
-    subgraph "位置编码演进"
-        A[绝对位置编码<br/>BERT/GPT] --> B[相对位置编码<br/>Transformer-XL]
-        B --> C[RoPE旋转编码<br/>LLaMA]
-        C --> D[ALiBi线性偏置<br/>Bloom]
+<div class="phoenix-chart-container" data-chart='{"type":"mermaid","code":"graph LR\n    subgraph \"位置编码演进\"\n        A[绝对位置编码<br/>BERT/GPT] --> B[相对位置编码<br/>Transformer-XL]\n        B --> C[RoPE旋转编码<br/>LLaMA]\n        C --> D[ALiBi线性偏置<br/>Bloom]\n        D --> E[NTK扩展<br/>CodeLLaMA]\n        E --> F[YaRN<br/>2M上下文]\n    end\n    \n    style A fill:#ffcccc\n    style C fill:#ccffcc\n    style F fill:#ccccff"}'></div>ALiBi线性偏置<br/>Bloom]
         D --> E[NTK扩展<br/>CodeLLaMA]
         E --> F[YaRN<br/>2M上下文]
     end
@@ -256,34 +201,7 @@ def plot_context_length_evolution():
     
     ax.set_ylabel('上下文长度 (K tokens)', fontsize=12)
     ax.set_title('大模型上下文长度演进史', fontsize=14, fontweight='bold')
-    ax.set_yscale('log')  # 对数尺度
-    
-    plt.tight_layout()
-    plt.savefig('context_length_evolution.png', dpi=300)
-    return fig
-
-# 绘制图表
-plot_context_length_evolution()
-```
-
-## 第四章：RAG技术-外部记忆系统
-
-### 4.1 RAG架构设计原理
-
-RAG（Retrieval-Augmented Generation）技术通过**检索增强生成**来解决大模型的记忆限制：
-
-```mermaid
-graph TD
-    subgraph "RAG系统架构"
-        subgraph "数据准备阶段"
-            Docs[原始文档] --> Split[文本分块]
-            Split --> Embed[向量化]
-            Embed --> Store[向量数据库]
-        end
-        
-        subgraph "查询阶段"
-            Query[用户查询] --> Embed2[查询向量化]
-            Embed2 --> Search[相似度搜索]
+    ax.set_yscale<div class="phoenix-chart-container" data-chart='{"type":"mermaid","code":"graph TD\n    subgraph \"RAG系统架构\"\n        subgraph \"数据准备阶段\"\n            Docs[原始文档] --> Split[文本分块]\n            Split --> Embed[向量化]\n            Embed --> Store[向量数据库]\n        end\n        \n        subgraph \"查询阶段\"\n            Query[用户查询] --> Embed2[查询向量化]\n            Embed2 --> Search[相似度搜索]\n            Store --> Search\n            Search --> Retrieve[检索相关片段]\n            Retrieve --> Prompt[构建增强提示]\n            Prompt --> LLM[大模型生成]\n        end\n    end\n    \n    style Docs fill:#ffcccc\n    style Query fill:#ccffcc\n    style LLM fill:#ccccff"}'></div>h[相似度搜索]
             Store --> Search
             Search --> Retrieve[检索相关片段]
             Retrieve --> Prompt[构建增强提示]
@@ -1120,12 +1038,7 @@ volumes:
             name='响应时间'
         ))
         
-        fig.update_layout(title="响应时间趋势", xaxis_title="时间", yaxis_title="响应时间(秒)")
-        st.plotly_chart(fig, use_container_width=True)
-
-# 使用示例
-comparison = VectorDatabaseComparison()
-recommendation = comparison.get_recommendation("生产环境", "中")
+        fig.update_layout(titl<div class="phoenix-chart-container" data-chart='{"type":"mermaid","code":"graph TD\n    A[Transformer] --> B[Mamba]\n    B --> C[RWKV]\n    C --> D[RetNet]\n    D --> E[Hyena]\n    E --> F[无限上下文]\n    \n    style A fill:#ffcccc\n    style C fill:#ccffcc\n    style F fill:#ccccff"}'></div>"中")
 print(json.dumps(recommendation, indent=2, ensure_ascii=False))
 ```
 

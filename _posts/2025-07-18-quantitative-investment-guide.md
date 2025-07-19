@@ -121,27 +121,7 @@ print(f"量化投资夏普比率提升 {(quant_returns.mean()/quant_returns.std(
 
 量化投资系统包含以下核心组件：
 
-```mermaid
-graph TD
-    A[数据收集] --> B[数据清洗]
-    B --> C[特征工程]
-    C --> D[策略开发]
-    D --> E[回测验证]
-    E --> F[实盘执行]
-    F --> G[风险管理]
-    G --> H[绩效评估]
-    H --> I[策略优化]
-    I --> D
-    
-    J[机器学习] --> C
-    K[统计分析] --> D
-    L[技术指标] --> C
-    
-    style A fill:#90EE90
-    style D fill:#FFD700
-    style G fill:#FFB6C1
-    style F fill:#87CEEB
-```
+<div class="phoenix-chart-container" data-chart='{"type":"mermaid","code":"graph TD\n    A[数据收集] --> B[数据清洗]\n    B --> C[特征工程]\n    C --> D[策略开发]\n    D --> E[回测验证]\n    E --> F[实盘执行]\n    F --> G[风险管理]\n    G --> H[绩效评估]\n    H --> I[策略优化]\n    I --> D\n    \n    J[机器学习] --> C\n    K[统计分析] --> D\n    L[技术指标] --> C\n    \n    style A fill:#90EE90\n    style D fill:#FFD700\n    style G fill:#FFB6C1\n    style F fill:#87CEEB"}'></div>
 
 ### 📈 与传统投资对比分析
 
@@ -180,31 +160,7 @@ graph TD
    def information_ratio(returns, benchmark_returns):
        """计算信息比率"""
        active_returns = returns - benchmark_returns
-       return active_returns.mean() / active_returns.std()
-   ```
-
-## 第三章：工作原理剖析 {#第三章工作原理剖析}
-
-### 🔄 数据流程详解
-
-量化投资的数据处理流程是一个精密的系统工程：
-
-```mermaid
-graph LR
-    A[原始市场数据] --> B[数据清洗]
-    B --> C[特征工程]
-    C --> D[模型训练]
-    D --> E[信号生成]
-    E --> F[交易执行]
-    
-    B1[缺失值处理] --> B
-    B2[异常值检测] --> B
-    B3[数据标准化] --> B
-    
-    C1[技术指标计算] --> C
-    C2[基本面因子] --> C
-    C3[情绪指标] --> C
-    C4[另类数据] --> C
+       return active_returns.mean() / active_r<div class="phoenix-chart-container" data-chart='{"type":"mermaid","code":"graph LR\n    A[原始市场数据] --> B[数据清洗]\n    B --> C[特征工程]\n    C --> D[模型训练]\n    D --> E[信号生成]\n    E --> F[交易执行]\n    \n    B1[缺失值处理] --> B\n    B2[异常值检测] --> B\n    B3[数据标准化] --> B\n    \n    C1[技术指标计算] --> C\n    C2[基本面因子] --> C\n    C3[情绪指标] --> C\n    C4[另类数据] --> C\n    \n    style A fill:#ff9999\n    style F fill:#99ff99\n    style D fill:#9999ff"}'></div>-> C
     
     style A fill:#ff9999
     style F fill:#99ff99
@@ -445,27 +401,7 @@ risk_report = risk_manager.generate_risk_report(sample_returns, {'AAPL': 0.05, '
 
 print("风险报告:")
 for metric, value in risk_report.items():
-    print(f"{metric}: {value}")
-```
-
-## 第四章：实际应用案例 {#第四章实际应用案例}
-
-### 🏆 文艺复兴科技公司案例分析
-
-**文艺复兴科技（Renaissance Technologies）**是量化投资领域的传奇，其旗舰基金Medallion Fund年化收益达35%+，持续30年。
-
-#### 成功要素分析：
-
-```mermaid
-graph TD
-    A[数据优势] --> B[独特数据源]
-    B --> C[卫星数据]
-    B --> D[信用卡数据]
-    B --> E[天气数据]
-    
-    F[技术优势] --> G[顶级科学家团队]
-    G --> H[数学家]
-    G --> I[物理学家]
+    prin<div class="phoenix-chart-container" data-chart='{"type":"mermaid","code":"graph TD\n    A[数据优势] --> B[独特数据源]\n    B --> C[卫星数据]\n    B --> D[信用卡数据]\n    B --> E[天气数据]\n    \n    F[技术优势] --> G[顶级科学家团队]\n    G --> H[数学家]\n    G --> I[物理学家]\n    G --> J[计算机科学家]\n    \n    K[策略优势] --> L[高频交易]\n    K --> M[统计套利]\n    K --> N[机器学习]\n    \n    style A fill:#90EE90\n    style F fill:#FFD700\n    style K fill:#FFB6C1"}'></div>I[物理学家]
     G --> J[计算机科学家]
     
     K[策略优势] --> L[高频交易]
@@ -655,23 +591,7 @@ for key, value in backtest_result.items():
 # 可视化回测结果
 plt.figure(figsize=(12, 6))
 plt.plot(backtest_result['收益曲线'])
-plt.title('双均线策略回测收益曲线')
-plt.xlabel('交易日')
-plt.ylabel('资金 ($)')
-plt.grid(True, alpha=0.3)
-plt.axhline(y=10000, color='r', linestyle='--', label='初始资金')
-plt.legend()
-plt.tight_layout()
-plt.show()
-```
-
-## 第五章：发展趋势与展望 {#第五章发展趋势与展望}
-
-### 🤖 机器学习与量化投资的融合
-
-#### 深度学习在量化投资中的应用
-
-```mermaid
+plt.titl<div class="phoenix-chart-container" data-chart='{"type":"mermaid","code":"graph TD\n    A[传统量化] --> B[机器学习增强]\n    B --> C[深度学习]\n    \n    C --> D[LSTM预测]\n    C --> E[强化学习]\n    C --> F[图神经网络]\n    \n    D --> G[时间序列预测]\n    E --> H[策略优化]\n    F --> I[关系建模]\n    \n    style A fill:#90EE90\n    style C fill:#FFD700\n    style G fill:#FFB6C1"}'></div>aid
 graph TD
     A[传统量化] --> B[机器学习增强]
     B --> C[深度学习]
@@ -821,18 +741,7 @@ plt.title('最近100次Episode收益分布')
 plt.xlabel('Total Reward')
 plt.tight_layout()
 plt.show()
-```
-
-### 📊 另类数据革命
-
-#### 新兴数据源类型
-
-| 数据类型 | 应用示例 | 优势 | 挑战 |
-|---------|----------|------|------|
-| **卫星图像** | 停车场车辆计数预测零售销售 | 实时性强 | 成本高 |
-| **社交媒体** | Twitter情绪分析预测股价 | 反映市场情绪 | 噪声大 |
-| **信用卡数据** | 消费趋势分析预测公司业绩 | 领先指标 | 隐私问题 |
-| **天气数据** | 农产品期货价格预测 | 因果关系明确 | 地域局限 |
+`<div class="phoenix-chart-container" data-chart='{"type":"mermaid","code":"timeline\n    title 量化投资技术演进时间线\n    \n    2025 : 机器学习普及\n          : 另类数据整合\n          : 云计算平台成熟\n    \n    2026-2027 : 量子计算应用\n               : 联邦学习\n               : 实时情绪分析\n    \n    2028-2030 : 通用人工智能\n               : 完全自动化交易\n               : 个性化投资策略"}'></div>| 地域局限 |
 | **APP使用数据** | 用户活跃度预测公司前景 | 用户行为洞察 | 数据获取难 |
 
 ### 🔮 未来发展趋势
@@ -900,21 +809,7 @@ class ComplianceMonitor:
         }
 
 # 使用示例
-monitor = ComplianceMonitor()
-sample_trades = [
-    {'size': 50000, 'sector': 'technology', 'esg_score': 85},
-    {'size': 150000, 'sector': 'tobacco', 'esg_score': 60}
-]
-
-report = monitor.generate_compliance_report(sample_trades)
-print("合规报告:", report)
-```
-
-### 🎯 个人投资者机会
-
-#### 量化投资平台普及化
-
-1. **零代码平台**：如QuantConnect、Backtrader
+monitor = ComplianceM<div class="phoenix-chart-container" data-chart='{"type":"mermaid","code":"graph TD\n    A[基础知识] --> B[Python编程]\n    B --> C[数据分析]\n    C --> D[金融理论]\n    D --> E[策略开发]\n    E --> F[回测系统]\n    F --> G[实盘交易]\n    \n    H[学习资源] --> I[在线课程]\n    H --> J[开源项目]\n    H --> K[模拟交易]\n    \n    style A fill:#90EE90\n    style G fill:#FFD700\n    style H fill:#FFB6C1"}'></div>antConnect、Backtrader
 2. **API服务**：如Alpha Vantage、Yahoo Finance
 3. **教育资源**：Coursera量化投资课程、Kaggle竞赛
 4. **社区支持**：Reddit量化投资板块、微信群组

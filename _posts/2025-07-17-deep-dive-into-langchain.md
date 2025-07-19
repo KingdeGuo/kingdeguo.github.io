@@ -17,19 +17,7 @@ mermaid: true
 
 这就是今天的大语言模型面临的困境！
 
-```mermaid
-graph TD
-    A[米其林厨师<br>LLM] -->|知道所有菜谱| B[理论知识]
-    A -->|但不会| C[查看你的冰箱<br>私有数据]
-    A -->|也不会| D[使用新厨具<br>外部工具]
-    A -->|更不知道| E[你今晚的口味<br>实时需求]
-    
-    style A fill:#ffcccc
-    style B fill:#ccffcc
-    style C fill:#ffcccc
-    style D fill:#ffcccc
-    style E fill:#ffcccc
-```
+<div class="phoenix-chart-container" data-chart='{"type":"mermaid","code":"graph TD\n    A[米其林厨师<br>LLM] -->|知道所有菜谱| B[理论知识]\n    A -->|但不会| C[查看你的冰箱<br>私有数据]\n    A -->|也不会| D[使用新厨具<br>外部工具]\n    A -->|更不知道| E[你今晚的口味<br>实时需求]\n    \n    style A fill:#ffcccc\n    style B fill:#ccffcc\n    style C fill:#ffcccc\n    style D fill:#ffcccc\n    style E fill:#ffcccc"}'></div>
 
 **LangChain 就是打开厨房门的钥匙** 🔑
 
@@ -42,33 +30,7 @@ graph TD
 
 ## 🎯 第一部分：核心概念图解 - 用乐高积木的方式理解
 
-### 1.1 LangChain 的魔法盒子
-
-LangChain 就像一个魔法工具箱，里面装满了各种乐高积木。每个积木都有特定的功能，你可以自由组合它们来建造任何你想要的东西。
-
-```mermaid
-graph TB
-    subgraph "LangChain 魔法工具箱"
-        A[Models<br>🤖 大脑] 
-        B[Prompts<br>📝 指令]
-        C[Chains<br>🔗 流水线]
-        D[Memory<br>🧠 记忆]
-        E[Agents<br>🕵️ 特工]
-        F[Tools<br>🛠️ 工具]
-        G[Indexes<br>📚 知识库]
-    end
-    
-    A --> C
-    B --> C
-    C --> D
-    C --> E
-    E --> F
-    C --> G
-    
-    style A fill:#e1f5fe
-    style B fill:#fff3e0
-    style C fill:#f3e5f5
-    style D fill:#e8f5e9
+### 1.1 Lang<div class="phoenix-chart-container" data-chart='{"type":"mermaid","code":"graph TB\n    subgraph \"LangChain 魔法工具箱\"\n        A[Models<br>🤖 大脑] \n        B[Prompts<br>📝 指令]\n        C[Chains<br>🔗 流水线]\n        D[Memory<br>🧠 记忆]\n        E[Agents<br>🕵️ 特工]\n        F[Tools<br>🛠️ 工具]\n        G[Indexes<br>📚 知识库]\n    end\n    \n    A --> C\n    B --> C\n    C --> D\n    C --> E\n    E --> F\n    C --> G\n    \n    style A fill:#e1f5fe\n    style B fill:#fff3e0\n    style C fill:#f3e5f5\n    style D fill:#e8f5e9\n    style E fill:#fff8e1\n    style F fill:#fce4ec\n    style G fill:#e0f2f1"}'></div>9
     style E fill:#fff8e1
     style F fill:#fce4ec
     style G fill:#e0f2f1
@@ -91,18 +53,7 @@ print(response.content)
 
 **输出：**
 ```
-人工智能就是让计算机像人一样思考和学习的技术。就像小孩学认字一样，通过大量例子和练习，计算机也能学会识别图像、理解语言、做出决策...
-```
-
-就这么简单！你已经成功调用了大语言模型。
-
----
-
-## 🏗️ 第二部分：逐步深入 - 构建你的智能助手
-
-### 2.1 加入提示模板：让对话更智能
-
-现在让我们升级一下，加入提示模板，就像给厨师一个详细的订单：
+人工智能就是让计<div class="phoenix-chart-container" data-chart='{"type":"mermaid","code":"graph LR\n    A[用户问题] --> B[提示模板]\n    B --> C[格式化的问题]\n    C --> D[LLM]\n    D --> E[回答]\n    \n    style B fill:#fff3e0\n    style C fill:#e3f2fd"}'></div>入提示模板，就像给厨师一个详细的订单：
 
 ```mermaid
 graph LR
@@ -122,31 +73,7 @@ from langchain.prompts import ChatPromptTemplate
 # 创建专业的点餐模板
 prompt_template = ChatPromptTemplate.from_messages([
     ("system", "你是一位专业的{role}，用通俗易懂的语言回答问题。"),
-    ("human", "{question}")
-])
-
-# 初始化厨师
-chef = ChatOpenAI(model="gpt-3.5-turbo")
-
-# 创建链
-chain = prompt_template | chef
-
-# 使用
-response = chain.invoke({
-    "role": "科技解说员",
-    "question": "什么是LangChain？"
-})
-print(response.content)
-```
-
-### 2.2 加入记忆：让厨师记住你的喜好
-
-```mermaid
-sequenceDiagram
-    participant User
-    participant Chain
-    participant Memory
-    participant LLM
+    ("h<div class="phoenix-chart-container" data-chart='{"type":"mermaid","code":"sequenceDiagram\n    participant User\n    participant Chain\n    participant Memory\n    participant LLM\n    \n    User->>Chain: 你好，我喜欢川菜\n    Chain->>Memory: 存储偏好：喜欢川菜\n    Chain->>LLM: 生成回答\n    LLM-->>User: 很高兴认识你！\n    \n    User->>Chain: 推荐一道菜\n    Chain->>Memory: 读取偏好\n    Memory-->>Chain: 喜欢川菜\n    Chain->>LLM: 基于川菜偏好推荐\n    LLM-->>User: 我推荐麻婆豆腐..."}'></div>nt LLM
     
     User->>Chain: 你好，我喜欢川菜
     Chain->>Memory: 存储偏好：喜欢川菜
@@ -171,21 +98,7 @@ from langchain.chains import ConversationChain
 chef = ChatOpenAI(model="gpt-3.5-turbo")
 memory = ConversationBufferMemory()
 
-conversation = ConversationChain(
-    llm=chef,
-    memory=memory,
-    verbose=True  # 可以看到内部过程
-)
-
-# 开始对话
-print(conversation.predict(input="你好，我叫小明，我喜欢吃川菜"))
-print(conversation.predict(input="那你能推荐一道菜给我吗？"))
-```
-
----
-
-## 📚 第三部分：RAG实战 - 让厨师读你的私人食谱
-
+conv<div class="phoenix-chart-container" data-chart='{"type":"mermaid","code":"graph TD\n    A[用户问题] --> B[搜索相关食谱段落]\n    B --> C[找到相关内容]\n    C --> D[结合食谱内容生成回答]\n    D --> E[个性化回答]\n    \n    style A fill:#ffcccc\n    style B fill:#fff3e0\n    style C fill:#e3f2fd\n    style D fill:#f3e5f5\n    style E fill:#e8f5e9"}'></div>
 ### 3.1 RAG是什么？为什么需要它？
 
 **RAG (Retrieval-Augmented Generation)** 就像给厨师一本你的私人食谱，让他根据食谱来回答问题。
@@ -259,18 +172,7 @@ retriever = vectorstore.as_retriever(
 # 创建问答链
 qa_chain = RetrievalQA.from_chain_type(
     llm=ChatOpenAI(model="gpt-3.5-turbo"),
-    chain_type="stuff",  # 简单直接的方式
-    retriever=retriever,
-    return_source_documents=True  # 返回参考的文档
-)
-
-# 使用
-query = "这篇文档的主要内容是什么？"
-result = qa_chain({"query": query})
-
-print("回答：", result["result"])
-print("\n参考的文档段落：")
-for doc in result["source_documents"]:
+    chain_type="stuff",<div class="phoenix-chart-container" data-chart='{"type":"mermaid","code":"stateDiagram-v2\n    [*] --> 接收任务\n    接收任务 --> 思考需要什么工具\n    思考需要什么工具 --> 选择合适工具\n    选择合适工具 --> 使用工具\n    使用工具 --> 观察结果\n    观察结果 --> 任务完成？\n    任务完成？ --> 是: 返回结果\n    任务完成？ --> 否: 思考需要什么工具\n    返回结果 --> [*]"}'></div>ult["source_documents"]:
     print("-" * 40)
     print(doc.page_content[:200] + "...")
 ```
@@ -554,12 +456,7 @@ print(review.content)
 - [LangServe部署工具](https://github.com/langchain-ai/langserve)
 
 **学习平台：**
-- [DeepLearning.AI课程](https://www.deeplearning.ai/short-courses/)
-- [官方示例代码](https://github.com/langchain-ai/langchain/tree/master/templates)
-
-**社区资源：**
-- [Discord社区](https://discord.gg/langchain)
-- [GitHub讨论](https://github.com/langchain-ai/langchain/discussions)
+- [DeepLearning.AI课程](ht<div class="phoenix-chart-container" data-chart='{"type":"mermaid","code":"journey\n    title 你的LangChain学习之旅\n    section 基础入门\n      了解概念: 5: 新手\n      运行第一个例子: 4: 新手\n    section 动手实践\n      构建RAG系统: 3: 学习\n      创建Agent: 3: 学习\n    section 优化进阶\n      性能调优: 2: 熟练\n      生产部署: 1: 专家"}'></div>i/langchain/discussions)
 
 ### 8.3 下一步学习方向
 
