@@ -11,11 +11,17 @@
     const codeBlocks = document.querySelectorAll('.highlight');
     
     codeBlocks.forEach((block, index) => {
+      // 检查是否已经有复制按钮，避免重复
+      if (block.querySelector('.copy-btn')) {
+        return;
+      }
+      
       // 创建复制按钮
       const copyBtn = document.createElement('button');
       copyBtn.className = 'copy-btn';
       copyBtn.textContent = '复制';
       copyBtn.setAttribute('data-index', index);
+      copyBtn.setAttribute('type', 'button'); // 防止表单提交
       
       // 添加到代码块
       block.appendChild(copyBtn);
@@ -134,6 +140,21 @@
     });
   }
 
+  // 清理重复的复制按钮
+  function cleanupDuplicateButtons() {
+    const codeBlocks = document.querySelectorAll('.highlight');
+    
+    codeBlocks.forEach(block => {
+      const copyButtons = block.querySelectorAll('.copy-btn');
+      if (copyButtons.length > 1) {
+        // 保留第一个，删除其他的
+        for (let i = 1; i < copyButtons.length; i++) {
+          copyButtons[i].remove();
+        }
+      }
+    });
+  }
+
   // 添加代码块动画效果
   function addCodeBlockAnimations() {
     const codeBlocks = document.querySelectorAll('.highlight');
@@ -182,6 +203,7 @@
   }
 
   function initAll() {
+    cleanupDuplicateButtons();
     initCodeCopy();
     detectCodeLanguage();
     addCodeBlockAnimations();
@@ -191,7 +213,8 @@
   // 导出函数供其他脚本使用
   window.codeCopy = {
     init: initCodeCopy,
-    copyToClipboard: copyToClipboard
+    copyToClipboard: copyToClipboard,
+    cleanup: cleanupDuplicateButtons
   };
 
 })(); 

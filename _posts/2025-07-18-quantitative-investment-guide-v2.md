@@ -48,54 +48,123 @@ mathjax: false
 让我们通过交互式图表来直观感受量化投资的优势：
 
 <div style="width: 100%; height: 400px; margin: 20px 0;">
-  <canvas id="investmentComparison"></canvas>
+  <div id="investmentComparison" style="width: 100%; height: 100%;"></div>
 </div>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-  const ctx = document.getElementById('investmentComparison');
-  new Chart(ctx, {
-    type: 'line',
-    data: {
-      labels: ['2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023'],
-      datasets: [{
-        label: '量化投资',
-        data: [100, 115, 132, 154, 169, 206, 239, 287, 344, 415],
-        borderColor: 'rgb(75, 192, 192)',
-        backgroundColor: 'rgba(75, 192, 192, 0.1)',
-        tension: 0.4,
-        fill: true
-      }, {
-        label: '传统投资',
-        data: [100, 108, 97, 109, 103, 119, 129, 141, 130, 139],
-        borderColor: 'rgb(255, 99, 132)',
-        backgroundColor: 'rgba(255, 99, 132, 0.1)',
-        tension: 0.4,
-        fill: true
-      }]
+  const chart = echarts.init(document.getElementById('investmentComparison'));
+  
+  const option = {
+    title: {
+      text: '量化投资 vs 传统投资：10年累计收益对比',
+      left: 'center',
+      textStyle: {
+        fontSize: 16,
+        fontWeight: 'bold'
+      }
     },
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      plugins: {
-        title: {
-          display: true,
-          text: '10年累计收益对比'
-        },
-        legend: {
-          display: true
-        }
+    tooltip: {
+      trigger: 'axis',
+      axisPointer: {
+        type: 'cross'
       },
-      scales: {
-        y: {
-          beginAtZero: false,
-          title: {
-            display: true,
-            text: '累计收益 (%)'
-          }
+      formatter: function(params) {
+        let result = params[0].axisValue + '<br/>';
+        params.forEach(param => {
+          result += param.marker + param.seriesName + ': ' + param.value + '%<br/>';
+        });
+        return result;
+      }
+    },
+    legend: {
+      data: ['量化投资', '传统投资'],
+      top: 30
+    },
+    grid: {
+      left: '3%',
+      right: '4%',
+      bottom: '3%',
+      containLabel: true
+    },
+    xAxis: {
+      type: 'category',
+      data: ['2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023'],
+      axisLine: {
+        lineStyle: {
+          color: '#666'
         }
       }
-    }
+    },
+    yAxis: {
+      type: 'value',
+      name: '累计收益 (%)',
+      axisLine: {
+        lineStyle: {
+          color: '#666'
+        }
+      },
+      splitLine: {
+        lineStyle: {
+          type: 'dashed'
+        }
+      }
+    },
+    series: [
+      {
+        name: '量化投资',
+        type: 'line',
+        smooth: true,
+        data: [100, 115, 132, 154, 169, 206, 239, 287, 344, 415],
+        lineStyle: {
+          width: 3,
+          color: '#667eea'
+        },
+        areaStyle: {
+          color: {
+            type: 'linear',
+            x: 0, y: 0, x2: 0, y2: 1,
+            colorStops: [
+              {offset: 0, color: 'rgba(102, 126, 234, 0.3)'},
+              {offset: 1, color: 'rgba(102, 126, 234, 0.05)'}
+            ]
+          }
+        },
+        itemStyle: {
+          color: '#667eea'
+        }
+      },
+      {
+        name: '传统投资',
+        type: 'line',
+        smooth: true,
+        data: [100, 108, 97, 109, 103, 119, 129, 141, 130, 139],
+        lineStyle: {
+          width: 3,
+          color: '#f093fb'
+        },
+        areaStyle: {
+          color: {
+            type: 'linear',
+            x: 0, y: 0, x2: 0, y2: 1,
+            colorStops: [
+              {offset: 0, color: 'rgba(240, 147, 251, 0.3)'},
+              {offset: 1, color: 'rgba(240, 147, 251, 0.05)'}
+            ]
+          }
+        },
+        itemStyle: {
+          color: '#f093fb'
+        }
+      }
+    ]
+  };
+  
+  chart.setOption(option);
+  
+  // 响应式处理
+  window.addEventListener('resize', function() {
+    chart.resize();
   });
 });
 </script>
@@ -103,63 +172,127 @@ document.addEventListener('DOMContentLoaded', function() {
 ### 📈 收益风险分析
 
 <div style="width: 100%; height: 400px; margin: 20px 0;">
-  <canvas id="riskReturnScatter"></canvas>
+  <div id="riskReturnScatter" style="width: 100%; height: 100%;"></div>
 </div>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-  const ctx = document.getElementById('riskReturnScatter');
-  new Chart(ctx, {
-    type: 'scatter',
-    data: {
-      datasets: [{
-        label: '量化策略',
-        data: [
-          {x: 8.2, y: 15.1},
-          {x: 12.5, y: 22.3},
-          {x: 6.8, y: 18.7},
-          {x: 9.4, y: 16.9},
-          {x: 11.2, y: 20.5}
-        ],
-        backgroundColor: 'rgba(75, 192, 192, 0.8)',
-        borderColor: 'rgb(75, 192, 192)'
-      }, {
-        label: '传统投资',
-        data: [
-          {x: 15.8, y: 8.2},
-          {x: 18.9, y: 6.5},
-          {x: 12.3, y: 9.1},
-          {x: 16.7, y: 7.8},
-          {x: 14.2, y: 8.9}
-        ],
-        backgroundColor: 'rgba(255, 99, 132, 0.8)',
-        borderColor: 'rgb(255, 99, 132)'
-      }]
+  const chart = echarts.init(document.getElementById('riskReturnScatter'));
+  
+  const option = {
+    title: {
+      text: '风险-收益散点图分析',
+      left: 'center',
+      textStyle: {
+        fontSize: 16,
+        fontWeight: 'bold'
+      }
     },
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      plugins: {
-        title: {
-          display: true,
-          text: '风险-收益散点图'
+    tooltip: {
+      trigger: 'item',
+      formatter: function(params) {
+        return params.seriesName + '<br/>' +
+               '风险: ' + params.data[0] + '%<br/>' +
+               '收益: ' + params.data[1] + '%';
+      }
+    },
+    legend: {
+      data: ['量化策略', '传统投资'],
+      top: 30
+    },
+    grid: {
+      left: '3%',
+      right: '4%',
+      bottom: '3%',
+      containLabel: true
+    },
+    xAxis: {
+      type: 'value',
+      name: '年化波动率 (%)',
+      nameLocation: 'middle',
+      nameGap: 30,
+      axisLine: {
+        lineStyle: {
+          color: '#666'
         }
       },
-      scales: {
-        x: {
-          title: {
-            display: true,
-            text: '年化波动率 (%)'
-          }
+      splitLine: {
+        lineStyle: {
+          type: 'dashed'
+        }
+      }
+    },
+    yAxis: {
+      type: 'value',
+      name: '年化收益率 (%)',
+      nameLocation: 'middle',
+      nameGap: 40,
+      axisLine: {
+        lineStyle: {
+          color: '#666'
+        }
+      },
+      splitLine: {
+        lineStyle: {
+          type: 'dashed'
+        }
+      }
+    },
+    series: [
+      {
+        name: '量化策略',
+        type: 'scatter',
+        data: [
+          [8.2, 15.1], [12.5, 22.3], [6.8, 18.7], [9.4, 16.9], [11.2, 20.5],
+          [7.5, 17.3], [10.8, 19.8], [8.9, 16.2], [13.1, 23.1], [9.7, 18.4]
+        ],
+        symbolSize: 12,
+        itemStyle: {
+          color: '#667eea',
+          borderColor: '#fff',
+          borderWidth: 2
         },
-        y: {
-          title: {
-            display: true,
-            text: '年化收益率 (%)'
+        emphasis: {
+          itemStyle: {
+            color: '#4c63d2',
+            borderColor: '#fff',
+            borderWidth: 3,
+            shadowBlur: 10,
+            shadowColor: 'rgba(102, 126, 234, 0.5)'
+          }
+        }
+      },
+      {
+        name: '传统投资',
+        type: 'scatter',
+        data: [
+          [15.8, 8.2], [18.9, 6.5], [12.3, 9.1], [16.7, 7.8], [14.2, 8.9],
+          [17.3, 7.2], [13.8, 9.5], [19.1, 6.8], [15.4, 8.1], [16.9, 7.6]
+        ],
+        symbolSize: 12,
+        itemStyle: {
+          color: '#f093fb',
+          borderColor: '#fff',
+          borderWidth: 2
+        },
+        emphasis: {
+          itemStyle: {
+            color: '#e91e63',
+            borderColor: '#fff',
+            borderWidth: 3,
+            shadowBlur: 10,
+            shadowColor: 'rgba(240, 147, 251, 0.5)'
           }
         }
       }
-    }
+    ]
+  };
+  
+  chart.setOption(option);
+  
+  // 响应式处理
+  window.addEventListener('resize', function() {
+    chart.resize();
   });
 });
 </script>
@@ -173,42 +306,77 @@ document.addEventListener('DOMContentLoaded', function() {
 ### 🔍 核心组成要素可视化
 
 <div style="width: 100%; height: 500px; margin: 20px 0;">
-  <canvas id="quantSystemFlow"></canvas>
+  <div id="quantSystemFlow" style="width: 100%; height: 100%;"></div>
 </div>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-  const ctx = document.getElementById('quantSystemFlow');
-  new Chart(ctx, {
-    type: 'doughnut',
-    data: {
-      labels: ['数据收集', '策略开发', '回测验证', '实盘执行', '风险管理', '绩效评估'],
-      datasets: [{
-        data: [15, 25, 20, 15, 15, 10],
-        backgroundColor: [
-          'rgba(255, 99, 132, 0.8)',
-          'rgba(54, 162, 235, 0.8)',
-          'rgba(255, 206, 86, 0.8)',
-          'rgba(75, 192, 192, 0.8)',
-          'rgba(153, 102, 255, 0.8)',
-          'rgba(255, 159, 64, 0.8)'
-        ],
-        borderWidth: 2
-      }]
-    },
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      plugins: {
-        title: {
-          display: true,
-          text: '量化投资系统组成权重'
-        },
-        legend: {
-          position: 'right'
-        }
+  const chart = echarts.init(document.getElementById('quantSystemFlow'));
+  
+  const option = {
+    title: {
+      text: '量化投资系统组成权重',
+      left: 'center',
+      textStyle: {
+        fontSize: 16,
+        fontWeight: 'bold'
       }
-    }
+    },
+    tooltip: {
+      trigger: 'item',
+      formatter: '{a} <br/>{b}: {c}% ({d}%)'
+    },
+    legend: {
+      orient: 'vertical',
+      left: 'left',
+      top: 'middle',
+      textStyle: {
+        fontSize: 12
+      }
+    },
+    series: [
+      {
+        name: '系统组成',
+        type: 'pie',
+        radius: ['40%', '70%'],
+        center: ['60%', '50%'],
+        avoidLabelOverlap: false,
+        itemStyle: {
+          borderRadius: 10,
+          borderColor: '#fff',
+          borderWidth: 2
+        },
+        label: {
+          show: false,
+          position: 'center'
+        },
+        emphasis: {
+          label: {
+            show: true,
+            fontSize: '18',
+            fontWeight: 'bold'
+          }
+        },
+        labelLine: {
+          show: false
+        },
+        data: [
+          {value: 15, name: '数据收集', itemStyle: {color: '#ff6b6b'}},
+          {value: 25, name: '策略开发', itemStyle: {color: '#4ecdc4'}},
+          {value: 20, name: '回测验证', itemStyle: {color: '#45b7d1'}},
+          {value: 15, name: '实盘执行', itemStyle: {color: '#96ceb4'}},
+          {value: 15, name: '风险管理', itemStyle: {color: '#feca57'}},
+          {value: 10, name: '绩效评估', itemStyle: {color: '#ff9ff3'}}
+        ]
+      }
+    ]
+  };
+  
+  chart.setOption(option);
+  
+  // 响应式处理
+  window.addEventListener('resize', function() {
+    chart.resize();
   });
 });
 </script>
@@ -254,55 +422,97 @@ graph TD
 ### 📊 策略类型分布
 
 <div style="width: 100%; height: 400px; margin: 20px 0;">
-  <canvas id="strategyTypes"></canvas>
+  <div id="strategyTypes" style="width: 100%; height: 100%;"></div>
 </div>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-  const ctx = document.getElementById('strategyTypes');
-  new Chart(ctx, {
-    type: 'radar',
-    data: {
-      labels: ['趋势跟踪', '均值回归', '套利策略', '事件驱动', '机器学习', '高频交易'],
-      datasets: [{
-        label: '使用频率',
-        data: [85, 70, 60, 45, 75, 40],
-        backgroundColor: 'rgba(54, 162, 235, 0.2)',
-        borderColor: 'rgb(54, 162, 235)',
-        pointBackgroundColor: 'rgb(54, 162, 235)',
-        pointBorderColor: '#fff',
-        pointHoverBackgroundColor: '#fff',
-        pointHoverBorderColor: 'rgb(54, 162, 235)'
-      }, {
-        label: '平均收益',
-        data: [12, 8, 15, 20, 18, 25],
-        backgroundColor: 'rgba(255, 99, 132, 0.2)',
-        borderColor: 'rgb(255, 99, 132)',
-        pointBackgroundColor: 'rgb(255, 99, 132)',
-        pointBorderColor: '#fff',
-        pointHoverBackgroundColor: '#fff',
-        pointHoverBorderColor: 'rgb(255, 99, 132)'
-      }]
+  const chart = echarts.init(document.getElementById('strategyTypes'));
+  
+  const option = {
+    title: {
+      text: '量化策略类型分析',
+      left: 'center',
+      textStyle: {
+        fontSize: 16,
+        fontWeight: 'bold'
+      }
     },
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      plugins: {
-        title: {
-          display: true,
-          text: '量化策略类型分析'
+    tooltip: {
+      trigger: 'item'
+    },
+    legend: {
+      data: ['使用频率', '平均收益'],
+      top: 30
+    },
+    radar: {
+      indicator: [
+        {name: '趋势跟踪', max: 100},
+        {name: '均值回归', max: 100},
+        {name: '套利策略', max: 100},
+        {name: '事件驱动', max: 100},
+        {name: '机器学习', max: 100},
+        {name: '高频交易', max: 100}
+      ],
+      radius: '65%',
+      center: ['50%', '60%'],
+      splitNumber: 5,
+      axisName: {
+        color: '#333',
+        fontSize: 12
+      },
+      splitLine: {
+        lineStyle: {
+          color: ['#ddd']
         }
       },
-      scales: {
-        r: {
-          angleLines: {
-            display: false
-          },
-          suggestedMin: 0,
-          suggestedMax: 100
-        }
+      splitArea: {
+        show: false
       }
-    }
+    },
+    series: [
+      {
+        name: '策略分析',
+        type: 'radar',
+        data: [
+          {
+            value: [85, 70, 60, 45, 75, 40],
+            name: '使用频率',
+            itemStyle: {
+              color: '#667eea'
+            },
+            areaStyle: {
+              color: 'rgba(102, 126, 234, 0.2)'
+            },
+            lineStyle: {
+              color: '#667eea',
+              width: 2
+            }
+          },
+          {
+            value: [12, 8, 15, 20, 18, 25],
+            name: '平均收益',
+            itemStyle: {
+              color: '#f093fb'
+            },
+            areaStyle: {
+              color: 'rgba(240, 147, 251, 0.2)'
+            },
+            lineStyle: {
+              color: '#f093fb',
+              width: 2
+            }
+          }
+        ]
+      }
+    ]
+  };
+  
+  chart.setOption(option);
+  
+  // 响应式处理
+  window.addEventListener('resize', function() {
+    chart.resize();
   });
 });
 </script>

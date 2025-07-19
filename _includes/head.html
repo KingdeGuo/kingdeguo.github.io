@@ -13,12 +13,18 @@
 <!-- Performance Optimization -->
 <script src="{{ '/assets/js/performance.js' | relative_url }}" defer></script>
 
+<!-- Image Loading Fix -->
+<script src="{{ '/assets/js/image-loader.js' | relative_url }}" defer></script>
+
 <!-- Code Copy Functionality -->
 <script src="{{ '/assets/js/code-copy.js' | relative_url }}" defer></script>
 
+<!-- Main JavaScript (replacing problematic main.min.js) -->
+<script src="{{ '/assets/js/main.js' | relative_url }}" defer></script>
+
 <!-- Preload critical resources -->
 <link rel="preload" href="{{ '/assets/css/custom.css' | relative_url }}" as="style">
-<link rel="preload" href="{{ '/assets/js/main.min.js' | relative_url }}" as="script">
+<link rel="preload" href="{{ '/assets/js/main.js' | relative_url }}" as="script">
 
 <!-- DNS prefetch for external resources -->
 <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
