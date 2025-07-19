@@ -189,10 +189,8 @@
     document.querySelectorAll('pre > code').forEach(function(codeEl) {
       if (codeEl.closest('.code-block-wrapper')) return;
       const pre = codeEl.parentElement;
-      // 保留所有空行，结尾不去除
       const code = codeEl.textContent;
       const lang = (codeEl.className.match(/language-(\w+)/) || [])[1] || '';
-      // 按\n分割，保留所有空行
       const linesArr = code.split(/\n/);
       // 结构
       const wrapper = document.createElement('div');
@@ -222,12 +220,6 @@
       // body
       const body = document.createElement('div');
       body.className = 'code-block-body';
-      // 行号
-      const lines = document.createElement('div');
-      lines.className = 'code-block-lines';
-      lines.style.display = 'flex';
-      lines.style.flexDirection = 'column';
-      lines.innerHTML = linesArr.map((_,i)=>`<div class=\"line-number\">${i+1}</div>`).join('');
       // 代码内容
       const content = document.createElement('div');
       content.className = 'code-block-content';
@@ -235,19 +227,7 @@
       content.style.flexDirection = 'column';
       content.style.whiteSpace = 'pre';
       content.innerHTML = linesArr.map(line=>`<div class=\"code-line\">${line.replace(/</g,'&lt;').replace(/>/g,'&gt;')}</div>`).join('');
-      // 滚动同步
-      content.onscroll = function() { lines.scrollTop = content.scrollTop; };
-      // 行号高亮
-      lines.addEventListener('click', function(e) {
-        if (e.target.classList.contains('line-number')) {
-          const idx = Array.from(lines.children).indexOf(e.target);
-          Array.from(content.children).forEach((n, i) => {
-            n.classList.toggle('highlighted', i === idx);
-          });
-        }
-      });
       // 组装
-      body.appendChild(lines);
       body.appendChild(content);
       wrapper.appendChild(header);
       wrapper.appendChild(body);
