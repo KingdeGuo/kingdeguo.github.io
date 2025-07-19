@@ -179,7 +179,7 @@
     const lines = code.split('\n').length;
     let html = '';
     for (let i = 1; i <= lines; i++) {
-      html += `<span class="line-number" data-line="${i}">${i}</span>\n`;
+      html += `<span class="line-number">${i}</span>\n`;
     }
     return html;
   }
@@ -187,53 +187,68 @@
   // 包裹所有代码块
   function enhanceCodeBlocks() {
     const codeBlocks = document.querySelectorAll('pre > code');
-    codeBlocks.forEach(code => {
-      const pre = code.parentElement;
-      if (pre.classList.contains('code-block-inner')) return; // 已处理
-
-      // 获取语言
-      let lang = code.className.match(/language-([\w\d]+)/);
-      lang = lang ? lang[1] : '';
-      const langLabel = lang ? lang.toUpperCase() : (getLang() === 'zh' ? '代码' : 'CODE');
-
-      // 代码内容
-      const codeText = code.textContent;
-      const lines = codeText.split('\n');
-      const numberedCode = lines.map((line, idx) => `<span class="code-line" data-line="${idx+1}">${line}</span>`).join('\n');
-      const lineNumbers = generateLineNumbers(codeText);
-
-      // 构建卡片结构
+    codeBlocks.forEach(function(codeEl) {
+      if (codeEl.closest('.code-block-wrapper')) return; // 已处理
+      const pre = codeEl.parentElement;
+      const code = codeEl.textContent;
+      const lang = (codeEl.className.match(/language-(\w+)/) || [])[1] || '';
+      // 创建结构
       const wrapper = document.createElement('div');
       wrapper.className = 'code-block-wrapper';
-      wrapper.innerHTML = `
-        <div class="code-block-header">
-          <span class="code-block-lang">${langLabel}</span>
-          <button class="code-block-copy" title="${getLang()==='zh'?'复制代码':'Copy'}">${getLang()==='zh'?'复制':'Copy'}</button>
-        </div>
-        <div class="code-block-flex">
-          <div class="code-block-lines">${lineNumbers}</div>
-          <pre class="code-block-inner"><code>${numberedCode}</code></pre>
-        </div>
-      `;
-      // 替换原有pre
-      pre.replaceWith(wrapper);
-    });
-    // 行号点击高亮
-    document.querySelectorAll('.code-block-lines .line-number').forEach(ln => {
-      ln.addEventListener('click', function() {
-        const line = this.getAttribute('data-line');
-        const codeLine = this.closest('.code-block-flex').querySelector(`.code-line[data-line="${line}"]`);
-        document.querySelectorAll('.code-line.active').forEach(el => el.classList.remove('active'));
-        if (codeLine) codeLine.classList.add('active');
+      // header
+      const header = document.createElement('div');
+      header.className = 'code-block-header';
+      const langSpan = document.createElement('span');
+      langSpan.className = 'code-block-lang';
+      langSpan.textContent = lang ? lang.toUpperCase() : 'CODE';
+      const copyBtn = document.createElement('button');
+      copyBtn.className = 'code-block-copy';
+      copyBtn.type = 'button';
+      copyBtn.textContent = getLang() === 'zh' ? '复制' : 'Copy';
+      copyBtn.onclick = function() {
+        copyToClipboard(code).then(() => {
+          copyBtn.textContent = getLang() === 'zh' ? '已复制!' : 'Copied!';
+          copyBtn.classList.add('copied');
+          setTimeout(() => {
+            copyBtn.textContent = getLang() === 'zh' ? '复制' : 'Copy';
+            copyBtn.classList.remove('copied');
+          }, 1200);
+        });
+      };
+      header.appendChild(langSpan);
+      header.appendChild(copyBtn);
+      // body
+      const body = document.createElement('div');
+      body.className = 'code-block-body';
+      // 行号
+      const lines = document.createElement('div');
+      lines.className = 'code-block-lines';
+      lines.innerHTML = generateLineNumbers(code);
+      // 代码内容
+      const content = document.createElement('div');
+      content.className = 'code-block-content';
+      content.textContent = code;
+      // 滚动同步
+      content.onscroll = function() {
+        lines.scrollTop = content.scrollTop;
+      };
+      // 行号高亮
+      lines.addEventListener('click', function(e) {
+        if (e.target.classList.contains('line-number')) {
+          const idx = Array.from(lines.children).indexOf(e.target);
+          Array.from(content.childNodes).forEach((n, i) => {
+            if (n.nodeType === 3) return; // 跳过文本节点
+            n.classList.toggle('highlighted', i === idx);
+          });
+        }
       });
-    });
-    // 行号与代码滚动同步
-    document.querySelectorAll('.code-block-flex').forEach(flex => {
-      const lines = flex.querySelector('.code-block-lines');
-      const pre = flex.querySelector('.code-block-inner');
-      pre.addEventListener('scroll', () => {
-        lines.scrollTop = pre.scrollTop;
-      });
+      // 组装
+      body.appendChild(lines);
+      body.appendChild(content);
+      wrapper.appendChild(header);
+      wrapper.appendChild(body);
+      // 替换原结构
+      pre.parentNode.replaceChild(wrapper, pre);
     });
   }
 
