@@ -60,20 +60,21 @@ plugins:
   - jekyll-include-cache
   - jekyll-archives
 
-# Mermaid配置 - 使用前端渲染
-mermaid:
-  version: "10.7.0"
-  theme: "default"
-  darkTheme: "dark"
-  startOnLoad: true
-  flowchart:
-    useMaxWidth: true
-    htmlLabels: true
-  sequence:
-    useMaxWidth: true
-    wrap: true
-  uml:
-    useMaxWidth: true
+# 可视化配置 - 统一前端渲染
+visualization:
+  # 核心库配置
+  mermaid:
+    version: "10.7.0"
+    theme: "default"
+    darkTheme: "dark"
+  echarts:
+    version: "5.4.3"
+  chartjs:
+    version: "4.4.1"
+  
+  # 按需加载配置
+  lazy_loading: true
+  performance_optimization: true
 
 # Permalinks
 permalink: /:year/:month/:day/:title.html

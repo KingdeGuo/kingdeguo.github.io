@@ -1,33 +1,66 @@
-<!-- Visualization Libraries Integration -->
+<!-- Unified Visualization Libraries Integration -->
+<!-- 统一的可视化库集成，支持按需加载 -->
 
-<!-- ECharts -->
+<!-- Core Libraries - Always Loaded -->
 <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
-
-<!-- Chart.js -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 
-<!-- Three.js -->
-<script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
-<!-- Three.js Controls -->
-<script src="https://cdn.jsdelivr.net/npm/three@0.160.0/examples/js/controls/OrbitControls.js"></script>
+<!-- Mermaid - For UML diagrams -->
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10.7.0/dist/mermaid.min.js"></script>
 
-<!-- Plotly.js -->
-<script src="https://cdn.plot.ly/plotly-2.27.1.min.js"></script>
-
-<!-- D3.js -->
-<script src="https://d3js.org/d3.v7.min.js"></script>
-
-
-
-<!-- PlantUML Viewer -->
-<script src="https://cdn.jsdelivr.net/npm/plantuml-encoder@1.4.0/dist/plantuml-encoder.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/plantuml-viewer@0.5.0/dist/plantuml-viewer.min.js"></script>
+<!-- Optional Libraries - Loaded on demand -->
+<script>
+// 动态加载库的函数
+window.loadLibrary = {
+  plotly: () => {
+    if (!window.Plotly) {
+      return new Promise((resolve) => {
+        const script = document.createElement('script');
+        script.src = 'https://cdn.plot.ly/plotly-2.27.1.min.js';
+        script.onload = resolve;
+        document.head.appendChild(script);
+      });
+    }
+    return Promise.resolve();
+  },
+  
+  d3: () => {
+    if (!window.d3) {
+      return new Promise((resolve) => {
+        const script = document.createElement('script');
+        script.src = 'https://d3js.org/d3.v7.min.js';
+        script.onload = resolve;
+        document.head.appendChild(script);
+      });
+    }
+    return Promise.resolve();
+  },
+  
+  three: () => {
+    if (!window.THREE) {
+      return new Promise((resolve) => {
+        const script = document.createElement('script');
+        script.src = 'https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js';
+        script.onload = () => {
+          // Load OrbitControls
+          const controlsScript = document.createElement('script');
+          controlsScript.src = 'https://cdn.jsdelivr.net/npm/three@0.160.0/examples/js/controls/OrbitControls.js';
+          controlsScript.onload = resolve;
+          document.head.appendChild(controlsScript);
+        };
+        document.head.appendChild(script);
+      });
+    }
+    return Promise.resolve();
+  }
+};
+</script>
 
 <!-- Custom Visualization Integration -->
 <script src="/assets/js/visualization.js"></script>
 
 <style>
-/* Visualization Containers */
+/* Unified Visualization Container Styles */
 .visualization-container {
   width: 100%;
   min-height: 400px;
@@ -39,6 +72,7 @@
   -webkit-backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.1);
   transition: all 0.3s ease;
+  position: relative;
 }
 
 /* Dark mode adjustments */
@@ -55,10 +89,6 @@
 }
 
 /* Loading state */
-.visualization-container.loading {
-  position: relative;
-}
-
 .visualization-container.loading::after {
   content: "加载中...";
   position: absolute;
@@ -67,11 +97,11 @@
   transform: translate(-50%, -50%);
   font-size: 14px;
   color: var(--text-color);
+  z-index: 10;
 }
 
 /* Error state */
 .visualization-container.error {
-  position: relative;
   background: rgba(255, 0, 0, 0.1);
 }
 
@@ -86,6 +116,7 @@
   text-align: center;
   padding: 20px;
   width: 100%;
+  z-index: 10;
 }
 
 /* Interactive elements */
@@ -103,11 +134,44 @@
 
 /* Animation effects */
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .visualization-container {
   animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Mermaid specific styles */
+.mermaid {
+  text-align: center;
+  margin: 20px 0;
+}
+
+/* Chart.js specific styles */
+.chartjs-container {
+  position: relative;
+  height: 400px;
+}
+
+/* ECharts specific styles */
+.echarts-container {
+  height: 400px;
+}
+
+/* Plotly specific styles */
+.plotly-chart {
+  height: 400px;
+}
+
+/* D3 specific styles */
+.d3-chart {
+  height: 400px;
+}
+
+/* Three.js specific styles */
+.three-js-container {
+  height: 400px;
+  position: relative;
 }
 </style>
