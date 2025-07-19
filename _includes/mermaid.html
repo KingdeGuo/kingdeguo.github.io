@@ -30,20 +30,32 @@
     });
 
     const renderMermaidDiagrams = async () => {
-      const mermaidCodeBlocks = document.querySelectorAll('code.language-mermaid');
-      for (const [index, codeBlock] of mermaidCodeBlocks.entries()) {
-        const code = codeBlock.innerText;
-        const id = `mermaid-graph-${index}`;
+      // Handle both code blocks and div elements
+      const mermaidElements = document.querySelectorAll('code.language-mermaid, div.mermaid');
+      
+      for (const [index, element] of mermaidElements.entries()) {
+        let code;
+        let id = `mermaid-graph-${index}`;
         
-        const container = document.createElement('div');
-        container.className = 'mermaid-diagram-container';
-        
-        const codeWrapper = codeBlock.closest('.highlighter-rouge') || codeBlock.parentElement;
-        codeWrapper.parentNode.replaceChild(container, codeWrapper);
+        if (element.tagName === 'CODE') {
+          code = element.innerText;
+          const container = document.createElement('div');
+          container.className = 'mermaid-diagram-container';
+          const codeWrapper = element.closest('.highlighter-rouge') || element.parentElement;
+          codeWrapper.parentNode.replaceChild(container, codeWrapper);
+        } else if (element.tagName === 'DIV') {
+          code = element.textContent.trim();
+          id = element.id || id;
+          element.innerHTML = ''; // Clear existing content
+        }
         
         try {
           const { svg } = await mermaid.render(id, code);
-          container.innerHTML = svg;
+          if (element.tagName === 'CODE') {
+            container.innerHTML = svg;
+          } else if (element.tagName === 'DIV') {
+            element.innerHTML = svg;
+          }
         } catch (e) {
           console.error(`Mermaid render error for diagram ${index}:`, e);
           
@@ -57,7 +69,11 @@
             <p style="margin-top: 10px;"><strong>问题代码:</strong></p>
             <pre style="background-color: #f1f1f1; padding: 10px; border-radius: 3px; white-space: pre-wrap; word-wrap: break-word; color: #333;">${sanitizedCode}</pre>
           `;
-          container.appendChild(errorDiv);
+          if (element.tagName === 'CODE') {
+            container.appendChild(errorDiv);
+          } else if (element.tagName === 'DIV') {
+            element.appendChild(errorDiv);
+          }
         }
       }
     };
