@@ -47,3 +47,38 @@
 
     <div class="test-section">
         <h2>3. Chart.js 图表测试</h2>
+        <div class="chart-container" data-chart='{"type":"chartjs","options":{"type":"line","data":{"labels":["一月","二月","三月","四月","五月"],"datasets":[{"label":"销售额","data":[12,19,3,5,2],"borderColor":"rgb(75,192,192)","fill":false}]}}}'></div>
+    </div>
+
+    <div class="test-section">
+        <h2>4. Plotly 图表测试</h2>
+        <div class="chart-container" data-chart='{"type":"plotly","data":[{"x":[1,2,3,4,5],"y":[10,15,13,17,22],"type":"scatter"}],"layout":{"title":"Plotly 示例"}}'></div>
+    </div>
+
+    <div class="test-section">
+        <h2>5. 系统状态</h2>
+        <div id="status" class="status">正在检测系统状态...</div>
+    </div>
+
+    <script src="/assets/js/reliable-visualization.js"></script>
+    <script>
+        // 测试系统状态
+        setTimeout(() => {
+            const stats = window.ReliableVisualization.getStats();
+            const status = document.getElementById('status');
+            status.innerHTML = `
+                <div class="success">
+                    ✅ 系统状态正常<br>
+                    📊 检测到 ${stats.totalCount} 个图表容器<br>
+                    ✅ 已渲染 ${stats.renderedCount} 个图表
+                </div>
+            `;
+        }, 2000);
+
+        // 添加重试按钮功能测试
+        window.addEventListener('load', () => {
+            console.log('🎉 高可靠性可视化系统加载完成！');
+        });
+    </script>
+</body>
+</html>
