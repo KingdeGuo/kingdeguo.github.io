@@ -1,0 +1,684 @@
+{
+  "timestamp": "2025-07-19T10:58:51.419Z",
+  "summary": {
+    "totalPosts": 9,
+    "totalCharts": 27,
+    "validCharts": 27,
+    "invalidCharts": 0,
+    "errors": []
+  },
+  "details": [
+    {
+      "filename": "2025-07-13-github-pages-blog-tutorial.md",
+      "status": "success",
+      "totalCharts": 0,
+      "charts": [],
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "filename": "2025-07-14-intro-to-llm-agent-hr.md",
+      "status": "success",
+      "totalCharts": 4,
+      "charts": [
+        {
+          "index": 0,
+          "type": "mermaid",
+          "valid": true,
+          "errors": [],
+          "warnings": [],
+          "config": {
+            "type": "mermaid",
+            "code": "graph LR\n    subgraph 智能招聘自动化\n        A1[AI简历筛选] --> A2[智能面试安排]\n        A2 --> A3[候选人评估报告]\n        A3 --> A4[offer自动生成]\n    end\n    \n    subgraph 员工服务智能化\n        B1[24/7智能客服] --> B2[政策自动解答]\n        B2 --> B3[休假流程自动化]\n        B3 --> B4[福利智能推荐]\n    end\n    \n    subgraph 人才发展AI\n        C1[技能差距分析] --> C2[个性化培训路径]\n        C2 --> C3[学习效果评估]\n        C3 --> C4[职业发展规划]\n    end\n    \n    style A1 fill:#e8f5e9,stroke:#2e7d32\n    style B1 fill:#e3f2fd,stroke:#1976d2\n    style C1 fill:#fce4ec,stroke:#c218b5",
+            "config": {
+              "theme": "default",
+              "flowchart": {
+                "useMaxWidth": true,
+                "htmlLabels": true
+              },
+              "sequence": {
+                "useMaxWidth": true,
+                "wrap": true
+              }
+            }
+          }
+        },
+        {
+          "index": 1,
+          "type": "mermaid",
+          "valid": true,
+          "errors": [],
+          "warnings": [],
+          "config": {
+            "type": "mermaid",
+            "code": "graph TD\n    A[PDF/Word简历上传] --> B[文档解析引擎]\n    B --> C[信息提取NLP]\n    C --> D[技能关键词匹配]\n    D --> E[候选人评分]\n    E --> F[生成评估报告]\n    \n    G[职位需求库] --> D\n    H[技能词典] --> C\n    \n    style A fill:#e3f2fd,stroke:#1976d2\n    style F fill:#e8f5e9,stroke:#388e3c\n    style G fill:#fff3e0,stroke:#f57c00",
+            "config": {
+              "theme": "default",
+              "flowchart": {
+                "useMaxWidth": true,
+                "htmlLabels": true
+              },
+              "sequence": {
+                "useMaxWidth": true,
+                "wrap": true
+              }
+            }
+          }
+        },
+        {
+          "index": 2,
+          "type": "mermaid",
+          "valid": true,
+          "errors": [],
+          "warnings": [],
+          "config": {
+            "type": "mermaid",
+            "code": "graph TD\n    A[Offer接受确认] --> B[入职材料清单]\n    B --> C[账号权限申请]\n    C --> D[办公设备预订]\n    D --> E[入职培训安排]\n    E --> F[导师匹配]\n    F --> G[入职日提醒]\n    \n    H[HR系统] --> A\n    I[IT系统] --> C\n    J[行政部门] --> D\n    \n    style A fill:#e3f2fd,stroke:#1976d2\n    style G fill:#e8f5e9,stroke:#388e3c",
+            "config": {
+              "theme": "default",
+              "flowchart": {
+                "useMaxWidth": true,
+                "htmlLabels": true
+              },
+              "sequence": {
+                "useMaxWidth": true,
+                "wrap": true
+              }
+            }
+          }
+        },
+        {
+          "index": 3,
+          "type": "mermaid",
+          "valid": true,
+          "errors": [],
+          "warnings": [],
+          "config": {
+            "type": "mermaid",
+            "code": "graph TB\n    subgraph 前端层\n        A[Web界面] --> B[移动端App]\n        B --> C[小程序]\n    end\n    \n    subgraph API网关\n        D[Nginx负载均衡]\n        E[API Gateway]\n    end\n    \n    subgraph 服务层\n        F[HR问答服务]\n        G[简历解析服务]\n        H[入职助手服务]\n        I[用户管理服务]\n    end\n    \n    subgraph 数据层\n        J[PostgreSQL]\n        K[Redis缓存]\n        L[Elasticsearch]\n        M[MinIO文件存储]\n    end\n    \n    subgraph AI模型层\n        N[OpenAI API]\n        O[本地模型服务]\n        P[向量数据库]\n    end\n    \n    A --> D\n    D --> E\n    E --> F\n    E --> G\n    E --> H\n    E --> I\n    \n    F --> J\n    G --> M\n    H --> K\n    I --> J\n    \n    F --> N\n    G --> O\n    H --> P",
+            "config": {
+              "theme": "default",
+              "flowchart": {
+                "useMaxWidth": true,
+                "htmlLabels": true
+              },
+              "sequence": {
+                "useMaxWidth": true,
+                "wrap": true
+              }
+            }
+          }
+        }
+      ],
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "filename": "2025-07-16-enterprise-knowledge-base-llm.md",
+      "status": "success",
+      "totalCharts": 4,
+      "charts": [
+        {
+          "index": 0,
+          "type": "mermaid",
+          "valid": true,
+          "errors": [],
+          "warnings": [],
+          "config": {
+            "type": "mermaid",
+            "code": "graph TB\n    subgraph \"用户层\"\n        A[Web Portal] \n        B[Mobile App]\n        C[API/SDK]\n    end\n    \n    subgraph \"接入层\"\n        D[API Gateway]\n        E[负载均衡]\n        F[限流熔断]\n    end\n    \n    subgraph \"应用层\"\n        G[对话管理]\n        H[上下文管理]\n        I[多轮对话]\n    end\n    \n    subgraph \"智能层\"\n        J[意图识别]\n        K[路由分发]\n        L[Agent编排]\n    end\n    \n    subgraph \"知识引擎\"\n        M[向量化服务]\n        N[检索服务]\n        O[重排序]\n        P[知识融合]\n    end\n    \n    subgraph \"存储层\"\n        Q[向量数据库]\n        R[图数据库]\n        S[对象存储]\n        T[缓存层]\n    end\n    \n    subgraph \"模型层\"\n        U[大模型集群]\n        V[微调服务]\n        W[模型管理]\n    end\n    \n    A --> D\n    B --> D\n    C --> D\n    D --> E\n    E --> F\n    F --> G\n    G --> H\n    H --> I\n    I --> J\n    J --> K\n    K --> L\n    L --> M\n    M --> N\n    N --> O\n    O --> P\n    P --> U\n    Q --> N\n    R --> P\n    S --> M\n    T --> Q\n    U --> W\n    V --> U",
+            "config": {
+              "theme": "default",
+              "flowchart": {
+                "useMaxWidth": true,
+                "htmlLabels": true
+              },
+              "sequence": {
+                "useMaxWidth": true,
+                "wrap": true
+              }
+            }
+          }
+        },
+        {
+          "index": 1,
+          "type": "mermaid",
+          "valid": true,
+          "errors": [],
+          "warnings": [],
+          "config": {
+            "type": "mermaid",
+            "code": "flowchart LR\n    A[多源数据] --> B[数据连接器]\n    B --> C[格式标准化]\n    C --> D[内容分块]\n    D --> E[质量评估]\n    E --> F[向量化]\n    F --> G[索引构建]\n    G --> H[知识图谱]\n    \n    style A fill:#f9f,stroke:#333\n    style H fill:#9f9,stroke:#333",
+            "config": {
+              "theme": "default",
+              "flowchart": {
+                "useMaxWidth": true,
+                "htmlLabels": true
+              },
+              "sequence": {
+                "useMaxWidth": true,
+                "wrap": true
+              }
+            }
+          }
+        },
+        {
+          "index": 2,
+          "type": "mermaid",
+          "valid": true,
+          "errors": [],
+          "warnings": [],
+          "config": {
+            "type": "mermaid",
+            "code": "graph TD\n    A[用户查询] --> B[CDN缓存]\n    B --> C{缓存命中?}\n    C -->|是| D[直接返回]\n    C -->|否| E[应用缓存]\n    E --> F{缓存命中?}\n    F -->|是| G[返回并更新CDN]\n    F -->|否| H[向量检索]\n    H --> I[大模型生成]\n    I --> J[更新多级缓存]",
+            "config": {
+              "theme": "default",
+              "flowchart": {
+                "useMaxWidth": true,
+                "htmlLabels": true
+              },
+              "sequence": {
+                "useMaxWidth": true,
+                "wrap": true
+              }
+            }
+          }
+        },
+        {
+          "index": 3,
+          "type": "mermaid",
+          "valid": true,
+          "errors": [],
+          "warnings": [],
+          "config": {
+            "type": "mermaid",
+            "code": "graph LR\n    A[用户输入] --> B[内容过滤]\n    B --> C[权限验证]\n    C --> D[数据脱敏]\n    D --> E[审计日志]\n    E --> F[响应过滤]\n    \n    style B fill:#ffcccc\n    style C fill:#ccffcc\n    style D fill:#ccccff\n    style E fill:#ffffcc",
+            "config": {
+              "theme": "default",
+              "flowchart": {
+                "useMaxWidth": true,
+                "htmlLabels": true
+              },
+              "sequence": {
+                "useMaxWidth": true,
+                "wrap": true
+              }
+            }
+          }
+        }
+      ],
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "filename": "2025-07-16-introduction-to-value-investing.md",
+      "status": "success",
+      "totalCharts": 0,
+      "charts": [],
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "filename": "2025-07-17-deep-dive-into-langchain.md",
+      "status": "success",
+      "totalCharts": 7,
+      "charts": [
+        {
+          "index": 0,
+          "type": "mermaid",
+          "valid": true,
+          "errors": [],
+          "warnings": [],
+          "config": {
+            "type": "mermaid",
+            "code": "graph TD\n    A[米其林厨师<br>LLM] -->|知道所有菜谱| B[理论知识]\n    A -->|但不会| C[查看你的冰箱<br>私有数据]\n    A -->|也不会| D[使用新厨具<br>外部工具]\n    A -->|更不知道| E[你今晚的口味<br>实时需求]\n    \n    style A fill:#ffcccc\n    style B fill:#ccffcc\n    style C fill:#ffcccc\n    style D fill:#ffcccc\n    style E fill:#ffcccc",
+            "config": {
+              "theme": "default",
+              "flowchart": {
+                "useMaxWidth": true,
+                "htmlLabels": true
+              },
+              "sequence": {
+                "useMaxWidth": true,
+                "wrap": true
+              }
+            }
+          }
+        },
+        {
+          "index": 1,
+          "type": "mermaid",
+          "valid": true,
+          "errors": [],
+          "warnings": [],
+          "config": {
+            "type": "mermaid",
+            "code": "graph TB\n    subgraph \"LangChain 魔法工具箱\"\n        A[Models<br>🤖 大脑] \n        B[Prompts<br>📝 指令]\n        C[Chains<br>🔗 流水线]\n        D[Memory<br>🧠 记忆]\n        E[Agents<br>🕵️ 特工]\n        F[Tools<br>🛠️ 工具]\n        G[Indexes<br>📚 知识库]\n    end\n    \n    A --> C\n    B --> C\n    C --> D\n    C --> E\n    E --> F\n    C --> G\n    \n    style A fill:#e1f5fe\n    style B fill:#fff3e0\n    style C fill:#f3e5f5\n    style D fill:#e8f5e9\n    style E fill:#fff8e1\n    style F fill:#fce4ec\n    style G fill:#e0f2f1",
+            "config": {
+              "theme": "default",
+              "flowchart": {
+                "useMaxWidth": true,
+                "htmlLabels": true
+              },
+              "sequence": {
+                "useMaxWidth": true,
+                "wrap": true
+              }
+            }
+          }
+        },
+        {
+          "index": 2,
+          "type": "mermaid",
+          "valid": true,
+          "errors": [],
+          "warnings": [],
+          "config": {
+            "type": "mermaid",
+            "code": "graph LR\n    A[用户问题] --> B[提示模板]\n    B --> C[格式化的问题]\n    C --> D[LLM]\n    D --> E[回答]\n    \n    style B fill:#fff3e0\n    style C fill:#e3f2fd",
+            "config": {
+              "theme": "default",
+              "flowchart": {
+                "useMaxWidth": true,
+                "htmlLabels": true
+              },
+              "sequence": {
+                "useMaxWidth": true,
+                "wrap": true
+              }
+            }
+          }
+        },
+        {
+          "index": 3,
+          "type": "mermaid",
+          "valid": true,
+          "errors": [],
+          "warnings": [],
+          "config": {
+            "type": "mermaid",
+            "code": "sequenceDiagram\n    participant User\n    participant Chain\n    participant Memory\n    participant LLM\n    \n    User->>Chain: 你好，我喜欢川菜\n    Chain->>Memory: 存储偏好：喜欢川菜\n    Chain->>LLM: 生成回答\n    LLM-->>User: 很高兴认识你！\n    \n    User->>Chain: 推荐一道菜\n    Chain->>Memory: 读取偏好\n    Memory-->>Chain: 喜欢川菜\n    Chain->>LLM: 基于川菜偏好推荐\n    LLM-->>User: 我推荐麻婆豆腐...",
+            "config": {
+              "theme": "default",
+              "flowchart": {
+                "useMaxWidth": true,
+                "htmlLabels": true
+              },
+              "sequence": {
+                "useMaxWidth": true,
+                "wrap": true
+              }
+            }
+          }
+        },
+        {
+          "index": 4,
+          "type": "mermaid",
+          "valid": true,
+          "errors": [],
+          "warnings": [],
+          "config": {
+            "type": "mermaid",
+            "code": "graph TD\n    A[用户问题] --> B[搜索相关食谱段落]\n    B --> C[找到相关内容]\n    C --> D[结合食谱内容生成回答]\n    D --> E[个性化回答]\n    \n    style A fill:#ffcccc\n    style B fill:#fff3e0\n    style C fill:#e3f2fd\n    style D fill:#f3e5f5\n    style E fill:#e8f5e9",
+            "config": {
+              "theme": "default",
+              "flowchart": {
+                "useMaxWidth": true,
+                "htmlLabels": true
+              },
+              "sequence": {
+                "useMaxWidth": true,
+                "wrap": true
+              }
+            }
+          }
+        },
+        {
+          "index": 5,
+          "type": "mermaid",
+          "valid": true,
+          "errors": [],
+          "warnings": [],
+          "config": {
+            "type": "mermaid",
+            "code": "stateDiagram-v2\n    [*] --> 接收任务\n    接收任务 --> 思考需要什么工具\n    思考需要什么工具 --> 选择合适工具\n    选择合适工具 --> 使用工具\n    使用工具 --> 观察结果\n    观察结果 --> 任务完成？\n    任务完成？ --> 是: 返回结果\n    任务完成？ --> 否: 思考需要什么工具\n    返回结果 --> [*]",
+            "config": {
+              "theme": "default",
+              "flowchart": {
+                "useMaxWidth": true,
+                "htmlLabels": true
+              },
+              "sequence": {
+                "useMaxWidth": true,
+                "wrap": true
+              }
+            }
+          }
+        },
+        {
+          "index": 6,
+          "type": "mermaid",
+          "valid": true,
+          "errors": [],
+          "warnings": [],
+          "config": {
+            "type": "mermaid",
+            "code": "journey\n    title 你的LangChain学习之旅\n    section 基础入门\n      了解概念: 5: 新手\n      运行第一个例子: 4: 新手\n    section 动手实践\n      构建RAG系统: 3: 学习\n      创建Agent: 3: 学习\n    section 优化进阶\n      性能调优: 2: 熟练\n      生产部署: 1: 专家",
+            "config": {
+              "theme": "default",
+              "flowchart": {
+                "useMaxWidth": true,
+                "htmlLabels": true
+              },
+              "sequence": {
+                "useMaxWidth": true,
+                "wrap": true
+              }
+            }
+          }
+        }
+      ],
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "filename": "2025-07-18-demystifying-llm-memory.md",
+      "status": "success",
+      "totalCharts": 5,
+      "charts": [
+        {
+          "index": 0,
+          "type": "mermaid",
+          "valid": true,
+          "errors": [],
+          "warnings": [],
+          "config": {
+            "type": "mermaid",
+            "code": "graph TD\n    A[模型权重] --> B(长期知识存储)\n    C[上下文窗口] --> D(短期记忆)\n    E[外部向量存储] --> F(扩展记忆)\n    G[知识图谱] --> F\n    style A fill:#4ECDC4\n    style C fill:#45B7D1\n    style E fill:#96CEB4\n    style G fill:#FFEEAD",
+            "config": {
+              "theme": "default",
+              "flowchart": {
+                "useMaxWidth": true,
+                "htmlLabels": true
+              },
+              "sequence": {
+                "useMaxWidth": true,
+                "wrap": true
+              }
+            }
+          }
+        },
+        {
+          "index": 1,
+          "type": "mermaid",
+          "valid": true,
+          "errors": [],
+          "warnings": [],
+          "config": {
+            "type": "mermaid",
+            "code": "graph TD\n    subgraph \"记忆层次结构\"\n        subgraph \"核心记忆\"\n            PM[模型权重<br/>长期存储]\n        end\n        \n        subgraph \"短期记忆\"\n            CM[上下文窗口<br/>临时存储]\n        end\n        \n        subgraph \"扩展记忆\"\n            EM[向量数据库<br/>长期存储]\n            KB[知识图谱<br/>结构化记忆]\n        end\n    end\n    \n    User[用户输入] --> CM\n    CM --> |推理| PM\n    CM --> |检索| EM\n    EM --> |增强| CM\n    KB --> |补充| EM\n    \n    style PM fill:#e1f5fe\n    style CM fill:#fff3e0\n    style EM fill:#f3e5f5\n    style KB fill:#d1c4e9",
+            "config": {
+              "theme": "default",
+              "flowchart": {
+                "useMaxWidth": true,
+                "htmlLabels": true
+              },
+              "sequence": {
+                "useMaxWidth": true,
+                "wrap": true
+              }
+            }
+          }
+        },
+        {
+          "index": 2,
+          "type": "mermaid",
+          "valid": true,
+          "errors": [],
+          "warnings": [],
+          "config": {
+            "type": "mermaid",
+            "code": "graph LR\n    subgraph \"位置编码演进\"\n        A[绝对位置编码<br/>BERT/GPT] --> B[相对位置编码<br/>Transformer-XL]\n        B --> C[RoPE旋转编码<br/>LLaMA]\n        C --> D[ALiBi线性偏置<br/>Bloom]\n        D --> E[NTK扩展<br/>CodeLLaMA]\n        E --> F[YaRN<br/>2M上下文]\n    end\n    \n    style A fill:#ffcccc\n    style C fill:#ccffcc\n    style F fill:#ccccff",
+            "config": {
+              "theme": "default",
+              "flowchart": {
+                "useMaxWidth": true,
+                "htmlLabels": true
+              },
+              "sequence": {
+                "useMaxWidth": true,
+                "wrap": true
+              }
+            }
+          }
+        },
+        {
+          "index": 3,
+          "type": "mermaid",
+          "valid": true,
+          "errors": [],
+          "warnings": [],
+          "config": {
+            "type": "mermaid",
+            "code": "graph TD\n    subgraph \"RAG系统架构\"\n        subgraph \"数据准备阶段\"\n            Docs[原始文档] --> Split[文本分块]\n            Split --> Embed[向量化]\n            Embed --> Store[向量数据库]\n        end\n        \n        subgraph \"查询阶段\"\n            Query[用户查询] --> Embed2[查询向量化]\n            Embed2 --> Search[相似度搜索]\n            Store --> Search\n            Search --> Retrieve[检索相关片段]\n            Retrieve --> Prompt[构建增强提示]\n            Prompt --> LLM[大模型生成]\n        end\n    end\n    \n    style Docs fill:#ffcccc\n    style Query fill:#ccffcc\n    style LLM fill:#ccccff",
+            "config": {
+              "theme": "default",
+              "flowchart": {
+                "useMaxWidth": true,
+                "htmlLabels": true
+              },
+              "sequence": {
+                "useMaxWidth": true,
+                "wrap": true
+              }
+            }
+          }
+        },
+        {
+          "index": 4,
+          "type": "mermaid",
+          "valid": true,
+          "errors": [],
+          "warnings": [],
+          "config": {
+            "type": "mermaid",
+            "code": "graph TD\n    A[Transformer] --> B[Mamba]\n    B --> C[RWKV]\n    C --> D[RetNet]\n    D --> E[Hyena]\n    E --> F[无限上下文]\n    \n    style A fill:#ffcccc\n    style C fill:#ccffcc\n    style F fill:#ccccff",
+            "config": {
+              "theme": "default",
+              "flowchart": {
+                "useMaxWidth": true,
+                "htmlLabels": true
+              },
+              "sequence": {
+                "useMaxWidth": true,
+                "wrap": true
+              }
+            }
+          }
+        }
+      ],
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "filename": "2025-07-18-quantitative-investment-guide-v2.md",
+      "status": "success",
+      "totalCharts": 1,
+      "charts": [
+        {
+          "index": 0,
+          "type": "mermaid",
+          "valid": true,
+          "errors": [],
+          "warnings": [],
+          "config": {
+            "type": "mermaid",
+            "code": "graph TD\n    A[原始市场数据] --> B[数据清洗]\n    B --> C[特征工程]\n    C --> D[模型训练]\n    D --> E[信号生成]\n    E --> F[交易执行]\n    \n    B1[缺失值处理] --> B\n    B2[异常值检测] --> B\n    B3[数据标准化] --> B\n    \n    C1[技术指标计算] --> C\n    C2[基本面因子] --> C\n    C3[情绪指标] --> C\n    C4[另类数据] --> C\n    \n    style A fill:#ff9999\n    style F fill:#99ff99\n    style D fill:#9999ff",
+            "config": {
+              "theme": "default",
+              "flowchart": {
+                "useMaxWidth": true,
+                "htmlLabels": true
+              },
+              "sequence": {
+                "useMaxWidth": true,
+                "wrap": true
+              }
+            }
+          }
+        }
+      ],
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "filename": "2025-07-18-quantitative-investment-guide.md",
+      "status": "success",
+      "totalCharts": 6,
+      "charts": [
+        {
+          "index": 0,
+          "type": "mermaid",
+          "valid": true,
+          "errors": [],
+          "warnings": [],
+          "config": {
+            "type": "mermaid",
+            "code": "graph TD\n    A[数据收集] --> B[数据清洗]\n    B --> C[特征工程]\n    C --> D[策略开发]\n    D --> E[回测验证]\n    E --> F[实盘执行]\n    F --> G[风险管理]\n    G --> H[绩效评估]\n    H --> I[策略优化]\n    I --> D\n    \n    J[机器学习] --> C\n    K[统计分析] --> D\n    L[技术指标] --> C\n    \n    style A fill:#90EE90\n    style D fill:#FFD700\n    style G fill:#FFB6C1\n    style F fill:#87CEEB",
+            "config": {
+              "theme": "default",
+              "flowchart": {
+                "useMaxWidth": true,
+                "htmlLabels": true
+              },
+              "sequence": {
+                "useMaxWidth": true,
+                "wrap": true
+              }
+            }
+          }
+        },
+        {
+          "index": 1,
+          "type": "mermaid",
+          "valid": true,
+          "errors": [],
+          "warnings": [],
+          "config": {
+            "type": "mermaid",
+            "code": "graph LR\n    A[原始市场数据] --> B[数据清洗]\n    B --> C[特征工程]\n    C --> D[模型训练]\n    D --> E[信号生成]\n    E --> F[交易执行]\n    \n    B1[缺失值处理] --> B\n    B2[异常值检测] --> B\n    B3[数据标准化] --> B\n    \n    C1[技术指标计算] --> C\n    C2[基本面因子] --> C\n    C3[情绪指标] --> C\n    C4[另类数据] --> C\n    \n    style A fill:#ff9999\n    style F fill:#99ff99\n    style D fill:#9999ff",
+            "config": {
+              "theme": "default",
+              "flowchart": {
+                "useMaxWidth": true,
+                "htmlLabels": true
+              },
+              "sequence": {
+                "useMaxWidth": true,
+                "wrap": true
+              }
+            }
+          }
+        },
+        {
+          "index": 2,
+          "type": "mermaid",
+          "valid": true,
+          "errors": [],
+          "warnings": [],
+          "config": {
+            "type": "mermaid",
+            "code": "graph TD\n    A[数据优势] --> B[独特数据源]\n    B --> C[卫星数据]\n    B --> D[信用卡数据]\n    B --> E[天气数据]\n    \n    F[技术优势] --> G[顶级科学家团队]\n    G --> H[数学家]\n    G --> I[物理学家]\n    G --> J[计算机科学家]\n    \n    K[策略优势] --> L[高频交易]\n    K --> M[统计套利]\n    K --> N[机器学习]\n    \n    style A fill:#90EE90\n    style F fill:#FFD700\n    style K fill:#FFB6C1",
+            "config": {
+              "theme": "default",
+              "flowchart": {
+                "useMaxWidth": true,
+                "htmlLabels": true
+              },
+              "sequence": {
+                "useMaxWidth": true,
+                "wrap": true
+              }
+            }
+          }
+        },
+        {
+          "index": 3,
+          "type": "mermaid",
+          "valid": true,
+          "errors": [],
+          "warnings": [],
+          "config": {
+            "type": "mermaid",
+            "code": "graph TD\n    A[传统量化] --> B[机器学习增强]\n    B --> C[深度学习]\n    \n    C --> D[LSTM预测]\n    C --> E[强化学习]\n    C --> F[图神经网络]\n    \n    D --> G[时间序列预测]\n    E --> H[策略优化]\n    F --> I[关系建模]\n    \n    style A fill:#90EE90\n    style C fill:#FFD700\n    style G fill:#FFB6C1",
+            "config": {
+              "theme": "default",
+              "flowchart": {
+                "useMaxWidth": true,
+                "htmlLabels": true
+              },
+              "sequence": {
+                "useMaxWidth": true,
+                "wrap": true
+              }
+            }
+          }
+        },
+        {
+          "index": 4,
+          "type": "mermaid",
+          "valid": true,
+          "errors": [],
+          "warnings": [],
+          "config": {
+            "type": "mermaid",
+            "code": "timeline\n    title 量化投资技术演进时间线\n    \n    2025 : 机器学习普及\n          : 另类数据整合\n          : 云计算平台成熟\n    \n    2026-2027 : 量子计算应用\n               : 联邦学习\n               : 实时情绪分析\n    \n    2028-2030 : 通用人工智能\n               : 完全自动化交易\n               : 个性化投资策略",
+            "config": {
+              "theme": "default",
+              "flowchart": {
+                "useMaxWidth": true,
+                "htmlLabels": true
+              },
+              "sequence": {
+                "useMaxWidth": true,
+                "wrap": true
+              }
+            }
+          }
+        },
+        {
+          "index": 5,
+          "type": "mermaid",
+          "valid": true,
+          "errors": [],
+          "warnings": [],
+          "config": {
+            "type": "mermaid",
+            "code": "graph TD\n    A[基础知识] --> B[Python编程]\n    B --> C[数据分析]\n    C --> D[金融理论]\n    D --> E[策略开发]\n    E --> F[回测系统]\n    F --> G[实盘交易]\n    \n    H[学习资源] --> I[在线课程]\n    H --> J[开源项目]\n    H --> K[模拟交易]\n    \n    style A fill:#90EE90\n    style G fill:#FFD700\n    style H fill:#FFB6C1",
+            "config": {
+              "theme": "default",
+              "flowchart": {
+                "useMaxWidth": true,
+                "htmlLabels": true
+              },
+              "sequence": {
+                "useMaxWidth": true,
+                "wrap": true
+              }
+            }
+          }
+        }
+      ],
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "filename": "2025-07-19-高效时间管理指南.md",
+      "status": "success",
+      "totalCharts": 0,
+      "charts": [],
+      "errors": [],
+      "warnings": []
+    }
+  ]
+}
