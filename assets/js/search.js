@@ -198,11 +198,21 @@
           this.field('content', { boost: 1 });
 
           data.forEach((doc, i) => {
-            this.add({ ...doc, id: i });
+            try {
+              this.add({
+                id: i,
+                title: doc.title || '',
+                categories: (doc.categories || []).join(' '),
+                tags: (doc.tags || []).join(' '),
+                content: doc.content || ''
+              });
+            } catch (error) {
+              console.warn('Failed to add document to search index:', error);
+            }
           });
         });
 
-        console.log('Search index initialized with', data.length, 'documents');
+        console.log(`Search index initialized with ${data.length} documents`);
       })
       .catch(error => {
         console.error('Error loading search data:', error);

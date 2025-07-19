@@ -72,7 +72,8 @@
                      element.getAttribute('data-config') || 
                      element.getAttribute('data-plotly-data') || 
                      element.textContent;
-      return `${type}_${utils.getTheme()}_${btoa(content).slice(0, 20)}`;
+      // 使用 encodeURIComponent 替代 btoa 避免中文编码问题
+      return `${type}_${utils.getTheme()}_${encodeURIComponent(content).slice(0, 50)}`;
     }
   };
 
