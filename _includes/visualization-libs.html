@@ -1,0 +1,114 @@
+<!-- Visualization Libraries Integration -->
+
+<!-- ECharts -->
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+
+<!-- Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+
+<!-- Three.js -->
+<script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+<!-- Three.js Controls -->
+<script src="https://cdn.jsdelivr.net/npm/three@0.160.0/examples/js/controls/OrbitControls.js"></script>
+
+<!-- Plotly.js -->
+<script src="https://cdn.plot.ly/plotly-2.27.1.min.js"></script>
+
+<!-- D3.js -->
+<script src="https://d3js.org/d3.v7.min.js"></script>
+
+<!-- Mermaid.js for UML diagrams -->
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js"></script>
+
+<!-- PlantUML Viewer -->
+<script src="https://cdn.jsdelivr.net/npm/plantuml-encoder@1.4.0/dist/plantuml-encoder.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/plantuml-viewer@0.5.0/dist/plantuml-viewer.min.js"></script>
+
+<!-- Custom Visualization Integration -->
+<script src="/assets/js/visualization.js"></script>
+
+<style>
+/* Visualization Containers */
+.visualization-container {
+  width: 100%;
+  min-height: 400px;
+  margin: 20px 0;
+  border-radius: 8px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+/* Dark mode adjustments */
+[data-theme="dark"] .visualization-container {
+  background: rgba(0, 0, 0, 0.2);
+  border-color: rgba(255, 255, 255, 0.05);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .visualization-container {
+    min-height: 300px;
+  }
+}
+
+/* Loading state */
+.visualization-container.loading {
+  position: relative;
+}
+
+.visualization-container.loading::after {
+  content: "加载中...";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 14px;
+  color: var(--text-color);
+}
+
+/* Error state */
+.visualization-container.error {
+  position: relative;
+  background: rgba(255, 0, 0, 0.1);
+}
+
+.visualization-container.error::after {
+  content: attr(data-error);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 14px;
+  color: #ff4444;
+  text-align: center;
+  padding: 20px;
+  width: 100%;
+}
+
+/* Interactive elements */
+.visualization-container .tooltip {
+  position: absolute;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-size: 12px;
+  pointer-events: none;
+  z-index: 1000;
+  display: none;
+}
+
+/* Animation effects */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.visualization-container {
+  animation: fadeIn 0.3s ease-in-out;
+}
+</style>
