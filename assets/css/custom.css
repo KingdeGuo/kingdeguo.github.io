@@ -513,14 +513,7 @@ body {
 }
 
 .highlight .lineno {
-  color: #7c7c7c;
-  display: inline-block;
-  padding: 0 12px 0 8px;
-  border-right: 1px solid #444;
-  margin-right: 12px;
-  user-select: none;
-  min-width: 2em;
-  text-align: right;
+  display: none; /* 隐藏行号 */
 }
 
 .highlight pre {
@@ -916,6 +909,25 @@ img.lazyloaded {
   top: 20px;
   right: 30px;
   z-index: 999;
+}
+
+/* 修复搜索框和主题切换按钮重合问题 */
+#search-container {
+  position: relative;
+  max-width: 600px;
+  margin: 0 auto;
+  z-index: 1000;
+}
+
+@media (max-width: 768px) {
+  .theme-switcher {
+    top: 10px;
+    right: 10px;
+  }
+  
+  #search-container {
+    margin: 0 60px 0 20px; /* 为右侧主题切换按钮留出空间 */
+  }
 }
 
 /* Responsive navigation */
