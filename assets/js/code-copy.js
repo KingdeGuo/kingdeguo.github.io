@@ -195,19 +195,95 @@
     });
   }
 
-  // 页面加载完成后初始化
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initAll);
-  } else {
-    initAll();
+  // 生成行号HTML
+  function generateLineNumbers(code) {
+    const lines = code.split('\n').length;
+    let html = '';
+    for (let i = 1; i <= lines; i++) {
+      html += `<span class="line-number">${i}</span>\n`;
+    }
+    return html;
   }
 
-  function initAll() {
-    cleanupDuplicateButtons();
-    initCodeCopy();
-    detectCodeLanguage();
-    addCodeBlockAnimations();
-    addLineHighlighting();
+  // 包裹所有代码块
+  function enhanceCodeBlocks() {
+    const codeBlocks = document.querySelectorAll('pre > code');
+    codeBlocks.forEach(code => {
+      const pre = code.parentElement;
+      if (pre.classList.contains('code-block-inner')) return; // 已处理
+
+      // 获取语言
+      let lang = code.className.match(/language-([\w\d]+)/);
+      lang = lang ? lang[1] : '';
+      const langLabel = lang ? lang.toUpperCase() : 'CODE';
+
+      // 代码内容
+      const codeText = code.textContent;
+      const lines = codeText.split('\n');
+      const numberedCode = lines.map((line, idx) => `<span>${line}</span>`).join('\n');
+      const lineNumbers = generateLineNumbers(codeText);
+
+      // 构建卡片结构
+      const wrapper = document.createElement('div');
+      wrapper.className = 'code-block-wrapper';
+      wrapper.innerHTML = `
+        <div class="code-block-header">
+          <span class="code-block-lang">${langLabel}</span>
+          <button class="code-block-copy" title="复制代码">复制</button>
+        </div>
+        <pre class="code-block-inner"><code>${numberedCode}</code></pre>
+      `;
+      // 插入行号
+      const preEl = wrapper.querySelector('.code-block-inner');
+      const lineNumDiv = document.createElement('div');
+      lineNumDiv.style.position = 'absolute';
+      lineNumDiv.style.left = '0';
+      lineNumDiv.style.top = '1.2em';
+      lineNumDiv.style.textAlign = 'right';
+      lineNumDiv.style.pointerEvents = 'none';
+      lineNumDiv.innerHTML = lineNumbers;
+      preEl.appendChild(lineNumDiv);
+
+      // 替换原有pre
+      pre.replaceWith(wrapper);
+    });
+  }
+
+  // 复制按钮事件
+  function bindCopyEvents() {
+    document.body.addEventListener('click', function(e) {
+      if (e.target.classList.contains('code-block-copy')) {
+        const wrapper = e.target.closest('.code-block-wrapper');
+        const code = wrapper.querySelector('pre code').innerText;
+        copyToClipboard(code).then(() => {
+          e.target.textContent = '已复制!';
+          setTimeout(() => {
+            e.target.textContent = '复制';
+          }, 1200);
+        });
+      }
+    });
+  }
+
+  // 主题切换时刷新代码块样式
+  function bindThemeListener() {
+    const observer = new MutationObserver(() => {
+      enhanceCodeBlocks();
+    });
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+  }
+
+  // 初始化
+  function init() {
+    enhanceCodeBlocks();
+    bindCopyEvents();
+    bindThemeListener();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
   }
 
   // 导出函数供其他脚本使用
