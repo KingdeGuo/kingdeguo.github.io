@@ -186,13 +186,13 @@
 
   // 包裹所有代码块
   function enhanceCodeBlocks() {
-    const codeBlocks = document.querySelectorAll('pre > code');
-    codeBlocks.forEach(function(codeEl) {
-      if (codeEl.closest('.code-block-wrapper')) return; // 已处理
+    document.querySelectorAll('pre > code').forEach(function(codeEl) {
+      if (codeEl.closest('.code-block-wrapper')) return;
       const pre = codeEl.parentElement;
-      const code = codeEl.textContent;
+      const code = codeEl.textContent.replace(/\n$/, '');
       const lang = (codeEl.className.match(/language-(\w+)/) || [])[1] || '';
-      // 创建结构
+      const linesArr = code.split('\n');
+      // 结构
       const wrapper = document.createElement('div');
       wrapper.className = 'code-block-wrapper';
       // header
@@ -200,7 +200,7 @@
       header.className = 'code-block-header';
       const langSpan = document.createElement('span');
       langSpan.className = 'code-block-lang';
-      langSpan.textContent = lang ? lang.toUpperCase() : 'CODE';
+      langSpan.textContent = lang ? lang.toUpperCase() : (getLang()==='zh'?'代码':'CODE');
       const copyBtn = document.createElement('button');
       copyBtn.className = 'code-block-copy';
       copyBtn.type = 'button';
@@ -223,21 +223,18 @@
       // 行号
       const lines = document.createElement('div');
       lines.className = 'code-block-lines';
-      lines.innerHTML = generateLineNumbers(code);
+      lines.innerHTML = linesArr.map((_,i)=>`<span class="line-number">${i+1}</span>`).join('');
       // 代码内容
       const content = document.createElement('div');
       content.className = 'code-block-content';
-      content.textContent = code;
+      content.innerHTML = linesArr.map(line=>`<span class="code-line">${line.replace(/</g,'&lt;').replace(/>/g,'&gt;')}</span>`).join('');
       // 滚动同步
-      content.onscroll = function() {
-        lines.scrollTop = content.scrollTop;
-      };
+      content.onscroll = function() { lines.scrollTop = content.scrollTop; };
       // 行号高亮
       lines.addEventListener('click', function(e) {
         if (e.target.classList.contains('line-number')) {
           const idx = Array.from(lines.children).indexOf(e.target);
-          Array.from(content.childNodes).forEach((n, i) => {
-            if (n.nodeType === 3) return; // 跳过文本节点
+          Array.from(content.children).forEach((n, i) => {
             n.classList.toggle('highlighted', i === idx);
           });
         }
@@ -247,7 +244,6 @@
       body.appendChild(content);
       wrapper.appendChild(header);
       wrapper.appendChild(body);
-      // 替换原结构
       pre.parentNode.replaceChild(wrapper, pre);
     });
   }
