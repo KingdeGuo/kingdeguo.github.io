@@ -189,9 +189,11 @@
     document.querySelectorAll('pre > code').forEach(function(codeEl) {
       if (codeEl.closest('.code-block-wrapper')) return;
       const pre = codeEl.parentElement;
-      const code = codeEl.textContent.replace(/\n$/, '');
+      // 保留所有空行，结尾不去除
+      const code = codeEl.textContent;
       const lang = (codeEl.className.match(/language-(\w+)/) || [])[1] || '';
-      const linesArr = code.split('\n');
+      // 按\n分割，保留所有空行
+      const linesArr = code.split(/\n/);
       // 结构
       const wrapper = document.createElement('div');
       wrapper.className = 'code-block-wrapper';
