@@ -161,92 +161,6 @@ body {
 }
 
 /* Existing styles */
-
-/* Custom Code Block Styles */
-pre {
-  background-color: #282c34; /* Dark background for code blocks */
-  color: #abb2bf; /* Light text color */
-  border-radius: 8px;
-  padding: 1.2em;
-  overflow-x: auto;
-  position: relative;
-  font-size: 0.9em;
-  line-height: 1.5;
-  margin-bottom: 1.5em;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-}
-
-pre code {
-  display: block;
-  padding: 0;
-  background-color: transparent;
-  color: inherit;
-  font-family: var(--font-family-mono);
-}
-
-/* Copy Button Styles */
-.copy-code-btn {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color: rgba(255, 255, 255, 0.1);
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  padding: 0.5em 0.8em;
-  cursor: pointer;
-  font-size: 0.8em;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-  opacity: 0.8;
-}
-
-.copy-code-btn:hover {
-  background-color: rgba(255, 255, 255, 0.2);
-  transform: translateY(-2px);
-  opacity: 1;
-}
-
-.copy-code-btn:active {
-  transform: translateY(0);
-}
-
-/* Line Numbers Styles */
-.line-numbers {
-  position: absolute;
-  top: 0;
-  left: 0;
-  padding: 1.2em 0.8em;
-  background-color: #21252b;
-  color: #636f83;
-  font-size: 0.8em;
-  line-height: 1.5;
-  border-top-left-radius: 8px;
-  border-bottom-left-radius: 8px;
-  text-align: right;
-  user-select: none;
-  pointer-events: none;
-}
-
-.line-numbers span {
-  display: block;
-  padding-right: 0.5em;
-}
-
-/* Adjust code padding when line numbers are present */
-pre.has-line-numbers code {
-  margin-left: 3em; /* Adjust based on line number width */
-}
-
-/* Ensure proper spacing for pre elements */
-pre + .highlighter-rouge {
-  margin-top: 0;
-}
-
-.highlighter-rouge {
-  margin-bottom: 1.5em;
-}
-
-
 .post-container {
   max-width: 800px;
   margin: 0 auto;
@@ -415,7 +329,78 @@ pre + .highlighter-rouge {
   color: var(--link-color);
 }
 
-/* This rule is now handled by the more specific .highlight rule above */
+/* Custom Code Block Styles */
+div.highlighter-rouge, figure.highlight {
+  background: #f8f8f8; /* Light gray background */
+  color: #333333; /* Dark text color */
+  border: 1px solid #e0e0e0; /* Light border */
+}
+
+.highlight .hll { background-color: #ffffcc; } /* Highlighted line */
+
+.highlight .c { /* Comment */ color: #888888; }
+.highlight .err { /* Error */ color: #cc0000; }
+.highlight .k { /* Keyword */ color: #0077aa; }
+.highlight .l { /* Literal */ color: #cc6600; }
+.highlight .n { /* Name */ color: #333333; }
+.highlight .o { /* Operator */ color: #aa7700; }
+.highlight .p { /* Punctuation */ color: #333333; }
+.highlight .cm { /* Comment.Multiline */ color: #888888; }
+.highlight .cp { /* Comment.Preproc */ color: #888888; }
+.highlight .c1 { /* Comment.Single */ color: #888888; }
+.highlight .cs { /* Comment.Special */ color: #888888; }
+.highlight .gd { /* Generic.Deleted */ color: #cc0000; }
+.highlight .ge { /* Generic.Emph */ font-style: italic; }
+.highlight .gh { /* Generic.Heading */ color: #333333; font-weight: bold; }
+.highlight .gi { /* Generic.Inserted */ color: #00aa00; }
+.highlight .gp { /* Generic.Prompt */ color: #888888; font-weight: bold; }
+.highlight .gs { /* Generic.Strong */ font-weight: bold; }
+.highlight .gu { /* Generic.Subheading */ color: #aa7700; font-weight: bold; }
+.highlight .kc { /* Keyword.Constant */ color: #0077aa; }
+.highlight .kd { /* Keyword.Declaration */ color: #0077aa; }
+.highlight .kn { /* Keyword.Namespace */ color: #aa7700; }
+.highlight .kp { /* Keyword.Pseudo */ color: #0077aa; }
+.highlight .kr { /* Keyword.Reserved */ color: #0077aa; }
+.highlight .kt { /* Keyword.Type */ color: #dd4400; }
+.highlight .ld { /* Literal.Date */ color: #00aa00; }
+.highlight .m { /* Literal.Number */ color: #cc6600; }
+.highlight .s { /* Literal.String */ color: #00aa00; }
+.highlight .na { /* Name.Attribute */ color: #6666cc; }
+.highlight .nb { /* Name.Builtin */ color: #333333; }
+.highlight .nc { /* Name.Class */ color: #dd4400; }
+.highlight .no { /* Name.Constant */ color: #cc0000; }
+.highlight .nd { /* Name.Decorator */ color: #aa7700; }
+.highlight .ni { /* Name.Entity */ color: #333333; }
+.highlight .ne { /* Name.Exception */ color: #cc0000; }
+.highlight .nf { /* Name.Function */ color: #6666cc; }
+.highlight .nl { /* Name.Label */ color: #333333; }
+.highlight .nn { /* Name.Namespace */ color: #dd4400; }
+.highlight .nx { /* Name.Other */ color: #6666cc; }
+.highlight .py { /* Name.Property */ color: #333333; }
+.highlight .nt { /* Name.Tag */ color: #aa7700; }
+.highlight .nv { /* Name.Variable */ color: #cc0000; }
+.highlight .ow { /* Operator.Word */ color: #aa7700; }
+.highlight .w { /* Text.Whitespace */ color: #333333; }
+.highlight .mf { /* Literal.Number.Float */ color: #cc6600; }
+.highlight .mh { /* Literal.Number.Hex */ color: #cc6600; }
+.highlight .mi { /* Literal.Number.Integer */ color: #cc6600; }
+.highlight .mo { /* Literal.Number.Oct */ color: #cc6600; }
+.highlight .sb { /* Literal.String.Backtick */ color: #00aa00; }
+.highlight .sc { /* Literal.String.Char */ color: #333333; }
+.highlight .sd { /* Literal.String.Doc */ color: #888888; }
+.highlight .s2 { /* Literal.String.Double */ color: #00aa00; }
+.highlight .se { /* Literal.String.Escape */ color: #cc6600; }
+.highlight .sh { /* Literal.String.Heredoc */ color: #00aa00; }
+.highlight .si { /* Literal.String.Interpol */ color: #cc6600; }
+.highlight .sx { /* Literal.String.Other */ color: #00aa00; }
+.highlight .sr { /* Literal.String.Regex */ color: #00aa00; }
+.highlight .s1 { /* Literal.String.Single */ color: #00aa00; }
+.highlight .ss { /* Literal.String.Symbol */ color: #00aa00; }
+.highlight .bp { /* Name.Builtin.Pseudo */ color: #333333; }
+.highlight .vc { /* Name.Variable.Class */ color: #cc0000; }
+.highlight .vg { /* Name.Variable.Global */ color: #cc0000; }
+.highlight .vi { /* Name.Variable.Instance */ color: #cc0000; }
+.highlight .il { /* Literal.Number.Integer.Long */ color: #cc6600; }
 
 /* Hide theme credits */
 .powered-by,
@@ -569,7 +554,7 @@ pre + .highlighter-rouge {
   border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-/* No custom code block styles needed */
+
 
 /* Posts List Page */
 .posts-container {

@@ -4,3 +4,6 @@ _site
 .jekyll-metadata
 vendor
 _creation_rules/
+assets/.DS_Store
+assets/js/.DS_Store
+.DS_Store
