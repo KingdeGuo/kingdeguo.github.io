@@ -1,0 +1,994 @@
+---
+layout: modern
+---
+
+<!-- 现代化文章布局 -->
+<article class="modern-post">
+  <!-- 文章头部 -->
+  <header class="post-header">
+    <div class="content-container">
+      <!-- 面包屑导航 -->
+      <nav class="breadcrumb">
+        <a href="{{ '/' | relative_url }}">首页</a>
+        <span class="breadcrumb-separator">/</span>
+        <a href="{{ '/posts' | relative_url }}">文章</a>
+        <span class="breadcrumb-separator">/</span>
+        <span class="breadcrumb-current">{{ page.title }}</span>
+      </nav>
+
+      <!-- 文章标题 -->
+      <h1 class="post-title">{{ page.title }}</h1>
+      
+      <!-- 文章描述 -->
+      {% if page.description %}
+        <p class="post-description">{{ page.description }}</p>
+      {% endif %}
+
+      <!-- 文章元信息 -->
+      <div class="post-meta">
+        <div class="meta-item">
+          <i class="fas fa-calendar"></i>
+          <time datetime="{{ page.date | date_to_xmlschema }}">
+            {{ page.date | date: "%Y年%m月%d日" }}
+          </time>
+        </div>
+
+        {% if page.last_modified_at %}
+          <div class="meta-item">
+            <i class="fas fa-edit"></i>
+            <time datetime="{{ page.last_modified_at | date_to_xmlschema }}">
+              更新于 {{ page.last_modified_at | date: "%Y年%m月%d日" }}
+            </time>
+          </div>
+        {% endif %}
+
+        {% if site.features.post.show_reading_time %}
+          <div class="meta-item">
+            <i class="fas fa-clock"></i>
+            <span>{{ content | reading_time }} 分钟阅读</span>
+          </div>
+        {% endif %}
+
+        {% if site.features.post.show_word_count %}
+          <div class="meta-item">
+            <i class="fas fa-file-alt"></i>
+            <span>{{ content | number_of_words }} 字</span>
+          </div>
+        {% endif %}
+      </div>
+
+      <!-- 分类和标签 -->
+      <div class="post-taxonomy">
+        {% if page.categories %}
+          <div class="taxonomy-section">
+            <span class="taxonomy-label">分类：</span>
+            <div class="taxonomy-items">
+              {% for category in page.categories %}
+                <a href="{{ '/categories/' | append: category | relative_url }}" class="taxonomy-item category">
+                  {{ category }}
+                </a>
+              {% endfor %}
+            </div>
+          </div>
+        {% endif %}
+
+        {% if page.tags %}
+          <div class="taxonomy-section">
+            <span class="taxonomy-label">标签：</span>
+            <div class="taxonomy-items">
+              {% for tag in page.tags %}
+                <a href="{{ '/tags/' | append: tag | relative_url }}" class="taxonomy-item tag">
+                  #{{ tag }}
+                </a>
+              {% endfor %}
+            </div>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </header>
+
+  <!-- 文章内容区域 -->
+  <div class="post-content-wrapper">
+    <div class="content-container">
+      <div class="post-layout">
+        <!-- 目录导航 -->
+        {% if site.features.table_of_contents.enabled and page.toc != false %}
+          <aside class="post-toc">
+            <div class="toc-header">
+              <h3 class="toc-title">目录</h3>
+              <button class="toc-toggle" aria-label="切换目录">
+                <i class="fas fa-list"></i>
+              </button>
+            </div>
+            <nav class="toc-nav" id="toc-nav">
+              <!-- 目录内容将通过JavaScript生成 -->
+            </nav>
+          </aside>
+        {% endif %}
+
+        <!-- 文章内容 -->
+        <main class="post-content">
+          {{ content }}
+        </main>
+
+        <!-- 侧边栏 -->
+        <aside class="post-sidebar">
+          <!-- 作者信息 -->
+          {% if site.author %}
+            <div class="sidebar-card author-card">
+              <div class="author-avatar">
+                <img src="{{ '/assets/images/avatar.jpg' | relative_url }}" alt="{{ site.author }}" class="avatar">
+              </div>
+              <div class="author-info">
+                <h4 class="author-name">{{ site.author }}</h4>
+                <p class="author-bio">{{ site.description }}</p>
+                {% if site.email %}
+                  <a href="mailto:{{ site.email }}" class="author-email">
+                    <i class="fas fa-envelope"></i>
+                    {{ site.email }}
+                  </a>
+                {% endif %}
+              </div>
+            </div>
+          {% endif %}
+
+          <!-- 相关文章 -->
+          {% if site.features.related_posts.enabled %}
+            <div class="sidebar-card related-posts-card">
+              <h4 class="sidebar-title">相关文章</h4>
+              <div class="related-posts-list" id="related-posts">
+                <!-- 相关文章将通过JavaScript生成 -->
+              </div>
+            </div>
+          {% endif %}
+
+          <!-- 标签云 -->
+          <div class="sidebar-card tags-card">
+            <h4 class="sidebar-title">热门标签</h4>
+            <div class="tags-cloud">
+              {% for tag in site.tags limit: 20 %}
+                <a href="{{ '/tags/' | append: tag[0] | relative_url }}" class="tag-item">
+                  {{ tag[0] }}
+                  <span class="tag-count">({{ tag[1].size }})</span>
+                </a>
+              {% endfor %}
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </div>
+
+  <!-- 文章底部 -->
+  <footer class="post-footer">
+    <div class="content-container">
+      <!-- 社交分享 -->
+      {% if site.features.social_sharing.enabled %}
+        <div class="social-sharing">
+          <h3 class="sharing-title">分享文章</h3>
+          <div class="sharing-buttons">
+            <a href="https://twitter.com/intent/tweet?text={{ page.title | url_encode }}&url={{ page.url | absolute_url }}" 
+               target="_blank" rel="noopener" class="sharing-btn twitter">
+              <i class="fab fa-twitter"></i>
+              <span>Twitter</span>
+            </a>
+            
+            <a href="https://www.facebook.com/sharer/sharer.php?u={{ page.url | absolute_url }}" 
+               target="_blank" rel="noopener" class="sharing-btn facebook">
+              <i class="fab fa-facebook"></i>
+              <span>Facebook</span>
+            </a>
+            
+            <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ page.url | absolute_url }}" 
+               target="_blank" rel="noopener" class="sharing-btn linkedin">
+              <i class="fab fa-linkedin"></i>
+              <span>LinkedIn</span>
+            </a>
+            
+            <a href="https://service.weibo.com/share/share.php?url={{ page.url | absolute_url }}&title={{ page.title | url_encode }}" 
+               target="_blank" rel="noopener" class="sharing-btn weibo">
+              <i class="fab fa-weibo"></i>
+              <span>微博</span>
+            </a>
+          </div>
+        </div>
+      {% endif %}
+
+      <!-- 文章导航 -->
+      <nav class="post-navigation">
+        {% if page.previous.url %}
+          <a href="{{ page.previous.url }}" class="nav-link nav-prev">
+            <div class="nav-content">
+              <span class="nav-label">上一篇</span>
+              <h4 class="nav-title">{{ page.previous.title }}</h4>
+            </div>
+            <i class="fas fa-arrow-left"></i>
+          </a>
+        {% endif %}
+        
+        {% if page.next.url %}
+          <a href="{{ page.next.url }}" class="nav-link nav-next">
+            <i class="fas fa-arrow-right"></i>
+            <div class="nav-content">
+              <span class="nav-label">下一篇</span>
+              <h4 class="nav-title">{{ page.next.title }}</h4>
+            </div>
+          </a>
+        {% endif %}
+      </nav>
+    </div>
+  </footer>
+
+  <!-- 评论区 -->
+  {% if site.features.comments.provider and page.comments != false %}
+    <section class="comments-section">
+      <div class="content-container">
+        <h3 class="comments-title">评论</h3>
+        {% include giscus_comments.html %}
+      </div>
+    </section>
+  {% endif %}
+</article>
+
+<!-- 现代化文章样式 -->
+<style>
+/* 现代化文章布局 */
+.modern-post {
+  min-height: 100vh;
+}
+
+/* 文章头部 */
+.post-header {
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: white;
+  padding: var(--spacing-3xl) 0 var(--spacing-2xl);
+  position: relative;
+  overflow: hidden;
+}
+
+.post-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="white" opacity="0.1"/><circle cx="50" cy="10" r="0.5" fill="white" opacity="0.1"/><circle cx="10" cy="60" r="0.5" fill="white" opacity="0.1"/><circle cx="90" cy="40" r="0.5" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+  opacity: 0.3;
+}
+
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-lg);
+  font-size: var(--font-size-sm);
+  opacity: 0.9;
+}
+
+.breadcrumb a {
+  color: white;
+  text-decoration: none;
+  transition: opacity var(--transition-fast);
+}
+
+.breadcrumb a:hover {
+  opacity: 0.7;
+}
+
+.breadcrumb-separator {
+  opacity: 0.5;
+}
+
+.breadcrumb-current {
+  opacity: 0.7;
+}
+
+.post-title {
+  font-size: var(--font-size-4xl);
+  font-weight: var(--font-weight-bold);
+  line-height: 1.2;
+  margin-bottom: var(--spacing-lg);
+  color: white;
+}
+
+.post-description {
+  font-size: var(--font-size-lg);
+  opacity: 0.9;
+  margin-bottom: var(--spacing-xl);
+  line-height: 1.6;
+}
+
+.post-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-xl);
+}
+
+.meta-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  font-size: var(--font-size-sm);
+  opacity: 0.8;
+}
+
+.meta-item i {
+  font-size: var(--font-size-base);
+}
+
+.post-taxonomy {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.taxonomy-section {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.taxonomy-label {
+  font-size: var(--font-size-sm);
+  opacity: 0.8;
+  white-space: nowrap;
+}
+
+.taxonomy-items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+}
+
+.taxonomy-item {
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-xs);
+  text-decoration: none;
+  transition: all var(--transition-fast);
+}
+
+.taxonomy-item.category {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+}
+
+.taxonomy-item.category:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-1px);
+}
+
+.taxonomy-item.tag {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+}
+
+.taxonomy-item.tag:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-1px);
+}
+
+/* 文章内容区域 */
+.post-content-wrapper {
+  padding: var(--spacing-2xl) 0;
+}
+
+.post-layout {
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr;
+  gap: var(--spacing-2xl);
+  align-items: start;
+}
+
+/* 目录导航 */
+.post-toc {
+  position: sticky;
+  top: 100px;
+  max-height: calc(100vh - 120px);
+  overflow-y: auto;
+}
+
+.toc-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--spacing-md);
+}
+
+.toc-title {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--gray-900);
+  margin: 0;
+}
+
+[data-theme="dark"] .toc-title {
+  color: var(--gray-100);
+}
+
+.toc-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--gray-600);
+  cursor: pointer;
+  padding: var(--spacing-sm);
+}
+
+[data-theme="dark"] .toc-toggle {
+  color: var(--gray-400);
+}
+
+.toc-nav {
+  background: var(--gray-50);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+  border: 1px solid var(--gray-200);
+}
+
+[data-theme="dark"] .toc-nav {
+  background: var(--gray-800);
+  border-color: var(--gray-700);
+}
+
+.toc-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.toc-nav li {
+  margin-bottom: var(--spacing-sm);
+}
+
+.toc-nav a {
+  display: block;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  color: var(--gray-700);
+  text-decoration: none;
+  border-radius: var(--radius-md);
+  transition: all var(--transition-fast);
+  font-size: var(--font-size-sm);
+}
+
+[data-theme="dark"] .toc-nav a {
+  color: var(--gray-300);
+}
+
+.toc-nav a:hover,
+.toc-nav a.active {
+  background: var(--primary-color);
+  color: white;
+}
+
+/* 文章内容 */
+.post-content {
+  background: white;
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-2xl);
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--gray-200);
+}
+
+[data-theme="dark"] .post-content {
+  background: var(--gray-800);
+  border-color: var(--gray-700);
+  box-shadow: var(--shadow-xl);
+}
+
+.post-content h1,
+.post-content h2,
+.post-content h3,
+.post-content h4,
+.post-content h5,
+.post-content h6 {
+  color: var(--gray-900);
+  margin-top: var(--spacing-2xl);
+  margin-bottom: var(--spacing-lg);
+  scroll-margin-top: 100px;
+}
+
+[data-theme="dark"] .post-content h1,
+[data-theme="dark"] .post-content h2,
+[data-theme="dark"] .post-content h3,
+[data-theme="dark"] .post-content h4,
+[data-theme="dark"] .post-content h5,
+[data-theme="dark"] .post-content h6 {
+  color: var(--gray-100);
+}
+
+.post-content h1:first-child,
+.post-content h2:first-child,
+.post-content h3:first-child,
+.post-content h4:first-child,
+.post-content h5:first-child,
+.post-content h6:first-child {
+  margin-top: 0;
+}
+
+.post-content p {
+  color: var(--gray-700);
+  margin-bottom: var(--spacing-lg);
+  line-height: 1.8;
+}
+
+[data-theme="dark"] .post-content p {
+  color: var(--gray-300);
+}
+
+.post-content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--radius-lg);
+  margin: var(--spacing-xl) 0;
+  box-shadow: var(--shadow-md);
+}
+
+.post-content blockquote {
+  border-left: 4px solid var(--primary-color);
+  padding-left: var(--spacing-lg);
+  margin: var(--spacing-xl) 0;
+  font-style: italic;
+  color: var(--gray-600);
+  background: var(--gray-50);
+  padding: var(--spacing-lg);
+  border-radius: var(--radius-lg);
+}
+
+[data-theme="dark"] .post-content blockquote {
+  color: var(--gray-400);
+  background: var(--gray-900);
+}
+
+.post-content pre {
+  background: var(--gray-900);
+  color: var(--gray-100);
+  padding: var(--spacing-lg);
+  border-radius: var(--radius-lg);
+  overflow-x: auto;
+  margin: var(--spacing-xl) 0;
+  border: 1px solid var(--gray-700);
+  position: relative;
+}
+
+.post-content code {
+  background: var(--gray-100);
+  color: var(--error-color);
+  padding: 0.2em 0.4em;
+  border-radius: var(--radius-sm);
+  font-size: 0.875em;
+}
+
+[data-theme="dark"] .post-content code {
+  background: var(--gray-800);
+  color: var(--error-color);
+}
+
+.post-content pre code {
+  background: none;
+  padding: 0;
+  border-radius: 0;
+  color: inherit;
+}
+
+/* 侧边栏 */
+.post-sidebar {
+  position: sticky;
+  top: 100px;
+}
+
+.sidebar-card {
+  background: white;
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+  margin-bottom: var(--spacing-lg);
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--gray-200);
+}
+
+[data-theme="dark"] .sidebar-card {
+  background: var(--gray-800);
+  border-color: var(--gray-700);
+  box-shadow: var(--shadow-lg);
+}
+
+.author-card {
+  text-align: center;
+}
+
+.author-avatar {
+  margin-bottom: var(--spacing-md);
+}
+
+.avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: var(--radius-full);
+  object-fit: cover;
+}
+
+.author-name {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--gray-900);
+  margin-bottom: var(--spacing-sm);
+}
+
+[data-theme="dark"] .author-name {
+  color: var(--gray-100);
+}
+
+.author-bio {
+  color: var(--gray-600);
+  font-size: var(--font-size-sm);
+  margin-bottom: var(--spacing-md);
+  line-height: 1.6;
+}
+
+[data-theme="dark"] .author-bio {
+  color: var(--gray-400);
+}
+
+.author-email {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-size: var(--font-size-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-xs);
+}
+
+.sidebar-title {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--gray-900);
+  margin-bottom: var(--spacing-md);
+}
+
+[data-theme="dark"] .sidebar-title {
+  color: var(--gray-100);
+}
+
+.tags-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-xs);
+}
+
+.tag-item {
+  padding: var(--spacing-xs) var(--spacing-sm);
+  background: var(--gray-100);
+  color: var(--gray-700);
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-xs);
+  text-decoration: none;
+  transition: all var(--transition-fast);
+}
+
+[data-theme="dark"] .tag-item {
+  background: var(--gray-700);
+  color: var(--gray-300);
+}
+
+.tag-item:hover {
+  background: var(--primary-color);
+  color: white;
+  transform: translateY(-1px);
+}
+
+.tag-count {
+  opacity: 0.7;
+}
+
+/* 文章底部 */
+.post-footer {
+  background: var(--gray-50);
+  padding: var(--spacing-3xl) 0;
+  margin-top: var(--spacing-3xl);
+}
+
+[data-theme="dark"] .post-footer {
+  background: var(--gray-900);
+}
+
+.social-sharing {
+  text-align: center;
+  margin-bottom: var(--spacing-2xl);
+}
+
+.sharing-title {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--gray-900);
+  margin-bottom: var(--spacing-lg);
+}
+
+[data-theme="dark"] .sharing-title {
+  color: var(--gray-100);
+}
+
+.sharing-buttons {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-md);
+  flex-wrap: wrap;
+}
+
+.sharing-btn {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-sm) var(--spacing-lg);
+  border-radius: var(--radius-lg);
+  text-decoration: none;
+  color: white;
+  font-weight: var(--font-weight-medium);
+  transition: all var(--transition-fast);
+}
+
+.sharing-btn.twitter { background: #1da1f2; }
+.sharing-btn.facebook { background: #1877f2; }
+.sharing-btn.linkedin { background: #0077b5; }
+.sharing-btn.weibo { background: #e6162d; }
+
+.sharing-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.post-navigation {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-lg);
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  padding: var(--spacing-lg);
+  background: white;
+  border-radius: var(--radius-lg);
+  text-decoration: none;
+  color: var(--gray-700);
+  transition: all var(--transition-fast);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--gray-200);
+}
+
+[data-theme="dark"] .nav-link {
+  background: var(--gray-800);
+  color: var(--gray-300);
+  border-color: var(--gray-700);
+}
+
+.nav-link:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+  color: var(--primary-color);
+}
+
+.nav-content {
+  flex: 1;
+}
+
+.nav-label {
+  font-size: var(--font-size-xs);
+  color: var(--gray-500);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: var(--spacing-xs);
+}
+
+.nav-title {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.4;
+  margin: 0;
+}
+
+.nav-link i {
+  font-size: var(--font-size-lg);
+  color: var(--primary-color);
+}
+
+/* 评论区 */
+.comments-section {
+  background: white;
+  padding: var(--spacing-3xl) 0;
+  border-top: 1px solid var(--gray-200);
+}
+
+[data-theme="dark"] .comments-section {
+  background: var(--gray-800);
+  border-top-color: var(--gray-700);
+}
+
+.comments-title {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--gray-900);
+  margin-bottom: var(--spacing-xl);
+  text-align: center;
+}
+
+[data-theme="dark"] .comments-title {
+  color: var(--gray-100);
+}
+
+/* 响应式设计 */
+@media (max-width: 1024px) {
+  .post-layout {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-xl);
+  }
+
+  .post-toc {
+    position: static;
+    max-height: none;
+  }
+
+  .toc-toggle {
+    display: block;
+  }
+
+  .toc-nav {
+    display: none;
+  }
+
+  .toc-nav.active {
+    display: block;
+  }
+
+  .post-sidebar {
+    position: static;
+  }
+}
+
+@media (max-width: 768px) {
+  .post-header {
+    padding: var(--spacing-2xl) 0 var(--spacing-xl);
+  }
+
+  .post-title {
+    font-size: var(--font-size-3xl);
+  }
+
+  .post-meta {
+    flex-direction: column;
+    gap: var(--spacing-md);
+  }
+
+  .post-content {
+    padding: var(--spacing-xl);
+  }
+
+  .post-navigation {
+    grid-template-columns: 1fr;
+  }
+
+  .sharing-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .sharing-btn {
+    width: 100%;
+    max-width: 200px;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .post-title {
+    font-size: var(--font-size-2xl);
+  }
+
+  .post-content {
+    padding: var(--spacing-lg);
+  }
+
+  .sidebar-card {
+    padding: var(--spacing-md);
+  }
+}
+</style>
+
+<!-- 文章功能脚本 -->
+<script>
+// 阅读进度条
+function initReadingProgress() {
+  const progressBar = document.querySelector('.reading-progress-bar');
+  if (!progressBar) return;
+
+  window.addEventListener('scroll', () => {
+    const scrollTop = window.pageYOffset;
+    const docHeight = document.body.scrollHeight - window.innerHeight;
+    const scrollPercent = (scrollTop / docHeight) * 100;
+    progressBar.style.width = scrollPercent + '%';
+  });
+}
+
+// 目录导航
+function initTableOfContents() {
+  const tocNav = document.getElementById('toc-nav');
+  const tocToggle = document.querySelector('.toc-toggle');
+  if (!tocNav) return;
+
+  // 生成目录
+  const headings = document.querySelectorAll('.post-content h1, .post-content h2, .post-content h3');
+  const toc = document.createElement('ul');
+  
+  headings.forEach((heading, index) => {
+    const id = heading.id || `heading-${index}`;
+    heading.id = id;
+    
+    const li = document.createElement('li');
+    const a = document.createElement('a');
+    a.href = `#${id}`;
+    a.textContent = heading.textContent;
+    a.style.paddingLeft = `${(parseInt(heading.tagName[1]) - 1) * 20}px`;
+    
+    li.appendChild(a);
+    toc.appendChild(li);
+  });
+  
+  tocNav.appendChild(toc);
+
+  // 目录切换
+  if (tocToggle) {
+    tocToggle.addEventListener('click', () => {
+      tocNav.classList.toggle('active');
+    });
+  }
+
+  // 滚动高亮
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      const id = entry.target.id;
+      const link = tocNav.querySelector(`a[href="#${id}"]`);
+      
+      if (entry.isIntersecting) {
+        tocNav.querySelectorAll('a').forEach(a => a.classList.remove('active'));
+        if (link) link.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-20% 0px -80% 0px' });
+
+  headings.forEach(heading => observer.observe(heading));
+}
+
+// 相关文章
+function initRelatedPosts() {
+  const relatedPostsContainer = document.getElementById('related-posts');
+  if (!relatedPostsContainer) return;
+
+  // 这里可以实现相关文章算法
+  // 目前显示最新文章
+  const posts = [
+    { title: '相关文章1', url: '/post1', excerpt: '这是相关文章1的摘要...' },
+    { title: '相关文章2', url: '/post2', excerpt: '这是相关文章2的摘要...' },
+    { title: '相关文章3', url: '/post3', excerpt: '这是相关文章3的摘要...' }
+  ];
+
+  const html = posts.map(post => `
+    <div class="related-post">
+      <h5><a href="${post.url}">${post.title}</a></h5>
+      <p>${post.excerpt}</p>
+    </div>
+  `).join('');
+
+  relatedPostsContainer.innerHTML = html;
+}
+
+// 初始化
+document.addEventListener('DOMContentLoaded', () => {
+  initReadingProgress();
+  initTableOfContents();
+  initRelatedPosts();
+});
+</script> 

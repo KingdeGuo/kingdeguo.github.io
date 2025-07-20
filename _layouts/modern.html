@@ -1,0 +1,638 @@
+---
+layout: default
+---
+
+<!DOCTYPE html>
+<html lang="{{ site.language | default: 'zh-CN' }}" data-theme="light">
+<head>
+  {% include head.html %}
+  {% include head/custom.html %}
+</head>
+
+<body class="modern-blog">
+  <!-- 阅读进度条 -->
+  {% if site.features.reading_progress.enabled %}
+    <div class="reading-progress">
+      <div class="reading-progress-bar"></div>
+    </div>
+  {% endif %}
+
+  <!-- 页面头部 -->
+  <header class="site-header">
+    <div class="container">
+      <nav class="navbar">
+        <!-- Logo -->
+        <div class="navbar-brand">
+          <a href="{{ '/' | relative_url }}" class="logo">
+            <span class="logo-text">{{ site.title }}</span>
+            {% if site.subtitle %}
+              <span class="logo-subtitle">{{ site.subtitle }}</span>
+            {% endif %}
+          </a>
+        </div>
+
+        <!-- 导航菜单 -->
+        <div class="navbar-menu">
+          <ul class="nav-list">
+            <li><a href="{{ '/' | relative_url }}" class="nav-link">首页</a></li>
+            <li><a href="{{ '/posts' | relative_url }}" class="nav-link">文章</a></li>
+            <li><a href="{{ '/projects' | relative_url }}" class="nav-link">项目</a></li>
+            <li><a href="{{ '/notes' | relative_url }}" class="nav-link">笔记</a></li>
+            <li><a href="{{ '/tutorials' | relative_url }}" class="nav-link">教程</a></li>
+            <li><a href="{{ '/about' | relative_url }}" class="nav-link">关于</a></li>
+          </ul>
+        </div>
+
+        <!-- 右侧工具栏 -->
+        <div class="navbar-tools">
+          <!-- 搜索按钮 -->
+          {% if site.features.search.enabled %}
+            <button class="tool-btn search-btn" aria-label="搜索">
+              <i class="fas fa-search"></i>
+            </button>
+          {% endif %}
+
+          <!-- 主题切换 -->
+          {% if site.theme.switcher.enabled %}
+            <button id="theme-toggle" class="tool-btn theme-btn" aria-label="切换主题">
+              <i class="fas fa-moon"></i>
+              <i class="fas fa-sun"></i>
+            </button>
+          {% endif %}
+
+          <!-- 移动端菜单按钮 -->
+          <button class="mobile-menu-btn" aria-label="菜单">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- 搜索面板 -->
+  {% if site.features.search.enabled %}
+    <div class="search-panel" id="search-panel">
+      <div class="search-container">
+        <div class="search-header">
+          <input type="text" id="search-input" placeholder="搜索文章..." class="search-input">
+          <button class="search-close" aria-label="关闭搜索">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <div class="search-results" id="search-results"></div>
+      </div>
+    </div>
+  {% endif %}
+
+  <!-- 主要内容 -->
+  <main class="main-content">
+    {{ content }}
+  </main>
+
+  <!-- 页面底部 -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-content">
+        <!-- 网站信息 -->
+        <div class="footer-section">
+          <h3 class="footer-title">{{ site.title }}</h3>
+          <p class="footer-description">{{ site.description }}</p>
+          {% if site.email %}
+            <p class="footer-contact">
+              <i class="fas fa-envelope"></i>
+              <a href="mailto:{{ site.email }}">{{ site.email }}</a>
+            </p>
+          {% endif %}
+        </div>
+
+        <!-- 快速链接 -->
+        <div class="footer-section">
+          <h3 class="footer-title">快速链接</h3>
+          <ul class="footer-links">
+            <li><a href="{{ '/' | relative_url }}">首页</a></li>
+            <li><a href="{{ '/posts' | relative_url }}">文章</a></li>
+            <li><a href="{{ '/projects' | relative_url }}">项目</a></li>
+            <li><a href="{{ '/about' | relative_url }}">关于</a></li>
+          </ul>
+        </div>
+
+        <!-- 分类标签 -->
+        <div class="footer-section">
+          <h3 class="footer-title">分类</h3>
+          <div class="footer-tags">
+            {% for category in site.categories limit: 8 %}
+              <a href="{{ '/categories/' | append: category[0] | relative_url }}" class="footer-tag">
+                {{ category[0] }}
+              </a>
+            {% endfor %}
+          </div>
+        </div>
+
+        <!-- 社交链接 -->
+        <div class="footer-section">
+          <h3 class="footer-title">关注我</h3>
+          <div class="social-links">
+            {% if site.social.github %}
+              <a href="https://github.com/{{ site.social.github }}" target="_blank" rel="noopener" class="social-link">
+                <i class="fab fa-github"></i>
+              </a>
+            {% endif %}
+            
+            {% if site.social.twitter %}
+              <a href="https://twitter.com/{{ site.social.twitter }}" target="_blank" rel="noopener" class="social-link">
+                <i class="fab fa-twitter"></i>
+              </a>
+            {% endif %}
+            
+            {% if site.social.linkedin %}
+              <a href="https://linkedin.com/in/{{ site.social.linkedin }}" target="_blank" rel="noopener" class="social-link">
+                <i class="fab fa-linkedin"></i>
+              </a>
+            {% endif %}
+            
+            {% if site.social.weibo %}
+              <a href="https://weibo.com/{{ site.social.weibo }}" target="_blank" rel="noopener" class="social-link">
+                <i class="fab fa-weibo"></i>
+              </a>
+            {% endif %}
+            
+            {% if site.social.zhihu %}
+              <a href="https://zhihu.com/people/{{ site.social.zhihu }}" target="_blank" rel="noopener" class="social-link">
+                <i class="fab fa-zhihu"></i>
+              </a>
+            {% endif %}
+            
+            {% if site.social.bilibili %}
+              <a href="https://space.bilibili.com/{{ site.social.bilibili }}" target="_blank" rel="noopener" class="social-link">
+                <i class="fab fa-bilibili"></i>
+              </a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+
+      <!-- 版权信息 -->
+      <div class="footer-bottom">
+        <p>&copy; {{ site.time | date: '%Y' }} {{ site.title }}. 保留所有权利.</p>
+        <p>由 <a href="https://jekyllrb.com/" target="_blank" rel="noopener">Jekyll</a> 强力驱动 | 主题 <a href="#" target="_blank" rel="noopener">Modern Blog v3.0</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- 返回顶部按钮 -->
+  <button id="back-to-top" class="back-to-top" aria-label="返回顶部">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <!-- 核心脚本 -->
+  <script src="{{ '/assets/js/main.js' | relative_url }}"></script>
+
+  <!-- 分析脚本 -->
+  {% if site.analytics.google.tracking_id %}
+    {% include google-analytics.html %}
+  {% endif %}
+
+  <!-- 页面特定脚本 -->
+  {% if page.custom_js %}
+    {% for script in page.custom_js %}
+      <script src="{{ script | relative_url }}"></script>
+    {% endfor %}
+  {% endif %}
+
+  <!-- 现代化布局样式 -->
+  <style>
+  /* 现代化博客样式 */
+  .modern-blog {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* 阅读进度条 */
+  .reading-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: var(--gray-200);
+    z-index: var(--z-fixed);
+  }
+
+  [data-theme="dark"] .reading-progress {
+    background: var(--gray-700);
+  }
+
+  .reading-progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+    width: 0%;
+    transition: width 0.1s ease;
+  }
+
+  /* 页面头部 */
+  .site-header {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--gray-200);
+    position: sticky;
+    top: 0;
+    z-index: var(--z-sticky);
+    transition: all var(--transition-normal);
+  }
+
+  [data-theme="dark"] .site-header {
+    background: rgba(17, 24, 39, 0.95);
+    border-bottom-color: var(--gray-700);
+  }
+
+  .navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--spacing-md) 0;
+  }
+
+  .navbar-brand {
+    flex-shrink: 0;
+  }
+
+  .logo {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: var(--gray-900);
+    transition: color var(--transition-fast);
+  }
+
+  [data-theme="dark"] .logo {
+    color: var(--gray-100);
+  }
+
+  .logo:hover {
+    color: var(--primary-color);
+  }
+
+  .logo-text {
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-bold);
+    line-height: 1;
+  }
+
+  .logo-subtitle {
+    font-size: var(--font-size-xs);
+    color: var(--gray-500);
+    margin-top: 2px;
+  }
+
+  .navbar-menu {
+    display: flex;
+    align-items: center;
+  }
+
+  .nav-list {
+    display: flex;
+    list-style: none;
+    gap: var(--spacing-lg);
+    margin: 0;
+    padding: 0;
+  }
+
+  .nav-link {
+    color: var(--gray-700);
+    text-decoration: none;
+    font-weight: var(--font-weight-medium);
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: var(--radius-md);
+    transition: all var(--transition-fast);
+    position: relative;
+  }
+
+  [data-theme="dark"] .nav-link {
+    color: var(--gray-300);
+  }
+
+  .nav-link:hover {
+    color: var(--primary-color);
+    background: var(--gray-100);
+  }
+
+  [data-theme="dark"] .nav-link:hover {
+    background: var(--gray-800);
+  }
+
+  .navbar-tools {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+  }
+
+  .tool-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border: none;
+    background: transparent;
+    color: var(--gray-600);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+  }
+
+  [data-theme="dark"] .tool-btn {
+    color: var(--gray-400);
+  }
+
+  .tool-btn:hover {
+    background: var(--gray-100);
+    color: var(--primary-color);
+  }
+
+  [data-theme="dark"] .tool-btn:hover {
+    background: var(--gray-800);
+  }
+
+  .mobile-menu-btn {
+    display: none;
+    flex-direction: column;
+    gap: 4px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: var(--spacing-sm);
+  }
+
+  .mobile-menu-btn span {
+    width: 20px;
+    height: 2px;
+    background: var(--gray-600);
+    transition: all var(--transition-fast);
+  }
+
+  [data-theme="dark"] .mobile-menu-btn span {
+    background: var(--gray-400);
+  }
+
+  /* 搜索面板 */
+  .search-panel {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    z-index: var(--z-modal);
+    opacity: 0;
+    visibility: hidden;
+    transition: all var(--transition-normal);
+  }
+
+  .search-panel.active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .search-container {
+    max-width: 600px;
+    margin: 100px auto 0;
+    padding: var(--spacing-xl);
+  }
+
+  .search-header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .search-input {
+    flex: 1;
+    padding: var(--spacing-md);
+    border: none;
+    border-radius: var(--radius-lg);
+    background: var(--gray-50);
+    color: var(--gray-900);
+    font-size: var(--font-size-lg);
+    outline: none;
+  }
+
+  [data-theme="dark"] .search-input {
+    background: var(--gray-800);
+    color: var(--gray-100);
+  }
+
+  .search-close {
+    background: none;
+    border: none;
+    color: var(--gray-400);
+    font-size: var(--font-size-xl);
+    cursor: pointer;
+    padding: var(--spacing-sm);
+  }
+
+  /* 主要内容 */
+  .main-content {
+    flex: 1;
+    padding: var(--spacing-2xl) 0;
+  }
+
+  /* 页面底部 */
+  .site-footer {
+    background: var(--gray-900);
+    color: var(--gray-300);
+    padding: var(--spacing-3xl) 0 var(--spacing-xl);
+    margin-top: auto;
+  }
+
+  .footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-2xl);
+    margin-bottom: var(--spacing-2xl);
+  }
+
+  .footer-title {
+    color: var(--gray-100);
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-semibold);
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .footer-description {
+    color: var(--gray-400);
+    margin-bottom: var(--spacing-md);
+  }
+
+  .footer-contact {
+    color: var(--gray-400);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+  }
+
+  .footer-contact a {
+    color: var(--primary-color);
+  }
+
+  .footer-links {
+    list-style: none;
+    padding: 0;
+  }
+
+  .footer-links li {
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .footer-links a {
+    color: var(--gray-400);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+  }
+
+  .footer-links a:hover {
+    color: var(--primary-color);
+  }
+
+  .footer-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+  }
+
+  .footer-tag {
+    padding: var(--spacing-xs) var(--spacing-sm);
+    background: var(--gray-800);
+    color: var(--gray-300);
+    border-radius: var(--radius-full);
+    font-size: var(--font-size-xs);
+    text-decoration: none;
+    transition: all var(--transition-fast);
+  }
+
+  .footer-tag:hover {
+    background: var(--primary-color);
+    color: white;
+  }
+
+  .social-links {
+    display: flex;
+    gap: var(--spacing-md);
+  }
+
+  .social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: var(--gray-800);
+    color: var(--gray-400);
+    border-radius: var(--radius-full);
+    text-decoration: none;
+    transition: all var(--transition-fast);
+  }
+
+  .social-link:hover {
+    background: var(--primary-color);
+    color: white;
+    transform: translateY(-2px);
+  }
+
+  .footer-bottom {
+    border-top: 1px solid var(--gray-800);
+    padding-top: var(--spacing-lg);
+    text-align: center;
+    color: var(--gray-500);
+    font-size: var(--font-size-sm);
+  }
+
+  .footer-bottom p {
+    margin: var(--spacing-xs) 0;
+  }
+
+  .footer-bottom a {
+    color: var(--primary-color);
+  }
+
+  /* 返回顶部按钮 */
+  .back-to-top {
+    position: fixed;
+    bottom: var(--spacing-xl);
+    right: var(--spacing-xl);
+    width: 50px;
+    height: 50px;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: var(--radius-full);
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: all var(--transition-normal);
+    z-index: var(--z-fixed);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-lg);
+  }
+
+  .back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .back-to-top:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-xl);
+  }
+
+  /* 响应式设计 */
+  @media (max-width: 768px) {
+    .navbar-menu {
+      display: none;
+    }
+
+    .mobile-menu-btn {
+      display: flex;
+    }
+
+    .footer-content {
+      grid-template-columns: 1fr;
+      text-align: center;
+    }
+
+    .social-links {
+      justify-content: center;
+    }
+
+    .back-to-top {
+      bottom: var(--spacing-lg);
+      right: var(--spacing-lg);
+    }
+  }
+
+  @media (max-width: 480px) {
+    .logo-text {
+      font-size: var(--font-size-lg);
+    }
+
+    .search-container {
+      margin: 60px auto 0;
+      padding: var(--spacing-lg);
+    }
+
+    .back-to-top {
+      width: 45px;
+      height: 45px;
+    }
+  }
+  </style>
+</body>
+</html> 

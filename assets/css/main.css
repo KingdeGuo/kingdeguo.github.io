@@ -144,6 +144,7 @@ code {
   padding: 0.2em 0.4em;
   border-radius: var(--border-radius-sm);
   color: #e83e8c;
+  text-align: left;
 }
 
 [data-theme="dark"] code {
@@ -157,10 +158,33 @@ pre {
   border-radius: var(--border-radius-md);
   overflow-x: auto;
   margin: var(--spacing-lg) 0;
+  text-align: left;
+  position: relative;
 }
 
 [data-theme="dark"] pre {
   background-color: #343a40;
+}
+
+/* 代码块内的代码 */
+pre code {
+  background: none;
+  padding: 0;
+  border-radius: 0;
+  color: inherit;
+  text-align: left;
+}
+
+/* 代码高亮 */
+.highlight {
+  margin: var(--spacing-lg) 0;
+  border-radius: var(--border-radius-md);
+  overflow: hidden;
+}
+
+.highlight pre {
+  margin: 0;
+  border-radius: 0;
 }
 
 /* ===== 布局容器 ===== */

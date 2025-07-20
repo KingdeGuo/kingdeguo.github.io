@@ -47,12 +47,12 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Lora:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
 <!-- 核心样式 -->
-<link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+<link rel="stylesheet" href="{{ '/assets/css/modern-blog.css' | relative_url }}">
 
-<!-- 主题样式 -->
-{% if site.theme.skin %}
-  <link rel="stylesheet" href="{{ '/assets/css/themes/' | append: site.theme.skin | append: '.css' | relative_url }}">
-{% endif %}
+<!-- 字体预加载 -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
 <!-- 自定义样式 -->
 {% if page.custom_css %}
@@ -85,4 +85,4 @@
 <link rel="dns-prefetch" href="//fonts.googleapis.com">
 
 <!-- 预加载关键资源 -->
-<link rel="preload" href="{{ '/assets/js/visualization-engine.js' | relative_url }}" as="script">
+<link rel="preload" href="{{ '/assets/js/modern-blog.js' | relative_url }}" as="script">

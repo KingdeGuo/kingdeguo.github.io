@@ -234,8 +234,22 @@
     async _doRender(element, config) {
       const Chart = await this.loader.loadLibrary('chartjs');
       
-      const ctx = element.getContext('2d');
+      // 为Chart.js创建canvas元素
+      const canvas = document.createElement('canvas');
+      element.appendChild(canvas);
+      
+      const ctx = canvas.getContext('2d');
       const chart = new Chart(ctx, config);
+      
+      // 响应式处理
+      const resizeHandler = () => chart.resize();
+      window.addEventListener('resize', resizeHandler);
+      
+      // 清理函数
+      element._cleanup = () => {
+        window.removeEventListener('resize', resizeHandler);
+        chart.destroy();
+      };
       
       return chart;
     }

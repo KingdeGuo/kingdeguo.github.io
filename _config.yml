@@ -1,33 +1,118 @@
-# KingdeGuo's Blog Configuration
-# 重构后的统一配置文件
+# KingdeGuo's Blog v3.0 - 现代化博客配置
+# 全新架构，统一视觉风格，支持多种内容类型
 
-# Site Information
+# ===== 站点信息 =====
 title: "KingdeGuo's Blog"
 subtitle: "技术分享 • 生活感悟 • 读书笔记"
-description: "个人博客分享技术、生活和读书等内容"
+description: "个人博客分享技术、生活和读书等内容，专注于量化投资、机器学习、Web开发等领域"
 author: "KingdeGuo"
 email: "kingdeguo@gmail.com"
 url: "https://kingdeguo.github.io"
 baseurl: ""
+language: "zh-CN"
+timezone: "Asia/Shanghai"
 
-# Social Media
+# ===== 社交媒体 =====
 social:
   github: "kingdeguo"
   twitter: ""
   linkedin: ""
   weibo: ""
+  zhihu: ""
+  bilibili: ""
 
-# Theme Configuration
+# ===== 主题配置 =====
 theme:
-  name: "minimal-mistakes"
-  remote_theme: "mmistakes/minimal-mistakes"
-  skin: "default" # default, air, aqua, contrast, dark, dirt, neon, mint, plum, sunrise
+  name: "modern-blog"
+  version: "3.0.0"
+  
+  # 视觉风格
+  design:
+    primary_color: "#667eea"
+    secondary_color: "#764ba2"
+    accent_color: "#f093fb"
+    success_color: "#4facfe"
+    warning_color: "#43e97b"
+    error_color: "#fa709a"
+    
+    # 字体系统
+    fonts:
+      heading: "'Inter', -apple-system, BlinkMacSystemFont, sans-serif"
+      body: "'Inter', -apple-system, BlinkMacSystemFont, sans-serif"
+      mono: "'JetBrains Mono', 'Fira Code', monospace"
+    
+    # 间距系统
+    spacing:
+      xs: "0.25rem"
+      sm: "0.5rem"
+      md: "1rem"
+      lg: "1.5rem"
+      xl: "2rem"
+      xxl: "3rem"
+    
+    # 圆角系统
+    radius:
+      sm: "4px"
+      md: "8px"
+      lg: "12px"
+      xl: "16px"
+      full: "9999px"
+    
+    # 阴影系统
+    shadows:
+      sm: "0 1px 3px rgba(0,0,0,0.12)"
+      md: "0 4px 6px rgba(0,0,0,0.1)"
+      lg: "0 10px 15px rgba(0,0,0,0.1)"
+      xl: "0 20px 25px rgba(0,0,0,0.15)"
+  
+  # 主题切换
   switcher:
     enabled: true
     default: "light"
     location: "header"
+    animation: true
+  
+  # 动画效果
+  animations:
+    enabled: true
+    duration: 300
+    easing: "cubic-bezier(0.4, 0, 0.2, 1)"
 
-# Visualization System (重构后的统一配置)
+# ===== 内容类型配置 =====
+content_types:
+  # 文章类型
+  post:
+    layout: "post"
+    permalink: "/:year/:month/:day/:title/"
+    excerpt_length: 200
+    show_reading_time: true
+    show_word_count: true
+    show_last_modified: true
+  
+  # 项目展示
+  project:
+    layout: "project"
+    permalink: "/projects/:title/"
+    show_github_link: true
+    show_demo_link: true
+    show_tech_stack: true
+  
+  # 笔记类型
+  note:
+    layout: "note"
+    permalink: "/notes/:title/"
+    show_toc: true
+    show_related: true
+  
+  # 教程类型
+  tutorial:
+    layout: "tutorial"
+    permalink: "/tutorials/:title/"
+    show_difficulty: true
+    show_estimated_time: true
+    show_prerequisites: true
+
+# ===== 可视化系统 =====
 visualization:
   # 核心库配置
   libraries:
@@ -47,6 +132,10 @@ visualization:
       version: "2.27.1"
       cdn: "https://cdn.plot.ly/plotly-2.27.1.min.js"
       local: "/assets/lib/plotly.min.js"
+    d3:
+      version: "7.8.5"
+      cdn: "https://d3js.org/d3.v7.min.js"
+      local: "/assets/lib/d3.min.js"
   
   # 性能优化
   performance:
@@ -54,6 +143,7 @@ visualization:
     preload_critical: true
     cache_strategy: "local-first"
     fallback_images: true
+    compression: true
   
   # 渲染配置
   rendering:
@@ -61,65 +151,158 @@ visualization:
     max_retries: 3
     retry_delay: 1000
     error_handling: "graceful"
+    theme_adaptation: true
 
-# Comments System
-comments:
-  provider: "giscus"
-  giscus:
-    repo: "KingdeGuo/kingdeguo.github.io"
-    repo_id: "R_kgDOPLxeEQ"
-    category: "General"
-    category_id: "DIC_kwDOPLxeEc4Cs5E6"
-    theme: "preferred_color_scheme"
-    lang: "zh-CN"
+# ===== 功能模块 =====
+features:
+  # 搜索功能
+  search:
+    enabled: true
+    provider: "lunr"
+    index_file: "search.json"
+    highlight_results: true
+    search_suggestions: true
+  
+  # 评论系统
+  comments:
+    provider: "giscus"
+    giscus:
+      repo: "KingdeGuo/kingdeguo.github.io"
+      repo_id: "R_kgDOPLxeEQ"
+      category: "General"
+      category_id: "DIC_kwDOPLxeEc4Cs5E6"
+      theme: "preferred_color_scheme"
+      lang: "zh-CN"
+  
+  # 阅读进度
+  reading_progress:
+    enabled: true
+    position: "top"
+    color: "var(--primary-color)"
+    height: "3px"
+  
+  # 目录导航
+  table_of_contents:
+    enabled: true
+    position: "right"
+    sticky: true
+    max_depth: 3
+  
+  # 相关文章
+  related_posts:
+    enabled: true
+    algorithm: "tags_and_categories"
+    max_count: 5
+  
+  # 社交分享
+  social_sharing:
+    enabled: true
+    platforms: ["twitter", "facebook", "linkedin", "weibo"]
+    position: "bottom"
+  
+  # 代码高亮
+  syntax_highlighting:
+    enabled: true
+    theme: "github-dark"
+    line_numbers: true
+    copy_button: true
+  
+  # 图片优化
+  image_optimization:
+    enabled: true
+    lazy_loading: true
+    responsive_images: true
+    webp_support: true
+    compression: true
 
-# Analytics
+# ===== 分析统计 =====
 analytics:
   google:
     tracking_id: "G-HXENT9GH1J"
+    anonymize_ip: true
   baidu: ""
   cnzz: ""
+  umeng: ""
 
-# Build Settings
-plugins:
-  - jekyll-feed
-  - jekyll-seo-tag
-  - jekyll-sitemap
-  - jekyll-include-cache
+# ===== SEO配置 =====
+seo:
+  # 基础SEO
+  title_template: "%s | {{ site.title }}"
+  description_template: "%s"
+  
+  # Open Graph
+  open_graph:
+    enabled: true
+    type: "website"
+    image: "/assets/images/og-image.jpg"
+  
+  # Twitter Card
+  twitter_card:
+    enabled: true
+    type: "summary_large_image"
+  
+  # 结构化数据
+  structured_data:
+    enabled: true
+    organization: true
+    breadcrumbs: true
+    article: true
 
-# Permalinks
-permalink: "/:year/:month/:day/:title.html"
-
-# Archives
-jekyll-archives:
-  enabled:
-    - categories
-    - tags
-  layouts:
-    category: archive
-    tag: archive
+# ===== 构建配置 =====
+build:
+  # Jekyll插件
+  plugins:
+    - jekyll-feed
+    - jekyll-seo-tag
+    - jekyll-sitemap
+    - jekyll-include-cache
+    - jekyll-archives
+    - jekyll-paginate
+  
+  # 永久链接
   permalinks:
-    category: '/categories/:name/'
-    tag: '/tags/:name/'
+    post: "/:year/:month/:day/:title/"
+    project: "/projects/:title/"
+    note: "/notes/:title/"
+    tutorial: "/tutorials/:title/"
+  
+  # 归档配置
+  archives:
+    enabled:
+      - categories
+      - tags
+    layouts:
+      category: archive
+      tag: archive
+    permalinks:
+      category: '/categories/:name/'
+      tag: '/tags/:name/'
+  
+  # 分页配置
+  pagination:
+    enabled: true
+    per_page: 10
+    permalink: "/page/:num/"
+  
+  # Markdown处理
+  markdown: kramdown
+  kramdown:
+    syntax_highlighter: rouge
+    syntax_highlighter_opts:
+      css_class: 'highlight'
+      span:
+        line_numbers: false
+      block:
+        line_numbers: false
+        start_line: 1
 
-# Markdown Processing
-markdown: kramdown
-kramdown:
-  syntax_highlighter: rouge
-  syntax_highlighter_opts:
-    css_class: 'highlight'
-    span:
-      line_numbers: false
-    block:
-      line_numbers: false
-      start_line: 1
-
-# File Processing
+# ===== 文件处理 =====
 include:
   - _posts
   - _pages
   - _layouts
   - _includes
+  - _data
   - assets
   - images
   - favicon.ico
@@ -140,3 +323,23 @@ exclude:
   - VISUALIZATION_OPTIMIZATION.md
   - performance_report.json
   - .DS_Store
+  - README.md
+  - REFACTOR_SUMMARY.md
+
+# ===== 开发配置 =====
+development:
+  # 开发服务器
+  server:
+    port: 4000
+    host: "127.0.0.1"
+    baseurl: ""
+  
+  # 调试模式
+  debug:
+    enabled: false
+    verbose: false
+  
+  # 热重载
+  live_reload:
+    enabled: true
+    port: 35729

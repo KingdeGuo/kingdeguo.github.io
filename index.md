@@ -1,7 +1,5 @@
 ---
-layout: home
-title: KingdeGuo's Blog
-author_profile: true
+layout: modern-home
 ---
 
 <!-- 动态背景区域 -->
