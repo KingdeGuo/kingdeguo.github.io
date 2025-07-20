@@ -6,10 +6,7 @@
   <head>
     {% include head.html %}
     {% include head/custom.html %}
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css">
-    <link rel="stylesheet" href="{{ '/assets/css/glassmorphism.css' | relative_url }}">
-    <link rel="stylesheet" href="{{ '/assets/css/custom.css' | relative_url }}">
   </head>
 
   <body>
@@ -101,7 +98,7 @@
     {% endif %}
 
     <!-- 核心脚本 -->
-<script src="{{ '/assets/js/clean-blog.js' | relative_url }}"></script>
+    <script src="{{ '/assets/js/clean-blog.js' | relative_url }}"></script>
 
     <!-- 分析脚本 -->
     {% if site.analytics.google.tracking_id %}
