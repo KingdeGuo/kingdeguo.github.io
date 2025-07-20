@@ -142,10 +142,10 @@
 
     optimizeCodeBlock(block) {
       // 添加复制按钮
-      this.addCopyButton(block);
+      // this.addCopyButton(block);
       
       // 添加行号
-      this.addLineNumbers(block);
+      // this.addLineNumbers(block);
       
       // 优化滚动
       this.optimizeScrolling(block);
@@ -470,4 +470,4 @@
   // 启动性能优化
   initPerformanceOptimizations();
 
-})(); 
+})();
