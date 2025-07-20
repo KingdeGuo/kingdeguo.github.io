@@ -1,104 +1,13 @@
-<!-- Unified Visualization Libraries Integration -->
-<!-- 统一的可视化库集成，支持按需加载和错误处理 -->
+<!-- 重构后的可视化库集成 -->
+<!-- 使用新的简化引擎，支持按需加载和智能错误处理 -->
 
-<!-- Core Libraries - Always Loaded -->
-<script>
-// 错误处理和备用CDN
-function loadScriptWithFallback(primaryUrl, fallbackUrl, callback) {
-  const script = document.createElement('script');
-  script.src = primaryUrl;
-  script.onload = callback;
-  script.onerror = () => {
-    console.warn(`Failed to load ${primaryUrl}, trying fallback...`);
-    const fallbackScript = document.createElement('script');
-    fallbackScript.src = fallbackUrl;
-    fallbackScript.onload = callback;
-    fallbackScript.onerror = () => {
-      console.error(`Failed to load visualization library from both sources`);
-    };
-    document.head.appendChild(fallbackScript);
-  };
-  document.head.appendChild(script);
-}
-
-// 加载核心库
-loadScriptWithFallback(
-  'https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js',
-  'https://unpkg.com/echarts@5.4.3/dist/echarts.min.js',
-  () => console.log('ECharts loaded successfully')
-);
-
-loadScriptWithFallback(
-  'https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js',
-  'https://unpkg.com/chart.js@4.4.1/dist/chart.umd.min.js',
-  () => console.log('Chart.js loaded successfully')
-);
-
-loadScriptWithFallback(
-  'https://cdn.jsdelivr.net/npm/mermaid@10.7.0/dist/mermaid.min.js',
-  'https://unpkg.com/mermaid@10.7.0/dist/mermaid.min.js',
-  () => console.log('Mermaid loaded successfully')
-);
-</script>
-
-<!-- Optional Libraries - Loaded on demand -->
-<script>
-// 动态加载库的函数
-window.loadLibrary = {
-  plotly: () => {
-    if (!window.Plotly) {
-      return new Promise((resolve, reject) => {
-        loadScriptWithFallback(
-          'https://cdn.plot.ly/plotly-2.27.1.min.js',
-          'https://unpkg.com/plotly.js@2.27.1/dist/plotly.min.js',
-          resolve
-        );
-      });
-    }
-    return Promise.resolve();
-  },
-  
-  d3: () => {
-    if (!window.d3) {
-      return new Promise((resolve, reject) => {
-        loadScriptWithFallback(
-          'https://d3js.org/d3.v7.min.js',
-          'https://unpkg.com/d3@7.8.5/dist/d3.min.js',
-          resolve
-        );
-      });
-    }
-    return Promise.resolve();
-  },
-  
-  three: () => {
-    if (!window.THREE) {
-      return new Promise((resolve, reject) => {
-        loadScriptWithFallback(
-          'https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js',
-          'https://unpkg.com/three@0.160.0/build/three.min.js',
-          () => {
-            // Load OrbitControls
-            loadScriptWithFallback(
-              'https://cdn.jsdelivr.net/npm/three@0.160.0/examples/js/controls/OrbitControls.js',
-              'https://unpkg.com/three@0.160.0/examples/js/controls/OrbitControls.js',
-              resolve
-            );
-          }
-        );
-      });
-    }
-    return Promise.resolve();
-  }
-};
-</script>
-
+<!-- 核心样式 -->
 <style>
-/* Unified Visualization Container Styles */
+/* 可视化容器基础样式 */
 .visualization-container {
   width: 100%;
   min-height: 400px;
-  margin: 20px 0;
+  margin: 2rem 0;
   border-radius: 12px;
   overflow: hidden;
   background: rgba(255, 255, 255, 0.95);
@@ -110,30 +19,22 @@ window.loadLibrary = {
   position: relative;
 }
 
-/* Dark mode adjustments */
+/* 深色主题适配 */
 [data-theme="dark"] .visualization-container {
   background: rgba(30, 30, 30, 0.95);
   border-color: rgba(255, 255, 255, 0.1);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
-/* Responsive design */
-@media (max-width: 768px) {
-  .visualization-container {
-    min-height: 300px;
-    border-radius: 8px;
-  }
-}
-
-/* Loading state */
+/* 加载状态 */
 .visualization-container.loading::after {
-  content: "加载中...";
+  content: "正在加载图表...";
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   font-size: 14px;
-  color: var(--text-color, #666);
+  color: #666;
   z-index: 10;
   background: rgba(255, 255, 255, 0.9);
   padding: 10px 20px;
@@ -146,7 +47,7 @@ window.loadLibrary = {
   color: #fff;
 }
 
-/* Error state */
+/* 错误状态 */
 .visualization-container.error {
   background: rgba(255, 0, 0, 0.05);
   border-color: rgba(255, 0, 0, 0.2);
@@ -173,31 +74,32 @@ window.loadLibrary = {
   color: #ff6b6b;
 }
 
-/* Interactive elements */
-.visualization-container .tooltip {
-  position: absolute;
-  background: rgba(0, 0, 0, 0.9);
-  color: white;
-  padding: 8px 12px;
-  border-radius: 6px;
-  font-size: 12px;
-  pointer-events: none;
-  z-index: 1000;
-  display: none;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+/* 成功状态 */
+.visualization-container.success {
+  animation: fadeIn 0.3s ease-in-out;
 }
 
-/* Animation effects */
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .visualization-container {
+    min-height: 300px;
+    border-radius: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .visualization-container {
+    min-height: 250px;
+  }
+}
+
+/* 动画效果 */
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(10px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
-.visualization-container {
-  animation: fadeIn 0.3s ease-in-out;
-}
-
-/* Mermaid specific styles */
+/* 特定图表类型样式 */
 .mermaid {
   text-align: center;
   margin: 20px 0;
@@ -209,52 +111,120 @@ window.loadLibrary = {
   height: auto;
 }
 
-/* Chart.js specific styles */
+[data-theme="dark"] .mermaid text {
+  fill: #e9ecef !important;
+}
+
+[data-theme="dark"] .mermaid .node rect,
+[data-theme="dark"] .mermaid .node circle,
+[data-theme="dark"] .mermaid .node ellipse,
+[data-theme="dark"] .mermaid .node polygon {
+  fill: #495057 !important;
+  stroke: #6c757d !important;
+}
+
+[data-theme="dark"] .mermaid .edgePath .path {
+  stroke: #6c757d !important;
+}
+
+[data-theme="dark"] .mermaid .edgeLabel {
+  background-color: #495057 !important;
+  color: #e9ecef !important;
+}
+
+/* Chart.js 容器 */
 .chartjs-container {
   position: relative;
   height: 400px;
   padding: 20px;
 }
 
-/* ECharts specific styles */
+/* ECharts 容器 */
 .echarts-container {
   height: 400px;
   padding: 20px;
 }
 
-/* Plotly specific styles */
+/* Plotly 容器 */
 .plotly-chart {
   height: 400px;
   padding: 20px;
 }
-
-/* D3 specific styles */
-.d3-chart {
-  height: 400px;
-  padding: 20px;
-}
-
-/* Three.js specific styles */
-.three-js-container {
-  height: 400px;
-  position: relative;
-  padding: 20px;
-}
-
-/* 代码块中的图表容器 */
-.highlight .visualization-container {
-  margin: 10px 0;
-  border-radius: 6px;
-  min-height: 200px;
-}
-
-/* 确保图表在代码块中正确显示 */
-.highlight pre {
-  position: relative;
-}
-
-.highlight pre .visualization-container {
-  position: static;
-  margin: 10px 0;
-}
 </style>
+
+<!-- 核心引擎脚本 -->
+<script src="{{ '/assets/js/visualization-engine.js' | relative_url }}"></script>
+
+<!-- 预加载关键库（可选） -->
+<script>
+  // 预加载配置
+  const PRELOAD_CONFIG = {
+    // 是否预加载关键库
+    preloadCritical: true,
+    
+    // 关键库列表
+    criticalLibraries: ['echarts', 'mermaid'],
+  
+  // 预加载函数
+  async preloadCriticalLibraries() {
+    if (!this.preloadCritical) return;
+    
+    const promises = this.criticalLibraries.map(lib => {
+      return window.VisualizationEngine.loader.loadLibrary(lib);
+    });
+    
+    try {
+      await Promise.all(promises);
+      console.log('关键库预加载完成');
+    } catch (error) {
+      console.warn('关键库预加载失败:', error);
+    }
+  }
+};
+
+// 页面加载完成后预加载
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', () => {
+    PRELOAD_CONFIG.preloadCriticalLibraries();
+  });
+} else {
+  PRELOAD_CONFIG.preloadCriticalLibraries();
+}
+</script>
+
+<!-- 工具函数 -->
+<script>
+// 便捷的图表创建函数
+window.createChart = {
+  // 创建ECharts图表
+  echarts: function(element, options) {
+    return window.VisualizationEngine.render('echarts', element, options);
+  },
+  
+  // 创建Chart.js图表
+  chartjs: function(element, config) {
+    return window.VisualizationEngine.render('chartjs', element, config);
+  },
+  
+  // 创建Mermaid图表
+  mermaid: function(element, code) {
+    return window.VisualizationEngine.render('mermaid', element, { code });
+  },
+  
+  // 创建Plotly图表
+  plotly: function(element, data, layout, config) {
+    return window.VisualizationEngine.render('plotly', element, { data, layout, config });
+  }
+};
+
+// 主题切换辅助函数
+window.updateChartTheme = function(theme) {
+  // 重新渲染所有图表以适配新主题
+  window.VisualizationEngine._reRenderAll();
+};
+
+// 错误重试函数
+window.retryChart = function(elementId) {
+  window.VisualizationEngine.retry(elementId);
+};
+</script>

@@ -2,8 +2,8 @@
 layout: base
 ---
 
-<!doctype html>
-<html lang="{{ site.locale | slice: 0,2 | default: "en" }}" class="no-js">
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
   <head>
     {% include head.html %}
     {% include head/custom.html %}
@@ -13,63 +13,327 @@ layout: base
     <link rel="stylesheet" href="{{ '/assets/css/custom.css' | relative_url }}">
   </head>
 
-  <body class="layout--{{ page.layout | default: layout.layout }} glass-bg">
+  <body>
     <!-- 粒子背景 -->
     <div id="particles-js"></div>
     
-    <!-- 导航栏 -->
-    {% include_cached masthead.html %}
+    <!-- 页面头部 -->
+    {% include masthead.html %}
 
     <!-- 主要内容 -->
-    <div class="initial-content">
+    <main class="main-content">
       {{ content }}
-    </div>
+    </main>
 
-    <!-- 脚本文件 -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="{{ '/assets/js/particles.min.js' | relative_url }}"></script>
-    <script src="{{ '/assets/js/particles-config.js' | relative_url }}"></script>
-    <script src="{{ '/assets/js/glassmorphism.js' | relative_url }}"></script>
-    <script src="https://unpkg.com/lunr/lunr.min.js"></script>
-    <script src="{{ '/assets/js/search.js' | relative_url }}"></script>
-    <script src="{{ '/assets/js/main.min.js' | relative_url }}"></script>
-    
-    <!-- 主题切换脚本 -->
+    <!-- 页面底部 -->
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-content">
+          <!-- 网站信息 -->
+          <div class="footer-section">
+            <h3>{{ site.title }}</h3>
+            <p>{{ site.description }}</p>
+            {% if site.email %}
+              <p>联系邮箱：<a href="mailto:{{ site.email }}">{{ site.email }}</a></p>
+            {% endif %}
+          </div>
+
+          <!-- 快速链接 -->
+          <div class="footer-section">
+            <h3>快速链接</h3>
+            <ul>
+              <li><a href="{{ '/' | relative_url }}">首页</a></li>
+              <li><a href="{{ '/about' | relative_url }}">关于</a></li>
+              <li><a href="{{ '/categories' | relative_url }}">分类</a></li>
+              <li><a href="{{ '/tags' | relative_url }}">标签</a></li>
+            </ul>
+          </div>
+
+          <!-- 社交链接 -->
+          <div class="footer-section">
+            <h3>关注我</h3>
+            <div class="social-links">
+              {% if site.social.github %}
+                <a href="https://github.com/{{ site.social.github }}" target="_blank" rel="noopener">
+                  <i class="fab fa-github"></i>
+                </a>
+              {% endif %}
+              
+              {% if site.social.twitter %}
+                <a href="https://twitter.com/{{ site.social.twitter }}" target="_blank" rel="noopener">
+                  <i class="fab fa-twitter"></i>
+                </a>
+              {% endif %}
+              
+              {% if site.social.linkedin %}
+                <a href="https://linkedin.com/in/{{ site.social.linkedin }}" target="_blank" rel="noopener">
+                  <i class="fab fa-linkedin"></i>
+                </a>
+              {% endif %}
+              
+              {% if site.social.weibo %}
+                <a href="https://weibo.com/{{ site.social.weibo }}" target="_blank" rel="noopener">
+                  <i class="fab fa-weibo"></i>
+                </a>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+
+        <!-- 版权信息 -->
+        <div class="footer-bottom">
+          <p>&copy; {{ site.time | date: '%Y' }} {{ site.title }}. 保留所有权利.</p>
+          <p>由 <a href="https://jekyllrb.com/" target="_blank" rel="noopener">Jekyll</a> 强力驱动</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- 返回顶部按钮 -->
+    <button id="back-to-top" class="back-to-top" aria-label="返回顶部">
+      <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- 主题切换按钮 -->
+    {% if site.theme.switcher.enabled %}
+      <button id="theme-toggle" class="theme-toggle" aria-label="切换主题">
+        <i class="fas fa-moon"></i>
+        <i class="fas fa-sun"></i>
+      </button>
+    {% endif %}
+
+    <!-- 核心脚本 -->
+    <script src="{{ '/assets/js/main.js' | relative_url }}"></script>
+
+    <!-- 分析脚本 -->
+    {% if site.analytics.google.tracking_id %}
+      {% include google-analytics.html %}
+    {% endif %}
+
+    <!-- 页面特定脚本 -->
+    {% if page.custom_js %}
+      {% for script in page.custom_js %}
+        <script src="{{ script | relative_url }}"></script>
+      {% endfor %}
+    {% endif %}
+
+    <!-- 页面样式 -->
+    <style>
+    /* 主内容区域 */
+    .main-content {
+      min-height: calc(100vh - 200px);
+      padding: 2rem 0;
+    }
+
+    /* 页面底部 */
+    .site-footer {
+      background: var(--secondary-color);
+      color: white;
+      padding: 3rem 0 1rem;
+      margin-top: 4rem;
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .footer-section h3 {
+      color: white;
+      margin-bottom: 1rem;
+      font-size: 1.2rem;
+    }
+
+    .footer-section ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-section ul li {
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-section a {
+      color: rgba(255, 255, 255, 0.8);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-section a:hover {
+      color: white;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .social-links a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      transition: all 0.2s;
+    }
+
+    .social-links a:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: translateY(-2px);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 1rem;
+      text-align: center;
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 0.9rem;
+    }
+
+    .footer-bottom p {
+      margin: 0.5rem 0;
+    }
+
+    /* 返回顶部按钮 */
+    .back-to-top {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 50px;
+      height: 50px;
+      background: var(--primary-color);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .back-to-top.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .back-to-top:hover {
+      background: #0056b3;
+      transform: translateY(-2px);
+    }
+
+    /* 主题切换按钮 */
+    .theme-toggle {
+      position: fixed;
+      top: 2rem;
+      right: 2rem;
+      width: 50px;
+      height: 50px;
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      border-radius: 50%;
+      cursor: pointer;
+      transition: all 0.3s;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .theme-toggle:hover {
+      background: rgba(255, 255, 255, 1);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    }
+
+    .theme-toggle .fa-sun {
+      display: none;
+    }
+
+    [data-theme="dark"] .theme-toggle {
+      background: rgba(0, 0, 0, 0.8);
+      border-color: rgba(255, 255, 255, 0.2);
+      color: white;
+    }
+
+    [data-theme="dark"] .theme-toggle .fa-moon {
+      display: none;
+    }
+
+    [data-theme="dark"] .theme-toggle .fa-sun {
+      display: block;
+    }
+
+    /* 响应式设计 */
+    @media (max-width: 768px) {
+      .main-content {
+        padding: 1rem 0;
+      }
+
+      .footer-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .social-links {
+        justify-content: center;
+      }
+
+      .back-to-top,
+      .theme-toggle {
+        width: 45px;
+        height: 45px;
+        bottom: 1rem;
+        right: 1rem;
+      }
+
+      .theme-toggle {
+        top: 1rem;
+        right: 1rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .site-footer {
+        padding: 2rem 0 1rem;
+      }
+
+      .back-to-top,
+      .theme-toggle {
+        width: 40px;
+        height: 40px;
+      }
+    }
+    </style>
+
+    <!-- 返回顶部脚本 -->
     <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        const toggle = document.getElementById('theme-toggle');
-        const html = document.documentElement;
-        
-        // 初始化主题
-        const savedTheme = localStorage.getItem('theme') || 'light';
-        html.setAttribute('data-theme', savedTheme);
-        updateThemeIcon(savedTheme);
-        
-        // 主题切换
-        toggle.addEventListener('click', function() {
-          const currentTheme = html.getAttribute('data-theme');
-          const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-          html.setAttribute('data-theme', newTheme);
-          localStorage.setItem('theme', newTheme);
-          updateThemeIcon(newTheme);
-        });
-        
-        function updateThemeIcon(theme) {
-          const sunIcon = toggle.querySelector('.fa-sun');
-          const moonIcon = toggle.querySelector('.fa-moon');
-          if (theme === 'dark') {
-            sunIcon.style.display = 'none';
-            moonIcon.style.display = 'block';
-          } else {
-            sunIcon.style.display = 'block';
-            moonIcon.style.display = 'none';
-          }
+    // 返回顶部功能
+    const backToTop = document.getElementById('back-to-top');
+    
+    if (backToTop) {
+      window.addEventListener('scroll', () => {
+        if (window.pageYOffset > 300) {
+          backToTop.classList.add('visible');
+        } else {
+          backToTop.classList.remove('visible');
         }
       });
+      
+      backToTop.addEventListener('click', () => {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      });
+    }
     </script>
-    
-    {% include mermaid.html %}
   </body>
 </html>

@@ -2,71 +2,356 @@
 layout: default
 ---
 
-<div class="home-container">
-<div class="reading-progress">
-  <div class="reading-progress-bar"></div>
-</div>
-<article class="post" itemscope itemtype="https://schema.org/BlogPosting">
+<!-- 文章页面布局 -->
+<article class="post-container">
+  <!-- 文章头部 -->
   <header class="post-header">
-    <h1 class="post-title" itemprop="name headline">{{ page.title | escape }}</h1>
-    <p class="post-meta">
-      <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
-        {{ page.date | date: "%b %d, %Y" }}
+    <h1 class="post-title">{{ page.title }}</h1>
+    
+    <!-- 文章元信息 -->
+    <div class="post-meta">
+      <time datetime="{{ page.date | date_to_xmlschema }}" class="post-date">
+        {{ page.date | date: "%Y年%m月%d日" }}
       </time>
-      {% if page.categories.size > 0 %}
-        • Categories: 
-        {% for category in page.categories %}
-          <a href="/categories/{{ category | slugify }}">{{ category }}</a>
-          {% unless forloop.last %}, {% endunless %}
-        {% endfor %}
+      
+      {% if page.categories %}
+        <span class="post-categories">
+          分类：
+          {% for category in page.categories %}
+            <a href="{{ '/categories/' | append: category | relative_url }}">{{ category }}</a>
+            {% unless forloop.last %}, {% endunless %}
+          {% endfor %}
+        </span>
       {% endif %}
-      {% if page.tags.size > 0 %}
-        • Tags: 
-        {% for tag in page.tags %}
-          <a href="/tags/{{ tag | slugify }}">{{ tag }}</a>
-          {% unless forloop.last %}, {% endunless %}
-        {% endfor %}
+      
+      {% if page.tags %}
+        <span class="post-tags">
+          标签：
+          {% for tag in page.tags %}
+            <a href="{{ '/tags/' | append: tag | relative_url }}">#{{ tag }}</a>
+            {% unless forloop.last %} {% endunless %}
+          {% endfor %}
+        </span>
       {% endif %}
-    </p>
+    </div>
+    
+    <!-- 文章描述 -->
+    {% if page.description %}
+      <div class="post-description">
+        {{ page.description }}
+      </div>
+    {% endif %}
   </header>
 
-  <div class="post-content" itemprop="articleBody">
+  <!-- 文章内容 -->
+  <div class="post-content">
     {{ content }}
   </div>
 
-  {% if page.mermaid %}
-    {% include mermaid.html %}
-  {% endif %}
+  <!-- 文章底部 -->
+  <footer class="post-footer">
+    <!-- 作者信息 -->
+    {% if site.author %}
+      <div class="post-author">
+        <h3>关于作者</h3>
+        <p>{{ site.author }}</p>
+        {% if site.email %}
+          <p>联系邮箱：<a href="mailto:{{ site.email }}">{{ site.email }}</a></p>
+        {% endif %}
+      </div>
+    {% endif %}
 
-  {% if site.giscus.repo %}
-    {% include giscus_comments.html %}
-  {% endif %}
+    <!-- 相关文章 -->
+    {% if page.related_posts %}
+      <div class="related-posts">
+        <h3>相关文章</h3>
+        <ul>
+          {% for related in page.related_posts %}
+            <li><a href="{{ related.url }}">{{ related.title }}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+    {% endif %}
 
-  <div class="post-navigation">
+    <!-- 社交分享 -->
+    <div class="social-share">
+      <h3>分享文章</h3>
+      <div class="share-buttons">
+        <a href="https://twitter.com/intent/tweet?text={{ page.title | url_encode }}&url={{ page.url | absolute_url }}" 
+           target="_blank" rel="noopener" class="share-button twitter">
+          <i class="fab fa-twitter"></i> Twitter
+        </a>
+        
+        <a href="https://www.facebook.com/sharer/sharer.php?u={{ page.url | absolute_url }}" 
+           target="_blank" rel="noopener" class="share-button facebook">
+          <i class="fab fa-facebook"></i> Facebook
+        </a>
+        
+        <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ page.url | absolute_url }}" 
+           target="_blank" rel="noopener" class="share-button linkedin">
+          <i class="fab fa-linkedin"></i> LinkedIn
+        </a>
+        
+        <a href="https://service.weibo.com/share/share.php?url={{ page.url | absolute_url }}&title={{ page.title | url_encode }}" 
+           target="_blank" rel="noopener" class="share-button weibo">
+          <i class="fab fa-weibo"></i> 微博
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- 文章导航 -->
+  <nav class="post-navigation">
     {% if page.previous.url %}
-      <a class="prev" href="{{page.previous.url}}">&laquo; {{page.previous.title}}</a>
+      <a href="{{ page.previous.url }}" class="nav-previous">
+        <span class="nav-arrow">←</span>
+        <span class="nav-title">{{ page.previous.title }}</span>
+      </a>
     {% endif %}
+    
     {% if page.next.url %}
-      <a class="next" href="{{page.next.url}}">{{page.next.title}} &raquo;</a>
+      <a href="{{ page.next.url }}" class="nav-next">
+        <span class="nav-title">{{ page.next.title }}</span>
+        <span class="nav-arrow">→</span>
+      </a>
     {% endif %}
-  </div>
+  </nav>
 
-  <div class="social-share">
-    <span>分享到：</span>
-    <a href="https://twitter.com/intent/tweet?text={{ page.title | url_encode }}&url={{ site.url }}{{ page.url | url_encode }}" target="_blank" title="Twitter">
-      <i class="fab fa-twitter"></i>
-    </a>
-    <a href="https://www.facebook.com/sharer/sharer.php?u={{ site.url }}{{ page.url | url_encode }}" target="_blank" title="Facebook">
-      <i class="fab fa-facebook"></i>
-    </a>
-    <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ site.url }}{{ page.url | url_encode }}&title={{ page.title | url_encode }}" target="_blank" title="LinkedIn">
-      <i class="fab fa-linkedin"></i>
-    </a>
-    <a href="https://service.weibo.com/share/share.php?url={{ site.url }}{{ page.url | url_encode }}&title={{ page.title | url_encode }}" target="_blank" title="微博">
-      <i class="fab fa-weibo"></i>
-    </a>
-  </div>
-
-  {% include related_posts.html %}
+  <!-- 评论区 -->
+  {% if page.comments != false %}
+    <div class="comments-section">
+      <h3>评论</h3>
+      {% include giscus_comments.html %}
+    </div>
+  {% endif %}
 </article>
-</div>
+
+<!-- 文章页面样式 -->
+<style>
+.post-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+.post-header {
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+.post-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: var(--primary-color);
+}
+
+.post-meta {
+  color: var(--secondary-color);
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.post-meta > * {
+  margin-right: 1rem;
+}
+
+.post-meta a {
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+.post-meta a:hover {
+  text-decoration: underline;
+}
+
+.post-description {
+  font-size: 1.1rem;
+  color: var(--secondary-color);
+  font-style: italic;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.post-content {
+  line-height: 1.8;
+  margin-bottom: 3rem;
+}
+
+.post-content h1,
+.post-content h2,
+.post-content h3,
+.post-content h4,
+.post-content h5,
+.post-content h6 {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  color: var(--primary-color);
+}
+
+.post-content p {
+  margin-bottom: 1.5rem;
+}
+
+.post-content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin: 1rem 0;
+}
+
+.post-content blockquote {
+  border-left: 4px solid var(--primary-color);
+  padding-left: 1rem;
+  margin: 1.5rem 0;
+  font-style: italic;
+  color: var(--secondary-color);
+}
+
+.post-content pre {
+  background: var(--secondary-color);
+  color: white;
+  padding: 1rem;
+  border-radius: 8px;
+  overflow-x: auto;
+  margin: 1.5rem 0;
+}
+
+.post-content code {
+  background: rgba(0,0,0,0.1);
+  padding: 0.2em 0.4em;
+  border-radius: 4px;
+  font-size: 0.9em;
+}
+
+.post-footer {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--secondary-color);
+}
+
+.post-author,
+.related-posts,
+.social-share {
+  margin-bottom: 2rem;
+}
+
+.post-author h3,
+.related-posts h3,
+.social-share h3 {
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+.share-buttons {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.share-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  text-decoration: none;
+  color: white;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+}
+
+.share-button.twitter { background: #1da1f2; }
+.share-button.facebook { background: #1877f2; }
+.share-button.linkedin { background: #0077b5; }
+.share-button.weibo { background: #e6162d; }
+
+.share-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.post-navigation {
+  display: flex;
+  justify-content: space-between;
+  margin: 3rem 0;
+  padding: 1rem 0;
+  border-top: 1px solid var(--secondary-color);
+  border-bottom: 1px solid var(--secondary-color);
+}
+
+.nav-previous,
+.nav-next {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  color: var(--primary-color);
+  max-width: 45%;
+}
+
+.nav-previous:hover,
+.nav-next:hover {
+  text-decoration: underline;
+}
+
+.nav-title {
+  font-weight: 500;
+}
+
+.nav-arrow {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.comments-section {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--secondary-color);
+}
+
+.comments-section h3 {
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .post-container {
+    padding: 1rem;
+  }
+  
+  .post-title {
+    font-size: 2rem;
+  }
+  
+  .share-buttons {
+    justify-content: center;
+  }
+  
+  .post-navigation {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .nav-previous,
+  .nav-next {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .post-title {
+    font-size: 1.8rem;
+  }
+  
+  .post-meta {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .share-buttons {
+    flex-direction: column;
+  }
+}
+</style>
