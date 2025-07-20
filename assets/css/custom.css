@@ -483,126 +483,91 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-/* 现代卡片风格代码块（重构） */
+/* Refactored Code Block Styles */
 .code-block-wrapper {
   position: relative;
   margin: 2em 0;
-  border-radius: 12px;
+  border-radius: 8px;
   overflow: hidden;
-  box-shadow: 0 4px 24px rgba(0,0,0,0.08), 0 1.5px 4px rgba(0,0,0,0.04);
-  background: var(--code-bg, #f8f9fa);
-  transition: box-shadow 0.2s;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
 }
-.code-block-wrapper:hover {
-  box-shadow: 0 8px 32px rgba(0,0,0,0.12), 0 2px 8px rgba(0,0,0,0.06);
+
+.code-block-wrapper .highlight {
+  margin: 0;
+  border-radius: 0;
 }
+
 .code-block-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: var(--code-header-bg, #f1f3f6);
-  padding: 0.5em 1em;
-  font-size: 0.95em;
-  color: #888;
+  padding: 0.6em 1.2em;
+  background-color: #f1f3f5;
   border-bottom: 1px solid #e9ecef;
 }
+
 .code-block-lang {
+  font-family: var(--font-family-mono);
+  font-size: 0.9em;
   font-weight: 600;
+  color: #495057;
   text-transform: uppercase;
-  letter-spacing: 0.04em;
 }
+
 .code-block-copy {
-  position: absolute;
-  top: 12px;
-  right: 18px;
-  z-index: 2;
-  background: #e9ecef;
-  color: #666;
+  font-family: var(--font-family-sans);
+  font-size: 0.9em;
+  background-color: #e9ecef;
+  color: #495057;
   border: none;
-  border-radius: 6px;
-  padding: 0.2em 0.8em;
-  font-size: 0.95em;
+  border-radius: 4px;
+  padding: 0.3em 0.7em;
   cursor: pointer;
-  transition: background 0.2s, color 0.2s;
+  transition: all 0.2s ease;
 }
+
+.code-block-copy:hover {
+  background-color: #dee2e6;
+}
+
 .code-block-copy.copied {
-  background: #4caf50;
+  background-color: #28a745;
   color: #fff;
 }
-.code-block-body {
-  display: flex;
-  align-items: stretch;
-  background: none;
-  font-size: 1em;
-  font-family: var(--code-font, 'Fira Mono', 'Consolas', 'Menlo', monospace);
-}
-.code-block-lines {
-  display: none;
-}
-.code-block-content {
-  padding: 1em 1.2em 1em 0.8em;
+
+.code-block-wrapper pre {
+  margin: 0;
+  padding: 1.2em;
   overflow-x: auto;
-  white-space: pre;
-  flex: 1 1 0%;
-  background: none;
-  color: var(--code-color, #222);
+  border-radius: 0 0 8px 8px;
 }
-.code-block-content .highlighted {
-  background: #ffe082;
-  transition: background 0.2s;
+
+/* Dark Mode Styles */
+[data-theme="dark"] .code-block-wrapper {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
 }
-/* 滚动条美化 */
-.code-block-content::-webkit-scrollbar {
-  height: 8px;
-  background: #f1f3f6;
+
+[data-theme="dark"] .code-block-header {
+  background-color: #343a40;
+  border-bottom: 1px solid #495057;
 }
-.code-block-content::-webkit-scrollbar-thumb {
-  background: #d1d5db;
-  border-radius: 4px;
+
+[data-theme="dark"] .code-block-lang {
+  color: #ced4da;
 }
-/* 暗色模式适配 */
-@media (prefers-color-scheme: dark) {
-  .code-block-wrapper {
-    background: #23272e;
-    box-shadow: 0 4px 24px rgba(0,0,0,0.18), 0 1.5px 4px rgba(0,0,0,0.12);
-  }
-  .code-block-header {
-    background: #23272e;
-    color: #aaa;
-    border-bottom: 1px solid #2c313a;
-  }
-  .code-block-lines {
-    background: #23272e;
-    color: #444c56;
-    border-right: 1px solid #2c313a;
-  }
-  .code-block-content {
-    color: #e9ecef;
-  }
-  .code-block-copy {
-    background: #2c313a;
-    color: #aaa;
-  }
-  .code-block-copy.copied {
-    background: #43d675;
-    color: #fff;
-  }
+
+[data-theme="dark"] .code-block-copy {
+  background-color: #495057;
+  color: #f8f9fa;
 }
-/* 兼容移动端 */
-@media (max-width: 600px) {
-  .code-block-header {
-    font-size: 0.88em;
-    padding: 0.4em 0.7em;
-  }
-  .code-block-lines {
-    font-size: 0.92em;
-    min-width: 2em;
-    padding: 0.7em 0.3em 0.7em 0.7em;
-  }
-  .code-block-content {
-    font-size: 0.98em;
-    padding: 0.7em 0.5em 0.7em 0.5em;
-  }
+
+[data-theme="dark"] .code-block-copy:hover {
+  background-color: #6c757d;
+}
+
+[data-theme="dark"] .code-block-copy.copied {
+  background-color: #20c997;
+  color: #000;
 }
 
 /* Posts List Page */
