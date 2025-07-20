@@ -483,8 +483,8 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-/* Refactored Code Block Styles */
-.code-block-wrapper {
+/* Cleaned up code block styles */
+.highlight {
   position: relative;
   margin: 2em 0;
   border-radius: 8px;
@@ -492,82 +492,42 @@ body {
   box-shadow: 0 4px 12px rgba(0,0,0,0.08);
 }
 
-.code-block-wrapper .highlight {
-  margin: 0;
-  border-radius: 0;
+.highlight .code-block-copy {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-family: var(--font-family-sans);
+    font-size: 0.9em;
+    background-color: #e9ecef;
+    color: #495057;
+    border: none;
+    border-radius: 4px;
+    padding: 0.3em 0.7em;
+    cursor: pointer;
+    transition: all 0.2s ease;
 }
 
-.code-block-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0.6em 1.2em;
-  background-color: #f1f3f5;
-  border-bottom: 1px solid #e9ecef;
+.highlight .code-block-copy:hover {
+    background-color: #dee2e6;
 }
 
-.code-block-lang {
-  font-family: var(--font-family-mono);
-  font-size: 0.9em;
-  font-weight: 600;
-  color: #495057;
-  text-transform: uppercase;
+.highlight .code-block-copy.copied {
+    background-color: #28a745;
+    color: #fff;
 }
 
-.code-block-copy {
-  font-family: var(--font-family-sans);
-  font-size: 0.9em;
-  background-color: #e9ecef;
-  color: #495057;
-  border: none;
-  border-radius: 4px;
-  padding: 0.3em 0.7em;
-  cursor: pointer;
-  transition: all 0.2s ease;
+[data-theme="dark"] .highlight .code-block-copy {
+    background-color: #495057;
+    color: #f8f9fa;
 }
 
-.code-block-copy:hover {
-  background-color: #dee2e6;
+[data-theme="dark"] .highlight .code-block-copy:hover {
+    background-color: #6c757d;
 }
 
-.code-block-copy.copied {
-  background-color: #28a745;
-  color: #fff;
-}
-
-.code-block-wrapper pre {
-  margin: 0;
-  padding: 1.2em;
-  overflow-x: auto;
-  border-radius: 0 0 8px 8px;
-}
-
-/* Dark Mode Styles */
-[data-theme="dark"] .code-block-wrapper {
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-}
-
-[data-theme="dark"] .code-block-header {
-  background-color: #343a40;
-  border-bottom: 1px solid #495057;
-}
-
-[data-theme="dark"] .code-block-lang {
-  color: #ced4da;
-}
-
-[data-theme="dark"] .code-block-copy {
-  background-color: #495057;
-  color: #f8f9fa;
-}
-
-[data-theme="dark"] .code-block-copy:hover {
-  background-color: #6c757d;
-}
-
-[data-theme="dark"] .code-block-copy.copied {
-  background-color: #20c997;
-  color: #000;
+[data-theme="dark"] .highlight .code-block-copy.copied {
+    background-color: #20c997;
+    color: #000;
 }
 
 /* Posts List Page */

@@ -10,30 +10,14 @@
     return navigator.clipboard.writeText(text);
   }
 
-  function enhanceCodeBlocks() {
+  function addCopyButtons() {
     document.querySelectorAll('div.highlight').forEach(function(highlightDiv) {
-      if (highlightDiv.querySelector('.code-block-header')) {
+      if (highlightDiv.querySelector('.code-block-copy')) {
         return; // Already processed
       }
 
-      const pre = highlightDiv.querySelector('pre');
-      if (!pre) return;
-
-      const codeEl = pre.querySelector('code');
+      const codeEl = highlightDiv.querySelector('code');
       if (!codeEl) return;
-
-      const code = codeEl.textContent.trim();
-      const langMatch = highlightDiv.className.match(/language-(\w+)/);
-      const lang = langMatch ? langMatch[1] : 'code';
-
-      highlightDiv.classList.add('code-block-wrapper');
-
-      const header = document.createElement('div');
-      header.className = 'code-block-header';
-
-      const langSpan = document.createElement('span');
-      langSpan.className = 'code-block-lang';
-      langSpan.textContent = lang.toUpperCase();
 
       const copyBtn = document.createElement('button');
       copyBtn.className = 'code-block-copy';
@@ -51,17 +35,14 @@
         });
       });
 
-      header.appendChild(langSpan);
-      header.appendChild(copyBtn);
-
-      highlightDiv.insertBefore(header, highlightDiv.firstChild);
+      highlightDiv.appendChild(copyBtn);
     });
   }
 
   function init() {
-    enhanceCodeBlocks();
+    addCopyButtons();
     // If using a dynamic content loader like Turbo/Turbolinks, listen for page changes
-    document.addEventListener('turbo:load', enhanceCodeBlocks);
+    document.addEventListener('turbo:load', addCopyButtons);
   }
 
   if (document.readyState === 'loading') {
