@@ -38,11 +38,11 @@ layout: default
     </div>
   </section>
 
-  <!-- 最新文章 -->
-  <section class="recent-posts">
-    <h2 class="section-title">最新文章</h2>
+  <!-- 精选文章 -->
+  <section class="featured-posts">
+    <h2 class="section-title">精选文章</h2>
     <div class="posts-grid">
-      {% assign recent_posts = site.posts | sort: 'date' | reverse | limit: 6 %}
+      {% assign recent_posts = site.posts | sort: 'date' | reverse | limit: 3 %}
       {% for post in recent_posts %}
         <article class="post-card">
           <div class="post-meta">
@@ -191,7 +191,7 @@ layout: default
   color: var(--gray-200);
 }
 
-.recent-posts {
+.featured-posts {
   margin-bottom: var(--spacing-3xl);
 }
 
@@ -209,7 +209,7 @@ layout: default
 
 .posts-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   gap: var(--spacing-xl);
   margin-bottom: var(--spacing-xl);
 }
@@ -270,8 +270,8 @@ layout: default
 
 .post-excerpt {
   color: var(--gray-600);
-  margin-bottom: var(--spacing-lg);
   line-height: var(--line-height-relaxed);
+  margin-bottom: var(--spacing-md);
 }
 
 [data-theme="dark"] .post-excerpt {
@@ -293,13 +293,28 @@ layout: default
   text-align: center;
 }
 
+/* 响应式设计 */
 @media (max-width: 768px) {
   .welcome-title {
     font-size: var(--font-size-3xl);
   }
   
+  .welcome-subtitle {
+    font-size: var(--font-size-lg);
+  }
+  
+  .welcome-description {
+    font-size: var(--font-size-base);
+  }
+  
   .stats-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-md);
+  }
+  
+  .posts-grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
   }
   
   .action-buttons {
@@ -307,8 +322,10 @@ layout: default
     align-items: center;
   }
   
-  .posts-grid {
-    grid-template-columns: 1fr;
+  .btn {
+    width: 100%;
+    max-width: 200px;
+    justify-content: center;
   }
 }
 </style>

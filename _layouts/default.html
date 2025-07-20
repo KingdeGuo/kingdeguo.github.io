@@ -1,258 +1,254 @@
 ---
 ---
 
-<!DOCTYPE html>
-<html lang="zh-CN">
-  <head>
-    {% include head.html %}
-    {% include head/custom.html %}
-  </head>
+{% include head.html %}
+{% include head/custom.html %}
 
-  <body>
-    <!-- 页面头部 -->
-    {% include masthead.html %}
+<body>
+  <!-- 页面头部 -->
+  {% include masthead.html %}
 
-    <!-- 主要内容 -->
-    <main class="main-content">
-      {{ content }}
-    </main>
+  <!-- 主要内容 -->
+  <main class="main-content">
+    {{ content }}
+  </main>
 
-    <!-- 页面底部 -->
-    <footer class="site-footer">
-      <div class="container">
-        <div class="footer-content">
-          <!-- 网站信息 -->
-          <div class="footer-section">
-            <h3>{{ site.title }}</h3>
-            <p>{{ site.description }}</p>
-            {% if site.email %}
-              <p>联系邮箱：<a href="mailto:{{ site.email }}">{{ site.email }}</a></p>
+  <!-- 页面底部 -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-content">
+        <!-- 网站信息 -->
+        <div class="footer-section">
+          <h3>{{ site.title }}</h3>
+          <p>{{ site.description }}</p>
+          {% if site.email %}
+            <p>联系邮箱：<a href="mailto:{{ site.email }}">{{ site.email }}</a></p>
+          {% endif %}
+        </div>
+
+        <!-- 快速链接 -->
+        <div class="footer-section">
+          <h3>快速链接</h3>
+          <ul>
+            <li><a href="{{ '/' | relative_url }}">首页</a></li>
+            <li><a href="{{ '/about' | relative_url }}">关于</a></li>
+            <li><a href="{{ '/categories' | relative_url }}">分类</a></li>
+            <li><a href="{{ '/tags' | relative_url }}">标签</a></li>
+          </ul>
+        </div>
+
+        <!-- 社交链接 -->
+        <div class="footer-section">
+          <h3>关注我</h3>
+          <div class="social-links">
+            {% if site.social.github %}
+              <a href="https://github.com/{{ site.social.github }}" target="_blank" rel="noopener">
+                GitHub
+              </a>
+            {% endif %}
+            
+            {% if site.social.twitter %}
+              <a href="https://twitter.com/{{ site.social.twitter }}" target="_blank" rel="noopener">
+                Twitter
+              </a>
+            {% endif %}
+            
+            {% if site.social.linkedin %}
+              <a href="https://linkedin.com/in/{{ site.social.linkedin }}" target="_blank" rel="noopener">
+                LinkedIn
+              </a>
             {% endif %}
           </div>
-
-          <!-- 快速链接 -->
-          <div class="footer-section">
-            <h3>快速链接</h3>
-            <ul>
-              <li><a href="{{ '/' | relative_url }}">首页</a></li>
-              <li><a href="{{ '/about' | relative_url }}">关于</a></li>
-              <li><a href="{{ '/categories' | relative_url }}">分类</a></li>
-              <li><a href="{{ '/tags' | relative_url }}">标签</a></li>
-            </ul>
-          </div>
-
-          <!-- 社交链接 -->
-          <div class="footer-section">
-            <h3>关注我</h3>
-            <div class="social-links">
-              {% if site.social.github %}
-                <a href="https://github.com/{{ site.social.github }}" target="_blank" rel="noopener">
-                  GitHub
-                </a>
-              {% endif %}
-              
-              {% if site.social.twitter %}
-                <a href="https://twitter.com/{{ site.social.twitter }}" target="_blank" rel="noopener">
-                  Twitter
-                </a>
-              {% endif %}
-              
-              {% if site.social.linkedin %}
-                <a href="https://linkedin.com/in/{{ site.social.linkedin }}" target="_blank" rel="noopener">
-                  LinkedIn
-                </a>
-              {% endif %}
-            </div>
-          </div>
-        </div>
-
-        <!-- 版权信息 -->
-        <div class="footer-bottom">
-          <p>&copy; {{ site.time | date: '%Y' }} {{ site.title }}. 保留所有权利.</p>
         </div>
       </div>
-    </footer>
 
-    <!-- 返回顶部按钮 -->
-    <button id="back-to-top" class="back-to-top" aria-label="返回顶部">
-      ↑
-    </button>
+      <!-- 版权信息 -->
+      <div class="footer-bottom">
+        <p>&copy; {{ site.time | date: '%Y' }} {{ site.title }}. 保留所有权利.</p>
+      </div>
+    </div>
+  </footer>
 
-    <!-- 核心脚本 -->
-    <script src="{{ '/assets/js/main.js' | relative_url }}"></script>
+  <!-- 返回顶部按钮 -->
+  <button id="back-to-top" class="back-to-top" aria-label="返回顶部">
+    ↑
+  </button>
 
-    <!-- 分析脚本 -->
-    {% if site.analytics.google.tracking_id %}
-      {% include google-analytics.html %}
-    {% endif %}
+  <!-- 核心脚本 -->
+  <script src="{{ '/assets/js/main.js' | relative_url }}"></script>
 
-    <!-- 页面特定脚本 -->
-    {% if page.custom_js %}
-      {% for script in page.custom_js %}
-        <script src="{{ script | relative_url }}"></script>
-      {% endfor %}
-    {% endif %}
+  <!-- 分析脚本 -->
+  {% if site.analytics.google.tracking_id %}
+    {% include google-analytics.html %}
+  {% endif %}
 
-    <!-- 页面样式 -->
-    <style>
-    /* 主内容区域 */
-    .main-content {
-      min-height: calc(100vh - 200px);
-      padding: 2rem 0;
-    }
+  <!-- 页面特定脚本 -->
+  {% if page.custom_js %}
+    {% for script in page.custom_js %}
+      <script src="{{ script | relative_url }}"></script>
+    {% endfor %}
+  {% endif %}
 
-    /* 页面底部 */
-    .site-footer {
-      background: var(--light-gray);
-      color: var(--text-dark);
-      padding: 3rem 0 1rem;
-      margin-top: 4rem;
-      border-top: 1px solid var(--gray);
-    }
+  <!-- 页面样式 -->
+  <style>
+  /* 主内容区域 */
+  .main-content {
+    min-height: calc(100vh - 200px);
+    padding: 2rem 0;
+  }
 
+  /* 页面底部 */
+  .site-footer {
+    background: var(--light-gray);
+    color: var(--text-dark);
+    padding: 3rem 0 1rem;
+    margin-top: 4rem;
+    border-top: 1px solid var(--gray);
+  }
+
+  .footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .footer-section h3 {
+    color: var(--text-dark);
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+  }
+
+  .footer-section ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .footer-section ul li {
+    margin-bottom: 0.5rem;
+  }
+
+  .footer-section a {
+    color: var(--text-light);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+  }
+
+  .footer-section a:hover {
+    color: var(--accent-color);
+  }
+
+  .social-links {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .social-links a {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background: var(--white);
+    border: 1px solid var(--gray);
+    border-radius: var(--border-radius-md);
+    color: var(--text-dark);
+    text-decoration: none;
+    transition: all var(--transition-fast);
+  }
+
+  .social-links a:hover {
+    background: var(--accent-color);
+    color: var(--white);
+    border-color: var(--accent-color);
+    transform: translateY(-1px);
+  }
+
+  .footer-bottom {
+    border-top: 1px solid var(--gray);
+    padding-top: 1rem;
+    text-align: center;
+    color: var(--text-light);
+    font-size: 0.9rem;
+  }
+
+  .footer-bottom p {
+    margin: 0.5rem 0;
+  }
+
+  /* 返回顶部按钮 */
+  .back-to-top {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 50px;
+    height: 50px;
+    background: var(--accent-color);
+    color: var(--white);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: all var(--transition-normal);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+    box-shadow: var(--shadow-md);
+  }
+
+  .back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .back-to-top:hover {
+    background: var(--primary-color);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  /* 响应式设计 */
+  @media (max-width: 768px) {
     .footer-content {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
-      margin-bottom: 2rem;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
     }
-
-    .footer-section h3 {
-      color: var(--text-dark);
-      margin-bottom: 1rem;
-      font-size: 1.2rem;
-    }
-
-    .footer-section ul {
-      list-style: none;
-      padding: 0;
-    }
-
-    .footer-section ul li {
-      margin-bottom: 0.5rem;
-    }
-
-    .footer-section a {
-      color: var(--text-light);
-      text-decoration: none;
-      transition: color var(--transition-fast);
-    }
-
-    .footer-section a:hover {
-      color: var(--accent-color);
-    }
-
+    
     .social-links {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-
-    .social-links a {
-      display: inline-block;
-      padding: 0.5rem 1rem;
-      background: var(--white);
-      border: 1px solid var(--gray);
-      border-radius: var(--border-radius-md);
-      color: var(--text-dark);
-      text-decoration: none;
-      transition: all var(--transition-fast);
-    }
-
-    .social-links a:hover {
-      background: var(--accent-color);
-      color: var(--white);
-      border-color: var(--accent-color);
-      transform: translateY(-1px);
-    }
-
-    .footer-bottom {
-      border-top: 1px solid var(--gray);
-      padding-top: 1rem;
-      text-align: center;
-      color: var(--text-light);
-      font-size: 0.9rem;
-    }
-
-    .footer-bottom p {
-      margin: 0.5rem 0;
-    }
-
-    /* 返回顶部按钮 */
-    .back-to-top {
-      position: fixed;
-      bottom: 2rem;
-      right: 2rem;
-      width: 50px;
-      height: 50px;
-      background: var(--accent-color);
-      color: var(--white);
-      border: none;
-      border-radius: 50%;
-      cursor: pointer;
-      opacity: 0;
-      visibility: hidden;
-      transition: all var(--transition-normal);
-      z-index: 1000;
-      display: flex;
-      align-items: center;
       justify-content: center;
-      font-size: 1.2rem;
-      font-weight: bold;
-      box-shadow: var(--shadow-md);
     }
-
-    .back-to-top.visible {
-      opacity: 1;
-      visibility: visible;
+    
+    .back-to-top {
+      bottom: 1rem;
+      right: 1rem;
+      width: 45px;
+      height: 45px;
     }
+  }
+  </style>
 
-    .back-to-top:hover {
-      background: var(--primary-color);
-      transform: translateY(-2px);
-      box-shadow: var(--shadow-lg);
-    }
-
-    /* 响应式设计 */
-    @media (max-width: 768px) {
-      .footer-content {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
+  <!-- 返回顶部脚本 -->
+  <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const backToTop = document.getElementById('back-to-top');
+    
+    window.addEventListener('scroll', function() {
+      if (window.pageYOffset > 300) {
+        backToTop.classList.add('visible');
+      } else {
+        backToTop.classList.remove('visible');
       }
-      
-      .social-links {
-        justify-content: center;
-      }
-      
-      .back-to-top {
-        bottom: 1rem;
-        right: 1rem;
-        width: 45px;
-        height: 45px;
-      }
-    }
-    </style>
-
-    <!-- 返回顶部脚本 -->
-    <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const backToTop = document.getElementById('back-to-top');
-      
-      window.addEventListener('scroll', function() {
-        if (window.pageYOffset > 300) {
-          backToTop.classList.add('visible');
-        } else {
-          backToTop.classList.remove('visible');
-        }
-      });
-      
-      backToTop.addEventListener('click', function() {
-        window.scrollTo({
-          top: 0,
-          behavior: 'smooth'
-        });
+    });
+    
+    backToTop.addEventListener('click', function() {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
       });
     });
-    </script>
-  </body>
+  });
+  </script>
+</body>
 </html>

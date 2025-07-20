@@ -4,236 +4,265 @@ title: "标签"
 permalink: /tags/
 ---
 
-<div class="content-container">
-  <!-- 页面头部 -->
-  <div class="page-header">
-    <h1 class="page-title">文章标签</h1>
-    <p class="page-subtitle">按标签浏览感兴趣的内容，共 {{ site.tags | size }} 个标签</p>
-  </div>
+<!-- 页面头部 -->
+<div class="page-header">
+  <h1 class="page-title">标签</h1>
+  <p class="page-subtitle">按标签浏览感兴趣的内容</p>
+</div>
 
-  <!-- 标签列表 -->
-  <div class="tags-list">
-    {% assign tags = site.tags | sort %}
-    {% for tag in tags %}
-      <div class="tag-section" id="{{ tag[0] | slugify }}">
-        <div class="tag-header">
-          <h2 class="tag-title">{{ tag[0] }}</h2>
-          <span class="tag-count">{{ tag[1].size }} 篇文章</span>
-        </div>
-        
-        <div class="posts-grid">
-          {% for post in tag[1] %}
-            <article class="post-card">
-              <div class="post-meta">
-                <time>{{ post.date | date: "%Y年%m月%d日" }}</time>
-                {% if post.categories %}
-                  <div class="post-categories">
-                    {% for category in post.categories limit: 2 %}
-                      <span class="category">{{ category }}</span>
-                    {% endfor %}
-                  </div>
-                {% endif %}
-              </div>
-              
-              <h3 class="post-title">
-                <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
-              </h3>
-              
-              {% if post.description %}
-                <p class="post-excerpt">{{ post.description }}</p>
-              {% endif %}
-              
-              <a href="{{ post.url | relative_url }}" class="read-more">阅读全文 →</a>
-            </article>
-          {% endfor %}
-        </div>
+<!-- 标签列表 -->
+<div class="tags-container">
+  {% assign tags = site.tags | sort %}
+  {% for tag in tags %}
+    <div class="tag-card">
+      <div class="tag-header">
+        <h2 class="tag-name">
+          <a href="{{ '/tags/' | append: tag[0] | relative_url }}">#{{ tag[0] }}</a>
+        </h2>
+        <span class="tag-count">{{ tag[1].size }} 篇文章</span>
       </div>
-    {% endfor %}
-  </div>
+      
+      <div class="tag-posts">
+        {% assign posts = tag[1] | sort: 'date' | reverse | limit: 3 %}
+        {% for post in posts %}
+          <div class="tag-post">
+            <h3 class="post-title">
+              <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+            </h3>
+            <div class="post-meta">
+              <time>{{ post.date | date: "%Y年%m月%d日" }}</time>
+              {% if post.categories %}
+                <span class="categories">
+                  {% for category in post.categories limit: 1 %}
+                    <a href="{{ '/categories/' | append: category | relative_url }}">{{ category }}</a>
+                  {% endfor %}
+                </span>
+              {% endif %}
+            </div>
+            {% if post.description %}
+              <p class="post-excerpt">{{ post.description }}</p>
+            {% endif %}
+          </div>
+        {% endfor %}
+      </div>
+      
+      {% if tag[1].size > 3 %}
+        <div class="tag-footer">
+          <a href="{{ '/tags/' | append: tag[0] | relative_url }}" class="view-more">
+            查看全部 {{ tag[1].size }} 篇文章 →
+          </a>
+        </div>
+      {% endif %}
+    </div>
+  {% endfor %}
 </div>
 
 <style>
-/* 标签页样式 */
+/* 页面头部 */
 .page-header {
   text-align: center;
-  padding: var(--spacing-3xl) 0;
-  margin-bottom: var(--spacing-3xl);
-  border-bottom: 1px solid var(--gray-200);
-}
-
-[data-theme="dark"] .page-header {
-  border-bottom-color: var(--gray-700);
+  margin-bottom: 4rem;
+  padding: 3rem 0;
 }
 
 .page-title {
-  font-size: var(--font-size-4xl);
-  font-weight: var(--font-weight-bold);
-  margin-bottom: var(--spacing-lg);
-  color: var(--gray-900);
-}
-
-[data-theme="dark"] .page-title {
-  color: var(--gray-100);
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: var(--text-dark);
 }
 
 .page-subtitle {
-  font-size: var(--font-size-lg);
-  color: var(--gray-600);
-  line-height: var(--line-height-relaxed);
-}
-
-[data-theme="dark"] .page-subtitle {
-  color: var(--gray-400);
-}
-
-.tags-list {
-  margin-bottom: var(--spacing-3xl);
-}
-
-.tag-section {
-  margin-bottom: var(--spacing-3xl);
-}
-
-.tag-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: var(--spacing-xl);
-  padding-bottom: var(--spacing-md);
-  border-bottom: 1px solid var(--gray-200);
-}
-
-[data-theme="dark"] .tag-header {
-  border-bottom-color: var(--gray-700);
-}
-
-.tag-title {
-  font-size: var(--font-size-2xl);
-  font-weight: var(--font-weight-semibold);
-  color: var(--gray-900);
+  font-size: 1.1rem;
+  color: var(--text-light);
   margin: 0;
 }
 
-[data-theme="dark"] .tag-title {
-  color: var(--gray-100);
+/* 标签容器 */
+.tags-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
 }
 
-.tag-count {
-  font-size: var(--font-size-sm);
-  color: var(--gray-500);
-  background: var(--gray-100);
-  padding: var(--spacing-xs) var(--spacing-sm);
-  border-radius: var(--radius-md);
-}
-
-[data-theme="dark"] .tag-count {
-  color: var(--gray-400);
-  background: var(--gray-800);
-}
-
-.posts-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: var(--spacing-xl);
-}
-
-.post-card {
-  background: white;
-  border: 1px solid var(--gray-200);
-  border-radius: var(--radius-lg);
-  padding: var(--spacing-xl);
+/* 标签卡片 */
+.tag-card {
+  background: var(--white);
+  border: 1px solid var(--gray);
+  border-radius: var(--border-radius-lg);
+  padding: 2rem;
+  margin-bottom: 2rem;
+  box-shadow: var(--shadow-sm);
   transition: all var(--transition-normal);
 }
 
-[data-theme="dark"] .post-card {
-  background: var(--gray-800);
-  border-color: var(--gray-700);
+.tag-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
 }
 
-.post-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-lg);
-}
-
-.post-meta {
+/* 标签头部 */
+.tag-header {
   display: flex;
-  gap: var(--spacing-md);
-  margin-bottom: var(--spacing-md);
-  font-size: var(--font-size-sm);
-  color: var(--gray-500);
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--gray);
 }
 
-[data-theme="dark"] .post-meta {
-  color: var(--gray-400);
+.tag-name {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 600;
 }
 
-.post-categories {
+.tag-name a {
+  color: var(--text-dark);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.tag-name a:hover {
+  color: var(--accent-color);
+}
+
+.tag-count {
+  background: var(--accent-color);
+  color: var(--white);
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--border-radius-md);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+/* 标签文章 */
+.tag-posts {
+  margin-bottom: 1.5rem;
+}
+
+.tag-post {
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--light-gray);
+}
+
+.tag-post:last-child {
+  border-bottom: none;
+}
+
+.tag-post .post-title {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.tag-post .post-title a {
+  color: var(--text-dark);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.tag-post .post-title a:hover {
+  color: var(--accent-color);
+}
+
+.tag-post .post-meta {
   display: flex;
-  gap: var(--spacing-xs);
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--text-light);
+  flex-wrap: wrap;
 }
 
-.category {
-  background: var(--gray-100);
-  color: var(--gray-600);
-  padding: 0.2em 0.5em;
-  border-radius: var(--radius-sm);
-  font-size: 0.8em;
-}
-
-[data-theme="dark"] .category {
-  background: var(--gray-700);
-  color: var(--gray-300);
-}
-
-.post-title {
-  font-size: var(--font-size-lg);
-  font-weight: var(--font-weight-semibold);
-  margin-bottom: var(--spacing-md);
-}
-
-.post-title a {
-  color: var(--gray-900);
+.tag-post .categories a {
+  color: var(--accent-color);
   text-decoration: none;
+  font-weight: 500;
 }
 
-[data-theme="dark"] .post-title a {
-  color: var(--gray-100);
-}
-
-.post-title a:hover {
-  color: var(--primary-color);
-}
-
-.post-excerpt {
-  color: var(--gray-600);
-  margin-bottom: var(--spacing-lg);
-  line-height: var(--line-height-relaxed);
-}
-
-[data-theme="dark"] .post-excerpt {
-  color: var(--gray-400);
-}
-
-.read-more {
-  color: var(--primary-color);
-  text-decoration: none;
-  font-weight: var(--font-weight-medium);
-  font-size: var(--font-size-sm);
-}
-
-.read-more:hover {
+.tag-post .categories a:hover {
   text-decoration: underline;
 }
 
+.tag-post .post-excerpt {
+  color: var(--text-light);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* 标签底部 */
+.tag-footer {
+  text-align: center;
+  padding-top: 1rem;
+  border-top: 1px solid var(--light-gray);
+}
+
+.view-more {
+  color: var(--accent-color);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: color var(--transition-fast);
+}
+
+.view-more:hover {
+  color: var(--primary-color);
+  text-decoration: underline;
+}
+
+/* 响应式设计 */
 @media (max-width: 768px) {
+  .page-header {
+    padding: 2rem 0;
+    margin-bottom: 3rem;
+  }
+  
+  .page-title {
+    font-size: 2rem;
+  }
+  
+  .tags-container {
+    padding: 0 1rem;
+  }
+  
+  .tag-card {
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
   .tag-header {
     flex-direction: column;
     align-items: flex-start;
-    gap: var(--spacing-sm);
+    gap: 0.5rem;
   }
   
-  .posts-grid {
-    grid-template-columns: 1fr;
+  .tag-name {
+    font-size: 1.3rem;
+  }
+  
+  .tag-post .post-meta {
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .page-title {
+    font-size: 1.8rem;
+  }
+  
+  .page-subtitle {
+    font-size: 1rem;
+  }
+  
+  .tag-card {
+    padding: 1rem;
+  }
+  
+  .tag-post {
+    padding: 0.75rem 0;
   }
 }
 </style>
