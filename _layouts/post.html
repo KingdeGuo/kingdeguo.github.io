@@ -1,129 +1,60 @@
 ---
-layout: modern-post
+layout: default
 ---
 
-<!-- 文章页面布局 -->
+<!-- 简洁文章布局 -->
 <article class="post-container">
-  <!-- 文章头部 -->
-  <header class="post-header">
-    <h1 class="post-title">{{ page.title }}</h1>
-    
-    <!-- 文章元信息 -->
-    <div class="post-meta">
-      <time datetime="{{ page.date | date_to_xmlschema }}" class="post-date">
-        {{ page.date | date: "%Y年%m月%d日" }}
-      </time>
+  <div class="content-container">
+    <!-- 文章头部 -->
+    <header class="post-header">
+      <h1 class="post-title">{{ page.title }}</h1>
       
-      {% if page.categories %}
-        <span class="post-categories">
-          分类：
-          {% for category in page.categories %}
-            <a href="{{ '/categories/' | append: category | relative_url }}">{{ category }}</a>
-            {% unless forloop.last %}, {% endunless %}
-          {% endfor %}
-        </span>
-      {% endif %}
-      
-      {% if page.tags %}
-        <span class="post-tags">
-          标签：
-          {% for tag in page.tags %}
-            <a href="{{ '/tags/' | append: tag | relative_url }}">#{{ tag }}</a>
-            {% unless forloop.last %} {% endunless %}
-          {% endfor %}
-        </span>
-      {% endif %}
-    </div>
-    
-    <!-- 文章描述 -->
-    {% if page.description %}
-      <div class="post-description">
-        {{ page.description }}
-      </div>
-    {% endif %}
-  </header>
-
-  <!-- 文章内容 -->
-  <div class="post-content">
-    {{ content }}
-  </div>
-
-  <!-- 文章底部 -->
-  <footer class="post-footer">
-    <!-- 作者信息 -->
-    {% if site.author %}
-      <div class="post-author">
-        <h3>关于作者</h3>
-        <p>{{ site.author }}</p>
-        {% if site.email %}
-          <p>联系邮箱：<a href="mailto:{{ site.email }}">{{ site.email }}</a></p>
+      <!-- 文章元信息 -->
+      <div class="post-meta">
+        <time datetime="{{ page.date | date_to_xmlschema }}">
+          {{ page.date | date: "%Y年%m月%d日" }}
+        </time>
+        
+        {% if page.categories %}
+          <span>
+            分类：
+            {% for category in page.categories %}
+              <a href="{{ '/categories/' | append: category | relative_url }}">{{ category }}</a>
+              {% unless forloop.last %}, {% endunless %}
+            {% endfor %}
+          </span>
+        {% endif %}
+        
+        {% if page.tags %}
+          <span>
+            标签：
+            {% for tag in page.tags %}
+              <a href="{{ '/tags/' | append: tag | relative_url }}">#{{ tag }}</a>
+              {% unless forloop.last %} {% endunless %}
+            {% endfor %}
+          </span>
         {% endif %}
       </div>
-    {% endif %}
+      
+      <!-- 文章描述 -->
+      {% if page.description %}
+        <p class="post-description">{{ page.description }}</p>
+      {% endif %}
+    </header>
 
-    <!-- 相关文章 -->
-    {% if page.related_posts %}
-      <div class="related-posts">
-        <h3>相关文章</h3>
-        <ul>
-          {% for related in page.related_posts %}
-            <li><a href="{{ related.url }}">{{ related.title }}</a></li>
-          {% endfor %}
-        </ul>
+    <!-- 文章内容 -->
+    <div class="post-content">
+      {{ content }}
+    </div>
+
+    <!-- 评论区 -->
+    {% if page.comments != false %}
+      <div class="comments-section">
+        <h3>评论</h3>
+        {% include giscus_comments.html %}
       </div>
     {% endif %}
-
-    <!-- 社交分享 -->
-    <div class="social-share">
-      <h3>分享文章</h3>
-      <div class="share-buttons">
-        <a href="https://twitter.com/intent/tweet?text={{ page.title | url_encode }}&url={{ page.url | absolute_url }}" 
-           target="_blank" rel="noopener" class="share-button twitter">
-          <i class="fab fa-twitter"></i> Twitter
-        </a>
-        
-        <a href="https://www.facebook.com/sharer/sharer.php?u={{ page.url | absolute_url }}" 
-           target="_blank" rel="noopener" class="share-button facebook">
-          <i class="fab fa-facebook"></i> Facebook
-        </a>
-        
-        <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ page.url | absolute_url }}" 
-           target="_blank" rel="noopener" class="share-button linkedin">
-          <i class="fab fa-linkedin"></i> LinkedIn
-        </a>
-        
-        <a href="https://service.weibo.com/share/share.php?url={{ page.url | absolute_url }}&title={{ page.title | url_encode }}" 
-           target="_blank" rel="noopener" class="share-button weibo">
-          <i class="fab fa-weibo"></i> 微博
-        </a>
-      </div>
-    </div>
-  </footer>
-
-  <!-- 文章导航 -->
-  <nav class="post-navigation">
-    {% if page.previous.url %}
-      <a href="{{ page.previous.url }}" class="nav-previous">
-        <span class="nav-arrow">←</span>
-        <span class="nav-title">{{ page.previous.title }}</span>
-      </a>
-    {% endif %}
-    
-    {% if page.next.url %}
-      <a href="{{ page.next.url }}" class="nav-next">
-        <span class="nav-title">{{ page.next.title }}</span>
-        <span class="nav-arrow">→</span>
-      </a>
-    {% endif %}
-  </nav>
-
-  <!-- 评论区 -->
-  {% if page.comments != false %}
-    <div class="comments-section">
-      <h3>评论</h3>
-      {% include giscus_comments.html %}
-    </div>
-  {% endif %}
+  </div>
 </article>
 
 <!-- 文章页面样式 -->

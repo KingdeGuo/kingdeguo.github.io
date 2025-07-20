@@ -1,31 +1,32 @@
-<div class="masthead">
-  <div class="masthead__inner-wrap">
-    <a class="site-title" href="{{ '/' | relative_url }}">{{ site.title }}</a>
-    <nav class="site-nav">
-      <ul class="visible-links">
-        {%- for link in site.data.navigation.main -%}
-          <li class="masthead__menu-item">
-            <a href="{{ link.url | relative_url }}" {% if link.description %} title="{{ link.description }}"{% endif %}>{{ link.title }}</a>
-          </li>
-        {%- endfor -%}
-      </ul>
-    </nav>
-    <div class="masthead__right">
-      <div class="search-theme-container">
-        <div id="search-container" class="search-container-header">
-          <input type="text" id="search-input" placeholder="搜索文章...">
-          <ul id="search-results"></ul>
-        </div>
-        {% if site.theme_switcher == true and site.theme_switcher_location == 'header' %}
-          <button id="theme-toggle" title="Toggle Theme">
-            <i class="fas fa-sun"></i>
-            <i class="fas fa-moon"></i>
-          </button>
-        {% endif %}
+<!-- 简洁导航栏 -->
+<header class="site-header">
+  <div class="container">
+    <nav class="navbar">
+      <!-- Logo -->
+      <a href="{{ '/' | relative_url }}" class="navbar-brand">
+        {{ site.title }}
+      </a>
+
+      <!-- 导航菜单 -->
+      <div class="navbar-menu">
+        <a href="{{ '/' | relative_url }}" class="nav-link">首页</a>
+        <a href="{{ '/posts' | relative_url }}" class="nav-link">文章</a>
+        <a href="{{ '/categories' | relative_url }}" class="nav-link">分类</a>
+        <a href="{{ '/tags' | relative_url }}" class="nav-link">标签</a>
+        <a href="{{ '/about' | relative_url }}" class="nav-link">关于</a>
       </div>
-    </div>
+
+      <!-- 工具栏 -->
+      <div class="navbar-tools">
+        <!-- 主题切换 -->
+        <button id="theme-toggle" class="tool-btn" aria-label="切换主题">
+          <i class="fas fa-moon" style="display: inline-block;"></i>
+          <i class="fas fa-sun" style="display: none;"></i>
+        </button>
+      </div>
+    </nav>
   </div>
-</div>
+</header>
 
 <style>
 /* 搜索框和主题切换按钮容器 */
