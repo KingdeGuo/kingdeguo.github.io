@@ -1,88 +1,96 @@
-# Welcome to Jekyll!
-#
-# This config file is meant for settings that affect your whole blog, values
-# which you are expected to set up once and rarely edit after that. If you find
-# yourself editing this file very often, consider using Jekyll's data files
-# feature for the data you need to update frequently.
-#
-# For technical reasons, this file is *NOT* reloaded automatically when you use
-# 'bundle exec jekyll serve'. If you change this file, please restart the server process.
-#
-# If you need help with YAML syntax, here are some quick references for you:
-# https://learn-the-web.algonquindesign.ca/topics/markdown-yaml-cheat-sheet/#yaml
-# https://learnxinyminutes.com/docs/yaml/
-#
-# Site settings
-# These are used to personalize your new site. If you look in the HTML files,
-# you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
-# You can create any custom variable you would like, and they will be accessible
-# in the templates via {{ site.myvariable }}.
+# KingdeGuo's Blog Configuration
+# 重构后的统一配置文件
 
-title: Kingdeguo's Blog
-email: your-email@example.com
-description: >-
-  个人博客分享技术、生活和读书等内容
-baseurl: ""
+# Site Information
+title: "KingdeGuo's Blog"
+subtitle: "技术分享 • 生活感悟 • 读书笔记"
+description: "个人博客分享技术、生活和读书等内容"
+author: "KingdeGuo"
+email: "kingdeguo@gmail.com"
 url: "https://kingdeguo.github.io"
-twitter_username: ""
-github_username: kingdeguo
+baseurl: ""
 
-# Theme settings
-remote_theme: mmistakes/minimal-mistakes
-minimal_mistakes_skin: default # "default", "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
-theme_switcher: true
-theme_switcher_default: "light"
-theme_switcher_location: "header"
+# Social Media
+social:
+  github: "kingdeguo"
+  twitter: ""
+  linkedin: ""
+  weibo: ""
 
-# Custom CSS
-stylesheets:
-  - assets/css/custom.css
+# Theme Configuration
+theme:
+  name: "minimal-mistakes"
+  remote_theme: "mmistakes/minimal-mistakes"
+  skin: "default" # default, air, aqua, contrast, dark, dirt, neon, mint, plum, sunrise
+  switcher:
+    enabled: true
+    default: "light"
+    location: "header"
 
+# Visualization System (重构后的统一配置)
+visualization:
+  # 核心库配置
+  libraries:
+    echarts:
+      version: "5.4.3"
+      cdn: "https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"
+      local: "/assets/lib/echarts.min.js"
+    chartjs:
+      version: "4.4.1"
+      cdn: "https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"
+      local: "/assets/lib/chart.min.js"
+    mermaid:
+      version: "10.7.0"
+      cdn: "https://cdn.jsdelivr.net/npm/mermaid@10.7.0/dist/mermaid.min.js"
+      local: "/assets/lib/mermaid.min.js"
+    plotly:
+      version: "2.27.1"
+      cdn: "https://cdn.plot.ly/plotly-2.27.1.min.js"
+      local: "/assets/lib/plotly.min.js"
+  
+  # 性能优化
+  performance:
+    lazy_loading: true
+    preload_critical: true
+    cache_strategy: "local-first"
+    fallback_images: true
+  
+  # 渲染配置
+  rendering:
+    timeout: 10000
+    max_retries: 3
+    retry_delay: 1000
+    error_handling: "graceful"
 
-# Giscus comments
-giscus:
-  repo: KingdeGuo/kingdeguo.github.io
-  repo-id: R_kgDOPLxeEQ
-  category: General
-  category-id: DIC_kwDOPLxeEc4Cs5E6
-  theme: preferred_color_scheme
-  lang: zh-CN
+# Comments System
+comments:
+  provider: "giscus"
+  giscus:
+    repo: "KingdeGuo/kingdeguo.github.io"
+    repo_id: "R_kgDOPLxeEQ"
+    category: "General"
+    category_id: "DIC_kwDOPLxeEc4Cs5E6"
+    theme: "preferred_color_scheme"
+    lang: "zh-CN"
 
-# Google Analytics
-google_analytics:
-  tracking_id: G-HXENT9GH1J
+# Analytics
+analytics:
+  google:
+    tracking_id: "G-HXENT9GH1J"
+  baidu: ""
+  cnzz: ""
 
-# Build settings - GitHub Pages compatible plugins
+# Build Settings
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
   - jekyll-sitemap
   - jekyll-include-cache
 
-# 可视化配置 - 统一前端渲染
-visualization:
-  # 核心库配置
-  mermaid:
-    version: "10.7.0"
-    theme: "default"
-    darkTheme: "dark"
-  echarts:
-    version: "5.4.3"
-  chartjs:
-    version: "4.4.1"
-  
-  # 按需加载配置
-  lazy_loading: true
-  performance_optimization: true
-
 # Permalinks
-permalink: /:year/:month/:day/:title.html
+permalink: "/:year/:month/:day/:title.html"
 
-# Pagination (disabled - using simple listing instead)
-# paginate: 6
-# paginate_path: "/page/:num/"
-
-# Jekyll Archives configuration for categories and tags
+# Archives
 jekyll-archives:
   enabled:
     - categories
@@ -94,8 +102,7 @@ jekyll-archives:
     category: '/categories/:name/'
     tag: '/tags/:name/'
 
-# Syntax highlighting
-highlighter: rouge
+# Markdown Processing
 markdown: kramdown
 kramdown:
   syntax_highlighter: rouge
@@ -107,32 +114,7 @@ kramdown:
       line_numbers: false
       start_line: 1
 
-# Exclude from processing.
-# The following items will not be processed, by default.
-# Any item listed under the `exclude:` key here will be automatically added to
-# the internal "default list".
-#
-# Excluded items can be processed by explicitly listing the directories or
-# their entries' file path in the `include:` list.
-#
-exclude:
-  - .sass-cache/
-  - .jekyll-cache/
-  - gemfiles/
-  - Gemfile
-  - Gemfile.lock
-  - node_modules/
-  - vendor/bundle/
-  - vendor/cache/
-  - vendor/gems/
-  - vendor/ruby/
-  - migrate_visualization.py
-  - performance_monitor.py
-  - VISUALIZATION_GUIDE.md
-  - VISUALIZATION_OPTIMIZATION.md
-  - performance_report.json
-
-# Include files that should be processed
+# File Processing
 include:
   - _posts
   - _pages
@@ -144,5 +126,17 @@ include:
   - robots.txt
   - sitemap.xml
 
-# Categories and tags configuration
-# Using jekyll-archives for automatic category/tag page generation
+exclude:
+  - .sass-cache/
+  - .jekyll-cache/
+  - gemfiles/
+  - Gemfile
+  - Gemfile.lock
+  - node_modules/
+  - vendor/
+  - migrate_visualization.py
+  - performance_monitor.py
+  - VISUALIZATION_GUIDE.md
+  - VISUALIZATION_OPTIMIZATION.md
+  - performance_report.json
+  - .DS_Store
