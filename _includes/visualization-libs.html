@@ -155,42 +155,7 @@
 <!-- 核心引擎脚本 -->
 <script src="{{ '/assets/js/reliable-visualization.js' | relative_url }}"></script>
 
-<!-- 预加载关键库（可选） -->
-<script>
-  // 预加载配置
-  const PRELOAD_CONFIG = {
-    // 是否预加载关键库
-    preloadCritical: true,
-    
-    // 关键库列表
-    criticalLibraries: ['echarts', 'mermaid'],
-  
-  // 预加载函数
-  async preloadCriticalLibraries() {
-    if (!this.preloadCritical) return;
-    
-    const promises = this.criticalLibraries.map(lib => {
-      return window.VisualizationEngine.loader.loadLibrary(lib);
-    });
-    
-    try {
-      await Promise.all(promises);
-      console.log('关键库预加载完成');
-    } catch (error) {
-      console.warn('关键库预加载失败:', error);
-    }
-  }
-};
-
-// 页面加载完成后预加载
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', () => {
-    PRELOAD_CONFIG.preloadCriticalLibraries();
-  });
-} else {
-  PRELOAD_CONFIG.preloadCriticalLibraries();
-}
-</script>
+<!-- 预加载脚本已移除，以解决与主渲染引擎的冲突 -->
 
 <!-- 工具函数 -->
 <script>
