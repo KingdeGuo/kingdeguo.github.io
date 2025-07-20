@@ -537,15 +537,7 @@ body {
   font-family: var(--code-font, 'Fira Mono', 'Consolas', 'Menlo', monospace);
 }
 .code-block-lines {
-  background: var(--code-lines-bg, #f3f4f6);
-  color: #b0b0b0;
-  text-align: right;
-  user-select: none;
-  padding: 1em 0.5em 1em 1em;
-  font-size: 0.98em;
-  min-width: 2.5em;
-  border-right: 1px solid #e9ecef;
-  overflow: hidden;
+  display: none;
 }
 .code-block-content {
   padding: 1em 1.2em 1em 0.8em;
