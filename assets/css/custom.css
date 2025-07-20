@@ -483,52 +483,7 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-/* Cleaned up code block styles */
-.highlight {
-  position: relative;
-  margin: 2em 0;
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-}
-
-.highlight .code-block-copy {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    font-family: var(--font-family-sans);
-    font-size: 0.9em;
-    background-color: #e9ecef;
-    color: #495057;
-    border: none;
-    border-radius: 4px;
-    padding: 0.3em 0.7em;
-    cursor: pointer;
-    transition: all 0.2s ease;
-}
-
-.highlight .code-block-copy:hover {
-    background-color: #dee2e6;
-}
-
-.highlight .code-block-copy.copied {
-    background-color: #28a745;
-    color: #fff;
-}
-
-[data-theme="dark"] .highlight .code-block-copy {
-    background-color: #495057;
-    color: #f8f9fa;
-}
-
-[data-theme="dark"] .highlight .code-block-copy:hover {
-    background-color: #6c757d;
-}
-
-[data-theme="dark"] .highlight .code-block-copy.copied {
-    background-color: #20c997;
-    color: #000;
-}
+/* No custom code block styles needed */
 
 /* Posts List Page */
 .posts-container {
