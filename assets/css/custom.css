@@ -161,6 +161,92 @@ body {
 }
 
 /* Existing styles */
+
+/* Custom Code Block Styles */
+pre {
+  background-color: #282c34; /* Dark background for code blocks */
+  color: #abb2bf; /* Light text color */
+  border-radius: 8px;
+  padding: 1.2em;
+  overflow-x: auto;
+  position: relative;
+  font-size: 0.9em;
+  line-height: 1.5;
+  margin-bottom: 1.5em;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+pre code {
+  display: block;
+  padding: 0;
+  background-color: transparent;
+  color: inherit;
+  font-family: var(--font-family-mono);
+}
+
+/* Copy Button Styles */
+.copy-code-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 0.5em 0.8em;
+  cursor: pointer;
+  font-size: 0.8em;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  opacity: 0.8;
+}
+
+.copy-code-btn:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+  opacity: 1;
+}
+
+.copy-code-btn:active {
+  transform: translateY(0);
+}
+
+/* Line Numbers Styles */
+.line-numbers {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 1.2em 0.8em;
+  background-color: #21252b;
+  color: #636f83;
+  font-size: 0.8em;
+  line-height: 1.5;
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+  text-align: right;
+  user-select: none;
+  pointer-events: none;
+}
+
+.line-numbers span {
+  display: block;
+  padding-right: 0.5em;
+}
+
+/* Adjust code padding when line numbers are present */
+pre.has-line-numbers code {
+  margin-left: 3em; /* Adjust based on line number width */
+}
+
+/* Ensure proper spacing for pre elements */
+pre + .highlighter-rouge {
+  margin-top: 0;
+}
+
+.highlighter-rouge {
+  margin-bottom: 1.5em;
+}
+
+
 .post-container {
   max-width: 800px;
   margin: 0 auto;
