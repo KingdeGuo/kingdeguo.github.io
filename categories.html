@@ -1,93 +1,31 @@
 ---
-layout: page
+layout: default
 title: "分类"
 permalink: /categories/
 ---
 
-<div class="categories-page">
+<div class="content-container">
   <!-- 页面头部 -->
   <div class="page-header">
-    <div class="header-content">
-      <h1 class="page-title">
-        <span class="title-icon">📂</span>
-        文章分类
-      </h1>
-      <p class="page-subtitle">
-        按主题浏览感兴趣的内容，共 {{ site.posts.size }} 篇文章
-      </p>
-    </div>
+    <h1 class="page-title">文章分类</h1>
+    <p class="page-subtitle">按主题浏览感兴趣的内容，共 {{ site.posts | size }} 篇文章</p>
   </div>
 
-  <!-- 分类概览 -->
-  <div class="categories-overview">
-    <div class="overview-grid">
-      {% assign categories = site.categories | sort %}
-      {% for category in categories %}
-        <div class="overview-card" data-category="{{ category[0] }}">
-          <div class="card-header">
-            <div class="category-icon">
-              {% case category[0] %}
-                {% when 'AI' %}🤖
-                {% when '技术' %}💻
-                {% when '投资' %}📊
-                {% when '时间管理' %}⏰
-                {% when '思考' %}🧠
-                {% else %}📝
-              {% endcase %}
-            </div>
-            <div class="category-info">
-              <h3 class="category-name">{{ category[0] }}</h3>
-              <div class="category-count">{{ category[1].size }} 篇文章</div>
-            </div>
-          </div>
-          <div class="card-preview">
-            {% for post in category[1] limit: 2 %}
-              <div class="preview-item">
-                <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
-              </div>
-            {% endfor %}
-          </div>
-          <a href="#{{ category[0] | slugify }}" class="view-more">
-            查看全部 <span class="arrow">→</span>
-          </a>
-        </div>
-      {% endfor %}
-    </div>
-  </div>
-
-  <!-- 分类详情 -->
-  <div class="categories-detail">
+  <!-- 分类列表 -->
+  <div class="categories-list">
+    {% assign categories = site.categories | sort %}
     {% for category in categories %}
       <div class="category-section" id="{{ category[0] | slugify }}">
-        <div class="section-header">
-          <div class="section-title">
-            <div class="title-icon">
-              {% case category[0] %}
-                {% when 'AI' %}🤖
-                {% when '技术' %}💻
-                {% when '投资' %}📊
-                {% when '时间管理' %}⏰
-                {% when '思考' %}🧠
-                {% else %}📝
-              {% endcase %}
-            </div>
-            <div class="title-content">
-              <h2>{{ category[0] }}</h2>
-              <span class="post-count">{{ category[1].size }} 篇文章</span>
-            </div>
-          </div>
-          <div class="section-actions">
-            <a href="/categories/#{{ category[0] | slugify }}" class="rss-link" title="RSS订阅">
-              📡
-            </a>
-          </div>
+        <div class="category-header">
+          <h2 class="category-title">{{ category[0] }}</h2>
+          <span class="category-count">{{ category[1].size }} 篇文章</span>
         </div>
         
         <div class="posts-grid">
           {% for post in category[1] %}
             <article class="post-card">
               <div class="post-meta">
-                <time class="post-date">{{ post.date | date: "%Y-%m-%d" }}</time>
+                <time>{{ post.date | date: "%Y年%m月%d日" }}</time>
                 {% if post.tags %}
                   <div class="post-tags">
                     {% for tag in post.tags limit: 3 %}
@@ -105,11 +43,7 @@ permalink: /categories/
                 <p class="post-excerpt">{{ post.description }}</p>
               {% endif %}
               
-              <div class="post-footer">
-                <a href="{{ post.url | relative_url }}" class="read-more">
-                  阅读全文 <span class="arrow">→</span>
-                </a>
-              </div>
+              <a href="{{ post.url | relative_url }}" class="read-more">阅读全文 →</a>
             </article>
           {% endfor %}
         </div>
@@ -119,583 +53,187 @@ permalink: /categories/
 </div>
 
 <style>
-/* 页面样式 */
-.categories-page {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
-
-/* 页面头部 */
+/* 分类页样式 */
 .page-header {
   text-align: center;
-  padding: 4rem 0 3rem;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
-  border-radius: 0 0 20px 20px;
-  margin-bottom: 3rem;
+  padding: var(--spacing-3xl) 0;
+  margin-bottom: var(--spacing-3xl);
+  border-bottom: 1px solid var(--gray-200);
 }
 
-.header-content {
-  max-width: 600px;
-  margin: 0 auto;
+[data-theme="dark"] .page-header {
+  border-bottom-color: var(--gray-700);
 }
 
 .page-title {
-  font-size: 3rem;
-  font-weight: 700;
-  margin-bottom: 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
+  font-size: var(--font-size-4xl);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--spacing-lg);
+  color: var(--gray-900);
 }
 
-.title-icon {
-  font-size: 2.5rem;
+[data-theme="dark"] .page-title {
+  color: var(--gray-100);
 }
 
 .page-subtitle {
-  font-size: 1.2rem;
-  opacity: 0.9;
-  line-height: 1.6;
+  font-size: var(--font-size-lg);
+  color: var(--gray-600);
+  line-height: var(--line-height-relaxed);
 }
 
-/* 分类概览 */
-.categories-overview {
-  margin-bottom: 4rem;
+[data-theme="dark"] .page-subtitle {
+  color: var(--gray-400);
 }
 
-.overview-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-}
-
-.overview-card {
-  background: white;
-  border-radius: 16px;
-  padding: 2rem;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  border: 1px solid #e2e8f0;
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-}
-
-.overview-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-}
-
-.overview-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
-}
-
-.card-header {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin-bottom: 1.5rem;
-}
-
-.category-icon {
-  width: 60px;
-  height: 60px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.5rem;
-  color: white;
-  flex-shrink: 0;
-}
-
-.category-info {
-  flex: 1;
-}
-
-.category-name {
-  font-size: 1.3rem;
-  font-weight: 600;
-  margin: 0 0 0.25rem 0;
-  color: #2d3748;
-}
-
-.category-count {
-  font-size: 0.9rem;
-  color: #718096;
-  font-weight: 500;
-}
-
-.card-preview {
-  margin-bottom: 1.5rem;
-}
-
-.preview-item {
-  margin-bottom: 0.75rem;
-}
-
-.preview-item a {
-  color: #4a5568;
-  text-decoration: none;
-  font-size: 0.95rem;
-  transition: all 0.3s ease;
-  display: block;
-  padding: 0.5rem 0;
-  border-radius: 8px;
-}
-
-.preview-item a:hover {
-  color: #667eea;
-  background: rgba(102, 126, 234, 0.05);
-  padding-left: 0.5rem;
-}
-
-.view-more {
-  color: #667eea;
-  text-decoration: none;
-  font-weight: 600;
-  display: flex;
-  align-items: center;
-  gap: 0.25rem;
-  transition: gap 0.3s ease;
-}
-
-.view-more:hover {
-  gap: 0.5rem;
-}
-
-.arrow {
-  transition: transform 0.3s ease;
-}
-
-.view-more:hover .arrow {
-  transform: translateX(5px);
-}
-
-/* 分类详情 */
-.categories-detail {
-  display: flex;
-  flex-direction: column;
-  gap: 3rem;
+.categories-list {
+  margin-bottom: var(--spacing-3xl);
 }
 
 .category-section {
-  background: white;
-  border-radius: 20px;
-  padding: 2rem;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  border: 1px solid #e2e8f0;
+  margin-bottom: var(--spacing-3xl);
 }
 
-.section-header {
+.category-header {
   display: flex;
+  align-items: center;
   justify-content: space-between;
-  align-items: center;
-  margin-bottom: 2rem;
-  padding-bottom: 1rem;
-  border-bottom: 2px solid #f7fafc;
+  margin-bottom: var(--spacing-xl);
+  padding-bottom: var(--spacing-md);
+  border-bottom: 1px solid var(--gray-200);
 }
 
-.section-title {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
+[data-theme="dark"] .category-header {
+  border-bottom-color: var(--gray-700);
 }
 
-.section-title .title-icon {
-  width: 50px;
-  height: 50px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.2rem;
-  color: white;
+.category-title {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--gray-900);
+  margin: 0;
 }
 
-.title-content h2 {
-  font-size: 1.8rem;
-  font-weight: 600;
-  margin: 0 0 0.25rem 0;
-  color: #2d3748;
+[data-theme="dark"] .category-title {
+  color: var(--gray-100);
 }
 
-.post-count {
-  font-size: 0.9rem;
-  color: #718096;
-  font-weight: 500;
+.category-count {
+  font-size: var(--font-size-sm);
+  color: var(--gray-500);
+  background: var(--gray-100);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--radius-md);
 }
 
-.section-actions {
-  display: flex;
-  gap: 1rem;
+[data-theme="dark"] .category-count {
+  color: var(--gray-400);
+  background: var(--gray-800);
 }
 
-.rss-link {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  background: #f7fafc;
-  border-radius: 50%;
-  text-decoration: none;
-  font-size: 1.2rem;
-  transition: all 0.3s ease;
-}
-
-.rss-link:hover {
-  background: #667eea;
-  color: white;
-  transform: scale(1.1);
-}
-
-/* 文章网格 */
 .posts-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--spacing-xl);
 }
 
 .post-card {
-  background: #f7fafc;
-  border-radius: 12px;
-  padding: 1.5rem;
-  transition: all 0.3s ease;
-  border: 1px solid #e2e8f0;
+  background: white;
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-xl);
+  transition: all var(--transition-normal);
+}
+
+[data-theme="dark"] .post-card {
+  background: var(--gray-800);
+  border-color: var(--gray-700);
 }
 
 .post-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  background: white;
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
 }
 
 .post-meta {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 1rem;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+  font-size: var(--font-size-sm);
+  color: var(--gray-500);
 }
 
-.post-date {
-  font-size: 0.85rem;
-  color: #718096;
-  font-weight: 500;
+[data-theme="dark"] .post-meta {
+  color: var(--gray-400);
 }
 
 .post-tags {
   display: flex;
-  gap: 0.5rem;
-  flex-wrap: wrap;
+  gap: var(--spacing-xs);
 }
 
 .tag {
-  background: rgba(102, 126, 234, 0.1);
-  color: #667eea;
-  padding: 0.25rem 0.5rem;
-  border-radius: 12px;
-  font-size: 0.75rem;
-  font-weight: 500;
+  background: var(--gray-100);
+  color: var(--gray-600);
+  padding: 0.2em 0.5em;
+  border-radius: var(--radius-sm);
+  font-size: 0.8em;
+}
+
+[data-theme="dark"] .tag {
+  background: var(--gray-700);
+  color: var(--gray-300);
 }
 
 .post-title {
-  margin-bottom: 0.75rem;
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  margin-bottom: var(--spacing-md);
 }
 
 .post-title a {
-  color: #2d3748;
+  color: var(--gray-900);
   text-decoration: none;
-  font-size: 1.1rem;
-  font-weight: 600;
-  line-height: 1.4;
-  transition: color 0.3s ease;
+}
+
+[data-theme="dark"] .post-title a {
+  color: var(--gray-100);
 }
 
 .post-title a:hover {
-  color: #667eea;
+  color: var(--primary-color);
 }
 
 .post-excerpt {
-  color: #4a5568;
-  font-size: 0.9rem;
-  line-height: 1.6;
-  margin-bottom: 1rem;
+  color: var(--gray-600);
+  margin-bottom: var(--spacing-lg);
+  line-height: var(--line-height-relaxed);
 }
 
-.post-footer {
-  display: flex;
-  justify-content: flex-end;
+[data-theme="dark"] .post-excerpt {
+  color: var(--gray-400);
 }
 
 .read-more {
-  color: #667eea;
+  color: var(--primary-color);
   text-decoration: none;
-  font-weight: 600;
-  font-size: 0.9rem;
-  display: flex;
-  align-items: center;
-  gap: 0.25rem;
-  transition: gap 0.3s ease;
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-sm);
 }
 
 .read-more:hover {
-  gap: 0.5rem;
+  text-decoration: underline;
 }
 
-/* 响应式设计 */
 @media (max-width: 768px) {
-  .categories-page {
-    padding: 0 15px;
-  }
-  
-  .page-header {
-    padding: 3rem 0 2rem;
-    border-radius: 0 0 15px 15px;
-  }
-  
-  .page-title {
-    font-size: 2.5rem;
-  }
-  
-  .overview-grid {
-    grid-template-columns: 1fr;
+  .category-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-sm);
   }
   
   .posts-grid {
     grid-template-columns: 1fr;
   }
-  
-  .section-header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 1rem;
-  }
-  
-  .category-section {
-    padding: 1.5rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .page-title {
-    font-size: 2rem;
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-  
-  .overview-card,
-  .category-section {
-    padding: 1rem;
-  }
-  
-  .card-header {
-    flex-direction: column;
-    text-align: center;
-    gap: 0.75rem;
-  }
-}
-
-/* 暗色主题 */
-[data-theme="dark"] {
-  .overview-card,
-  .category-section {
-    background: #2d3748;
-    border-color: #4a5568;
-  }
-  
-  .overview-card:hover,
-  .post-card:hover {
-    background: #1a202c;
-  }
-  
-  .category-name,
-  .title-content h2,
-  .post-title a {
-    color: #e2e8f0;
-  }
-  
-  .category-count,
-  .post-count,
-  .post-date {
-    color: #a0aec0;
-  }
-  
-  .preview-item a,
-  .post-excerpt {
-    color: #cbd5e0;
-  }
-  
-  .preview-item a:hover {
-    background: rgba(102, 126, 234, 0.1);
-  }
-  
-  .post-card {
-    background: #1a202c;
-    border-color: #4a5568;
-  }
-  
-  .rss-link {
-    background: #4a5568;
-    color: #e2e8f0;
-  }
-  
-  .rss-link:hover {
-    background: #667eea;
-  }
-  
-  .section-header {
-    border-bottom-color: #4a5568;
-  }
-}
-
-/* 动画效果 */
-.overview-card,
-.category-section {
-  animation: fadeInUp 0.6s ease-out;
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* 滚动到顶部按钮 */
-.scroll-to-top {
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  width: 50px;
-  height: 50px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
-  border: none;
-  border-radius: 50%;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.2rem;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-  transition: all 0.3s ease;
-  opacity: 0;
-  visibility: hidden;
-}
-
-.scroll-to-top.visible {
-  opacity: 1;
-  visibility: visible;
-}
-
-.scroll-to-top:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.3);
-}
-
-@media (max-width: 768px) {
-  .scroll-to-top {
-    bottom: 20px;
-    right: 20px;
-    width: 45px;
-    height: 45px;
-    font-size: 1rem;
-  }
 }
 </style>
-
-<script>
-// 滚动到顶部功能
-function initScrollToTop() {
-  const scrollBtn = document.createElement('button');
-  scrollBtn.className = 'scroll-to-top';
-  scrollBtn.innerHTML = '↑';
-  scrollBtn.title = '回到顶部';
-  document.body.appendChild(scrollBtn);
-
-  window.addEventListener('scroll', () => {
-    if (window.pageYOffset > 300) {
-      scrollBtn.classList.add('visible');
-    } else {
-      scrollBtn.classList.remove('visible');
-    }
-  });
-
-  scrollBtn.addEventListener('click', () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
-  });
-}
-
-// 平滑滚动到锚点
-function initSmoothScroll() {
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-      e.preventDefault();
-      const target = document.querySelector(this.getAttribute('href'));
-      if (target) {
-        target.scrollIntoView({
-          behavior: 'smooth',
-          block: 'start'
-        });
-      }
-    });
-  });
-}
-
-// 分类卡片悬停效果
-function initCategoryCards() {
-  const cards = document.querySelectorAll('.overview-card');
-  
-  cards.forEach(card => {
-    card.addEventListener('mouseenter', () => {
-      card.style.transform = 'translateY(-5px) scale(1.02)';
-    });
-    
-    card.addEventListener('mouseleave', () => {
-      card.style.transform = 'translateY(0) scale(1)';
-    });
-  });
-}
-
-// 页面加载完成后初始化
-document.addEventListener('DOMContentLoaded', () => {
-  initScrollToTop();
-  initSmoothScroll();
-  initCategoryCards();
-  
-  // 添加滚动动画
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.style.opacity = '1';
-        entry.target.style.transform = 'translateY(0)';
-      }
-    });
-  }, { threshold: 0.1 });
-
-  document.querySelectorAll('.overview-card, .category-section').forEach(el => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(30px)';
-    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-    observer.observe(el);
-  });
-});
-</script>
