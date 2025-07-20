@@ -1,5 +1,4 @@
 ---
-layout: base
 ---
 
 <!DOCTYPE html>

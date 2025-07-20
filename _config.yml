@@ -22,61 +22,60 @@ social:
   bilibili: ""
 
 # ===== 主题配置 =====
-theme:
-  name: "modern-blog"
-  version: "3.0.0"
+# 使用自定义现代化布局，不依赖外部主题
+# theme: "minimal-mistakes"
   
-  # 视觉风格
-  design:
-    primary_color: "#667eea"
-    secondary_color: "#764ba2"
-    accent_color: "#f093fb"
-    success_color: "#4facfe"
-    warning_color: "#43e97b"
-    error_color: "#fa709a"
+  # 视觉风格配置（通过CSS变量实现）
+# design:
+#   primary_color: "#667eea"
+#   secondary_color: "#764ba2"
+#   accent_color: "#f093fb"
+#   success_color: "#4facfe"
+#   warning_color: "#43e97b"
+#   error_color: "#fa709a"
     
-    # 字体系统
-    fonts:
-      heading: "'Inter', -apple-system, BlinkMacSystemFont, sans-serif"
-      body: "'Inter', -apple-system, BlinkMacSystemFont, sans-serif"
-      mono: "'JetBrains Mono', 'Fira Code', monospace"
+    # 字体系统配置（通过CSS变量实现）
+# fonts:
+#   heading: "'Inter', -apple-system, BlinkMacSystemFont, sans-serif"
+#   body: "'Inter', -apple-system, BlinkMacSystemFont, sans-serif"
+#   mono: "'JetBrains Mono', 'Fira Code', monospace"
     
-    # 间距系统
-    spacing:
-      xs: "0.25rem"
-      sm: "0.5rem"
-      md: "1rem"
-      lg: "1.5rem"
-      xl: "2rem"
-      xxl: "3rem"
+    # 间距系统配置（通过CSS变量实现）
+# spacing:
+#   xs: "0.25rem"
+#   sm: "0.5rem"
+#   md: "1rem"
+#   lg: "1.5rem"
+#   xl: "2rem"
+#   xxl: "3rem"
     
-    # 圆角系统
-    radius:
-      sm: "4px"
-      md: "8px"
-      lg: "12px"
-      xl: "16px"
-      full: "9999px"
+    # 圆角系统配置（通过CSS变量实现）
+# radius:
+#   sm: "4px"
+#   md: "8px"
+#   lg: "12px"
+#   xl: "16px"
+#   full: "9999px"
     
-    # 阴影系统
-    shadows:
-      sm: "0 1px 3px rgba(0,0,0,0.12)"
-      md: "0 4px 6px rgba(0,0,0,0.1)"
-      lg: "0 10px 15px rgba(0,0,0,0.1)"
-      xl: "0 20px 25px rgba(0,0,0,0.15)"
+    # 阴影系统配置（通过CSS变量实现）
+# shadows:
+#   sm: "0 1px 3px rgba(0,0,0,0.12)"
+#   md: "0 4px 6px rgba(0,0,0,0.1)"
+#   lg: "0 10px 15px rgba(0,0,0,0.1)"
+#   xl: "0 20px 25px rgba(0,0,0,0.15)"
   
-  # 主题切换
-  switcher:
-    enabled: true
-    default: "light"
-    location: "header"
-    animation: true
-  
-  # 动画效果
-  animations:
-    enabled: true
-    duration: 300
-    easing: "cubic-bezier(0.4, 0, 0.2, 1)"
+  # 主题切换配置（通过JavaScript实现）
+# switcher:
+#   enabled: true
+#   default: "light"
+#   location: "header"
+#   animation: true
+
+# 动画效果配置（通过CSS和JavaScript实现）
+# animations:
+#   enabled: true
+#   duration: 300
+#   easing: "cubic-bezier(0.4, 0, 0.2, 1)"
 
 # ===== 内容类型配置 =====
 content_types:
