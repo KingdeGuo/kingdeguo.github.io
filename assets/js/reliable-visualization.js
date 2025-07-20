@@ -379,21 +379,22 @@
     }
 
     initObserver() {
-      if ('IntersectionObserver' in window) {
-        this.observer = new IntersectionObserver(
-          (entries) => {
-            entries.forEach(entry => {
-              if (entry.isIntersecting && !this.renderedElements.has(entry.target)) {
-                this.renderElement(entry.target);
-              }
-            });
-          },
-          {
-            rootMargin: '50px',
-            threshold: 0.1
-          }
-        );
-      }
+      // 禁用 IntersectionObserver 来修复懒加载问题
+      // if ('IntersectionObserver' in window) {
+      //   this.observer = new IntersectionObserver(
+      //     (entries) => {
+      //       entries.forEach(entry => {
+      //         if (entry.isIntersecting && !this.renderedElements.has(entry.target)) {
+      //           this.renderElement(entry.target);
+      //         }
+      //       });
+      //     },
+      //     {
+      //       rootMargin: '50px',
+      //       threshold: 0.1
+      //     }
+      //   );
+      // }
     }
 
     initThemeListener() {
@@ -414,12 +415,14 @@
 
     processExistingElements() {
       const elements = document.querySelectorAll('[data-chart]');
+      // 强制渲染所有图表，而不是懒加载
       elements.forEach(element => {
-        if (this.isElementVisible(element)) {
-          this.renderElement(element);
-        } else if (this.observer) {
-          this.observer.observe(element);
-        }
+        this.renderElement(element);
+        // if (this.isElementVisible(element)) {
+        //   this.renderElement(element);
+        // } else if (this.observer) {
+        //   this.observer.observe(element);
+        // }
       });
     }
 
