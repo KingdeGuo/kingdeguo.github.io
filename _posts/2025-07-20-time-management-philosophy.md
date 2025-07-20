@@ -56,7 +56,7 @@ mathjax: false
 经典的艾森豪威尔四象限法（紧急/重要）很有用，但我对其做了一点改造，加入了“精力”维度。
 
 <center>
-<div data-chart='{"type": "mermaid", "code": "quadrantChart\n    title 精力-优先级四象限法\n    x-axis 紧急 --> 不紧急\n    y-axis 重要 --> 不重要\n    quadrant-1 高能区 (立即做)\n    quadrant-2 规划区 (计划做)\n    quadrant-3 授权区 (授权做)\n    quadrant-4 碎片区 (减少做)\n    高价值创造: [0.8, 0.8]\n    战略规划: [0.2, 0.8]\n    琐事处理: [0.8, 0.2]\n    时间黑洞: [0.2, 0.2]"}'></div>
+<div data-chart='{"type": "mermaid", "code": "graph BT\n    subgraph \"重要\"\n        direction LR\n        subgraph \"紧急\"\n            Q1[\"高能区: 立即做<br/>(高价值创造)\"]\n        end\n        subgraph \"不紧急\"\n            Q2[\"规划区: 计划做<br/>(战略规划)\"]\n        end\n    end\n    subgraph \"不重要\"\n        direction LR\n        subgraph \"紧急 \"\n            Q3[\"授权区: 授权做<br/>(琐事处理)\"]\n        end\n        subgraph \"不紧急 \"\n            Q4[\"碎片区: 减少做<br/>(时间黑洞)\"]\n        end\n    end"}'></div>
 </center>
 
 我每天只在精力最充沛的上午（高能区），处理最重要的1-2件事（如核心代码编写、架构设计）。下午精力回落后，则处理邮件、评审等（规划区/授权区）任务。
