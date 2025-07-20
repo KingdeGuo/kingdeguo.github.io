@@ -2,111 +2,118 @@
 layout: default
 ---
 
-<!-- 简洁文章布局 -->
+<!-- 简约文章布局 -->
 <article class="post-container">
-  <div class="content-container">
-    <!-- 文章头部 -->
-    <header class="post-header">
-      <h1 class="post-title">{{ page.title }}</h1>
+  <!-- 文章头部 -->
+  <header class="post-header">
+    <h1 class="post-title">{{ page.title }}</h1>
+    
+    <!-- 文章元信息 -->
+    <div class="post-meta">
+      <time datetime="{{ page.date | date_to_xmlschema }}">
+        {{ page.date | date: "%Y年%m月%d日" }}
+      </time>
       
-      <!-- 文章元信息 -->
-      <div class="post-meta">
-        <time datetime="{{ page.date | date_to_xmlschema }}">
-          {{ page.date | date: "%Y年%m月%d日" }}
-        </time>
-        
-        {% if page.categories %}
-          <span>
-            分类：
-            {% for category in page.categories %}
-              <a href="{{ '/categories/' | append: category | relative_url }}">{{ category }}</a>
-              {% unless forloop.last %}, {% endunless %}
-            {% endfor %}
-          </span>
-        {% endif %}
-        
-        {% if page.tags %}
-          <span>
-            标签：
-            {% for tag in page.tags %}
-              <a href="{{ '/tags/' | append: tag | relative_url }}">#{{ tag }}</a>
-              {% unless forloop.last %} {% endunless %}
-            {% endfor %}
-          </span>
-        {% endif %}
-      </div>
-      
-      <!-- 文章描述 -->
-      {% if page.description %}
-        <p class="post-description">{{ page.description }}</p>
+      {% if page.categories %}
+        <span class="meta-separator">•</span>
+        <span>
+          {% for category in page.categories %}
+            <a href="{{ '/categories/' | append: category | relative_url }}">{{ category }}</a>
+            {% unless forloop.last %}, {% endunless %}
+          {% endfor %}
+        </span>
       {% endif %}
-    </header>
-
-    <!-- 文章内容 -->
-    <div class="post-content">
-      {{ content }}
+      
+      {% if page.tags %}
+        <span class="meta-separator">•</span>
+        <span>
+          {% for tag in page.tags %}
+            <a href="{{ '/tags/' | append: tag | relative_url }}">#{{ tag }}</a>
+            {% unless forloop.last %} {% endunless %}
+          {% endfor %}
+        </span>
+      {% endif %}
     </div>
-
-    <!-- 评论区 -->
-    {% if page.comments != false %}
-      <div class="comments-section">
-        <h3>评论</h3>
-        {% include giscus_comments.html %}
-      </div>
+    
+    <!-- 文章描述 -->
+    {% if page.description %}
+      <p class="post-description">{{ page.description }}</p>
     {% endif %}
+  </header>
+
+  <!-- 文章内容 -->
+  <div class="post-content">
+    {{ content }}
   </div>
+
+  <!-- 评论区 -->
+  {% if page.comments != false %}
+    <div class="comments-section">
+      <h3>评论</h3>
+      {% include giscus_comments.html %}
+    </div>
+  {% endif %}
 </article>
 
 <!-- 文章页面样式 -->
 <style>
 .post-container {
-  max-width: 800px;
+  max-width: 900px;
   margin: 0 auto;
-  padding: 2rem 1rem;
+  padding: 3rem 1.5rem;
 }
 
 .post-header {
-  margin-bottom: 3rem;
+  margin-bottom: 4rem;
   text-align: center;
 }
 
 .post-title {
   font-size: 2.5rem;
   font-weight: 700;
-  margin-bottom: 1rem;
-  color: var(--primary-color);
+  margin-bottom: 1.5rem;
+  color: var(--text-dark);
+  line-height: 1.2;
 }
 
 .post-meta {
-  color: var(--secondary-color);
-  font-size: 0.9rem;
-  margin-bottom: 1rem;
+  color: var(--text-light);
+  font-size: 0.95rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
 }
 
-.post-meta > * {
-  margin-right: 1rem;
+.meta-separator {
+  color: var(--gray);
 }
 
 .post-meta a {
-  color: var(--primary-color);
+  color: var(--accent-color);
   text-decoration: none;
+  transition: color var(--transition-fast);
 }
 
 .post-meta a:hover {
-  text-decoration: underline;
+  color: var(--primary-color);
 }
 
 .post-description {
   font-size: 1.1rem;
-  color: var(--secondary-color);
+  color: var(--text-light);
   font-style: italic;
   max-width: 600px;
   margin: 0 auto;
+  line-height: 1.6;
 }
 
 .post-content {
   line-height: 1.8;
-  margin-bottom: 3rem;
+  margin-bottom: 4rem;
+  color: var(--text-dark);
 }
 
 .post-content h1,
@@ -115,9 +122,14 @@ layout: default
 .post-content h4,
 .post-content h5,
 .post-content h6 {
-  margin-top: 2rem;
-  margin-bottom: 1rem;
-  color: var(--primary-color);
+  margin-top: 3rem;
+  margin-bottom: 1.5rem;
+  color: var(--text-dark);
+}
+
+.post-content h2 {
+  border-bottom: 2px solid var(--gray);
+  padding-bottom: 0.5rem;
 }
 
 .post-content p {
@@ -127,162 +139,128 @@ layout: default
 .post-content img {
   max-width: 100%;
   height: auto;
-  border-radius: 8px;
-  margin: 1rem 0;
+  border-radius: var(--border-radius-md);
+  margin: 2rem 0;
+  box-shadow: var(--shadow-sm);
 }
 
 .post-content blockquote {
-  border-left: 4px solid var(--primary-color);
-  padding-left: 1rem;
-  margin: 1.5rem 0;
+  border-left: 4px solid var(--accent-color);
+  padding: 1.5rem;
+  margin: 2rem 0;
+  background-color: var(--light-gray);
+  border-radius: var(--border-radius-md);
   font-style: italic;
-  color: var(--secondary-color);
+  color: var(--text-dark);
 }
 
 .post-content pre {
-  background: var(--secondary-color);
-  color: white;
-  padding: 1rem;
-  border-radius: 8px;
+  background: var(--light-gray);
+  color: var(--text-dark);
+  padding: 1.5rem;
+  border-radius: var(--border-radius-md);
   overflow-x: auto;
-  margin: 1.5rem 0;
+  margin: 2rem 0;
+  border: 1px solid var(--gray);
+  box-shadow: var(--shadow-sm);
 }
 
 .post-content code {
-  background: rgba(0,0,0,0.1);
+  background: var(--light-gray);
+  color: var(--danger-color);
   padding: 0.2em 0.4em;
-  border-radius: 4px;
+  border-radius: var(--border-radius-sm);
   font-size: 0.9em;
-}
-
-.post-footer {
-  margin-top: 3rem;
-  padding-top: 2rem;
-  border-top: 1px solid var(--secondary-color);
-}
-
-.post-author,
-.related-posts,
-.social-share {
-  margin-bottom: 2rem;
-}
-
-.post-author h3,
-.related-posts h3,
-.social-share h3 {
-  color: var(--primary-color);
-  margin-bottom: 1rem;
-}
-
-.share-buttons {
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-}
-
-.share-button {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.5rem 1rem;
-  border-radius: 6px;
-  text-decoration: none;
-  color: white;
-  font-size: 0.9rem;
-  transition: all 0.2s;
-}
-
-.share-button.twitter { background: #1da1f2; }
-.share-button.facebook { background: #1877f2; }
-.share-button.linkedin { background: #0077b5; }
-.share-button.weibo { background: #e6162d; }
-
-.share-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-}
-
-.post-navigation {
-  display: flex;
-  justify-content: space-between;
-  margin: 3rem 0;
-  padding: 1rem 0;
-  border-top: 1px solid var(--secondary-color);
-  border-bottom: 1px solid var(--secondary-color);
-}
-
-.nav-previous,
-.nav-next {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  text-decoration: none;
-  color: var(--primary-color);
-  max-width: 45%;
-}
-
-.nav-previous:hover,
-.nav-next:hover {
-  text-decoration: underline;
-}
-
-.nav-title {
   font-weight: 500;
 }
 
-.nav-arrow {
-  font-size: 1.2rem;
-  font-weight: bold;
+.post-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 2rem 0;
+  background: var(--white);
+  border-radius: var(--border-radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--gray);
+}
+
+.post-content th,
+.post-content td {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid var(--gray);
+}
+
+.post-content th {
+  background-color: var(--light-gray);
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+.post-content tr:hover {
+  background-color: var(--light-gray);
+}
+
+.post-content ul,
+.post-content ol {
+  margin-bottom: 1.5rem;
+  padding-left: 2rem;
+}
+
+.post-content li {
+  margin-bottom: 0.5rem;
+  line-height: 1.6;
 }
 
 .comments-section {
-  margin-top: 3rem;
-  padding-top: 2rem;
-  border-top: 1px solid var(--secondary-color);
+  margin-top: 4rem;
+  padding-top: 3rem;
+  border-top: 1px solid var(--gray);
 }
 
 .comments-section h3 {
-  color: var(--primary-color);
-  margin-bottom: 1rem;
+  color: var(--text-dark);
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
 }
 
 /* 响应式设计 */
 @media (max-width: 768px) {
   .post-container {
-    padding: 1rem;
+    padding: 2rem 1rem;
   }
   
   .post-title {
     font-size: 2rem;
   }
   
-  .share-buttons {
-    justify-content: center;
-  }
-  
-  .post-navigation {
+  .post-meta {
     flex-direction: column;
-    gap: 1rem;
+    gap: 0.25rem;
   }
   
-  .nav-previous,
-  .nav-next {
-    max-width: 100%;
+  .post-content h1,
+  .post-content h2,
+  .post-content h3,
+  .post-content h4,
+  .post-content h5,
+  .post-content h6 {
+    margin-top: 2rem;
   }
 }
 
 @media (max-width: 480px) {
+  .post-container {
+    padding: 1.5rem 0.75rem;
+  }
+  
   .post-title {
     font-size: 1.8rem;
   }
   
-  .post-meta {
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-  
-  .share-buttons {
-    flex-direction: column;
+  .post-content {
+    font-size: 0.95rem;
   }
 }
 </style>

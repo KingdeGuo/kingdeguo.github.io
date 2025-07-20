@@ -1,6 +1,4 @@
-<!-- 重构后的头部文件 -->
-<!-- 使用新的模块化CSS和简化配置 -->
-
+<!-- 简约风格头部文件 -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -41,19 +39,8 @@
 <!-- Favicon -->
 <link rel="icon" type="image/x-icon" href="{{ '/favicon.ico' | relative_url }}">
 
-<!-- 字体预加载 -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Lora:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-
 <!-- 核心样式 -->
-<link rel="stylesheet" href="{{ '/assets/css/clean-blog.css' | relative_url }}">
-<link rel="stylesheet" href="{{ '/assets/css/custom.css' | relative_url }}">
-<link rel="stylesheet" href="{{ '/assets/css/glassmorphism.css' | relative_url }}">
-<link rel="stylesheet" href="{{ '/assets/css/reliable-visualization.css' | relative_url }}">
-
-<!-- Font Awesome -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
 
 <!-- 自定义样式 -->
 {% if page.custom_css %}
@@ -83,7 +70,3 @@
 <!-- 性能优化 -->
 <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
 <link rel="dns-prefetch" href="//unpkg.com">
-<link rel="dns-prefetch" href="//fonts.googleapis.com">
-
-<!-- 预加载关键资源 -->
-<link rel="preload" href="{{ '/assets/js/clean-blog.js' | relative_url }}" as="script">
