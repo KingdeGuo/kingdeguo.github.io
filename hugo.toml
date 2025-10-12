@@ -1,7 +1,7 @@
 # Hugo Configuration File
 # KingdeGuo's Blog - SEO Optimized Hugo Setup
 
-baseURL = "https://kingdeguo.github.io/"
+baseURL = "https://www.kingdeguo.com/"
 languageCode = "zh-CN"
 defaultContentLanguage = "zh-CN"
 title = "kingdeguo's blog"
@@ -99,8 +99,6 @@ title = "kingdeguo's blog"
 # ===== 分页配置 =====
 [pagination]
   pagerSize = 10
-
-
 
 # ===== 服务配置 =====
 [server]
