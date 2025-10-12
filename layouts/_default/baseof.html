@@ -34,7 +34,12 @@
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
   
   <!-- Styles -->
-  <link rel="stylesheet" href="/css/main.css">
+  {{ $style := resources.Get "css/main.css" }}
+  {{ if $style }}
+    <link rel="stylesheet" href="{{ $style.RelPermalink }}">
+  {{ else }}
+    <link rel="stylesheet" href="/css/main.css">
+  {{ end }}
   
   <!-- Google Analytics -->
   {{ if .Site.Params.analytics.google }}
@@ -105,7 +110,12 @@
   </footer>
 
   <!-- Scripts -->
-  <script src="/js/main.js"></script>
+  {{ $script := resources.Get "js/main.js" }}
+  {{ if $script }}
+    <script src="{{ $script.RelPermalink }}"></script>
+  {{ else }}
+    <script src="/js/main.js"></script>
+  {{ end }}
   
   <!-- Giscus Comments -->
   {{ if and .Site.Params.features.comments (eq .Site.Params.features.commentsProvider "giscus") }}

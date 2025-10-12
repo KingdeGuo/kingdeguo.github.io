@@ -12,6 +12,7 @@ title = "KingdeGuo's Blog"
   author = "KingdeGuo"
   email = "kingdeguo@foxmail.com"
   subtitle = "技术分享 • 生活感悟 • 读书笔记"
+  css = "/css/main.css"
   
   # 社交媒体
   github = "kingdeguo"
