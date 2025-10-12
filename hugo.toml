@@ -1,0 +1,152 @@
+# Hugo Configuration File
+# KingdeGuo's Blog - SEO Optimized Hugo Setup
+
+baseURL = "https://kingdeguo.github.io/"
+languageCode = "zh-CN"
+title = "KingdeGuo's Blog"
+theme = ""
+
+# ===== 站点信息 =====
+[params]
+  description = "个人博客分享技术、生活和读书等内容，专注于量化投资、机器学习、Web开发等领域"
+  author = "KingdeGuo"
+  email = "kingdeguo@gmail.com"
+  subtitle = "技术分享 • 生活感悟 • 读书笔记"
+  
+  # 社交媒体
+  github = "kingdeguo"
+  twitter = ""
+  linkedin = ""
+  weibo = ""
+  zhihu = ""
+  bilibili = ""
+
+# ===== SEO配置 =====
+[params.seo]
+  # 基础SEO
+  titleTemplate = "%s | KingdeGuo's Blog"
+  descriptionTemplate = "%s"
+  
+  # Open Graph
+  openGraph = true
+  openGraphType = "website"
+  openGraphImage = "/images/og-image.jpg"
+  
+  # Twitter Card
+  twitterCard = true
+  twitterCardType = "summary_large_image"
+  
+  # 结构化数据
+  structuredData = true
+  organization = true
+  breadcrumbs = true
+  article = true
+
+# ===== 功能模块 =====
+[params.features]
+  # 评论系统
+  comments = true
+  commentsProvider = "giscus"
+  
+  # 搜索功能
+  search = true
+  searchProvider = "lunr"
+  
+  # 阅读进度
+  readingProgress = true
+  readingProgressPosition = "top"
+  
+  # 目录导航
+  tableOfContents = true
+  tableOfContentsPosition = "right"
+  tableOfContentsMaxDepth = 3
+  
+  # 代码高亮
+  syntaxHighlighting = true
+  syntaxHighlightingTheme = "github-dark"
+  syntaxHighlightingLineNumbers = true
+  syntaxHighlightingCopyButton = true
+
+# ===== 分析统计 =====
+[params.analytics]
+  google = "G-HXENT9GH1J"
+  baidu = ""
+  cnzz = ""
+  umeng = ""
+
+# ===== 构建配置 =====
+[build]
+  writeStats = true
+  useResourceCacheWhen = "fallback"
+
+# ===== 输出格式 =====
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+  page = ["HTML"]
+  section = ["HTML", "RSS"]
+  taxonomy = ["HTML", "RSS"]
+  term = ["HTML", "RSS"]
+
+# ===== 永久链接 =====
+[permalinks]
+  posts = "/:year/:month/:day/:slug/"
+  projects = "/projects/:slug/"
+  notes = "/notes/:slug/"
+  tutorials = "/tutorials/:slug/"
+
+# ===== 分页配置 =====
+[pagination]
+  pagerSize = 10
+
+# ===== 服务配置 =====
+[server]
+  port = 1313
+
+# ===== 安全头配置 =====
+[security]
+  [security.exec]
+    allow = ['^dart-sass-embedded$', '^go$', '^npx$', '^postcss$', '^npm$', '^yarn$']
+
+# ===== 图像处理 =====
+[imaging]
+  resampleFilter = "CatmullRom"
+  quality = 75
+  anchor = "smart"
+
+# ===== 菜单配置 =====
+[menu]
+  [[menu.main]]
+    identifier = "home"
+    name = "首页"
+    url = "/"
+    weight = 1
+  
+  [[menu.main]]
+    identifier = "posts"
+    name = "文章"
+    url = "/posts/"
+    weight = 2
+  
+  [[menu.main]]
+    identifier = "projects"
+    name = "项目"
+    url = "/projects/"
+    weight = 3
+  
+  [[menu.main]]
+    identifier = "about"
+    name = "关于"
+    url = "/about/"
+    weight = 4
+
+# ===== 分类和标签 =====
+[taxonomies]
+  category = "categories"
+  tag = "tags"
+  series = "series"
+
+# ===== 语言配置 =====
+[languages.zh-CN]
+  languageCode = "zh-CN"
+  languageName = "中文"
+  weight = 1
