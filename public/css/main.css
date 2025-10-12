@@ -85,6 +85,12 @@ p {
   margin-bottom: var(--spacing-md);
 }
 
+/* Article / post content typography: increase font size for better readability */
+.post-content {
+  font-size: 1.125rem; /* ~18px assuming base 16px */
+  line-height: 1.8;    /* slightly more airy for Chinese text */
+}
+
 a {
   color: var(--primary-color);
   text-decoration: none;
