@@ -6,7 +6,7 @@ type: "page"
 
 # 关于我
 
-你好！我是KingdeGuo
+你好！我是kingdeguo
 
 ## 兴趣领域
 
