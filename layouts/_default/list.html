@@ -4,13 +4,19 @@
     <h1>{{ .Title }}</h1>
   </header>
   <div class="posts-list">
-    <ul class="post-titles">
-      {{ range .Pages }}
-      <li>
-        <a href="{{ .RelPermalink }}">{{ .Title }}</a>
-      </li>
-      {{ end }}
-    </ul>
+    {{ $pages := .Pages.GroupByDate "2006-01" }}
+    {{ range $pages }}
+    <div class="month-group">
+      <h3 class="month-title">{{ .Key }}</h3>
+      <ul class="post-titles">
+        {{ range .Pages }}
+        <li>
+          <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+        </li>
+        {{ end }}
+      </ul>
+    </div>
+    {{ end }}
   </div>
 </div>
 {{ end }}

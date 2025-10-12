@@ -15,6 +15,19 @@
   --bg-color: #ffffff;
   --bg-alt: #f8f9fa;
   --border-color: #dee2e6;
+
+/* Month Group Styles */
+.month-group {
+  margin-bottom: 2.5rem;
+}
+
+.month-title {
+  font-size: 1.25rem;
+  color: var(--secondary-color);
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--border-color);
+}
   
   /* Typography */
   --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
