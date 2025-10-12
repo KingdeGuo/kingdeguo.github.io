@@ -2,36 +2,36 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:53586/categories/</loc>
+    <loc>http://localhost:55859/categories/</loc>
     <lastmod>2025-10-12T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:53586/tags/hugo/</loc>
+    <loc>http://localhost:55859/tags/hugo/</loc>
     <lastmod>2025-10-12T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:53586/tags/seo/</loc>
+    <loc>http://localhost:55859/tags/seo/</loc>
     <lastmod>2025-10-12T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:53586/tags/</loc>
+    <loc>http://localhost:55859/tags/</loc>
     <lastmod>2025-10-12T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:53586/about/</loc>
+    <loc>http://localhost:55859/about/</loc>
     <lastmod>2025-10-12T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:53586/categories/%E6%8A%80%E6%9C%AF/</loc>
+    <loc>http://localhost:55859/categories/%E6%8A%80%E6%9C%AF/</loc>
     <lastmod>2025-10-12T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:53586/tags/%E9%9D%99%E6%80%81%E7%BD%91%E7%AB%99/</loc>
+    <loc>http://localhost:55859/tags/%E9%9D%99%E6%80%81%E7%BD%91%E7%AB%99/</loc>
     <lastmod>2025-10-12T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:53586/</loc>
+    <loc>http://localhost:55859/</loc>
     <lastmod>2025-10-12T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:53586/posts/</loc>
+    <loc>http://localhost:55859/posts/</loc>
     <lastmod>2025-10-12T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:53586/2025/10/12/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87hugo%E6%96%87%E7%AB%A0/</loc>
+    <loc>http://localhost:55859/2025/10/12/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87hugo%E6%96%87%E7%AB%A0/</loc>
     <lastmod>2025-10-12T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:53586/series/</loc>
+    <loc>http://localhost:55859/series/</loc>
   </url>
 </urlset>

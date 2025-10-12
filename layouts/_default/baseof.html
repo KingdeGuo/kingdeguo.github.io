@@ -30,7 +30,7 @@
       <ul class="nav-menu">
         {{ range .Site.Menus.main }}
         <li class="nav-item">
-          <a href="{{ .URL }}" class="nav-link">{{ .Name }}</a>
+          <a href="{{ .URL | relURL }}" class="nav-link">{{ .Name }}</a>
         </li>
         {{ end }}
         <li class="nav-item nav-theme-toggle">
@@ -73,22 +73,6 @@
     <script src="/js/main.js"></script>
   {{ end }}
 
-  {{ if and .Site.Params.features.comments (eq .Site.Params.features.commentsProvider "giscus") }}
-  <script src="https://giscus.app/client.js"
-          data-repo="KingdeGuo/kingdeguo.github.io"
-          data-repo-id="R_kgDOPLxeEQ"
-          data-category="General"
-          data-category-id="DIC_kwDOPLxeEc4Cs5E6"
-          data-mapping="pathname"
-          data-strict="0"
-          data-reactions-enabled="1"
-          data-emit-metadata="0"
-          data-input-position="bottom"
-          data-theme="preferred_color_scheme"
-          data-lang="zh-CN"
-          crossorigin="anonymous"
-          async>
-  </script>
-  {{ end }}
+  {{/* comments script moved to single.html to load adjacent to #giscus-comments */}}
 </body>
 </html>

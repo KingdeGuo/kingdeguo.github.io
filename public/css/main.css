@@ -287,8 +287,11 @@ a:hover {
 
 /* Post Page */
 .post {
-  /* Remove width constraints to work with content-wrapper layout */
-  margin: 0;
+  /* Constrain the article width so content and comments align */
+  margin: 0 auto;
+  max-width: 760px; /* comfortable readable measure */
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .post-header {
@@ -376,6 +379,22 @@ a:hover {
   margin-top: var(--spacing-xl);
   padding-top: var(--spacing-lg);
   border-top: 1px solid var(--border-color);
+}
+
+/* Ensure comments area aligns with the post content and the giscus iframe respects container width */
+.post-comments {
+  box-sizing: border-box;
+  max-width: 100%;
+  width: 100%;
+  padding: var(--spacing-lg);
+}
+
+#giscus-comments,
+.post-comments .giscus-frame,
+.post-comments iframe {
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
 }
 
 /* Footer */
