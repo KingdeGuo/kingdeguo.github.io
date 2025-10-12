@@ -3,6 +3,7 @@
 
 baseURL = "https://kingdeguo.github.io/"
 languageCode = "zh-CN"
+defaultContentLanguage = "zh-CN"
 title = "KingdeGuo's Blog"
 theme = ""
 
