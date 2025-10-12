@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>软件工程 on kingdeguo&#39;s blog</title>
-    <link>http://localhost:54625/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/</link>
+    <link>http://localhost:1314/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/</link>
     <description>Recent content in 软件工程 on kingdeguo&#39;s blog</description>
     <generator>Hugo</generator>
     <language>zh-CN</language>
     <lastBuildDate>Thu, 11 Sep 2025 00:00:00 +0800</lastBuildDate>
-    <atom:link href="http://localhost:54625/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1314/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>想法是创造，思考是破坏</title>
-      <link>http://localhost:54625/2025/09/11/%E6%83%B3%E6%B3%95%E6%98%AF%E5%88%9B%E9%80%A0%E6%80%9D%E8%80%83%E6%98%AF%E7%A0%B4%E5%9D%8F/</link>
+      <link>http://localhost:1314/2025/09/11/%E6%83%B3%E6%B3%95%E6%98%AF%E5%88%9B%E9%80%A0%E6%80%9D%E8%80%83%E6%98%AF%E7%A0%B4%E5%9D%8F/</link>
       <pubDate>Thu, 11 Sep 2025 00:00:00 +0800</pubDate>
-      <guid>http://localhost:54625/2025/09/11/%E6%83%B3%E6%B3%95%E6%98%AF%E5%88%9B%E9%80%A0%E6%80%9D%E8%80%83%E6%98%AF%E7%A0%B4%E5%9D%8F/</guid>
+      <guid>http://localhost:1314/2025/09/11/%E6%83%B3%E6%B3%95%E6%98%AF%E5%88%9B%E9%80%A0%E6%80%9D%E8%80%83%E6%98%AF%E7%A0%B4%E5%9D%8F/</guid>
       <description>&lt;h1 id=&#34;想法是创造思考是破坏&#34;&gt;想法是创造，思考是破坏&lt;/h1&gt;&#xA;&lt;p&gt;当我最初听到&amp;quot;想法是创造，思考是破坏&amp;quot;时，下意识觉得它有些偏激。思考怎么会是破坏呢？它不是一直以来都被视为理性与保障吗？可越在软件工程里观察，我越发现这种说法并不夸张，甚至直击核心。&lt;/p&gt;&#xA;&lt;p&gt;想法，是一束火花。它让人兴奋，能瞬间点燃团队的激情，带来新的可能：无论是&amp;quot;上微服务&amp;quot;的豪言，还是&amp;quot;重构一整个模块&amp;quot;的冲动，想法让未来似乎变得触手可及。但火花再亮，如果不经过拆解，就可能点燃的是一堆干草——瞬间燃烧，最终只剩一地灰烬。&lt;/p&gt;&#xA;&lt;p&gt;思考，恰恰是那个看似冷酷的&amp;quot;破坏者&amp;quot;。它不带激情，而是拿着锤子，把闪闪发光的创意逐块敲开，逼我们回答最难听的问题：十倍的流量来了，架构是否能扛住？团队翻倍后，流程是否还能运转？未来方向变了，今天的设计还能存活吗？这种拆解确实残酷，它像是不断推倒沙盘上的模型。但也正是这种破坏，才筛掉了华而不实的幻想，留下了真正能经得住时间考验的方案。&lt;/p&gt;&#xA;&lt;p&gt;走到这里，我对&amp;quot;创造&amp;quot;和&amp;quot;破坏&amp;quot;的理解发生了转变。创造，不只是提出一个点子，而是敢于把未来打开，让可能性出现；破坏，也不是真正意义上的摧毁，而是一种净化，把脆弱和虚幻剔除出去。两者并不是对立，而是互为因果：没有创造，破坏就成了空洞的挑剔；没有破坏，创造也会淹没在复杂度与债务中。&lt;/p&gt;&#xA;&lt;p&gt;所以我慢慢明白，创造和破坏其实是一体的。创造让未来展开，给我们勇气去尝试；破坏让幻想收缩，逼我们留下真实能走下去的部分。就像在软件工程里，一个健康的系统不是靠一连串灵感堆出来的，而是靠无数次推倒、重来、取舍之后，才沉淀成可靠的架构。激情与冷静、点子与质疑，本就该交替出现，这样滚动向前，才算是真正的进化。&lt;/p&gt;</description>
     </item>
   </channel>
