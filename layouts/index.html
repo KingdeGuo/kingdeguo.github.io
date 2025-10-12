@@ -3,35 +3,11 @@
   <section class="hero">
     <div class="hero-content">
       <h1 class="hero-title">{{ .Site.Title }}</h1>
-      <p class="hero-subtitle">{{ .Site.Params.subtitle }}</p>
-      <p class="hero-description">{{ .Site.Params.description }}</p>
     </div>
   </section>
-
-  <section class="recent-posts">
-    <h2>最新文章</h2>
-    <div class="posts-grid">
-      {{ range first 5 (where .Site.RegularPages "Type" "posts") }}
-      <article class="post-card">
-        <h3 class="post-title">
-          <a href="{{ .RelPermalink }}">{{ .Title }}</a>
-        </h3>
-        <div class="post-meta">
-          <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006年1月2日" }}</time>
-          {{ if .Params.categories }}
-          <span class="post-categories">
-            {{ range .Params.categories }}
-            <a href="{{ "/categories/" | relLangURL }}{{ . | urlize }}">{{ . }}</a>
-            {{ end }}
-          </span>
-          {{ end }}
-        </div>
-        <p class="post-summary">{{ .Summary | truncate 150 }}</p>
-      </article>
-      {{ end }}
-    </div>
-    <div class="view-all">
-      <a href="/posts/" class="btn">查看所有文章</a>
+  <section class="homepage-message">
+    <div class="center-message">
+      <p class="homepage-text">生活很复杂, 我想让他简单一点</p>
     </div>
   </section>
 </div>

@@ -41,6 +41,18 @@
   --shadow-lg: 0 10px 15px rgba(0,0,0,0.1);
 }
 
+/* Theme support: default light, override with [data-theme="dark"] */
+:root[data-theme="dark"], [data-theme="dark"] {
+  --primary-color: #4ea8ff;
+  --secondary-color: #adb5bd;
+  --accent-color: #66d19e;
+  --text-color: #e9ecef;
+  --text-light: #ced4da;
+  --bg-color: #0f1720;
+  --bg-alt: #0b1220;
+  --border-color: rgba(255,255,255,0.06);
+}
+
 html {
   font-size: var(--font-size-base);
   line-height: var(--line-height-base);
@@ -118,6 +130,20 @@ a:hover {
   gap: var(--spacing-lg);
 }
 
+.theme-toggle {
+  background: none;
+  border: 1px solid var(--border-color);
+  padding: 4px 8px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.nav-theme-toggle {
+  display: flex;
+  align-items: center;
+}
+
 .nav-link {
   color: var(--text-color);
   font-weight: 400;
@@ -160,6 +186,34 @@ a:hover {
   max-width: 600px;
   margin: 0 auto;
   color: var(--text-light);
+}
+
+/* Homepage center message */
+.homepage-message {
+  padding: var(--spacing-xxl) 0;
+  text-align: center;
+}
+
+.homepage-text {
+  font-size: 1.5rem;
+  color: var(--text-color);
+  max-width: 900px;
+  margin: 0 auto;
+  font-weight: 500;
+}
+
+/* Giscus / comments wrapper styling to integrate with theme */
+.post-comments {
+  margin-top: var(--spacing-xl);
+  padding: var(--spacing-lg);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  background: var(--bg-alt);
+}
+
+#giscus-comments,
+.giscus-frame {
+  width: 100% !important;
 }
 
 .recent-posts {

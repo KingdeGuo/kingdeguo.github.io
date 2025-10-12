@@ -1,38 +1,14 @@
 <!DOCTYPE html>
-<html lang="{{ .Site.LanguageCode | default "zh-CN" }}" class="no-js">
+<html lang="{{ .Site.LanguageCode | default "zh-CN" }}">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  
-  <!-- SEO Meta Tags -->
+
   <title>{{ block "title" . }}{{ with .Title }}{{ . }} | {{ end }}{{ .Site.Title }}{{ end }}</title>
   <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ with .Summary }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}{{ end }}">
-  
-  <!-- Open Graph -->
-  <meta property="og:title" content="{{ .Title }}">
-  <meta property="og:description" content="{{ with .Description }}{{ . }}{{ else }}{{ with .Summary }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}{{ end }}">
-  <meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
-  <meta property="og:url" content="{{ .Permalink }}">
-  <meta property="og:image" content="{{ .Site.Params.seo.openGraphImage | default "/images/og-image.jpg" }}">
-  <meta property="og:site_name" content="{{ .Site.Title }}">
-  
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="{{ .Title }}">
-  <meta name="twitter:description" content="{{ with .Description }}{{ . }}{{ else }}{{ with .Summary }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}{{ end }}">
-  <meta name="twitter:image" content="{{ .Site.Params.seo.openGraphImage | default "/images/og-image.jpg" }}">
-  
-  <!-- Canonical URL -->
-  <link rel="canonical" href="{{ .Permalink }}">
-  
-  <!-- RSS Feed -->
-  {{ with .OutputFormats.Get "RSS" }}
-    <link href="{{ .RelPermalink }}" rel="alternate" type="application/rss+xml" title="{{ $.Site.Title }}">
-  {{ end }}
-  
-  <!-- Favicon -->
+
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
-  
+
   <!-- Styles -->
   {{ $style := resources.Get "css/main.css" }}
   {{ if $style }}
@@ -40,19 +16,7 @@
   {{ else }}
     <link rel="stylesheet" href="/css/main.css">
   {{ end }}
-  
-  <!-- Google Analytics -->
-  {{ if .Site.Params.analytics.google }}
-  <script async src="https://www.googletagmanager.com/gtag/js?id={{ .Site.Params.analytics.google }}"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', '{{ .Site.Params.analytics.google }}');
-  </script>
-  {{ end }}
-  
-  <!-- Structured Data -->
+
   {{ block "structured-data" . }}{{ end }}
 </head>
 <body>
@@ -60,35 +24,33 @@
   <header class="site-header">
     <nav class="nav">
       <div class="nav-brand">
-        <a href="/">{{ .Site.Title }}</a>
+        <a href="/">kingdeguo</a>
       </div>
+
       <ul class="nav-menu">
         {{ range .Site.Menus.main }}
         <li class="nav-item">
           <a href="{{ .URL }}" class="nav-link">{{ .Name }}</a>
         </li>
         {{ end }}
+        <li class="nav-item nav-theme-toggle">
+          {{ partial "theme-toggle.html" . }}
+        </li>
       </ul>
     </nav>
   </header>
 
-  <!-- Main Content -->
+  <!-- Main Content with QR Sidebar (always present) -->
   <main class="main">
-    {{ if .IsHome }}
-      {{ block "main" . }}{{ end }}
-    {{ else }}
-      <div class="content-wrapper">
-        <div class="content-main">
-          {{ block "main" . }}{{ end }}
-        </div>
-        <div class="wechat-qr-sidebar">
-          <div class="qr-container">
-            <img src="/wechat-qr-code.jpg" alt="微信公众号二维码" class="qr-image">
-            <p class="qr-text">关注我的公众号</p>
-          </div>
-        </div>
+    <div class="content-wrapper">
+      <div class="content-main">
+        {{ block "main" . }}{{ end }}
       </div>
-    {{ end }}
+
+      <div class="wechat-qr-sidebar">
+        {{ partial "qr.html" . }}
+      </div>
+    </div>
   </main>
 
   <!-- Footer -->
@@ -98,12 +60,6 @@
       <div class="social-links">
         {{ with .Site.Params.github }}
         <a href="https://github.com/{{ . }}" target="_blank" rel="noopener">GitHub</a>
-        {{ end }}
-        {{ with .Site.Params.twitter }}
-        <a href="https://twitter.com/{{ . }}" target="_blank" rel="noopener">Twitter</a>
-        {{ end }}
-        {{ with .Site.Params.linkedin }}
-        <a href="https://linkedin.com/in/{{ . }}" target="_blank" rel="noopener">LinkedIn</a>
         {{ end }}
       </div>
     </div>
@@ -116,8 +72,7 @@
   {{ else }}
     <script src="/js/main.js"></script>
   {{ end }}
-  
-  <!-- Giscus Comments -->
+
   {{ if and .Site.Params.features.comments (eq .Site.Params.features.commentsProvider "giscus") }}
   <script src="https://giscus.app/client.js"
           data-repo="KingdeGuo/kingdeguo.github.io"

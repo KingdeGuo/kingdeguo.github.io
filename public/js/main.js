@@ -12,6 +12,9 @@ document.addEventListener('DOMContentLoaded', function() {
   
   // Mobile Menu Toggle
   initMobileMenu();
+  
+  // Theme Toggle
+  initThemeToggle();
 });
 
 // Reading Progress Bar
@@ -30,6 +33,30 @@ function initReadingProgress() {
     const progress = (scrollTop / documentHeight) * 100;
     
     progressBarElement.style.width = progress + '%';
+  });
+}
+
+// Theme Toggle
+function initThemeToggle() {
+  const toggle = document.getElementById('theme-toggle');
+  if (!toggle) return;
+
+  const applyTheme = (theme) => {
+    document.documentElement.setAttribute('data-theme', theme);
+    toggle.textContent = theme === 'dark' ? '☀️' : '🌙';
+  };
+
+  // Load preference: localStorage -> system preference -> light
+  const stored = localStorage.getItem('theme');
+  const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const initial = stored || (prefersDark ? 'dark' : 'light');
+  applyTheme(initial);
+
+  toggle.addEventListener('click', () => {
+    const current = document.documentElement.getAttribute('data-theme') || 'light';
+    const next = current === 'dark' ? 'light' : 'dark';
+    applyTheme(next);
+    localStorage.setItem('theme', next);
   });
 }
 
