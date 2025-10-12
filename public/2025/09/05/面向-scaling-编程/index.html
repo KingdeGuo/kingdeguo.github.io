@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=65112&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>面向 scaling 编程 | KingdeGuo&amp;#39;s Blog</title><meta name="description" content="所有的设计模式归根结底都是面向scaling编程，系统真正的能力往往来源于 scaling">
+
+<link rel="canonical" href="http://localhost:65112/2025/09/05/%E9%9D%A2%E5%90%91-scaling-%E7%BC%96%E7%A8%8B/"><meta name="robots" content="index, follow"><meta property="og:type" content="website">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:site_name" content="KingdeGuo&#39;s Blog">
+<meta property="og:title" content="面向 scaling 编程">
+<meta property="og:description" content="所有的设计模式归根结底都是面向scaling编程，系统真正的能力往往来源于 scaling">
+<meta property="og:url" content="http://localhost:65112/2025/09/05/%E9%9D%A2%E5%90%91-scaling-%E7%BC%96%E7%A8%8B/"><meta property="og:image" content="/images/og-image.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="面向 scaling 编程">
+  <meta name="twitter:description" content="所有的设计模式归根结底都是面向scaling编程，系统真正的能力往往来源于 scaling">
+    <meta name="twitter:image" content="/images/og-image.jpg">
+
+<link rel="alternate" type="application/rss+xml" title="KingdeGuo&#39;s Blog RSS" href="/index.xml">
+<link rel="alternate" type="application/json" title="KingdeGuo&#39;s Blog JSON Feed" href="/index.json"><script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "http:\/\/localhost:65112\/2025\/09\/05\/%E9%9D%A2%E5%90%91-scaling-%E7%BC%96%E7%A8%8B\/"
+      },
+      "headline": "面向 scaling 编程",
+      "description": "所有的设计模式归根结底都是面向scaling编程，系统真正的能力往往来源于 scaling",
+      "datePublished": "2025-09-05T22:27:00\u002b08:00",
+      "dateModified": "2025-09-05T22:27:00\u002b08:00",
+      "author": {
+        "@type": "Person",
+        "name": "KingdeGuo"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "KingdeGuo\u0027s Blog",
+        "url": "http:\/\/localhost:65112\/"
+      }
+    }
+    </script>
+
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+
+  
+  
+  
+    <link rel="stylesheet" href="/css/main.css">
+  
+
+  
+</head>
+<body>
+  
+  <header class="site-header">
+    <nav class="nav">
+      <div class="nav-brand">
+        <a href="/">kingdeguo</a>
+      </div>
+
+      <ul class="nav-menu">
+        
+        <li class="nav-item">
+          <a href="/" class="nav-link">首页</a>
+        </li>
+        
+        <li class="nav-item">
+          <a href="/posts/" class="nav-link">所有文章</a>
+        </li>
+        
+        <li class="nav-item">
+          <a href="/about/" class="nav-link">关于我</a>
+        </li>
+        
+        <li class="nav-item nav-theme-toggle">
+          <button id="theme-toggle" aria-label="切换主题" class="theme-toggle">🌙</button>
+
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  
+  <main class="main">
+    <div class="content-wrapper">
+      <div class="content-main">
+        
+<article class="post">
+  <header class="post-header">
+    <h1 class="post-title">面向 scaling 编程</h1>
+    <div class="post-meta">
+      <time datetime="2025-09-05">2025年9月5日</time>
+      
+      <span class="post-categories">
+        分类：
+        
+        <a href="/categories/%E6%8A%80%E6%9C%AF">技术</a>
+        
+      </span>
+      
+      
+      <span class="post-tags">
+        标签：
+        
+        <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F">设计模式</a>
+        
+        <a href="/tags/%E6%9E%B6%E6%9E%84">架构</a>
+        
+        <a href="/tags/%E6%89%A9%E5%B1%95%E6%80%A7">扩展性</a>
+        
+        <a href="/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B">大模型</a>
+        
+      </span>
+      
+    </div>
+  </header>
+
+  <div class="post-content">
+    <h1 id="面向-scaling-编程">面向 scaling 编程</h1>
+<p>最近脑子里一直在盘旋着一个观点，所有的设计模式归根结底都是面向scaling编程。</p>
+<p>最近观察大模型的发展，我深刻意识到一个规律：系统的真正能力往往来源于 scaling，而不仅仅是局部优化。大模型通过算力、参数和数据的持续扩展，才能涌现出复杂的能力和行为。这让我重新审视软件工程和业务研发中的那些&quot;可扩展、可维护、解耦、复用&quot;等目标——表面上看似不同的追求，归根结底都是为系统在规模和复杂度增长时仍能稳定演进而设计。</p>
+<p>软件从来不是静态的，它会随着业务扩张而膨胀。单机架构到分布式，再到微服务拆分，每一次演进都是在应对规模增长带来的压力；模块化、接口抽象、数据治理、领域建模，则是为团队扩张和业务多线发展预留空间。即便是业务研发流程、需求评审、协作规范，也都是为 scaling 做准备，保证系统和团队在复杂度上升时不至于失控。大模型给我的启发是：当增长到一定阈值后，原本看似微小的设计选择，都会被放大，系统的可演化能力才是真正的核心竞争力。</p>
+<p>接受了这个观点后，我在日常研发中思考问题的方式也发生了变化。过去我更关注眼前需求和局部优雅，而现在我会先问：如果用户量或功能点增长十倍，代码还能撑住吗？接口和模块的边界设计是否足够稳健？即便是一个小功能，我也会优先考虑它在未来扩展中的弹性。这并非过度设计，而是让系统在初期就为 scaling 留下余地，让代码不仅解决今天的问题，也能支撑明天的增长。</p>
+
+  </div>
+
+  <footer class="post-footer">
+    
+    <div class="post-comments">
+      <h3>评论</h3>
+      <div id="giscus-comments"></div>
+    </div>
+    
+    
+    <script src="https://giscus.app/client.js"
+            data-repo="KingdeGuo/kingdeguo.github.io"
+            data-repo-id="R_kgDOPLxeEQ"
+            data-category="General"
+            data-category-id="DIC_kwDOPLxeEc4Cs5E6"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="0"
+            data-input-position="bottom"
+            data-theme="preferred_color_scheme"
+            data-lang="zh-CN"
+            crossorigin="anonymous"
+            async>
+    </script>
+    
+  </footer>
+</article>
+
+
+      </div>
+
+      <div class="wechat-qr-sidebar">
+        <div class="qr-container">
+  <img src="/wechat-qr-code.jpg" alt="微信公众号二维码" class="qr-image">
+  <p class="qr-text">关注我的公众号</p>
+</div>
+
+      </div>
+    </div>
+  </main>
+
+  
+  <footer class="site-footer">
+    <div class="footer-content">
+      <p>&copy; 2025 KingdeGuo. All rights reserved.</p>
+      <div class="social-links">
+        
+        <a href="https://github.com/kingdeguo" target="_blank" rel="noopener">GitHub</a>
+        
+      </div>
+    </div>
+  </footer>
+
+  
+  
+  
+    <script src="/js/main.js"></script>
+  
+
+  
+
+  
+</body>
+</html>

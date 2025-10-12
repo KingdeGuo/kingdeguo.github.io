@@ -2,17 +2,24 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on KingdeGuo&#39;s Blog</title>
-    <link>http://localhost:57722/categories/</link>
+    <link>http://localhost:65112/categories/</link>
     <description>Recent content in Categories on KingdeGuo&#39;s Blog</description>
     <generator>Hugo</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 12 Oct 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:57722/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 11 Oct 2025 12:45:00 +0800</lastBuildDate>
+    <atom:link href="http://localhost:65112/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>思考</title>
+      <link>http://localhost:65112/categories/%E6%80%9D%E8%80%83/</link>
+      <pubDate>Sat, 11 Oct 2025 12:45:00 +0800</pubDate>
+      <guid>http://localhost:65112/categories/%E6%80%9D%E8%80%83/</guid>
+      <description></description>
+    </item>
     <item>
       <title>技术</title>
-      <link>http://localhost:57722/categories/%E6%8A%80%E6%9C%AF/</link>
-      <pubDate>Sun, 12 Oct 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:57722/categories/%E6%8A%80%E6%9C%AF/</guid>
+      <link>http://localhost:65112/categories/%E6%8A%80%E6%9C%AF/</link>
+      <pubDate>Fri, 05 Sep 2025 22:27:00 +0800</pubDate>
+      <guid>http://localhost:65112/categories/%E6%8A%80%E6%9C%AF/</guid>
       <description></description>
     </item>
   </channel>
