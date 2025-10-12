@@ -71,8 +71,9 @@ title = "kingdeguo's blog"
 # ===== 分析统计 =====
 [params.analytics]
   google = "G-HXENT9GH1J"
-  baidu = ""
+  baidu = "4a9b55892d0aad64fe9d68ed6b0e76aa"
   cnzz = ""
+  tencent = ""
   umeng = ""
 
 # ===== 构建配置 =====
