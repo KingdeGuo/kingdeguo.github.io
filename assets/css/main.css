@@ -228,8 +228,8 @@ a:hover {
 
 /* Post Page */
 .post {
-  max-width: 800px;
-  margin: 0 auto;
+  /* Remove width constraints to work with content-wrapper layout */
+  margin: 0;
 }
 
 .post-header {
@@ -338,6 +338,48 @@ a:hover {
   color: var(--primary-color);
 }
 
+/* Content Layout with QR Code */
+.content-wrapper {
+  display: flex;
+  gap: var(--spacing-xl);
+  align-items: flex-start;
+}
+
+.content-main {
+  flex: 1;
+  min-width: 0; /* Prevent flex item from overflowing */
+}
+
+.wechat-qr-sidebar {
+  width: 280px;
+  flex-shrink: 0;
+  position: sticky;
+  top: 100px;
+}
+
+.qr-container {
+  background: var(--bg-alt);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+}
+
+.qr-image {
+  width: 100%;
+  max-width: 200px;
+  height: auto;
+  border-radius: var(--radius-md);
+  margin-bottom: var(--spacing-md);
+}
+
+.qr-text {
+  color: var(--text-light);
+  font-size: 0.875rem;
+  margin: 0;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
   .nav {
@@ -367,6 +409,23 @@ a:hover {
   
   .main {
     padding: var(--spacing-lg) var(--spacing-md);
+  }
+  
+  /* Mobile QR Code Layout */
+  .content-wrapper {
+    flex-direction: column;
+    gap: var(--spacing-lg);
+  }
+  
+  .wechat-qr-sidebar {
+    width: 100%;
+    position: static;
+    order: 2; /* Move QR code below content on mobile */
+  }
+  
+  .qr-container {
+    max-width: 250px;
+    margin: 0 auto;
   }
 }
 

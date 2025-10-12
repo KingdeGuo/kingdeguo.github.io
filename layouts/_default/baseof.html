@@ -69,7 +69,21 @@
 
   <!-- Main Content -->
   <main class="main">
-    {{ block "main" . }}{{ end }}
+    {{ if .IsHome }}
+      {{ block "main" . }}{{ end }}
+    {{ else }}
+      <div class="content-wrapper">
+        <div class="content-main">
+          {{ block "main" . }}{{ end }}
+        </div>
+        <div class="wechat-qr-sidebar">
+          <div class="qr-container">
+            <img src="/wechat-qr-code.jpg" alt="微信公众号二维码" class="qr-image">
+            <p class="qr-text">关注我的公众号</p>
+          </div>
+        </div>
+      </div>
+    {{ end }}
   </main>
 
   <!-- Footer -->
