@@ -40,6 +40,12 @@
         <a href="/">{{ .Site.Title }}</a>
       </div>
 
+      <button class="hamburger" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
       <ul class="nav-menu">
         {{ range .Site.Menus.main }}
         <li class="nav-item">
