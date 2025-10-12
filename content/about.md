@@ -27,7 +27,7 @@ type: "page"
 
 ## 联系方式
 
-- **邮箱**: kingdeguo@gmail.com
+- **邮箱**: kingdeguo@foxmail.com
 - **GitHub**: [kingdeguo](https://github.com/kingdeguo)
 - **博客**: [https://kingdeguo.github.io](https://kingdeguo.github.io)
 
