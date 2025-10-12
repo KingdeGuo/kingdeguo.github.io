@@ -4,7 +4,7 @@
 baseURL = "https://kingdeguo.github.io/"
 languageCode = "zh-CN"
 defaultContentLanguage = "zh-CN"
-title = "KingdeGuo's Blog"
+title = "kingdeguo's blog"
 
 # ===== 站点信息 =====
 [params]
@@ -25,7 +25,7 @@ title = "KingdeGuo's Blog"
 # ===== SEO配置 =====
 [params.seo]
   # 基础SEO
-  titleTemplate = "%s | KingdeGuo's Blog"
+  titleTemplate = "%s | kingdeguo's blog"
   descriptionTemplate = "%s"
   
   # Open Graph

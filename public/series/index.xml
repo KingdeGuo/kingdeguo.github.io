@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Series on KingdeGuo&#39;s Blog</title>
-    <link>http://localhost:55145/series/</link>
-    <description>Recent content in Series on KingdeGuo&#39;s Blog</description>
+    <title>Series on kingdeguo&#39;s blog</title>
+    <link>http://localhost:1315/series/</link>
+    <description>Recent content in Series on kingdeguo&#39;s blog</description>
     <generator>Hugo</generator>
     <language>zh-CN</language>
-    <atom:link href="http://localhost:55145/series/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1315/series/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

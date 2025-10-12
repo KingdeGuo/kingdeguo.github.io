@@ -1,7 +1,6 @@
 ---
 title: "关于我"
 description: "关于KingdeGuo的个人介绍和联系方式"
-date: 2025-10-12
 type: "page"
 ---
 

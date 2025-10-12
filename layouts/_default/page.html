@@ -1,0 +1,56 @@
+{{ define "main" }}
+<article class="post">
+  <header class="post-header">
+    <h1 class="post-title">{{ .Title }}</h1>
+    {{ if or .Params.categories .Params.tags }}
+    <div class="post-meta">
+      {{ if .Params.categories }}
+      <span class="post-categories">
+        分类：
+        {{ range .Params.categories }}
+        <a href="{{ "/categories/" | relLangURL }}{{ . | urlize }}">{{ . }}</a>
+        {{ end }}
+      </span>
+      {{ end }}
+      {{ if .Params.tags }}
+      <span class="post-tags">
+        标签：
+        {{ range .Params.tags }}
+        <a href="{{ "/tags/" | relLangURL }}{{ . | urlize }}">{{ . }}</a>
+        {{ end }}
+      </span>
+      {{ end }}
+    </div>
+    {{ end }}
+  </header>
+
+  <div class="post-content">
+    {{ .Content }}
+  </div>
+
+  <footer class="post-footer">
+    {{ if .Site.Params.features.comments }}
+    <div class="post-comments">
+      <div id="giscus-comments"></div>
+      {{ if eq .Site.Params.features.commentsProvider "giscus" }}
+      <script src="https://giscus.app/client.js"
+              data-repo="KingdeGuo/kingdeguo.github.io"
+              data-repo-id="R_kgDOPLxeEQ"
+              data-category="General"
+              data-category-id="DIC_kwDOPLxeEc4Cs5E6"
+              data-mapping="pathname"
+              data-strict="0"
+              data-reactions-enabled="1"
+              data-emit-metadata="0"
+              data-input-position="bottom"
+              data-theme="preferred_color_scheme"
+              data-lang="zh-CN"
+              crossorigin="anonymous"
+              async>
+      </script>
+      {{ end }}
+    </div>
+    {{ end }}
+  </footer>
+</article>
+{{ end }}
