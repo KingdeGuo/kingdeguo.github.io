@@ -1,0 +1,13 @@
+{{- /* Analytics partial: inject GA only in production when configured */ -}}
+{{- if eq hugo.Environment "production" -}}
+  {{- with .Site.Params.analytics.google -}}
+    {{- $ga := . -}}
+    <script async src="https://www.googletagmanager.com/gtag/js?id={{ $ga }}"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);} 
+      gtag('js', new Date());
+      gtag('config', '{{ $ga }}', { 'anonymize_ip': true });
+    </script>
+  {{- end -}}
+{{- end -}}

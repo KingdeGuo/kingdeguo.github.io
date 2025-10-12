@@ -1,0 +1,172 @@
+{{/*
+  SEO partial (robust version)
+  Emits: <title>, description, canonical, robots, Open Graph, Twitter Card, alternate feeds and JSON-LD
+*/}}
+
+{{- $siteTitle := .Site.Title -}}
+{{- $pageTitle := .Title -}}
+
+{{- /* build full title: if homepage, use site title; else use "Page Title | Site Title" or site-provided template */ -}}
+{{- if .IsHome -}}
+  <title>{{ $siteTitle | htmlEscape }}</title>
+{{- else -}}
+  {{- $tpl := .Site.Params.seo.titleTemplate -}}
+  {{- if $tpl -}}
+    <title>{{ printf $tpl (cond (ne $pageTitle "") $pageTitle $siteTitle) | htmlEscape }}</title>
+  {{- else -}}
+    {{- if ne $pageTitle "" -}}
+      <title>{{ printf "%s | %s" $pageTitle $siteTitle | htmlEscape }}</title>
+    {{- else -}}
+      <title>{{ $siteTitle | htmlEscape }}</title>
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+
+{{- /* description */ -}}
+{{- $description := .Params.description -}}
+{{- if not $description -}}
+  {{- if ne .Description "" -}}
+    {{- $description = .Description -}}
+  {{- else if ne .Summary "" -}}
+    {{- $description = .Summary -}}
+  {{- else -}}
+    {{- $description = .Site.Params.description -}}
+  {{- end -}}
+{{- end -}}
+<meta name="description" content="{{ $description | plainify | htmlEscape }}">
+
+<link rel="canonical" href="{{ .Permalink }}">
+
+{{- /* robots */ -}}
+{{- with .Params.robots -}}
+  <meta name="robots" content="{{ . }}">
+{{- else -}}
+  <meta name="robots" content="index, follow">
+{{- end -}}
+
+{{- /* Open Graph */ -}}
+{{- $ogType := .Site.Params.seo.openGraphType -}}
+{{- if not $ogType -}}
+  {{- if .IsPage -}}
+    {{- $ogType = "article" -}}
+  {{- else -}}
+    {{- $ogType = "website" -}}
+  {{- end -}}
+{{- end -}}
+<meta property="og:type" content="{{ $ogType }}">
+<meta property="og:locale" content="{{ .Site.LanguageCode }}">
+<meta property="og:site_name" content="{{ .Site.Title }}">
+<meta property="og:title" content="{{ (cond (ne .Title "") .Title .Site.Title) | htmlEscape }}">
+<meta property="og:description" content="{{ $description | htmlEscape }}">
+<meta property="og:url" content="{{ .Permalink }}">
+
+{{- /* Prefer page bundle resources for OG image, then page param, then site default asset */ -}}
+{{- $ogImageURL := "" -}}
+
+{{- /* 1) If front matter explicitly sets og_image, try to resolve it as a page resource first, then as an absolute/relative path */ -}}
+{{- with .Params.og_image -}}
+  {{- $candidate := . -}}
+  {{- with .Page }}{{- /* no-op to allow context */}}{{- end -}}
+  {{- $r := resources.Get $candidate -}}
+  {{- if $r -}}
+    {{- $res := $r.Fit "1200x630" -}}
+    {{- $ogImageURL = $res.RelPermalink -}}
+  {{- else -}}
+    {{- $ogImageURL = $candidate -}}
+  {{- end -}}
+{{- end -}}
+
+{{- /* 2) If not set, try page bundle images: match 'featured*' or any image resource */ -}}
+{{- if eq $ogImageURL "" -}}
+  {{- with .Resources.Match "featured*" -}}
+    {{- if ge (len .) 1 -}}
+      {{- $first := index . 0 -}}
+      {{- $res := $first.Fit "1200x630" -}}
+      {{- $ogImageURL = $res.RelPermalink -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+
+{{- if eq $ogImageURL "" -}}
+  {{- with .Resources.ByType "image" -}}
+    {{- if ge (len .) 1 -}}
+      {{- $first := index . 0 -}}
+      {{- $res := $first.Fit "1200x630" -}}
+      {{- $ogImageURL = $res.RelPermalink -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+
+{{- /* 3) fallback to site-level OG image in assets */ -}}
+{{- if eq $ogImageURL "" -}}
+  {{- with .Site.Params.seo.openGraphImage -}}
+    {{- $r := resources.Get . -}}
+    {{- if $r -}}
+      {{- $res := $r.Fit "1200x630" -}}
+      {{- $ogImageURL = $res.RelPermalink -}}
+    {{- else -}}
+      {{- $ogImageURL = . -}}
+    {{- end -}}
+  {{- else -}}
+    {{- $ogImageURL = "/images/og-image.jpg" -}}
+  {{- end -}}
+{{- end -}}
+
+{{- if ne $ogImageURL "" -}}
+  <meta property="og:image" content="{{ $ogImageURL }}">
+{{- end -}}
+
+{{- /* Twitter */ -}}
+{{- if .Site.Params.seo.twitterCard }}
+  <meta name="twitter:card" content="{{ .Site.Params.seo.twitterCardType | default "summary_large_image" }}">
+  {{- with .Site.Params.twitter }}
+    <meta name="twitter:site" content="@{{ . }}">
+  {{- end }}
+  <meta name="twitter:title" content="{{ (cond (ne .Title "") .Title .Site.Title) | htmlEscape }}">
+  <meta name="twitter:description" content="{{ $description | htmlEscape }}">
+  {{- if ne $ogImageURL "" }}
+    <meta name="twitter:image" content="{{ $ogImageURL }}">
+  {{- end }}
+{{- end }}
+
+<link rel="alternate" type="application/rss+xml" title="{{ .Site.Title }} RSS" href="{{ "index.xml" | relURL }}">
+<link rel="alternate" type="application/json" title="{{ .Site.Title }} JSON Feed" href="{{ "index.json" | relURL }}">
+
+{{- /* JSON-LD: site and article */ -}}
+{{- if and .Site.Params.seo.structuredData (not .IsHome) -}}
+  {{- if .IsPage -}}
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "{{ .Permalink }}"
+      },
+      "headline": "{{ .Title | htmlEscape }}",
+      "description": "{{ $description | htmlEscape }}",
+      "datePublished": "{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}",
+      "dateModified": "{{ .Lastmod.Format "2006-01-02T15:04:05Z07:00" }}",
+      "author": {
+        "@type": "Person",
+        "name": "{{ .Site.Params.author }}"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "{{ .Site.Title }}",
+        "url": "{{ .Site.BaseURL }}"
+      }
+    }
+    </script>
+  {{- end -}}
+{{- else if and .Site.Params.seo.structuredData .IsHome -}}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "url": "{{ .Site.BaseURL }}",
+    "name": "{{ .Site.Title }}",
+    "description": "{{ .Site.Params.description }}"
+  }
+  </script>
+{{- end -}}

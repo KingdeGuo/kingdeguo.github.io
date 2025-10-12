@@ -4,8 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>{{ block "title" . }}{{ with .Title }}{{ . }} | {{ end }}{{ .Site.Title }}{{ end }}</title>
-  <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ with .Summary }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}{{ end }}">
+  {{ partial "seo.html" . }}
 
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
 
@@ -72,6 +71,8 @@
   {{ else }}
     <script src="/js/main.js"></script>
   {{ end }}
+
+  {{ partial "analytics.html" . }}
 
   {{/* comments script moved to single.html to load adjacent to #giscus-comments */}}
 </body>
