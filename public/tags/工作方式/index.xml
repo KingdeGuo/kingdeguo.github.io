@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>工作方式 on kingdeguo&#39;s blog</title>
-    <link>http://localhost:1315/tags/%E5%B7%A5%E4%BD%9C%E6%96%B9%E5%BC%8F/</link>
+    <link>http://localhost:63612/tags/%E5%B7%A5%E4%BD%9C%E6%96%B9%E5%BC%8F/</link>
     <description>Recent content in 工作方式 on kingdeguo&#39;s blog</description>
     <generator>Hugo</generator>
     <language>zh-CN</language>
     <lastBuildDate>Wed, 01 Oct 2025 17:10:00 +0800</lastBuildDate>
-    <atom:link href="http://localhost:1315/tags/%E5%B7%A5%E4%BD%9C%E6%96%B9%E5%BC%8F/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:63612/tags/%E5%B7%A5%E4%BD%9C%E6%96%B9%E5%BC%8F/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>大模型到底改变了什么？</title>
-      <link>http://localhost:1315/2025/10/01/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%88%B0%E5%BA%95%E6%94%B9%E5%8F%98%E4%BA%86%E4%BB%80%E4%B9%88/</link>
+      <link>http://localhost:63612/2025/10/01/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%88%B0%E5%BA%95%E6%94%B9%E5%8F%98%E4%BA%86%E4%BB%80%E4%B9%88/</link>
       <pubDate>Wed, 01 Oct 2025 17:10:00 +0800</pubDate>
-      <guid>http://localhost:1315/2025/10/01/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%88%B0%E5%BA%95%E6%94%B9%E5%8F%98%E4%BA%86%E4%BB%80%E4%B9%88/</guid>
+      <guid>http://localhost:63612/2025/10/01/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%88%B0%E5%BA%95%E6%94%B9%E5%8F%98%E4%BA%86%E4%BB%80%E4%B9%88/</guid>
       <description>&lt;h1 id=&#34;大模型到底改变了什么&#34;&gt;大模型到底改变了什么？&lt;/h1&gt;&#xA;&lt;p&gt;最近我常常在想一个问题：大模型到底改变了什么？&lt;/p&gt;&#xA;&lt;p&gt;有时候，我觉得它带来的冲击比表面看到的还要大。以前我们做事，总有一种&amp;quot;节奏感&amp;quot;。比如一个方案要几天准备，一个流程要几周走完，一个文档要一个人慢慢写。时间和空间像是一种自然约束，每个人都被它框住。&lt;/p&gt;&#xA;&lt;p&gt;可大模型出现后，很多节奏突然被打乱了。它能在几分钟里生成一份初稿，能同时处理多个任务，能让原本需要排队、等待、反复确认的事情瞬间推进。以前那种&amp;quot;必须花时间消耗&amp;quot;的逻辑，好像被改写了。&lt;/p&gt;&#xA;&lt;p&gt;这让我想起一句话：尼采说&amp;quot;上帝死了&amp;quot;，意味着旧的秩序崩塌，人必须重新面对世界。而大模型的出现，也像是在提醒我们：很多旧的秩序被抹平了，我们得重新去思考。&lt;/p&gt;&#xA;&lt;p&gt;在工作里，我已经真切感受到这种变化。过去，一个项目提案要靠几个人反复讨论、磨合、再定稿；现在，我自己先丢给模型跑一版资料，立刻就能拿到一个方向，再带着成果和大家讨论，节奏完全不同了。过去，写一封正式的邮件要反复斟酌用词；现在，模型能帮我先列一个框架，我只需要根据场景润色。那种&amp;quot;节奏感&amp;quot;，真的被重构了。&lt;/p&gt;&#xA;&lt;p&gt;我有时候甚至会有点震惊：原本我们以为不可替代的流程、不可压缩的时间，现在突然都变得松动了。这让我不得不重新思考：如果效率不再是瓶颈，那我们该怎么定义自己的价值？如果机器能并行处理一切&amp;quot;可量化&amp;quot;的工作，那我们作为人，还能贡献什么？&lt;/p&gt;&#xA;&lt;p&gt;这些问题我现在还没有答案。但我能确定的是，大模型不是在帮我们省点时间这么简单，而是把我们对&amp;quot;时间、空间和工作节奏&amp;quot;的理解彻底翻了一遍。&lt;/p&gt;&#xA;&lt;p&gt;它让我意识到，我们已经站在一个新的门槛上。很多事情，需要我们重新去看，重新去理解。&lt;/p&gt;</description>
     </item>
   </channel>
