@@ -2,6 +2,7 @@
   "htmlElements": {
     "tags": [
       "a",
+      "amp-auto-ads",
       "article",
       "body",
       "button",

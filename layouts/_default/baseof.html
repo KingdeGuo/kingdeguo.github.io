@@ -12,6 +12,11 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2370953792797102"
      crossorigin="anonymous"></script>
 
+  <!-- AMP Auto Ads -->
+  <script async custom-element="amp-auto-ads"
+          src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+  </script>
+
   <!-- Styles -->
   {{ $style := resources.Get "css/main.css" }}
   {{ if $style }}
@@ -23,6 +28,9 @@
   {{ block "structured-data" . }}{{ end }}
 </head>
 <body>
+  <amp-auto-ads type="adsense"
+          data-ad-client="ca-pub-2370953792797102">
+  </amp-auto-ads>
   <!-- Header -->
   <header class="site-header">
     <nav class="nav">
