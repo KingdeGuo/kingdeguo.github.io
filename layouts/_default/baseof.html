@@ -26,6 +26,8 @@
   {{ end }}
 
   {{ block "structured-data" . }}{{ end }}
+  
+  {{ partial "analytics.html" . }}
 </head>
 <body>
   <amp-auto-ads type="adsense"
@@ -83,8 +85,6 @@
   {{ else }}
     <script src="/js/main.js"></script>
   {{ end }}
-
-  {{ partial "analytics.html" . }}
 
   {{/* comments script moved to single.html to load adjacent to #giscus-comments */}}
 </body>
