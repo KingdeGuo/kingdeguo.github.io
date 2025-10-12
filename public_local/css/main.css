@@ -188,6 +188,34 @@ a:hover {
   color: var(--text-light);
 }
 
+/* Homepage center message */
+.homepage-message {
+  padding: var(--spacing-xxl) 0;
+  text-align: center;
+}
+
+.homepage-text {
+  font-size: 1.5rem;
+  color: var(--text-color);
+  max-width: 900px;
+  margin: 0 auto;
+  font-weight: 500;
+}
+
+/* Giscus / comments wrapper styling to integrate with theme */
+.post-comments {
+  margin-top: var(--spacing-xl);
+  padding: var(--spacing-lg);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  background: var(--bg-alt);
+}
+
+#giscus-comments,
+.giscus-frame {
+  width: 100% !important;
+}
+
 .recent-posts {
   margin-top: var(--spacing-xxl);
 }
@@ -259,8 +287,11 @@ a:hover {
 
 /* Post Page */
 .post {
-  /* Remove width constraints to work with content-wrapper layout */
-  margin: 0;
+  /* Constrain the article width so content and comments align */
+  margin: 0 auto;
+  max-width: 760px; /* comfortable readable measure */
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .post-header {
@@ -348,6 +379,22 @@ a:hover {
   margin-top: var(--spacing-xl);
   padding-top: var(--spacing-lg);
   border-top: 1px solid var(--border-color);
+}
+
+/* Ensure comments area aligns with the post content and the giscus iframe respects container width */
+.post-comments {
+  box-sizing: border-box;
+  max-width: 100%;
+  width: 100%;
+  padding: var(--spacing-lg);
+}
+
+#giscus-comments,
+.post-comments .giscus-frame,
+.post-comments iframe {
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
 }
 
 /* Footer */
