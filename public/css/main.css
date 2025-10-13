@@ -28,12 +28,51 @@
   padding-bottom: 0.5rem;
   border-bottom: 2px solid var(--border-color);
 }
-  
-  /* Typography */
+
+/* Search Styles */
+.post-preview {
+  font-size: 0.9rem;
+  color: var(--text-light);
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+  line-height: 1.4;
+}
+
+.search-highlight {
+  background-color: #fff3cd;
+  padding: 0.1rem 0.2rem;
+  border-radius: 2px;
+}
+
+.search-container {
+  margin-bottom: 2rem;
+}
+
+#search-input {
+  width: 100%;
+  padding: 0.8rem;
+  font-size: 1rem;
+  border: 2px solid var(--search-border);
+  border-radius: var(--radius-md);
+  background-color: var(--search-bg);
+  transition: border-color 0.3s ease;
+}
+
+#search-input:focus {
+  outline: none;
+  border-color: var(--search-focus);
+}
+
+/* Typography */
   --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   --font-family-mono: SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
   --font-size-base: 16px;
   --line-height-base: 1.6;
+
+  /* Search Styles */
+  --search-bg: #ffffff;
+  --search-border: #ddd;
+  --search-focus: #666;
   
   /* Spacing */
   --spacing-xs: 0.25rem;

@@ -18,6 +18,11 @@
           src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
   </script>
 
+  <!-- Search Script -->
+  {{ if or (eq .Title "所有文章") (eq .Type "posts") }}
+  <script src="/js/search.js"></script>
+  {{ end }}
+
   <!-- Styles -->
   {{ $style := resources.Get "css/main.css" }}
   {{ if $style }}

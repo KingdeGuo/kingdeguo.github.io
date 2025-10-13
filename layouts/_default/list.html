@@ -2,8 +2,13 @@
 <div class="list-page">
   <header class="page-header">
     <h1>{{ .Title }}</h1>
+    {{ if or (eq .Title "所有文章") (eq .Type "posts") }}
+    <div class="search-container">
+      <input type="text" id="search-input" placeholder="输入关键词搜索文章..." />
+    </div>
+    {{ end }}
   </header>
-  <div class="posts-list">
+  <div class="posts-list" id="posts-list">
     {{ $pages := .Pages.GroupByDate "2006-01" }}
     {{ range $pages }}
     <div class="month-group">
