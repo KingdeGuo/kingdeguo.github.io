@@ -2,24 +2,24 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on kingdeguo&#39;s blog</title>
-    <link>http://localhost:1313/categories/</link>
+    <link>https://www.kingdeguo.com/categories/</link>
     <description>Recent content in Categories on kingdeguo&#39;s blog</description>
     <generator>Hugo</generator>
     <language>zh-CN</language>
     <lastBuildDate>Mon, 13 Oct 2025 12:23:00 +0800</lastBuildDate>
-    <atom:link href="http://localhost:1313/categories/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://www.kingdeguo.com/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>思考</title>
-      <link>http://localhost:1313/categories/%E6%80%9D%E8%80%83/</link>
+      <link>https://www.kingdeguo.com/categories/%E6%80%9D%E8%80%83/</link>
       <pubDate>Mon, 13 Oct 2025 12:23:00 +0800</pubDate>
-      <guid>http://localhost:1313/categories/%E6%80%9D%E8%80%83/</guid>
+      <guid>https://www.kingdeguo.com/categories/%E6%80%9D%E8%80%83/</guid>
       <description></description>
     </item>
     <item>
       <title>技术</title>
-      <link>http://localhost:1313/categories/%E6%8A%80%E6%9C%AF/</link>
+      <link>https://www.kingdeguo.com/categories/%E6%8A%80%E6%9C%AF/</link>
       <pubDate>Fri, 05 Sep 2025 22:27:00 +0800</pubDate>
-      <guid>http://localhost:1313/categories/%E6%8A%80%E6%9C%AF/</guid>
+      <guid>https://www.kingdeguo.com/categories/%E6%8A%80%E6%9C%AF/</guid>
       <description></description>
     </item>
   </channel>

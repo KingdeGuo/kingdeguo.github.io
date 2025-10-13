@@ -2,7 +2,7 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://kingdeguo.github.io/sitemap.xml
+Sitemap: https://www.kingdeguo.com/sitemap.xml
 
 # Disallow admin and private directories
 Disallow: /admin/
