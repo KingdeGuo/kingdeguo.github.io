@@ -166,7 +166,12 @@
     "@type": "WebSite",
     "url": "{{ .Site.BaseURL }}",
     "name": "{{ .Site.Title }}",
-    "description": "{{ .Site.Params.description }}"
+    "description": "{{ .Site.Params.description }}",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "{{ .Site.BaseURL }}posts/?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
   }
   </script>
 {{- end -}}

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/">
+  <ShortName>kingdeguo 博客</ShortName>
+  <Description>在 kingdeguo 的博客中搜索文章</Description>
+  <Url type="text/html" template="https://www.kingdeguo.com/posts/?q={searchTerms}"/>
+  <InputEncoding>UTF-8</InputEncoding>
+</OpenSearchDescription>
