@@ -1,102 +1,138 @@
 document.addEventListener('DOMContentLoaded', function() {
     const searchInput = document.getElementById('search-input');
-    if (!searchInput) return;
+    const postsContainer = document.getElementById('posts-list');
+    if (!searchInput || !postsContainer) return;
 
-    let postsData = null;
+    let postsData = [];
+    let originalHTML = postsContainer.innerHTML;
 
-    // 获取文章数据
+    function getQueryParam() {
+        try {
+            const params = new URLSearchParams(window.location.search);
+            return params.get('q') || '';
+        } catch (e) {
+            return '';
+        }
+    }
+
+    function updateURLParam(q) {
+        const url = new URL(window.location.href);
+        if (q) url.searchParams.set('q', q);
+        else url.searchParams.delete('q');
+        history.replaceState({}, document.title, url.toString());
+    }
+
     fetch('/index.json')
-        .then(response => response.json())
+        .then(r => r.json())
         .then(data => {
             postsData = data;
+            const q = getQueryParam();
+            if (q) {
+                searchInput.value = q;
+                performSearch(q);
+                searchInput.focus();
+                searchInput.setSelectionRange(searchInput.value.length, searchInput.value.length);
+            }
         })
-        .catch(error => console.error('Error loading search index:', error));
+        .catch(err => console.error('Error loading search index:', err));
 
-    // 搜索功能
-    searchInput.addEventListener('input', function(e) {
-        const searchTerm = e.target.value.toLowerCase();
-        const postsList = document.getElementById('posts-list');
-        
-        if (!postsData || !postsList) return;
-        
-        // 如果搜索框为空，显示原始文章列表
-        if (!searchTerm) {
-            location.reload();
+    function debounce(fn, wait) {
+        let t = null;
+        return function(...args) {
+            clearTimeout(t);
+            t = setTimeout(() => fn.apply(this, args), wait);
+        }
+    }
+
+    function performSearch(rawQuery) {
+        const q = (rawQuery || '').trim().toLowerCase();
+
+        if (!q) {
+            postsContainer.innerHTML = originalHTML;
+            updateURLParam('');
+            setTimeout(() => searchInput.focus(), 0);
             return;
         }
 
-        // 清空现有内容
-        postsList.innerHTML = '';
-        
-        // 过滤并显示搜索结果
         const results = postsData.filter(post => {
-            const titleMatch = post.title.toLowerCase().includes(searchTerm);
-            const contentMatch = post.content.toLowerCase().includes(searchTerm);
-            const dateMatch = post.date.toLowerCase().includes(searchTerm);
-            return titleMatch || contentMatch || dateMatch;
+            const title = (post.title || '').toLowerCase();
+            const content = (post.content || '').toLowerCase();
+            const date = (post.date || '').toLowerCase();
+            return title.includes(q) || content.includes(q) || date.includes(q);
         });
 
-        if (results.length === 0) {
-            postsList.innerHTML = '<div class="no-results">没有找到相关文章</div>';
+        if (!results.length) {
+            postsContainer.innerHTML = '<div class="no-results">没有找到相关文章</div>';
+            updateURLParam(q);
             return;
         }
 
-        // 按日期分组显示结果
-        const groupedResults = groupByMonth(results);
-        
-        // 渲染搜索结果
-        groupedResults.forEach(group => {
+        const grouped = groupByMonth(results);
+        postsContainer.innerHTML = '';
+        grouped.forEach(g => {
             const monthGroup = document.createElement('div');
             monthGroup.className = 'month-group';
-            
+
             const monthTitle = document.createElement('h3');
             monthTitle.className = 'month-title';
-            monthTitle.textContent = group.month;
+            monthTitle.textContent = g.month;
             monthGroup.appendChild(monthTitle);
 
-            const postsList = document.createElement('ul');
-            postsList.className = 'post-titles';
-            
-            group.posts.forEach(post => {
+            const ul = document.createElement('ul');
+            ul.className = 'post-titles';
+
+            g.posts.forEach(post => {
                 const li = document.createElement('li');
-                const link = document.createElement('a');
-                link.href = post.permalink;
-                link.innerHTML = highlightText(post.title, searchTerm);
-                li.appendChild(link);
-                postsList.appendChild(li);
+                const a = document.createElement('a');
+                a.href = post.permalink;
+                a.innerHTML = highlightText(post.title || '', q);
+                li.appendChild(a);
+                ul.appendChild(li);
             });
 
-            monthGroup.appendChild(postsList);
-            postsList.appendChild(monthGroup);
+            monthGroup.appendChild(ul);
+            postsContainer.appendChild(monthGroup);
         });
+
+        updateURLParam(q);
+    }
+
+    const debouncedSearch = debounce(function(e) {
+        performSearch(e.target.value);
+    }, 180);
+
+    searchInput.addEventListener('input', function(e) {
+        debouncedSearch(e);
     });
+
+    searchInput.addEventListener('search', function(e) {
+        if (!e.target.value) performSearch('');
+    });
+
+    function highlightText(text, q) {
+        if (!q) return escapeHtml(text);
+        const esc = q.replace(/[.*+?^${}()|[\\]\\\\]/g, '\\$&');
+        const re = new RegExp('(' + esc + ')', 'gi');
+        return escapeHtml(text).replace(re, '<span class="search-highlight">$1</span>');
+    }
+
+    function escapeHtml(str) {
+        return String(str).replace(/[&<>"']/g, function(s) {
+            return ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'})[s];
+        });
+    }
+
+    function groupByMonth(posts) {
+        const groups = {};
+        posts.forEach(p => {
+            const date = new Date(p.date);
+            const month = date.toLocaleString('zh-CN', { year: 'numeric', month: '2-digit' });
+            if (!groups[month]) groups[month] = [];
+            groups[month].push(p);
+        });
+        return Object.entries(groups)
+            .sort((a, b) => b[0].localeCompare(a[0]))
+            .map(([month, items]) => ({ month, posts: items.sort((a, b) => new Date(b.date) - new Date(a.date)) }));
+    }
+
 });
-
-// 文本高亮函数
-function highlightText(text, searchTerm) {
-    if (!searchTerm) return text;
-    const regex = new RegExp(`(${searchTerm})`, 'gi');
-    return text.replace(regex, '<span class="search-highlight">$1</span>');
-}
-
-// 按月份分组函数
-function groupByMonth(posts) {
-    const groups = {};
-    
-    posts.forEach(post => {
-        const date = new Date(post.date);
-        const month = date.toLocaleString('zh-CN', { year: 'numeric', month: '2-digit' });
-        
-        if (!groups[month]) {
-            groups[month] = [];
-        }
-        groups[month].push(post);
-    });
-
-    return Object.entries(groups)
-        .sort((a, b) => b[0].localeCompare(a[0]))
-        .map(([month, posts]) => ({
-            month,
-            posts: posts.sort((a, b) => new Date(b.date) - new Date(a.date))
-        }));
-}
