@@ -1,0 +1,44 @@
+{{- /*
+  自动内部链接优化
+  基于关键词自动添加内部链接
+*/ -}}
+
+{{- $content := .content -}}
+{{- $page := .page -}}
+
+{{- /* 获取站点关键词映射 */ -}}
+{{- $keyword_map := dict -}}
+{{- range .Site.RegularPages -}}
+  {{- $keywords := slice -}}
+  {{- range .Params.tags -}}
+    {{- $keywords = $keywords | append . -}}
+  {{- end -}}
+  {{- range .Params.categories -}}
+    {{- $keywords = $keywords | append . -}}
+  {{- end -}}
+  {{- $keywords = $keywords | append .Title -}}
+  
+  {{- range $keywords -}}
+    {{- $keyword := . -}}
+    {{- if not (index $keyword_map $keyword) -}}
+      {{- $keyword_map = merge $keyword_map (dict $keyword (slice .)) -}}
+    {{- end -}}
+    {{- $existing := index $keyword_map $keyword -}}
+    {{- $keyword_map = merge $keyword_map (dict $keyword ($existing | append .)) -}}
+  {{- end -}}
+{{- end -}}
+
+{{- /* 智能链接替换逻辑 */ -}}
+{{- $processed_content := $content -}}
+
+{{- /* 简单的关键词链接替换（实际项目中需要更复杂的逻辑） */ -}}
+{{- range $keyword, $pages := $keyword_map -}}
+  {{- if gt (len $pages) 0 -}}
+    {{- $first_page := index $pages 0 -}}
+    {{- $link_pattern := printf `\b%s\b` $keyword -}}
+    {{- $replacement := printf `<a href="%s" class="internal-link">%s</a>` $first_page.Permalink $keyword -}}
+    {{- $processed_content = replace $processed_content $keyword $replacement -}}
+  {{- end -}}
+{{- end -}}
+
+{{- $processed_content | safeHTML -}}

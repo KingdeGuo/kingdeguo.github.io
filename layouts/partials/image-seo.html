@@ -1,0 +1,52 @@
+{{- /*
+  图片SEO优化部分模板
+  自动为图片添加alt属性、懒加载和结构化数据
+*/ -}}
+
+{{- $image := .image -}}
+{{- $alt := .alt | default "" -}}
+{{- $title := .title | default "" -}}
+{{- $class := .class | default "" -}}
+{{- $lazy := .lazy | default true -}}
+
+{{- /* 自动生成alt文本 */ -}}
+{{- if not $alt -}}
+  {{- $alt = .Page.Title -}}
+  {{- if .Page.Params.description -}}
+    {{- $alt = printf "%s - %s" .Page.Title .Page.Params.description -}}
+  {{- end -}}
+{{- end -}}
+
+{{- /* 图片处理 */ -}}
+{{- if $image -}}
+  {{- $processed := $image -}}
+  
+  {{- /* 如果是页面资源，进行优化处理 */ -}}
+  {{- if eq $image.MediaType.MainType "image" -}}
+    {{- /* 生成不同尺寸的图片 */ -}}
+    {{- $webp := $image.Resize "800x webp" -}}
+    {{- $fallback := $image.Resize "800x" -}}
+    
+    <picture>
+      <source srcset="{{ $webp.RelPermalink }}" type="image/webp">
+      <img 
+        src="{{ $fallback.RelPermalink }}" 
+        alt="{{ $alt | htmlEscape }}" 
+        {{- if $title }} title="{{ $title | htmlEscape }}"{{ end -}}
+        {{- if $class }} class="{{ $class }}"{{ end -}}
+        {{- if $lazy }} loading="lazy"{{ end -}}
+        width="{{ $fallback.Width }}" 
+        height="{{ $fallback.Height }}"
+      >
+    </picture>
+  {{- else -}}
+    {{- /* 外部图片 */ -}}
+    <img 
+      src="{{ $image }}" 
+      alt="{{ $alt | htmlEscape }}" 
+      {{- if $title }} title="{{ $title | htmlEscape }}"{{ end -}}
+      {{- if $class }} class="{{ $class }}"{{ end -}}
+      {{- if $lazy }} loading="lazy"{{ end -}}
+    >
+  {{- end -}}
+{{- end -}}

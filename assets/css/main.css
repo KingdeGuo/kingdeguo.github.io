@@ -16,6 +16,36 @@
   --bg-alt: #f8f9fa;
   --border-color: #dee2e6;
 
+  /* Typography */
+  --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-family-mono: SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+  --font-size-base: 16px;
+  --line-height-base: 1.6;
+
+  /* Search Styles */
+  --search-bg: #ffffff;
+  --search-border: #ddd;
+  --search-focus: #666;
+  
+  /* Spacing */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  --spacing-xxl: 3rem;
+  
+  /* Border Radius */
+  --radius-sm: 2px;
+  --radius-md: 4px;
+  --radius-lg: 6px;
+  
+  /* Shadows */
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
+  --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+  --shadow-lg: 0 10px 15px rgba(0,0,0,0.1);
+}
+
 /* Month Group Styles */
 .month-group {
   margin-bottom: 2.5rem;
@@ -61,36 +91,6 @@
 #search-input:focus {
   outline: none;
   border-color: var(--search-focus);
-}
-
-/* Typography */
-  --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  --font-family-mono: SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
-  --font-size-base: 16px;
-  --line-height-base: 1.6;
-
-  /* Search Styles */
-  --search-bg: #ffffff;
-  --search-border: #ddd;
-  --search-focus: #666;
-  
-  /* Spacing */
-  --spacing-xs: 0.25rem;
-  --spacing-sm: 0.5rem;
-  --spacing-md: 1rem;
-  --spacing-lg: 1.5rem;
-  --spacing-xl: 2rem;
-  --spacing-xxl: 3rem;
-  
-  /* Border Radius */
-  --radius-sm: 2px;
-  --radius-md: 4px;
-  --radius-lg: 6px;
-  
-  /* Shadows */
-  --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
-  --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
-  --shadow-lg: 0 10px 15px rgba(0,0,0,0.1);
 }
 
 /* Theme support: default light, override with [data-theme="dark"] */
@@ -504,9 +504,24 @@ a:hover {
   font-size: 0.875rem;
 }
 
+.post-meta-primary {
+  margin-bottom: var(--spacing-sm);
+}
+
+.post-meta-primary time,
+.post-meta-primary .post-reading-time,
+.post-meta-primary .post-word-count {
+  margin-right: var(--spacing-md);
+}
+
+.post-meta-secondary {
+  border-top: 1px solid var(--border-color);
+  padding-top: var(--spacing-sm);
+}
+
 .post-categories,
 .post-tags {
-  margin-left: var(--spacing-md);
+  margin-right: var(--spacing-md);
 }
 
 .post-categories a,

@@ -147,6 +147,43 @@
 <link rel="alternate" type="application/rss+xml" title="{{ .Site.Title }} RSS" href="{{ "index.xml" | relURL }}">
 <link rel="alternate" type="application/json" title="{{ .Site.Title }} JSON Feed" href="{{ "index.json" | relURL }}">
 
+{{- /* 自动关键词提取和优化 */ -}}
+{{- $keywords := slice -}}
+{{- range .Params.tags -}}
+  {{- $keywords = $keywords | append . -}}
+{{- end -}}
+{{- range .Params.categories -}}
+  {{- $keywords = $keywords | append . -}}
+{{- end -}}
+{{- if gt (len $keywords) 0 -}}
+<meta name="keywords" content="{{ delimit $keywords ", " | htmlEscape }}">
+{{- end -}}
+
+{{- /* 自动文章元数据 */ -}}
+{{- if .IsPage -}}
+  {{- /* 文章分类和标签元数据 */ -}}
+  {{- with .Params.categories -}}
+    <meta property="article:section" content="{{ index . 0 | htmlEscape }}">
+  {{- end -}}
+  {{- range .Params.tags -}}
+    <meta property="article:tag" content="{{ . | htmlEscape }}">
+  {{- end -}}
+  
+  {{- /* 文章时间元数据 */ -}}
+  <meta property="article:published_time" content="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">
+  <meta property="article:modified_time" content="{{ .Lastmod.Format "2006-01-02T15:04:05Z07:00" }}">
+  <meta property="article:author" content="{{ .Site.Params.author | htmlEscape }}">
+  
+  {{- /* 自动阅读时间和字数统计 */ -}}
+  {{- if .WordCount -}}
+    <meta property="article:word_count" content="{{ .WordCount }}">
+  {{- end -}}
+  {{- if .ReadingTime -}}
+    <meta name="readingTime" content="{{ .ReadingTime }} 分钟">
+    <meta property="article:time_required" content="PT{{ .ReadingTime }}M">
+  {{- end -}}
+{{- end -}}
+
 {{- /* JSON-LD: site and article */ -}}
 {{- if and .Site.Params.seo.structuredData (not .IsHome) -}}
   {{- if .IsPage -}}
@@ -170,7 +207,8 @@
         "@type": "Organization",
         "name": "{{ .Site.Title }}",
         "url": "{{ .Site.BaseURL }}"
-      }
+      }{{- if .WordCount -}},
+      "wordCount": {{ .WordCount }}{{- end -}}
     }
     </script>
   {{- end -}}

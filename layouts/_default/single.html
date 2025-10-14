@@ -3,22 +3,38 @@
   <header class="post-header">
     <h1 class="post-title">{{ .Title }}</h1>
     <div class="post-meta">
-      <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006年1月2日" }}</time>
-      {{ if .Params.categories }}
-      <span class="post-categories">
-        分类：
-        {{ range .Params.categories }}
-        <a href="{{ "/categories/" | relLangURL }}{{ . | urlize }}">{{ . }}</a>
+      <div class="post-meta-primary">
+        <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006年1月2日" }}</time>
+        {{- $wordCount := .WordCount -}}
+        {{- if eq $wordCount 0 -}}
+          {{- $wordCount = len (split .Plain " ") -}}
+        {{- end -}}
+        {{- if lt $wordCount 100 -}}
+          {{- $wordCount = len (replaceRE "[^\\p{Han}]" "" .Plain) -}}
+        {{- end -}}
+        {{- $readingTime := div $wordCount 200 | math.Ceil | default 1 -}}
+        <span class="post-reading-time">阅读时间：{{ $readingTime }} 分钟</span>
+        <span class="post-word-count">字数：{{ $wordCount }} 字</span>
+      </div>
+      {{ if or .Params.categories .Params.tags }}
+      <div class="post-meta-secondary">
+        {{ if .Params.categories }}
+        <span class="post-categories">
+          分类：
+          {{ range .Params.categories }}
+          <a href="{{ "/categories/" | relLangURL }}{{ . | urlize }}">{{ . }}</a>
+          {{ end }}
+        </span>
         {{ end }}
-      </span>
-      {{ end }}
-      {{ if .Params.tags }}
-      <span class="post-tags">
-        标签：
-        {{ range .Params.tags }}
-        <a href="{{ "/tags/" | relLangURL }}{{ . | urlize }}">{{ . }}</a>
+        {{ if .Params.tags }}
+        <span class="post-tags">
+          标签：
+          {{ range .Params.tags }}
+          <a href="{{ "/tags/" | relLangURL }}{{ . | urlize }}">{{ . }}</a>
+          {{ end }}
+        </span>
         {{ end }}
-      </span>
+      </div>
       {{ end }}
     </div>
   </header>
@@ -28,6 +44,47 @@
   </div>
 
   <footer class="post-footer">
+    {{- /* 自动文章系列关联 */ -}}
+    {{- if .Params.series -}}
+      {{- $series_name := index .Params.series 0 -}}
+      {{- $series_pages := where .Site.RegularPages "Params.series" "intersect" (slice $series_name) -}}
+      {{- if gt (len $series_pages) 1 -}}
+        <div class="post-series">
+          <h3>系列文章：{{ $series_name }}</h3>
+          <ul class="series-list">
+            {{- range $index, $page := $series_pages.ByDate -}}
+              <li class="series-item{{ if eq $page.Permalink $.Permalink }} current{{ end }}">
+                <a href="{{ $page.Permalink }}">{{ $page.Title }}</a>
+                {{- if eq $page.Permalink $.Permalink -}}
+                  <span class="current-marker">（当前文章）</span>
+                {{- end -}}
+              </li>
+            {{- end -}}
+          </ul>
+        </div>
+      {{- end -}}
+    {{- end -}}
+
+    {{- /* 自动相关文章推荐 */ -}}
+    {{- $related := .Site.RegularPages.Related . | first 3 -}}
+    {{- if $related -}}
+      <div class="related-posts">
+        <h3>相关文章</h3>
+        <ul class="related-list">
+          {{- range $related -}}
+            <li class="related-item">
+              <a href="{{ .Permalink }}">{{ .Title }}</a>
+              {{- if .Params.description -}}
+                <p class="related-description">{{ .Params.description }}</p>
+              {{- else if .Summary -}}
+                <p class="related-description">{{ .Summary | truncate 100 }}</p>
+              {{- end -}}
+            </li>
+          {{- end -}}
+        </ul>
+      </div>
+    {{- end -}}
+
     {{ if .Site.Params.features.comments }}
     <div class="post-comments">
       <div id="giscus-comments"></div>
@@ -54,4 +111,3 @@
 </article>
 
 {{ end }}
-
