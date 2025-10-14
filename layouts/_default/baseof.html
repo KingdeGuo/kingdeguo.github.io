@@ -9,6 +9,7 @@
 
   <link rel="icon" type="image/jpeg" href="/icon.jpg">
   <link rel="search" type="application/opensearchdescription+xml" href="{{ "opensearch.xml" | relURL }}" title="{{ .Site.Title }}">
+  <link rel="alternate" type="application/rss+xml" href="{{ "index.xml" | absURL }}" title="{{ .Site.Title }} RSS">
 
   <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2370953792797102"
@@ -59,6 +60,9 @@
           <a href="{{ .URL | relURL }}" class="nav-link">{{ .Name }}</a>
         </li>
         {{ end }}
+        <li class="nav-item">
+          <a href="{{ "index.xml" | absURL }}" class="nav-link" target="_blank" rel="noopener">RSS订阅</a>
+        </li>
         <li class="nav-item nav-theme-toggle">
           {{ partial "theme-toggle.html" . }}
         </li>
@@ -87,6 +91,7 @@
         {{ with .Site.Params.github }}
         <a href="https://github.com/{{ . }}" target="_blank" rel="noopener">GitHub</a>
         {{ end }}
+        <a href="{{ "index.xml" | absURL }}" target="_blank" rel="noopener">RSS订阅</a>
       </div>
     </div>
   </footer>
