@@ -9,6 +9,10 @@ Disallow: /admin/
 Disallow: /private/
 Disallow: /tmp/
 
+# Disallow search result pages to prevent duplicate content
+Disallow: /*?q=
+Disallow: /*&q=
+
 # Allow all other paths
 Allow: /css/
 Allow: /js/

@@ -41,7 +41,22 @@
 {{- with .Params.robots -}}
   <meta name="robots" content="{{ . }}">
 {{- else -}}
-  <meta name="robots" content="index, follow">
+  {{- /* Prevent search result pages from being indexed */ -}}
+  {{- if and (or (eq .Title "所有文章") (eq .Type "posts")) (ne .RelPermalink "/posts/") -}}
+    {{- /* Check if this is a search result page by looking for search parameters */ -}}
+    {{- if .RelPermalink -}}
+      {{- $url := .RelPermalink -}}
+      {{- if or (strings.Contains $url "?q=") (strings.Contains $url "&q=") -}}
+        <meta name="robots" content="noindex, follow">
+      {{- else -}}
+        <meta name="robots" content="index, follow">
+      {{- end -}}
+    {{- else -}}
+      <meta name="robots" content="index, follow">
+    {{- end -}}
+  {{- else -}}
+    <meta name="robots" content="index, follow">
+  {{- end -}}
 {{- end -}}
 
 {{- /* Open Graph */ -}}

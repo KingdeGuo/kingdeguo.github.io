@@ -1,4 +1,34 @@
 {{ define "main" }}
+{{- /* SEO optimization for search pages */ -}}
+{{- if and (or (eq .Title "所有文章") (eq .Type "posts")) (.Site.Params.seo) -}}
+  {{- if .Site.Params.seo.structuredData -}}
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SearchResultsPage",
+      "name": "{{ .Title }} - {{ .Site.Title }}",
+      "description": "{{ .Site.Params.description }}",
+      "url": "{{ .Permalink }}",
+      "mainEntity": {
+        "@type": "ItemList",
+        "numberOfItems": {{ len .Pages }},
+        "itemListElement": [
+          {{- range $index, $page := .Pages -}}
+          {{- if gt $index 0 }},{{ end -}}
+          {
+            "@type": "ListItem",
+            "position": {{ add $index 1 }},
+            "url": "{{ $page.Permalink }}",
+            "name": "{{ $page.Title }}"
+          }
+          {{- end -}}
+        ]
+      }
+    }
+    </script>
+  {{- end -}}
+{{- end -}}
+
 <div class="list-page">
   <header class="page-header">
     <h1>{{ .Title }}</h1>
