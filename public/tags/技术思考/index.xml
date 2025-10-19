@@ -1,26 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>技术 on kingdeguo&#39;s blog</title>
-    <link>https://www.kingdeguo.com/categories/%E6%8A%80%E6%9C%AF/</link>
-    <description>Recent content in 技术 on kingdeguo&#39;s blog</description>
+    <title>技术思考 on kingdeguo&#39;s blog</title>
+    <link>https://www.kingdeguo.com/tags/%E6%8A%80%E6%9C%AF%E6%80%9D%E8%80%83/</link>
+    <description>Recent content in 技术思考 on kingdeguo&#39;s blog</description>
     <generator>Hugo</generator>
     <language>zh-CN</language>
     <lastBuildDate>Sun, 19 Oct 2025 14:16:00 +0800</lastBuildDate>
-    <atom:link href="https://www.kingdeguo.com/categories/%E6%8A%80%E6%9C%AF/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://www.kingdeguo.com/tags/%E6%8A%80%E6%9C%AF%E6%80%9D%E8%80%83/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>大模型盈利模式更像传统制造业</title>
       <link>https://www.kingdeguo.com/2025/10/19/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%9B%88%E5%88%A9%E6%A8%A1%E5%BC%8F%E6%9B%B4%E5%83%8F%E4%BC%A0%E7%BB%9F%E5%88%B6%E9%80%A0%E4%B8%9A/</link>
       <pubDate>Sun, 19 Oct 2025 14:16:00 +0800</pubDate>
       <guid>https://www.kingdeguo.com/2025/10/19/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%9B%88%E5%88%A9%E6%A8%A1%E5%BC%8F%E6%9B%B4%E5%83%8F%E4%BC%A0%E7%BB%9F%E5%88%B6%E9%80%A0%E4%B8%9A/</guid>
       <description>&lt;h1 id=&#34;大模型盈利模式更像传统制造业&#34;&gt;大模型盈利模式更像传统制造业&lt;/h1&gt;&#xA;&lt;p&gt;2025-10-19 14:16&#xA;最近跟几位从事AI的朋友聊，他们都笑着说：&amp;ldquo;你以为我们是在做互联网生意，其实更像在开工厂。&amp;rdquo;&lt;/p&gt;&#xA;&lt;p&gt;一开始我没太在意，还以为他们在夸张。但细想下来，确实如此。大模型的投入、运作和盈利逻辑，跟传统制造业比起来，惊人地像。&lt;/p&gt;&#xA;&lt;p&gt;我们先说投入。大模型不是你上线一个App就能吸引用户那种轻松。无论是搭建算力集群、整理海量训练数据，还是调度工程师团队，每一步都重资产、重成本、重周期。训练一次大型模型，几百万甚至上千万的算力账单就摆在你面前。互联网模式强调零边际成本——用户越多，成本越摊越薄；大模型却是边际递增——用户越多，推理成本越高。你今天多一个请求，就等于多烧一次电、多占一次算力。&lt;/p&gt;&#xA;&lt;p&gt;然后是运营。你以为上线了模型就能坐等流量？不不不，每一次迭代、每一次优化，都像工业生产中的工艺改进。数据清洗像原料加工，模型训练像流水线操作，推理优化像生产线调度。这些听起来枯燥，但决定了公司能不能挣钱。算法创新重要，但稳定、低耗、高产才是护城河。互联网模式讲故事、抓眼球，大模型讲效率和工艺。&lt;/p&gt;&#xA;&lt;p&gt;还有盈利方式。互联网靠流量、广告、长尾效应和网络效应，很多时候是虚拟的规模奇迹。大模型不同，它靠算力、靠数据、靠工程体系的积累。你做得再聪明，如果工业流程没打通，盈利就像沙子在手里漏掉。这也是为什么大模型行业里，有些公司看起来技术领先，但盈利能力却一直不稳。&lt;/p&gt;&#xA;&lt;p&gt;真正的拐点，是从&amp;quot;造模型&amp;quot;到&amp;quot;造体系&amp;quot;。当模型不再是单次训练的精密机器，而是可持续生产、可复用、可扩展的系统时，边际成本才可能被控制，规模效应才开始显现。这时，大模型公司才真正像制造业，不靠故事挣钱，而靠效率和流程赢利。算法、数据、算力、工程团队，都像零件和工序，缺一不可。&lt;/p&gt;&#xA;&lt;p&gt;所以说，大模型不是互联网的延续，它更像工业文明的下一章。表面上是智能革命，实质上是制造升级。喜欢讲投资故事的容易兴奋，但真正挣钱的，永远是那些懂得&amp;quot;把工业流程跑通&amp;quot;的人。&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>面向 scaling 编程</title>
-      <link>https://www.kingdeguo.com/2025/09/05/%E9%9D%A2%E5%90%91-scaling-%E7%BC%96%E7%A8%8B/</link>
-      <pubDate>Fri, 05 Sep 2025 22:27:00 +0800</pubDate>
-      <guid>https://www.kingdeguo.com/2025/09/05/%E9%9D%A2%E5%90%91-scaling-%E7%BC%96%E7%A8%8B/</guid>
-      <description>&lt;h1 id=&#34;面向-scaling-编程&#34;&gt;面向 scaling 编程&lt;/h1&gt;&#xA;&lt;p&gt;最近脑子里一直在盘旋着一个观点，所有的设计模式归根结底都是面向scaling编程。&lt;/p&gt;&#xA;&lt;p&gt;最近观察大模型的发展，我深刻意识到一个规律：系统的真正能力往往来源于 scaling，而不仅仅是局部优化。大模型通过算力、参数和数据的持续扩展，才能涌现出复杂的能力和行为。这让我重新审视软件工程和业务研发中的那些&amp;quot;可扩展、可维护、解耦、复用&amp;quot;等目标——表面上看似不同的追求，归根结底都是为系统在规模和复杂度增长时仍能稳定演进而设计。&lt;/p&gt;&#xA;&lt;p&gt;软件从来不是静态的，它会随着业务扩张而膨胀。单机架构到分布式，再到微服务拆分，每一次演进都是在应对规模增长带来的压力；模块化、接口抽象、数据治理、领域建模，则是为团队扩张和业务多线发展预留空间。即便是业务研发流程、需求评审、协作规范，也都是为 scaling 做准备，保证系统和团队在复杂度上升时不至于失控。大模型给我的启发是：当增长到一定阈值后，原本看似微小的设计选择，都会被放大，系统的可演化能力才是真正的核心竞争力。&lt;/p&gt;&#xA;&lt;p&gt;接受了这个观点后，我在日常研发中思考问题的方式也发生了变化。过去我更关注眼前需求和局部优雅，而现在我会先问：如果用户量或功能点增长十倍，代码还能撑住吗？接口和模块的边界设计是否足够稳健？即便是一个小功能，我也会优先考虑它在未来扩展中的弹性。这并非过度设计，而是让系统在初期就为 scaling 留下余地，让代码不仅解决今天的问题，也能支撑明天的增长。&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>
