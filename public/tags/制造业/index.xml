@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>制造业 on kingdeguo&#39;s blog</title>
-    <link>http://localhost:62320/tags/%E5%88%B6%E9%80%A0%E4%B8%9A/</link>
+    <link>https://www.kingdeguo.com/tags/%E5%88%B6%E9%80%A0%E4%B8%9A/</link>
     <description>Recent content in 制造业 on kingdeguo&#39;s blog</description>
     <generator>Hugo</generator>
     <language>zh-CN</language>
     <lastBuildDate>Sun, 19 Oct 2025 14:16:00 +0800</lastBuildDate>
-    <atom:link href="http://localhost:62320/tags/%E5%88%B6%E9%80%A0%E4%B8%9A/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://www.kingdeguo.com/tags/%E5%88%B6%E9%80%A0%E4%B8%9A/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>大模型盈利模式更像传统制造业</title>
-      <link>http://localhost:62320/2025/10/19/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%9B%88%E5%88%A9%E6%A8%A1%E5%BC%8F%E6%9B%B4%E5%83%8F%E4%BC%A0%E7%BB%9F%E5%88%B6%E9%80%A0%E4%B8%9A/</link>
+      <link>https://www.kingdeguo.com/2025/10/19/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%9B%88%E5%88%A9%E6%A8%A1%E5%BC%8F%E6%9B%B4%E5%83%8F%E4%BC%A0%E7%BB%9F%E5%88%B6%E9%80%A0%E4%B8%9A/</link>
       <pubDate>Sun, 19 Oct 2025 14:16:00 +0800</pubDate>
-      <guid>http://localhost:62320/2025/10/19/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%9B%88%E5%88%A9%E6%A8%A1%E5%BC%8F%E6%9B%B4%E5%83%8F%E4%BC%A0%E7%BB%9F%E5%88%B6%E9%80%A0%E4%B8%9A/</guid>
+      <guid>https://www.kingdeguo.com/2025/10/19/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%9B%88%E5%88%A9%E6%A8%A1%E5%BC%8F%E6%9B%B4%E5%83%8F%E4%BC%A0%E7%BB%9F%E5%88%B6%E9%80%A0%E4%B8%9A/</guid>
       <description>&lt;h1 id=&#34;大模型盈利模式更像传统制造业&#34;&gt;大模型盈利模式更像传统制造业&lt;/h1&gt;&#xA;&lt;p&gt;最近跟几位从事AI的朋友聊，他们都笑着说：&amp;ldquo;你以为我们是在做互联网生意，其实更像在开工厂。&amp;rdquo;&lt;/p&gt;&#xA;&lt;p&gt;一开始我没太在意，还以为他们在夸张。但细想下来，确实如此。大模型的投入、运作和盈利逻辑，跟传统制造业比起来，惊人地像。&lt;/p&gt;&#xA;&lt;p&gt;我们先说投入。大模型不是你上线一个App就能吸引用户那种轻松。无论是搭建算力集群、整理海量训练数据，还是调度工程师团队，每一步都重资产、重成本、重周期。训练一次大型模型，几百万甚至上千万的算力账单就摆在你面前。互联网模式强调零边际成本——用户越多，成本越摊越薄；大模型却是边际递增——用户越多，推理成本越高。你今天多一个请求，就等于多烧一次电、多占一次算力。&lt;/p&gt;&#xA;&lt;p&gt;然后是运营。你以为上线了模型就能坐等流量？不不不，每一次迭代、每一次优化，都像工业生产中的工艺改进。数据清洗像原料加工，模型训练像流水线操作，推理优化像生产线调度。这些听起来枯燥，但决定了公司能不能挣钱。算法创新重要，但稳定、低耗、高产才是护城河。互联网模式讲故事、抓眼球，大模型讲效率和工艺。&lt;/p&gt;&#xA;&lt;p&gt;还有盈利方式。互联网靠流量、广告、长尾效应和网络效应，很多时候是虚拟的规模奇迹。大模型不同，它靠算力、靠数据、靠工程体系的积累。你做得再聪明，如果工业流程没打通，盈利就像沙子在手里漏掉。这也是为什么大模型行业里，有些公司看起来技术领先，但盈利能力却一直不稳。&lt;/p&gt;&#xA;&lt;p&gt;真正的拐点，是从&amp;quot;造模型&amp;quot;到&amp;quot;造体系&amp;quot;。当模型不再是单次训练的精密机器，而是可持续生产、可复用、可扩展的系统时，边际成本才可能被控制，规模效应才开始显现。这时，大模型公司才真正像制造业，不靠故事挣钱，而靠效率和流程赢利。算法、数据、算力、工程团队，都像零件和工序，缺一不可。&lt;/p&gt;&#xA;&lt;p&gt;所以说，大模型不是互联网的延续，它更像工业文明的下一章。表面上是智能革命，实质上是制造升级。喜欢讲投资故事的容易兴奋，但真正挣钱的，永远是那些懂得&amp;quot;把工业流程跑通&amp;quot;的人。&lt;/p&gt;</description>
     </item>
   </channel>
