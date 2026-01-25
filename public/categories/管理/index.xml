@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>管理 on kingdeguo&#39;s blog</title>
+    <link>https://www.kingdeguo.com/categories/%E7%AE%A1%E7%90%86/</link>
+    <description>Recent content in 管理 on kingdeguo&#39;s blog</description>
+    <generator>Hugo</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Sat, 25 Jan 2025 10:19:00 +0800</lastBuildDate>
+    <atom:link href="https://www.kingdeguo.com/categories/%E7%AE%A1%E7%90%86/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>用测评把大模型从黑盒带回组织的理性边界</title>
+      <link>https://www.kingdeguo.com/2025/01/25/%E7%94%A8%E6%B5%8B%E8%AF%84%E6%8A%8A%E5%A4%A7%E6%A8%A1%E5%9E%8B%E4%BB%8E%E9%BB%91%E7%9B%92%E5%B8%A6%E5%9B%9E%E7%BB%84%E7%BB%87%E7%9A%84%E7%90%86%E6%80%A7%E8%BE%B9%E7%95%8C/</link>
+      <pubDate>Sat, 25 Jan 2025 10:19:00 +0800</pubDate>
+      <guid>https://www.kingdeguo.com/2025/01/25/%E7%94%A8%E6%B5%8B%E8%AF%84%E6%8A%8A%E5%A4%A7%E6%A8%A1%E5%9E%8B%E4%BB%8E%E9%BB%91%E7%9B%92%E5%B8%A6%E5%9B%9E%E7%BB%84%E7%BB%87%E7%9A%84%E7%90%86%E6%80%A7%E8%BE%B9%E7%95%8C/</guid>
+      <description>&lt;p&gt;在传统系统里，我们对“效果可预期”这件事有着天然的安全感。&lt;/p&gt;&#xA;&lt;p&gt;规则可能复杂，但它们始终是规则：输入是什么，经过哪些判断，最终输出什么，大体是可以被穷举、被回溯、被解释的。业务人员心里有数，技术人员也能兜底。系统未必聪明，但它是“透明”的。&lt;/p&gt;&#xA;&lt;p&gt;大模型进入组织之后，这种安全感开始松动。不是因为它不工作，而是因为它“看起来什么都会做，却说不清为什么这么做”。同样的输入，可能得到略有差异的输出；同样的任务，在不同语境下呈现出不同判断。这种不稳定并不一定是坏事，但它打破了组织对系统的一项核心预期：可预知性。&lt;/p&gt;&#xA;&lt;p&gt;于是，AI 测评的价值并不在于“给模型打分”，而在于把这种不确定性重新拉回到可感知、可讨论、可管理的范围内。&lt;/p&gt;&#xA;&lt;p&gt;测评不是为了证明模型有多聪明，而是为了回答一个更现实的问题：在我们设定的边界内，它会如何表现，它的表现是否稳定，以及这种稳定性是否足以支撑业务使用。&lt;/p&gt;&#xA;&lt;p&gt;从这个角度看，测评的本质是在做一件很朴素的事——把黑盒拆解成组织能理解的白盒。哪怕我们无法完全解释模型内部的推理路径，至少可以通过系统化的测评，让团队知道它在什么条件下可靠，在什么条件下会偏离预期。不是“信不信 AI”，而是“信到什么程度、信在哪些场景”。&lt;/p&gt;&#xA;&lt;p&gt;这也解释了一个容易被误解的点：在大多数组织里，AI 并不是一个“决策者”，而更像是一个被约束的劳工。它确实在执行过程中做了价值判断，但这些判断发生在预先设定的规则、目标和评价体系之内。测评的意义，正是确保这些判断始终被关在围栏里。&lt;/p&gt;&#xA;&lt;p&gt;如果 AI 仅仅被当作纯工具——比如生成草稿、做信息整理、提高效率——那么测评的要求其实并不高。偶尔不稳定、偶尔跑偏，顶多是效率损失。但一旦 AI 被引入到更接近决策的位置，比如影响审批、推荐路径、资源分配，那么问题就完全不同了。此时，测评不再是“优化体验”的手段，而是进入组织决策体系的门票。&lt;/p&gt;&#xA;&lt;p&gt;从这个意义上说，AI 测评并不是在限制创新，而是在为规模化使用创造条件。没有测评，AI 只能停留在个人工具层面；有了测评，它才有可能成为组织级能力。前者依赖个人判断，后者依赖共识，而共识的前提，永远是可被反复验证的稳定效果。&lt;/p&gt;&#xA;&lt;p&gt;所以，这件事看起来像是在“给 AI 加枷锁”，但实际上是在为组织保留对系统的控制权。不是让模型替我们思考，而是确保当它替我们干活时，我们始终知道它大概会怎么干、可能在哪里出问题、出了问题该由谁负责。&lt;/p&gt;&#xA;&lt;p&gt;当黑盒被一点点照亮，AI 才不再是一种令人不安的能力放大器，而是一个可以被信任、被托付、被纳入流程的基础设施。这正是 AI 测评真正的作用所在。&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

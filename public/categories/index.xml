@@ -6,27 +6,34 @@
     <description>Recent content in Categories on kingdeguo&#39;s blog</description>
     <generator>Hugo</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Fri, 16 Jan 2026 23:10:00 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 24 Jan 2026 11:10:00 +0800</lastBuildDate>
     <atom:link href="https://www.kingdeguo.com/categories/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>管理实践</title>
-      <link>https://www.kingdeguo.com/categories/%E7%AE%A1%E7%90%86%E5%AE%9E%E8%B7%B5/</link>
-      <pubDate>Fri, 16 Jan 2026 23:10:00 +0800</pubDate>
-      <guid>https://www.kingdeguo.com/categories/%E7%AE%A1%E7%90%86%E5%AE%9E%E8%B7%B5/</guid>
-      <description></description>
-    </item>
     <item>
       <title>思考</title>
       <link>https://www.kingdeguo.com/categories/%E6%80%9D%E8%80%83/</link>
-      <pubDate>Fri, 16 Jan 2026 23:10:00 +0800</pubDate>
+      <pubDate>Sat, 24 Jan 2026 11:10:00 +0800</pubDate>
       <guid>https://www.kingdeguo.com/categories/%E6%80%9D%E8%80%83/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>团队协作</title>
+      <link>https://www.kingdeguo.com/categories/%E5%9B%A2%E9%98%9F%E5%8D%8F%E4%BD%9C/</link>
+      <pubDate>Sat, 24 Jan 2026 11:10:00 +0800</pubDate>
+      <guid>https://www.kingdeguo.com/categories/%E5%9B%A2%E9%98%9F%E5%8D%8F%E4%BD%9C/</guid>
       <description></description>
     </item>
     <item>
       <title>职场洞察</title>
       <link>https://www.kingdeguo.com/categories/%E8%81%8C%E5%9C%BA%E6%B4%9E%E5%AF%9F/</link>
-      <pubDate>Thu, 15 Jan 2026 23:20:00 +0800</pubDate>
+      <pubDate>Thu, 22 Jan 2026 22:39:00 +0800</pubDate>
       <guid>https://www.kingdeguo.com/categories/%E8%81%8C%E5%9C%BA%E6%B4%9E%E5%AF%9F/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>管理实践</title>
+      <link>https://www.kingdeguo.com/categories/%E7%AE%A1%E7%90%86%E5%AE%9E%E8%B7%B5/</link>
+      <pubDate>Fri, 16 Jan 2026 23:10:00 +0800</pubDate>
+      <guid>https://www.kingdeguo.com/categories/%E7%AE%A1%E7%90%86%E5%AE%9E%E8%B7%B5/</guid>
       <description></description>
     </item>
     <item>
@@ -51,17 +58,17 @@
       <description></description>
     </item>
     <item>
-      <title>团队协作</title>
-      <link>https://www.kingdeguo.com/categories/%E5%9B%A2%E9%98%9F%E5%8D%8F%E4%BD%9C/</link>
-      <pubDate>Sun, 02 Nov 2025 21:50:00 +0800</pubDate>
-      <guid>https://www.kingdeguo.com/categories/%E5%9B%A2%E9%98%9F%E5%8D%8F%E4%BD%9C/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>技术</title>
       <link>https://www.kingdeguo.com/categories/%E6%8A%80%E6%9C%AF/</link>
       <pubDate>Thu, 30 Oct 2025 12:50:00 +0800</pubDate>
       <guid>https://www.kingdeguo.com/categories/%E6%8A%80%E6%9C%AF/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>管理</title>
+      <link>https://www.kingdeguo.com/categories/%E7%AE%A1%E7%90%86/</link>
+      <pubDate>Sat, 25 Jan 2025 10:19:00 +0800</pubDate>
+      <guid>https://www.kingdeguo.com/categories/%E7%AE%A1%E7%90%86/</guid>
       <description></description>
     </item>
   </channel>
