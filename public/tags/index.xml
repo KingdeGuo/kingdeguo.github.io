@@ -6,13 +6,48 @@
     <description>Recent content in Tags on kingdeguo&#39;s blog</description>
     <generator>Hugo</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 24 Jan 2026 11:10:00 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 25 Jan 2026 10:19:00 +0800</lastBuildDate>
     <atom:link href="https://www.kingdeguo.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI</title>
+      <link>https://www.kingdeguo.com/tags/ai/</link>
+      <pubDate>Sun, 25 Jan 2026 10:19:00 +0800</pubDate>
+      <guid>https://www.kingdeguo.com/tags/ai/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>测评</title>
+      <link>https://www.kingdeguo.com/tags/%E6%B5%8B%E8%AF%84/</link>
+      <pubDate>Sun, 25 Jan 2026 10:19:00 +0800</pubDate>
+      <guid>https://www.kingdeguo.com/tags/%E6%B5%8B%E8%AF%84/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>大模型</title>
+      <link>https://www.kingdeguo.com/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/</link>
+      <pubDate>Sun, 25 Jan 2026 10:19:00 +0800</pubDate>
+      <guid>https://www.kingdeguo.com/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/</guid>
+      <description></description>
+    </item>
     <item>
       <title>管理</title>
       <link>https://www.kingdeguo.com/tags/%E7%AE%A1%E7%90%86/</link>
-      <pubDate>Sat, 24 Jan 2026 11:10:00 +0800</pubDate>
+      <pubDate>Sun, 25 Jan 2026 10:19:00 +0800</pubDate>
       <guid>https://www.kingdeguo.com/tags/%E7%AE%A1%E7%90%86/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>技术</title>
+      <link>https://www.kingdeguo.com/tags/%E6%8A%80%E6%9C%AF/</link>
+      <pubDate>Sun, 25 Jan 2026 10:19:00 +0800</pubDate>
+      <guid>https://www.kingdeguo.com/tags/%E6%8A%80%E6%9C%AF/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>组织</title>
+      <link>https://www.kingdeguo.com/tags/%E7%BB%84%E7%BB%87/</link>
+      <pubDate>Sun, 25 Jan 2026 10:19:00 +0800</pubDate>
+      <guid>https://www.kingdeguo.com/tags/%E7%BB%84%E7%BB%87/</guid>
       <description></description>
     </item>
     <item>
@@ -27,13 +62,6 @@
       <link>https://www.kingdeguo.com/tags/%E6%80%9D%E8%80%83/</link>
       <pubDate>Sat, 24 Jan 2026 11:10:00 +0800</pubDate>
       <guid>https://www.kingdeguo.com/tags/%E6%80%9D%E8%80%83/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>组织</title>
-      <link>https://www.kingdeguo.com/tags/%E7%BB%84%E7%BB%87/</link>
-      <pubDate>Sat, 24 Jan 2026 11:10:00 +0800</pubDate>
-      <guid>https://www.kingdeguo.com/tags/%E7%BB%84%E7%BB%87/</guid>
       <description></description>
     </item>
     <item>
@@ -282,13 +310,6 @@
       <description></description>
     </item>
     <item>
-      <title>AI</title>
-      <link>https://www.kingdeguo.com/tags/ai/</link>
-      <pubDate>Sat, 10 Jan 2026 11:15:00 +0800</pubDate>
-      <guid>https://www.kingdeguo.com/tags/ai/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>Anthropic</title>
       <link>https://www.kingdeguo.com/tags/anthropic/</link>
       <pubDate>Sat, 10 Jan 2026 11:15:00 +0800</pubDate>
@@ -517,13 +538,6 @@
       <link>https://www.kingdeguo.com/tags/%E7%BB%84%E7%BB%87%E8%AE%BE%E8%AE%A1/</link>
       <pubDate>Sat, 03 Jan 2026 20:47:00 +0800</pubDate>
       <guid>https://www.kingdeguo.com/tags/%E7%BB%84%E7%BB%87%E8%AE%BE%E8%AE%A1/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>大模型</title>
-      <link>https://www.kingdeguo.com/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/</link>
-      <pubDate>Thu, 01 Jan 2026 11:59:00 +0800</pubDate>
-      <guid>https://www.kingdeguo.com/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/</guid>
       <description></description>
     </item>
     <item>
@@ -2162,20 +2176,6 @@
       <link>https://www.kingdeguo.com/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</link>
       <pubDate>Fri, 05 Sep 2025 22:27:00 +0800</pubDate>
       <guid>https://www.kingdeguo.com/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>测评</title>
-      <link>https://www.kingdeguo.com/tags/%E6%B5%8B%E8%AF%84/</link>
-      <pubDate>Sat, 25 Jan 2025 10:19:00 +0800</pubDate>
-      <guid>https://www.kingdeguo.com/tags/%E6%B5%8B%E8%AF%84/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>技术</title>
-      <link>https://www.kingdeguo.com/tags/%E6%8A%80%E6%9C%AF/</link>
-      <pubDate>Sat, 25 Jan 2025 10:19:00 +0800</pubDate>
-      <guid>https://www.kingdeguo.com/tags/%E6%8A%80%E6%9C%AF/</guid>
       <description></description>
     </item>
   </channel>

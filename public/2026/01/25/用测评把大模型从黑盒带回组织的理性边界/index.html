@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="baidu-site-verification" content="codeva-3HXhhJuJkH" />
+  <meta name="sogou_site_verification" content="ZA8481TGfz" />
+
+  <title>用测评把大模型从黑盒带回组织的理性边界 | kingdeguo&amp;#39;s blog</title><meta name="description" content="AI测评的价值并不在于&amp;#39;给模型打分&amp;#39;，而在于把不确定性重新拉回到可感知、可讨论、可管理的范围内。测评的本质是在做一件很朴素的事——把黑盒拆解成组织能理解的白盒。">
+
+<link rel="canonical" href="https://www.kingdeguo.com/2026/01/25/%E7%94%A8%E6%B5%8B%E8%AF%84%E6%8A%8A%E5%A4%A7%E6%A8%A1%E5%9E%8B%E4%BB%8E%E9%BB%91%E7%9B%92%E5%B8%A6%E5%9B%9E%E7%BB%84%E7%BB%87%E7%9A%84%E7%90%86%E6%80%A7%E8%BE%B9%E7%95%8C/"><meta name="robots" content="index, follow"><meta property="og:type" content="website">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:site_name" content="kingdeguo&#39;s blog">
+<meta property="og:title" content="用测评把大模型从黑盒带回组织的理性边界">
+<meta property="og:description" content="AI测评的价值并不在于&amp;#39;给模型打分&amp;#39;，而在于把不确定性重新拉回到可感知、可讨论、可管理的范围内。测评的本质是在做一件很朴素的事——把黑盒拆解成组织能理解的白盒。">
+<meta property="og:url" content="https://www.kingdeguo.com/2026/01/25/%E7%94%A8%E6%B5%8B%E8%AF%84%E6%8A%8A%E5%A4%A7%E6%A8%A1%E5%9E%8B%E4%BB%8E%E9%BB%91%E7%9B%92%E5%B8%A6%E5%9B%9E%E7%BB%84%E7%BB%87%E7%9A%84%E7%90%86%E6%80%A7%E8%BE%B9%E7%95%8C/"><meta property="og:image" content="/images/og-image.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="用测评把大模型从黑盒带回组织的理性边界">
+  <meta name="twitter:description" content="AI测评的价值并不在于&amp;#39;给模型打分&amp;#39;，而在于把不确定性重新拉回到可感知、可讨论、可管理的范围内。测评的本质是在做一件很朴素的事——把黑盒拆解成组织能理解的白盒。">
+    <meta name="twitter:image" content="/images/og-image.jpg">
+
+<link rel="alternate" type="application/rss+xml" title="kingdeguo&#39;s blog RSS" href="/index.xml">
+<link rel="alternate" type="application/json" title="kingdeguo&#39;s blog JSON Feed" href="/index.json"><meta name="keywords" content="AI, 大模型, 测评, 组织, 管理, 技术, 技术, 管理"><meta property="article:section" content="技术"><meta property="article:tag" content="AI"><meta property="article:tag" content="大模型"><meta property="article:tag" content="测评"><meta property="article:tag" content="组织"><meta property="article:tag" content="管理"><meta property="article:tag" content="技术"><meta property="article:published_time" content="2026-01-25T10:19:00&#43;08:00">
+  <meta property="article:modified_time" content="2026-01-25T10:19:00&#43;08:00">
+  <meta property="article:author" content="KingdeGuo"><meta property="article:word_count" content="25"><meta name="readingTime" content="1 分钟">
+    <meta property="article:time_required" content="PT1M"><script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https:\/\/www.kingdeguo.com\/2026\/01\/25\/%E7%94%A8%E6%B5%8B%E8%AF%84%E6%8A%8A%E5%A4%A7%E6%A8%A1%E5%9E%8B%E4%BB%8E%E9%BB%91%E7%9B%92%E5%B8%A6%E5%9B%9E%E7%BB%84%E7%BB%87%E7%9A%84%E7%90%86%E6%80%A7%E8%BE%B9%E7%95%8C\/"
+      },
+      "headline": "用测评把大模型从黑盒带回组织的理性边界",
+      "description": "AI测评的价值并不在于\u0026#39;给模型打分\u0026#39;，而在于把不确定性重新拉回到可感知、可讨论、可管理的范围内。测评的本质是在做一件很朴素的事——把黑盒拆解成组织能理解的白盒。",
+      "datePublished": "2026-01-25T10:19:00\u002b08:00",
+      "dateModified": "2026-01-25T10:19:00\u002b08:00",
+      "author": {
+        "@type": "Person",
+        "name": "KingdeGuo"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "kingdeguo\u0027s blog",
+        "url": "https:\/\/www.kingdeguo.com\/"
+      },
+      "wordCount":  25 }
+    </script>
+
+  <link rel="icon" type="image/jpeg" href="/icon.jpg">
+  <link rel="search" type="application/opensearchdescription+xml" href="/opensearch.xml" title="kingdeguo&#39;s blog">
+
+  
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2370953792797102"
+     crossorigin="anonymous"></script>
+
+  
+  <script async custom-element="amp-auto-ads"
+          src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+  </script>
+
+  
+  
+  <script src="/js/search.js"></script>
+  
+
+  
+  
+  
+    <link rel="stylesheet" href="/css/main.css">
+  
+
+  
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-HXENT9GH1J"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);} 
+      gtag('js', new Date());
+      gtag('config', 'G-HXENT9GH1J', { 'anonymize_ip': true });
+    </script><script>
+      var _hmt = _hmt || [];
+      (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?4a9b55892d0aad64fe9d68ed6b0e76aa";
+        var s = document.getElementsByTagName("script")[0]; 
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+</head>
+<body>
+  <amp-auto-ads type="adsense"
+          data-ad-client="ca-pub-2370953792797102">
+  </amp-auto-ads>
+  
+  <header class="site-header">
+    <nav class="nav">
+      <div class="nav-brand">
+        <a href="/">kingdeguo&#39;s blog</a>
+      </div>
+
+      <button class="hamburger" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <ul class="nav-menu">
+        
+        <li class="nav-item">
+          <a href="/" class="nav-link">首页</a>
+        </li>
+        
+        <li class="nav-item">
+          <a href="/posts/" class="nav-link">所有文章</a>
+        </li>
+        
+        <li class="nav-item">
+          <a href="/about/" class="nav-link">关于我</a>
+        </li>
+        
+        <li class="nav-item">
+          <a href="https://www.kingdeguo.com/index.xml" class="nav-link" target="_blank" rel="noopener">RSS订阅</a>
+        </li>
+        <li class="nav-item nav-theme-toggle">
+          <button id="theme-toggle" aria-label="切换主题" class="theme-toggle">🌙</button>
+
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  
+  <main class="main">
+    <div class="content-wrapper">
+      <div class="content-main">
+        
+<article class="post">
+  <header class="post-header">
+    <h1 class="post-title">用测评把大模型从黑盒带回组织的理性边界</h1>
+    <div class="post-meta">
+      <div class="post-meta-primary">
+        <time datetime="2026-01-25">2026年1月25日</time><span class="post-reading-time">阅读时间：13 分钟</span>
+        <span class="post-word-count">字数：2688 字</span>
+      </div>
+      
+      <div class="post-meta-secondary">
+        
+        <span class="post-categories">
+          分类：
+          
+          <a href="/categories/%E6%8A%80%E6%9C%AF">技术</a>
+          
+          <a href="/categories/%E7%AE%A1%E7%90%86">管理</a>
+          
+        </span>
+        
+        
+        <span class="post-tags">
+          标签：
+          
+          <a href="/tags/ai">AI</a>
+          
+          <a href="/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B">大模型</a>
+          
+          <a href="/tags/%E6%B5%8B%E8%AF%84">测评</a>
+          
+          <a href="/tags/%E7%BB%84%E7%BB%87">组织</a>
+          
+          <a href="/tags/%E7%AE%A1%E7%90%86">管理</a>
+          
+          <a href="/tags/%E6%8A%80%E6%9C%AF">技术</a>
+          
+        </span>
+        
+      </div>
+      
+    </div>
+  </header>
+
+  <div class="post-content">
+    <p>在传统系统里，我们对“效果可预期”这件事有着天然的安全感。</p>
+<p>规则可能复杂，但它们始终是规则：输入是什么，经过哪些判断，最终输出什么，大体是可以被穷举、被回溯、被解释的。业务人员心里有数，技术人员也能兜底。系统未必聪明，但它是“透明”的。</p>
+<p>大模型进入组织之后，这种安全感开始松动。不是因为它不工作，而是因为它“看起来什么都会做，却说不清为什么这么做”。同样的输入，可能得到略有差异的输出；同样的任务，在不同语境下呈现出不同判断。这种不稳定并不一定是坏事，但它打破了组织对系统的一项核心预期：可预知性。</p>
+<p>于是，AI 测评的价值并不在于“给模型打分”，而在于把这种不确定性重新拉回到可感知、可讨论、可管理的范围内。</p>
+<p>测评不是为了证明模型有多聪明，而是为了回答一个更现实的问题：在我们设定的边界内，它会如何表现，它的表现是否稳定，以及这种稳定性是否足以支撑业务使用。</p>
+<p>从这个角度看，测评的本质是在做一件很朴素的事——把黑盒拆解成组织能理解的白盒。哪怕我们无法完全解释模型内部的推理路径，至少可以通过系统化的测评，让团队知道它在什么条件下可靠，在什么条件下会偏离预期。不是“信不信 AI”，而是“信到什么程度、信在哪些场景”。</p>
+<p>这也解释了一个容易被误解的点：在大多数组织里，AI 并不是一个“决策者”，而更像是一个被约束的劳工。它确实在执行过程中做了价值判断，但这些判断发生在预先设定的规则、目标和评价体系之内。测评的意义，正是确保这些判断始终被关在围栏里。</p>
+<p>如果 AI 仅仅被当作纯工具——比如生成草稿、做信息整理、提高效率——那么测评的要求其实并不高。偶尔不稳定、偶尔跑偏，顶多是效率损失。但一旦 AI 被引入到更接近决策的位置，比如影响审批、推荐路径、资源分配，那么问题就完全不同了。此时，测评不再是“优化体验”的手段，而是进入组织决策体系的门票。</p>
+<p>从这个意义上说，AI 测评并不是在限制创新，而是在为规模化使用创造条件。没有测评，AI 只能停留在个人工具层面；有了测评，它才有可能成为组织级能力。前者依赖个人判断，后者依赖共识，而共识的前提，永远是可被反复验证的稳定效果。</p>
+<p>所以，这件事看起来像是在“给 AI 加枷锁”，但实际上是在为组织保留对系统的控制权。不是让模型替我们思考，而是确保当它替我们干活时，我们始终知道它大概会怎么干、可能在哪里出问题、出了问题该由谁负责。</p>
+<p>当黑盒被一点点照亮，AI 才不再是一种令人不安的能力放大器，而是一个可以被信任、被托付、被纳入流程的基础设施。这正是 AI 测评真正的作用所在。</p>
+
+  </div>
+
+  <footer class="post-footer"><div class="related-posts">
+        <h3>相关文章</h3>
+        <ul class="related-list"><li class="related-item">
+              <a href="https://www.kingdeguo.com/2025/09/19/%E5%91%98%E5%B7%A5%E7%9A%84-ai-%E4%B8%8E%E9%A2%86%E5%AF%BC%E7%9A%84-ai/">员工的 AI 与领导的 AI</a><p class="related-description">探讨员工和领导在使用AI时的不同方式及其对组织的影响</p></li><li class="related-item">
+              <a href="https://www.kingdeguo.com/2026/01/24/%E7%9C%8B%E8%B5%B7%E6%9D%A5%E6%AD%A3%E7%A1%AE%E7%9A%84%E4%BA%8B%E6%83%85%E4%B8%8E%E4%B8%8D%E5%BE%97%E4%B8%8D%E5%81%9A%E7%9A%84%E4%BA%8B%E6%83%85/">看起来正确的事情与不得不做的事情</a><p class="related-description">管理决策失败往往不是因为判断力不足，而是在错误的层级上讨论了&#39;正确&#39;。当系统稳定时可以讨论价值，当系统失稳时所有讨论都会降级为&#39;如何避免崩溃&#39;。</p></li><li class="related-item">
+              <a href="https://www.kingdeguo.com/2026/01/01/20232025%E4%BB%8E%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%9C%8B%E7%BB%84%E7%BB%87%E8%BF%9B%E5%8C%96%E8%AE%BA/">2023—2025，从大模型看组织进化论</a><p class="related-description">从工具到结构，从效率到进化，记录大模型时代组织变革的真实思考</p></li></ul>
+      </div>
+    <div class="post-comments">
+      <div id="giscus-comments"></div>
+      
+      <script src="https://giscus.app/client.js"
+              data-repo="KingdeGuo/kingdeguo.github.io"
+              data-repo-id="R_kgDOPLxeEQ"
+              data-category="General"
+              data-category-id="DIC_kwDOPLxeEc4Cs5E6"
+              data-mapping="pathname"
+              data-strict="0"
+              data-reactions-enabled="1"
+              data-emit-metadata="0"
+              data-input-position="bottom"
+              data-theme="preferred_color_scheme"
+              data-lang="zh-CN"
+              crossorigin="anonymous"
+              async>
+      </script>
+      
+    </div>
+    
+  </footer>
+</article>
+
+
+      </div>
+
+      <div class="wechat-qr-sidebar">
+        <div class="qr-container">
+  <img src="/wechat-qr-code.jpg" alt="微信公众号二维码" class="qr-image">
+  <p class="qr-text">关注我的公众号</p>
+</div>
+
+      </div>
+    </div>
+  </main>
+
+  
+  <footer class="site-footer">
+    <div class="footer-content">
+      <p>&copy; 2026 KingdeGuo. All rights reserved.</p>
+      <div class="social-links">
+        
+        <a href="https://github.com/kingdeguo" target="_blank" rel="noopener">GitHub</a>
+        
+        <a href="https://www.kingdeguo.com/index.xml" target="_blank" rel="noopener">RSS订阅</a>
+      </div>
+    </div>
+  </footer>
+
+  
+  
+  
+    <script src="/js/main.js"></script>
+  
+
+  
+</body>
+</html>

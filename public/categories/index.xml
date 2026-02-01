@@ -6,8 +6,22 @@
     <description>Recent content in Categories on kingdeguo&#39;s blog</description>
     <generator>Hugo</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 24 Jan 2026 11:10:00 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 25 Jan 2026 10:19:00 +0800</lastBuildDate>
     <atom:link href="https://www.kingdeguo.com/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>管理</title>
+      <link>https://www.kingdeguo.com/categories/%E7%AE%A1%E7%90%86/</link>
+      <pubDate>Sun, 25 Jan 2026 10:19:00 +0800</pubDate>
+      <guid>https://www.kingdeguo.com/categories/%E7%AE%A1%E7%90%86/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>技术</title>
+      <link>https://www.kingdeguo.com/categories/%E6%8A%80%E6%9C%AF/</link>
+      <pubDate>Sun, 25 Jan 2026 10:19:00 +0800</pubDate>
+      <guid>https://www.kingdeguo.com/categories/%E6%8A%80%E6%9C%AF/</guid>
+      <description></description>
+    </item>
     <item>
       <title>思考</title>
       <link>https://www.kingdeguo.com/categories/%E6%80%9D%E8%80%83/</link>
@@ -55,20 +69,6 @@
       <link>https://www.kingdeguo.com/categories/%E4%B8%AA%E4%BA%BA%E6%88%90%E9%95%BF/</link>
       <pubDate>Fri, 12 Dec 2025 19:23:00 +0800</pubDate>
       <guid>https://www.kingdeguo.com/categories/%E4%B8%AA%E4%BA%BA%E6%88%90%E9%95%BF/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>技术</title>
-      <link>https://www.kingdeguo.com/categories/%E6%8A%80%E6%9C%AF/</link>
-      <pubDate>Thu, 30 Oct 2025 12:50:00 +0800</pubDate>
-      <guid>https://www.kingdeguo.com/categories/%E6%8A%80%E6%9C%AF/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>管理</title>
-      <link>https://www.kingdeguo.com/categories/%E7%AE%A1%E7%90%86/</link>
-      <pubDate>Sat, 25 Jan 2025 10:19:00 +0800</pubDate>
-      <guid>https://www.kingdeguo.com/categories/%E7%AE%A1%E7%90%86/</guid>
       <description></description>
     </item>
   </channel>
