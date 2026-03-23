@@ -2,11 +2,44 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://www.kingdeguo.com/tags/ai/</loc>
+    <lastmod>2026-03-22T16:14:00+08:00</lastmod>
+  </url><url>
     <loc>https://www.kingdeguo.com/categories/</loc>
-    <lastmod>2026-02-19T10:44:00+08:00</lastmod>
+    <lastmod>2026-03-22T16:14:00+08:00</lastmod>
+  </url><url>
+    <loc>https://www.kingdeguo.com/tags/cli/</loc>
+    <lastmod>2026-03-22T16:14:00+08:00</lastmod>
   </url><url>
     <loc>https://www.kingdeguo.com/tags/</loc>
-    <lastmod>2026-02-19T10:44:00+08:00</lastmod>
+    <lastmod>2026-03-22T16:14:00+08:00</lastmod>
+  </url><url>
+    <loc>https://www.kingdeguo.com/tags/ugc/</loc>
+    <lastmod>2026-03-22T16:14:00+08:00</lastmod>
+  </url><url>
+    <loc>https://www.kingdeguo.com/tags/%E9%92%89%E9%92%89/</loc>
+    <lastmod>2026-03-22T16:14:00+08:00</lastmod>
+  </url><url>
+    <loc>https://www.kingdeguo.com/tags/%E6%8A%80%E6%9C%AF%E8%B6%8B%E5%8A%BF/</loc>
+    <lastmod>2026-03-22T16:14:00+08:00</lastmod>
+  </url><url>
+    <loc>https://www.kingdeguo.com/categories/%E6%8A%80%E6%9C%AF%E6%80%9D%E8%80%83/</loc>
+    <lastmod>2026-03-22T16:14:00+08:00</lastmod>
+  </url><url>
+    <loc>https://www.kingdeguo.com/tags/%E6%8E%A5%E5%8F%A3%E5%8C%96/</loc>
+    <lastmod>2026-03-22T16:14:00+08:00</lastmod>
+  </url><url>
+    <loc>https://www.kingdeguo.com/tags/%E6%95%B0%E5%AD%97%E5%8C%96%E8%BD%AC%E5%9E%8B/</loc>
+    <lastmod>2026-03-22T16:14:00+08:00</lastmod>
+  </url><url>
+    <loc>https://www.kingdeguo.com/2026/03/22/%E9%87%8D%E6%96%B0%E6%80%9D%E8%80%83ugc-%E4%B8%8E-%E9%92%89%E9%92%89%E6%8B%A5%E6%8A%B1cli/</loc>
+    <lastmod>2026-03-22T16:14:00+08:00</lastmod>
+  </url><url>
+    <loc>https://www.kingdeguo.com/tags/%E7%BB%84%E7%BB%87%E5%8F%98%E9%9D%A9/</loc>
+    <lastmod>2026-03-22T16:14:00+08:00</lastmod>
+  </url><url>
+    <loc>https://www.kingdeguo.com/tags/%E7%BB%84%E7%BB%87%E8%B5%84%E4%BA%A7/</loc>
+    <lastmod>2026-03-22T16:14:00+08:00</lastmod>
   </url><url>
     <loc>https://www.kingdeguo.com/categories/%E7%AE%A1%E7%90%86%E5%AE%9E%E8%B7%B5/</loc>
     <lastmod>2026-02-19T10:44:00+08:00</lastmod>
@@ -41,13 +74,7 @@
     <loc>https://www.kingdeguo.com/categories/%E8%81%8C%E5%9C%BA%E6%B4%9E%E5%AF%9F/</loc>
     <lastmod>2026-02-19T10:44:00+08:00</lastmod>
   </url><url>
-    <loc>https://www.kingdeguo.com/tags/ai/</loc>
-    <lastmod>2026-02-17T14:51:00+08:00</lastmod>
-  </url><url>
     <loc>https://www.kingdeguo.com/tags/%E6%8A%80%E6%9C%AF%E7%AE%A1%E7%90%86/</loc>
-    <lastmod>2026-02-17T14:51:00+08:00</lastmod>
-  </url><url>
-    <loc>https://www.kingdeguo.com/categories/%E6%8A%80%E6%9C%AF%E6%80%9D%E8%80%83/</loc>
     <lastmod>2026-02-17T14:51:00+08:00</lastmod>
   </url><url>
     <loc>https://www.kingdeguo.com/tags/%E7%A1%AE%E5%AE%9A%E6%80%A7/</loc>
@@ -66,9 +93,6 @@
     <lastmod>2026-02-17T14:51:00+08:00</lastmod>
   </url><url>
     <loc>https://www.kingdeguo.com/tags/%E8%87%AA%E5%8A%A8%E5%8C%96/</loc>
-    <lastmod>2026-02-17T14:51:00+08:00</lastmod>
-  </url><url>
-    <loc>https://www.kingdeguo.com/tags/%E7%BB%84%E7%BB%87%E5%8F%98%E9%9D%A9/</loc>
     <lastmod>2026-02-17T14:51:00+08:00</lastmod>
   </url><url>
     <loc>https://www.kingdeguo.com/tags/%E6%8A%BD%E8%B1%A1/</loc>
@@ -393,9 +417,6 @@
     <lastmod>2026-01-01T11:59:00+08:00</lastmod>
   </url><url>
     <loc>https://www.kingdeguo.com/tags/%E7%BB%93%E6%9E%84%E9%87%8D%E6%9E%84/</loc>
-    <lastmod>2026-01-01T11:59:00+08:00</lastmod>
-  </url><url>
-    <loc>https://www.kingdeguo.com/tags/%E6%95%B0%E5%AD%97%E5%8C%96%E8%BD%AC%E5%9E%8B/</loc>
     <lastmod>2026-01-01T11:59:00+08:00</lastmod>
   </url><url>
     <loc>https://www.kingdeguo.com/tags/%E7%BB%84%E7%BB%87%E8%BF%9B%E5%8C%96/</loc>
