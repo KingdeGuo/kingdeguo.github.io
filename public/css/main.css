@@ -735,7 +735,8 @@ a:hover {
 
 .post-categories,
 .post-tags {
-  display: inline;
+  display: block;
+  width: 100%;
 }
 
 .post-categories a,
