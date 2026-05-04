@@ -1,0 +1,13 @@
+[
+  {
+    "repo": "kingdeguo/WebLinkSniffer",
+    "name": "WebLinkSniffer",
+    "description": "A browser extension that extracts and previews links in the current page",
+    "language": "JavaScript",
+    "stars": 1,
+    "forks": 0,
+    "license": "MIT",
+    "url": "https://github.com/KingdeGuo/WebLinkSniffer",
+    "readme_content": null
+  }
+]

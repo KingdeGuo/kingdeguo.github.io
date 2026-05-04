@@ -1,19 +1,67 @@
 {{ define "main" }}
+{{ $projectRepo := .Params.repo | default "" }}
+{{ $projectTitle := .Title }}
+{{ $project := index (where $.Site.Data.projects_meta "repo" "eq" $projectRepo) 0 }}
+{{ if not $project }}
+  {{ $project = dict "name" $projectTitle "description" .Params.description "language" "" "stars" 0 "forks" 0 "license" "" "url" "" }}
+{{ end }}
+
 <article class="post project-detail">
   <header class="post-header">
-    <h1 class="post-title">{{ .Title }}</h1>
-    <div class="post-meta">
-      <div class="post-meta-primary">
-        <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006年1月2日" }}</time>
-        <span class="post-reading-time">
-          <a href="{{ .Params.github }}" target="_blank" rel="noopener" class="project-github-link">GitHub 仓库 →</a>
-        </span>
-      </div>
+    <h1 class="post-title">{{ $project.name | default .Title }}</h1>
+    <div class="project-hero-meta">
+      {{ if $project.language }}
+      <span class="project-badge"><strong>语言：</strong>{{ $project.language }}</span>
+      {{ end }}
+      {{ if $project.stars }}
+      <span class="project-badge">★ {{ $project.stars }} Stars</span>
+      {{ end }}
+      {{ if $project.forks }}
+      <span class="project-badge">⑂ {{ $project.forks }} Forks</span>
+      {{ end }}
+      {{ if $project.license }}
+      <span class="project-badge">{{ $project.license }}</span>
+      {{ end }}
+      {{ if $project.url }}
+      <a href="{{ $project.url }}" class="project-github-link" target="_blank" rel="noopener">View on GitHub →</a>
+      {{ end }}
     </div>
   </header>
 
   <div class="post-content">
+    {{ if $project.description }}
+    <p class="project-summary">{{ $project.description }}</p>
+    {{ end }}
+
     {{ .Content }}
   </div>
+
+  <footer class="post-footer">
+    {{ if and (isset $project "readme_content") $project.readme_content }}
+    <details class="project-readme">
+      <summary>README</summary>
+      <pre>{{ $project.readme_content }}</pre>
+    </details>
+    {{ end }}
+
+    <div class="post-comments">
+      <div id="giscus-comments"></div>
+      <script src="https://giscus.app/client.js"
+              data-repo="KingdeGuo/kingdeguo.github.io"
+              data-repo-id="R_kgDOPLxeEQ"
+              data-category="General"
+              data-category-id="DIC_kwDOPLxeEc4Cs5E6"
+              data-mapping="pathname"
+              data-strict="0"
+              data-reactions-enabled="1"
+              data-emit-metadata="0"
+              data-input-position="bottom"
+              data-theme="preferred_color_scheme"
+              data-lang="zh-CN"
+              crossorigin="anonymous"
+              async>
+      </script>
+    </div>
+  </footer>
 </article>
 {{ end }}

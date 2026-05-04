@@ -1,0 +1,4 @@
+# 作品清单 — 在这里维护你想展示的 GitHub 仓库
+# 只需要写仓库全名，其余信息（描述、星标、语言、README）由构建时自动拉取
+- repo: "kingdeguo/WebLinkSniffer"
+  weight: 1
