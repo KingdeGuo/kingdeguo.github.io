@@ -1,13 +1,23 @@
 {{ define "main" }}
 <div class="home">
+  <!-- Hero Section -->
   <section class="hero">
     <div class="hero-content">
-      <h1 class="hero-title">{{ .Site.Title }}</h1>
+      <p class="hero-tagline">生活很复杂，我想让他简单一点</p>
     </div>
   </section>
-  <section class="homepage-message">
-    <div class="center-message">
-      <p class="homepage-text">生活很复杂, 我想让他简单一点</p>
+
+  <section class="homepage-recent-posts">
+    <div class="recent-posts-list">
+      {{ range first 10 (where .Site.RegularPages "Type" "posts") }}
+      <article class="recent-post-item">
+        <time class="recent-post-date" datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time>
+        <h3 class="recent-post-title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+      </article>
+      {{ end }}
+    </div>
+    <div class="recent-posts-footer">
+      <a href="/posts/" class="btn btn-outline">查看全部文章 →</a>
     </div>
   </section>
 </div>

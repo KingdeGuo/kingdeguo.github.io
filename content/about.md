@@ -1,21 +1,19 @@
 ---
 title: "关于我"
-description: "关于KingdeGuo的个人介绍和联系方式"
+description: "我是 kingdeguo，一个写代码、写文字的人。记录思考，对抗遗忘。"
 type: "page"
 ---
 
-# 关于我
+写作是我理解世界的方式。
 
-你好！我是kingdeguo
+这个博客始于 2023 年初，当时 LLM 突然打破了技术行业习以为常的线性发展节奏，我意识到很多习以为常的框架正在松动。于是开始记录那些「可能对」的判断、观察和追问——它们后来汇集成了这个站点。
 
-## 兴趣领域
+内容覆盖几个相互缠绕的领域：**AI 对组织与个体的影响**、**目标导向的管理哲学**、**职场中的认知与博弈**、**写作与思维的底层规律**。不追逐热点，每一篇都源于真实的困惑和思考。
 
-- **编程**
-- **读书**
-- **企业经管**
+如果你对某一篇有不同看法，欢迎邮件交流。思考只有在碰撞中才会变得更锋利。
 
-## 联系方式
+## 联系我
 
-- **邮箱**: kingdeguo@foxmail.com
-- **GitHub**: [kingdeguo](https://github.com/kingdeguo)
-- **博客**: [https://kingdeguo.github.io](https://kingdeguo.github.io)
+- **邮箱**: [kingdeguo@foxmail.com](mailto:kingdeguo@foxmail.com)
+- **GitHub**: [github.com/kingdeguo](https://github.com/kingdeguo)
+- **RSS**: [订阅博客](/index.xml)
