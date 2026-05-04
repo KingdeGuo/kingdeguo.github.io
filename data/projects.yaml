@@ -2,3 +2,5 @@
 # 只需要写仓库全名，其余信息（描述、星标、语言、README）由构建时自动拉取
 - repo: "kingdeguo/WebLinkSniffer"
   weight: 1
+- repo: "kingdeguo/paper-agent"
+  weight: 2
