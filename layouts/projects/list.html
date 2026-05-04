@@ -1,0 +1,32 @@
+{{ define "main" }}
+<div class="list-page">
+  <header class="page-header">
+    <h1>{{ .Title }}</h1>
+    <p class="page-description">{{ .Params.description }}</p>
+  </header>
+  
+  <div class="projects-grid">
+    {{ range .Pages.ByWeight }}
+    <article class="project-card">
+      <div class="project-card-body">
+        <h2 class="project-card-title">
+          <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+        </h2>
+        <p class="project-card-description">{{ .Params.description }}</p>
+        <div class="project-card-meta">
+          {{ with .GitInfo }}
+          <span class="project-date">更新于 {{ .CommitDate.Format "2006-01" }}</span>
+          {{ end }}
+        </div>
+      </div>
+    </article>
+    {{ end }}
+  </div>
+  
+  {{ if not .Pages }}
+  <div class="empty-state">
+    <p>暂无作品展示，敬请期待。</p>
+  </div>
+  {{ end }}
+</div>
+{{ end }}

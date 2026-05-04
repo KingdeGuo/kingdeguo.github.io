@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>产品设计 on kingdeguo&#39;s blog</title>
+    <link>https://www.kingdeguo.com/tags/%E4%BA%A7%E5%93%81%E8%AE%BE%E8%AE%A1/</link>
+    <description>Recent content in 产品设计 on kingdeguo&#39;s blog</description>
+    <generator>Hugo</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Thu, 30 Oct 2025 12:50:00 +0800</lastBuildDate>
+    <atom:link href="https://www.kingdeguo.com/tags/%E4%BA%A7%E5%93%81%E8%AE%BE%E8%AE%A1/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>用户为结果付费，而不是为过程付费</title>
+      <link>https://www.kingdeguo.com/2025/10/30/%E7%94%A8%E6%88%B7%E4%B8%BA%E7%BB%93%E6%9E%9C%E4%BB%98%E8%B4%B9%E8%80%8C%E4%B8%8D%E6%98%AF%E4%B8%BA%E8%BF%87%E7%A8%8B%E4%BB%98%E8%B4%B9/</link>
+      <pubDate>Thu, 30 Oct 2025 12:50:00 +0800</pubDate>
+      <guid>https://www.kingdeguo.com/2025/10/30/%E7%94%A8%E6%88%B7%E4%B8%BA%E7%BB%93%E6%9E%9C%E4%BB%98%E8%B4%B9%E8%80%8C%E4%B8%8D%E6%98%AF%E4%B8%BA%E8%BF%87%E7%A8%8B%E4%BB%98%E8%B4%B9/</guid>
+      <description>&lt;p&gt;前段时间我在想，付费模式的真正精髓是什么？&lt;/p&gt;&#xA;&lt;p&gt;一句话：只需要付费。&lt;/p&gt;&#xA;&lt;p&gt;这五个字，是现代商业中最优雅的承诺。它意味着——用户付完钱，其他一切都不用操心。无需等待、无需学习、无需重复试错。结果自然出现，价值被直接兑现。用户真正购买的，是确定的结果，而不是复杂的过程。&lt;/p&gt;&#xA;&lt;p&gt;回想很多行业的演变，本质上都是从&amp;quot;按过程收费&amp;quot;走向&amp;quot;按结果收费&amp;quot;。装修不再按天计费，而是按交付标准；咨询不再算小时，而是按成效定价；软件订阅也一样——你买的不是代码，而是让问题被解决的能力。过程可以复杂，但用户希望它被隐藏。&lt;/p&gt;&#xA;&lt;p&gt;换句话说，最好的服务，是让用户感受不到服务的存在。&lt;/p&gt;&#xA;&lt;p&gt;这也是为什么我对大模型的按调用、按 token 计费模式一直保留意见。调用次数、token 消耗，并不能代表结果的价值。模型输出的不确定性太高——你可能需要多轮试错、不断提示、反复验证，才能得到一个&amp;quot;可用&amp;quot;的答案。那种体验更像是在&amp;quot;为不确定性买单&amp;quot;。用户最终不是在为智能付费，而是在为混乱埋单。&lt;/p&gt;&#xA;&lt;p&gt;真正持久的商业逻辑，不是计费方式的复杂化，而是结果的标准化。&lt;/p&gt;&#xA;&lt;p&gt;标准化的本质，是把过程的波动压缩成可交付的确定性：固定质量、可复用模板、稳定输出。对大模型产品来说，这意味着——不卖 API，而卖结果。不卖推理能力，而卖可直接使用的&amp;quot;成果&amp;quot;：一份写好的文案、一段合格的代码、一套可上线的方案。&lt;/p&gt;&#xA;&lt;p&gt;标准化，让&amp;quot;只需要付费&amp;quot;变得可能。用户不该被迫理解 token、调用数、提示工程这些中间环节。理想的产品形态，是用户只需付钱，就能获得&amp;quot;已解决的问题&amp;quot;。从付费到结果，路径越短，体验越高级；干扰越少，商业模式越稳固。&lt;/p&gt;&#xA;&lt;p&gt;也许，好的产品就该像水——你不必知道它的流向，只要打开水龙头，它自然会流出来。用户要的不是控制权，而是确定性；不是过程的参与，而是结果的安心。&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

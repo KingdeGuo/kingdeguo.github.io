@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>判断型价值 on kingdeguo&#39;s blog</title>
+    <link>https://www.kingdeguo.com/tags/%E5%88%A4%E6%96%AD%E5%9E%8B%E4%BB%B7%E5%80%BC/</link>
+    <description>Recent content in 判断型价值 on kingdeguo&#39;s blog</description>
+    <generator>Hugo</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Sat, 10 Jan 2026 11:15:00 +0800</lastBuildDate>
+    <atom:link href="https://www.kingdeguo.com/tags/%E5%88%A4%E6%96%AD%E5%9E%8B%E4%BB%B7%E5%80%BC/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>组织内部价值坐标系的重排 | 读《 Anthropic Economic Index》报告</title>
+      <link>https://www.kingdeguo.com/2026/01/10/%E7%BB%84%E7%BB%87%E5%86%85%E9%83%A8%E4%BB%B7%E5%80%BC%E5%9D%90%E6%A0%87%E7%B3%BB%E7%9A%84%E9%87%8D%E6%8E%92-%E8%AF%BB-anthropic-economic-index%E6%8A%A5%E5%91%8A/</link>
+      <pubDate>Sat, 10 Jan 2026 11:15:00 +0800</pubDate>
+      <guid>https://www.kingdeguo.com/2026/01/10/%E7%BB%84%E7%BB%87%E5%86%85%E9%83%A8%E4%BB%B7%E5%80%BC%E5%9D%90%E6%A0%87%E7%B3%BB%E7%9A%84%E9%87%8D%E6%8E%92-%E8%AF%BB-anthropic-economic-index%E6%8A%A5%E5%91%8A/</guid>
+      <description>&lt;h1 id=&#34;组织内部价值坐标系的重排--读-anthropic-economic-index报告&#34;&gt;组织内部价值坐标系的重排 | 读《 Anthropic Economic Index》报告&lt;/h1&gt;&#xA;&lt;p&gt;我最近反复读了一份报告：Anthropic 在 2025 年发布并持续更新的 Anthropic Economic Index。&lt;/p&gt;&#xA;&lt;p&gt;它吸引我的地方不在于&amp;quot;结论多新&amp;quot;，而在于它换了一种看问题的方式。&lt;/p&gt;&#xA;&lt;p&gt;大多数关于 AI 的讨论，习惯直接问一个问题：这个岗位会不会消失？&lt;/p&gt;&#xA;&lt;p&gt;而这份报告刻意回避了这个提法，它做了一件更&amp;quot;笨&amp;quot;、但也更接近现实的事——把岗位拆成任务。&lt;/p&gt;&#xA;&lt;p&gt;在它的分析框架里，没有&amp;quot;程序员&amp;quot;、&amp;ldquo;分析师&amp;rdquo;、&amp;ldquo;编辑&amp;quot;这些整体概念，只有具体的工作单元：写一段代码、整理一份数据、生成一版初稿、校对一次逻辑。AI 的渗透，是发生在这些任务层面的，而不是一刀切地作用在岗位上。&lt;/p&gt;&#xA;&lt;p&gt;这个视角非常关键。因为一旦你接受&amp;quot;岗位不会整体消失，但内部结构会被重排&amp;rdquo;，后面的很多现象就变得可解释了。&lt;/p&gt;&#xA;&lt;p&gt;从真实使用数据看，AI 覆盖得最快的，是文本处理、逻辑推演、规则明确的任务；几乎不涉及需要物理操作、复杂情绪判断或高度情境化协作的部分。&lt;/p&gt;&#xA;&lt;p&gt;这意味着，大多数岗位并没有被替代，而是被重新分工：基础、标准化的任务被迅速压缩，剩下的工作则越来越集中在判断、整合和责任承担上。&lt;/p&gt;&#xA;&lt;p&gt;这也是为什么，现实中并不存在&amp;quot;额外付出完全没有回报&amp;quot;这件事。回报并没有消失，而是不再平均地分布在&amp;quot;多干一点&amp;quot;上。&lt;/p&gt;&#xA;&lt;p&gt;当基础任务被 AI 吃掉之后，组织真正开始付费的，是另一类东西：在不确定条件下做决定、在系统缺口中兜底、在风险发生前承担责任。这些东西很重要，但有一个问题——它们很难被标准化评估。&lt;/p&gt;&#xA;&lt;p&gt;于是，一个熟悉的张力出现了：一方面，组织仍然在奖励高绩效；另一方面，很多人却感觉这种奖励越来越&amp;quot;不透明&amp;quot;。&lt;/p&gt;&#xA;&lt;p&gt;这并不完全是管理失灵，而是价值识别机制滞后于价值结构变化。&lt;/p&gt;&#xA;&lt;p&gt;当贡献无法完全通过流程、指标、考核被识别时，它就会通过信任、授权、默契这些非正式方式被识别。于是，我们看到一些被简单归因为&amp;quot;关系&amp;quot;、&amp;ldquo;嫡系&amp;rdquo;、&amp;ldquo;站队&amp;quot;的现象。但从结构上看，这更像是：判断权已经开始值钱，但还没有被正式定价。&lt;/p&gt;&#xA;&lt;p&gt;Anthropic 的后续数据其实进一步印证了这一点。企业场景中，AI 的使用更偏向自动化，且集中在流程稳定、目标明确的环节；而真正高价值、影响方向的决策任务，AI 仍然只能辅助。这导致一个结果：系统性工作的&amp;quot;人&amp;quot;在减少，系统外判断的&amp;quot;人&amp;quot;在变贵。&lt;/p&gt;&#xA;&lt;p&gt;从决策者的角度看，这里真正棘手的，不是&amp;quot;要不要用 AI&amp;rdquo;，而是两个更现实的问题：&lt;/p&gt;&#xA;&lt;p&gt;第一，组织是否愿意为判断型价值付出结构成本，把原本依赖个人关系和隐性信任的贡献，逐步拉回到制度中？&lt;/p&gt;&#xA;&lt;p&gt;第二，如果不愿意，那么是否接受一个事实：非正式结构会继续存在，并且会越来越影响资源分配。&lt;/p&gt;&#xA;&lt;p&gt;对个体也是同样的逻辑。真正被压缩的，不是能力本身，而是可替代的那一部分能力。而能持续产生议价空间的，是那些仍然处在&amp;quot;任务拆解之外&amp;quot;的判断和责任。&lt;/p&gt;&#xA;&lt;p&gt;所以，AI 对劳动力市场的影响，本质上不是岗位数量的变化，而是组织内部价值坐标系的重排。&lt;/p&gt;&#xA;&lt;p&gt;谁能被系统吸收，谁只能靠关系被识别，这条分界线，正在变得越来越清晰。&lt;/p&gt;&#xA;&lt;p&gt;这也是为什么，这一轮变化更像一次压力测试。它测试的不是&amp;quot;谁会被淘汰&amp;quot;，而是谁的价值，已经不再适配原有的组织定价方式。&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

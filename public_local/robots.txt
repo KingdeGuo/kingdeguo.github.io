@@ -2,12 +2,16 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://kingdeguo.github.io/sitemap.xml
+Sitemap: https://www.kingdeguo.com/sitemap.xml
 
 # Disallow admin and private directories
 Disallow: /admin/
 Disallow: /private/
 Disallow: /tmp/
+
+# Disallow search result pages to prevent duplicate content
+Disallow: /*?q=
+Disallow: /*&q=
 
 # Allow all other paths
 Allow: /css/

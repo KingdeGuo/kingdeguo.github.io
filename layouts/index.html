@@ -3,6 +3,7 @@
   <!-- Hero Section -->
   <section class="hero">
     <div class="hero-content">
+      <h1 class="hero-name">kingdeguo</h1>
       <p class="hero-tagline">生活很复杂，我想让他简单一点</p>
     </div>
   </section>
@@ -19,6 +20,22 @@
     <div class="recent-posts-footer">
       <a href="/posts/" class="btn btn-outline">查看全部文章 →</a>
     </div>
+    <div class="homepage-section-separator"></div>
+    {{ with .Site.GetPage "/projects" }}
+    {{ if .Pages }}
+    <div class="homepage-mini-section">
+      <h4 class="mini-section-title">作品</h4>
+      <div class="mini-project-list">
+        {{ range first 3 .Pages.ByWeight }}
+        <a href="{{ .RelPermalink }}" class="mini-project-item">{{ .Title }}</a>
+        {{ end }}
+      </div>
+      <div class="recent-posts-footer">
+        <a href="/projects/" class="btn btn-outline">查看全部作品 →</a>
+      </div>
+    </div>
+    {{ end }}
+    {{ end }}
   </section>
 </div>
 {{ end }}

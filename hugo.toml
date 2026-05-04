@@ -130,10 +130,16 @@ title = "kingdeguo's blog"
     weight = 2
   
   [[menu.main]]
+    identifier = "projects"
+    name = "作品"
+    url = "/projects/"
+    weight = 3
+
+  [[menu.main]]
     identifier = "about"
     name = "关于我"
     url = "/about/"
-    weight = 3
+    weight = 4
 
 # ===== 分类和标签 =====
 [taxonomies]

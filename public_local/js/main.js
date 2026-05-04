@@ -140,72 +140,34 @@ function initSmoothScrolling() {
 
 // Mobile Menu Toggle
 function initMobileMenu() {
+  const hamburger = document.querySelector('.hamburger');
   const navMenu = document.querySelector('.nav-menu');
-  const navItems = document.querySelectorAll('.nav-item');
   
-  // Create mobile menu button
-  const mobileMenuButton = document.createElement('button');
-  mobileMenuButton.className = 'mobile-menu-button';
-  mobileMenuButton.innerHTML = '☰';
-  mobileMenuButton.style.cssText = `
-    display: none;
-    background: none;
-    border: none;
-    font-size: 1.5rem;
-    cursor: pointer;
-    color: var(--text-color);
-  `;
-  
-  const nav = document.querySelector('.nav');
-  nav.appendChild(mobileMenuButton);
-  
-  // Toggle mobile menu
-  mobileMenuButton.addEventListener('click', () => {
-    navMenu.classList.toggle('mobile-open');
-    mobileMenuButton.textContent = navMenu.classList.contains('mobile-open') ? '✕' : '☰';
-  });
-  
-  // Close mobile menu when clicking on links
-  navItems.forEach(item => {
-    item.addEventListener('click', () => {
-      if (navMenu.classList.contains('mobile-open')) {
-        navMenu.classList.remove('mobile-open');
-        mobileMenuButton.textContent = '☰';
-      }
+  if (!hamburger || !navMenu) return;
+
+  const toggleMenu = () => {
+    hamburger.classList.toggle('active');
+    navMenu.classList.toggle('active');
+    document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
+  };
+
+  hamburger.addEventListener('click', toggleMenu);
+
+  // 点击菜单项时关闭菜单
+  document.querySelectorAll('.nav-menu .nav-link').forEach(link => {
+    link.addEventListener('click', () => {
+      hamburger.classList.remove('active');
+      navMenu.classList.remove('active');
+      document.body.style.overflow = '';
     });
   });
-  
-  // Responsive styles for mobile menu
-  const style = document.createElement('style');
-  style.textContent = `
-    @media (max-width: 768px) {
-      .mobile-menu-button {
-        display: block !important;
-      }
-      
-      .nav-menu {
-        display: none;
-        flex-direction: column;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        background: var(--bg-color);
-        border-bottom: 1px solid var(--border-color);
-        padding: var(--spacing-md);
-        box-shadow: var(--shadow-lg);
-      }
-      
-      .nav-menu.mobile-open {
-        display: flex;
-      }
-      
-      .nav-item {
-        margin: var(--spacing-sm) 0;
-      }
+
+  // 点击菜单外部时关闭菜单
+  document.addEventListener('click', (event) => {
+    if (!event.target.closest('.nav-menu') && !event.target.closest('.hamburger') && navMenu.classList.contains('active')) {
+      toggleMenu();
     }
-  `;
-  document.head.appendChild(style);
+  });
 }
 
 // Image Lazy Loading
