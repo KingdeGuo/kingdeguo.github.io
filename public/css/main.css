@@ -204,7 +204,6 @@ p {
 }
 
 /* Paragraph spacing that works for mixed-length paragraphs */
-/* Short paragraphs (1-2 lines) feel more connected; long paragraphs breathe naturally */
 .post-content p {
   margin-bottom: 1em;
   text-align: left;
