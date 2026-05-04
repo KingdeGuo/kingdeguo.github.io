@@ -7,6 +7,9 @@ document.addEventListener('DOMContentLoaded', function() {
   // Code Copy Buttons
   initCodeCopyButtons();
   
+  // Image Lazy Loading
+  initLazyLoading();
+  
   // Smooth Scrolling
   initSmoothScrolling();
   
@@ -86,12 +89,19 @@ function initCodeCopyButtons() {
     block.style.position = 'relative';
     block.appendChild(copyButton);
     
-    block.addEventListener('mouseenter', () => {
-      copyButton.style.opacity = '1';
-    });
+    const showCopyButton = () => { copyButton.style.opacity = '1'; };
+    const hideCopyButton = () => { copyButton.style.opacity = '0'; };
     
-    block.addEventListener('mouseleave', () => {
-      copyButton.style.opacity = '0';
+    block.addEventListener('mouseenter', showCopyButton);
+    block.addEventListener('mouseleave', hideCopyButton);
+    
+    // 移动端支持：点击代码块时显示/隐藏复制按钮
+    block.addEventListener('touchstart', (e) => {
+      if (copyButton.style.opacity === '1') {
+        hideCopyButton();
+      } else {
+        showCopyButton();
+      }
     });
     
     copyButton.addEventListener('click', async () => {

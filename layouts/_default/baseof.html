@@ -15,21 +15,23 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2370953792797102"
      crossorigin="anonymous"></script>
 
-  <!-- AMP Auto Ads -->
+  {{- /* AMP Auto Ads — 仅在文章页加载 */ -}}
+  {{ if .IsPage }}
   <script async custom-element="amp-auto-ads"
           src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
   </script>
-
-  <!-- Search Script -->
-  {{ if or (eq .Title "所有文章") (eq .Type "posts") }}
-  <script src="/js/search.js"></script>
   {{ end }}
 
+  {{- /* Search Script — 使用 Layout 判断，避免依赖中文标题 */ -}}
+  {{ if or (eq .Layout "search") (eq .Type "posts") }}
+  <script src="/js/search.js"></script>
+  {{ end }}
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet"></noscript>
 
   <!-- Styles -->
   {{ $style := resources.Get "css/main.css" }}
@@ -44,9 +46,12 @@
   {{ partial "analytics.html" . }}
 </head>
 <body>
+  {{- /* AMP Auto Ads body tag — 仅在文章页显示 */ -}}
+  {{ if .IsPage }}
   <amp-auto-ads type="adsense"
           data-ad-client="ca-pub-2370953792797102">
   </amp-auto-ads>
+  {{ end }}
   <!-- Header -->
   <header class="site-header">
     <nav class="nav">

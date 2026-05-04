@@ -12,7 +12,7 @@
         {{- if lt $wordCount 100 -}}
           {{- $wordCount = len (replaceRE "[^\\p{Han}]" "" .Plain) -}}
         {{- end -}}
-        {{- $readingTime := div $wordCount 200 | math.Ceil | default 1 -}}
+        {{- $readingTime := div $wordCount 350 | math.Ceil | default 1 -}}
         <span class="post-reading-time">阅读时间：{{ $readingTime }} 分钟</span>
         <span class="post-word-count">字数：{{ $wordCount }} 字</span>
       </div>
@@ -90,17 +90,17 @@
       <div id="giscus-comments"></div>
       {{ if eq .Site.Params.features.commentsProvider "giscus" }}
       <script src="https://giscus.app/client.js"
-              data-repo="KingdeGuo/kingdeguo.github.io"
-              data-repo-id="R_kgDOPLxeEQ"
-              data-category="General"
-              data-category-id="DIC_kwDOPLxeEc4Cs5E6"
-              data-mapping="pathname"
-              data-strict="0"
-              data-reactions-enabled="1"
-              data-emit-metadata="0"
-              data-input-position="bottom"
+              data-repo="{{ .Site.Params.giscus.repo }}"
+              data-repo-id="{{ .Site.Params.giscus.repoId }}"
+              data-category="{{ .Site.Params.giscus.category }}"
+              data-category-id="{{ .Site.Params.giscus.categoryId }}"
+              data-mapping="{{ .Site.Params.giscus.mapping }}"
+              data-strict="{{ .Site.Params.giscus.strict }}"
+              data-reactions-enabled="{{ .Site.Params.giscus.reactionsEnabled }}"
+              data-emit-metadata="{{ .Site.Params.giscus.emitMetadata }}"
+              data-input-position="{{ .Site.Params.giscus.inputPosition }}"
               data-theme="preferred_color_scheme"
-              data-lang="zh-CN"
+              data-lang="{{ .Site.Params.giscus.lang }}"
               crossorigin="anonymous"
               async>
       </script>

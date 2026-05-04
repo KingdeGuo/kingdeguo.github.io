@@ -34,7 +34,7 @@
     <h1>{{ .Title }}</h1>
     {{ if or (eq .Title "所有文章") (eq .Type "posts") }}
     <div class="search-container">
-      <input type="text" id="search-input" placeholder="输入关键词搜索文章..." />
+      <input type="text" id="search-input" placeholder="输入关键词搜索文章..." aria-label="搜索文章" />
     </div>
     {{ end }}
   </header>

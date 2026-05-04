@@ -115,6 +115,35 @@ title = "kingdeguo's blog"
   quality = 75
   anchor = "smart"
 
+# ===== Minify 压缩配置 =====
+[minify]
+  disableCSS = false
+  disableHTML = false
+  disableJS = false
+  disableJSON = false
+  disableSVG = false
+  disableXML = false
+  minifyOutput = true
+
+  [minify.tdewolff]
+    keepWhitespace = false
+    keepComments = false
+    keepEndTags = false
+    keepDefaultAttrVals = false
+
+# ===== Giscus 评论系统配置 =====
+[params.giscus]
+  repo = "KingdeGuo/kingdeguo.github.io"
+  repoId = "R_kgDOPLxeEQ"
+  category = "General"
+  categoryId = "DIC_kwDOPLxeEc4Cs5E6"
+  mapping = "pathname"
+  strict = "0"
+  reactionsEnabled = "1"
+  emitMetadata = "0"
+  inputPosition = "bottom"
+  lang = "zh-CN"
+
 # ===== 菜单配置 =====
 [menu]
   [[menu.main]]
