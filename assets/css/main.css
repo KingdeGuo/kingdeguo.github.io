@@ -18,7 +18,7 @@
 
   /* Typography */
   --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  --font-family-body: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Noto Sans CJK SC', sans-serif;
+  --font-family-body: 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans CJK SC', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-family-mono: SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
   --font-size-base: 16px;
   --line-height-base: 1.6;
@@ -178,10 +178,10 @@ h1, h2, h3, h4, h5, h6 {
   margin-top: var(--spacing-lg);
 }
 
-h1 { font-size: 1.8rem; }
-h2 { font-size: 1.6rem; }
-h3 { font-size: 1.35rem; }
-h4 { font-size: 1.2rem; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.7rem; }
+h3 { font-size: 1.4rem; }
+h4 { font-size: 1.25rem; }
 h5 { font-size: 1.1rem; }
 h6 { font-size: 1rem; }
 
@@ -189,13 +189,29 @@ p {
   margin-bottom: var(--spacing-md);
 }
 
+.post-content h1,
+.post-content h2,
+.post-content h3,
+.post-content h4,
+.post-content h5,
+.post-content h6 {
+  font-weight: 600;
+  margin-top: 1.6em;
+  margin-bottom: 0.6em;
+}
+
+.post-content h1 {
+  font-size: 2rem;
+  margin-top: 1.2em;
+}
+
 /* ===== Article / Reading Experience ===== */
-/* Designed for comfortable long-form Chinese reading */
-/* Inspired by e-book / WeRead-style typography */
-/* Chinese text needs slightly heavier weight for comfortable reading */
+/* Designed for comfortable long-form Chinese and English reading. */
+/* Reference: WeRead, Zhihu, WeChat Official Accounts typography. */
+/* Chinese text benefits from generous line-height and slightly heavier weight. */
 .post-content {
-  font-size: 1.1rem;
-  line-height: 1.75;
+  font-size: 1.15rem;
+  line-height: 1.85;
   font-weight: 450;
   font-family: var(--font-family-body);
   letter-spacing: 0.02em;
@@ -205,7 +221,7 @@ p {
 
 /* Paragraph spacing that works for mixed-length paragraphs */
 .post-content p {
-  margin-bottom: 1em;
+  margin-bottom: 1.1em;
   text-align: left;
 }
 
@@ -285,13 +301,14 @@ p {
 
 /* Blockquotes */
 .post-content blockquote {
-  border-left: 4px solid var(--primary-color);
-  padding-left: 1.5em;
+  border-left: 3px solid var(--border-color);
+  padding: 0.8em 1.2em;
   margin: 1.8em 0;
   color: var(--text-light);
-  font-style: italic;
-  font-size: 0.95em;
-  line-height: 1.7;
+  font-size: 0.95rem;
+  line-height: 1.75;
+  background: var(--bg-alt);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
 }
 
 /* Horizontal rules */
