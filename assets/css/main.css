@@ -1531,27 +1531,77 @@ article.page .post-content li a {
 }
 
 /* ===== English Typography Overrides ===== */
-/* English text reads better with tighter spacing, normal weight,
-   and a Latin-first font stack than the CJK-optimized defaults. */
+/* Modeled after Medium / Substack reading experience:
+   serif body text, larger font size, comfortable line-height. */
 
 html[lang="en-US"] .post-content {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-family: 'Charter', Georgia, 'Times New Roman', serif;
+  font-size: 1.2rem;
+  line-height: 1.6;
+  letter-spacing: -0.003em;
   font-weight: 400;
-  line-height: 1.65;
-  letter-spacing: 0;
+  word-break: break-word;
+  -webkit-font-smoothing: antialiased;
 }
 
 html[lang="en-US"] .post-content p {
-  margin-bottom: 0.85em;
+  margin-bottom: 1em;
 }
 
-html[lang="en-US"] .post-content h1,
-html[lang="en-US"] .post-content h2 { font-weight: 700; }
+html[lang="en-US"] .post-content h1 {
+  font-family: var(--font-family);
+  font-size: 2.2rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
 
-html[lang="en-US"] .post-content h3,
-html[lang="en-US"] .post-content h4 { font-weight: 600; }
+html[lang="en-US"] .post-content h2 {
+  font-family: var(--font-family);
+  font-size: 1.7rem;
+  font-weight: 600;
+}
+
+html[lang="en-US"] .post-content h3 {
+  font-family: var(--font-family);
+  font-size: 1.35rem;
+  font-weight: 600;
+}
+
+html[lang="en-US"] .post-content h4 {
+  font-family: var(--font-family);
+  font-size: 1.15rem;
+  font-weight: 600;
+}
 
 html[lang="en-US"] .post-content blockquote {
+  font-family: 'Charter', Georgia, 'Times New Roman', serif;
   font-style: italic;
-  line-height: 1.6;
+  line-height: 1.5;
+  font-size: 1.05rem;
+  color: var(--text-light);
+  border-left-color: var(--border-color);
+}
+
+html[lang="en-US"] .post-content strong {
+  font-weight: 700;
+}
+
+html[lang="en-US"] .post-header .post-title {
+  font-family: var(--font-family);
+  font-size: 2.2rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+
+html[lang="en-US"] .post-header .post-meta {
+  font-family: var(--font-family);
+  font-size: 0.9rem;
+}
+
+/* English code blocks keep monospace */
+html[lang="en-US"] .post-content code,
+html[lang="en-US"] .post-content pre {
+  font-family: var(--font-family-mono);
+  font-size: 0.9rem;
 }
