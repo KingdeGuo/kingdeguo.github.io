@@ -1,0 +1,22 @@
+---
+title: "Jargon as a Discourse System"
+description: "Exploring the nature of jargon in organizations and its impact on individual thinking and power structures"
+date: 2025-10-27T12:34:00+08:00
+categories: ["Workplace Insights"]
+tags: ["Organizational Culture", "Discourse System", "Power Structure", "Workplace Communication", "Jargon"]
+draft: false
+---
+
+Sometimes I find myself wondering: in any organization, what changes a person first is never the rules or regulations—it’s the language itself.
+
+When you first join a new team, you notice that the people around you use certain words you can roughly understand but don’t fully grasp what they truly point to. So you start picking up these terms, mimicking the tone and rhythm, and gradually you can say them naturally in meetings. In that moment, you feel like you’ve fit in. But in reality, you’ve already begun to be shaped by this discourse system.
+
+Jargon is not just a communication tool—it’s an expression of power. Whoever controls the language controls the power to define. If you can understand it, it means you’re close to the center; if you can’t, you’re still outside the door. This feeling is subtle at first—you might only notice a slight unease—but over time, it makes you constantly worry about whether your own words are “qualified.”
+
+For newcomers, this experience is especially pronounced. You learn to say things like “create leverage points,” “close the loop on execution,” or “be more self-driven.” On the surface, these sound like collaboration and consensus, but beneath them lie commands and expectations. You strive to appear professional, rarely realizing that while you’re learning the language, the language is also learning to control you. Jargon makes you feel like you’re part of decision-making, but in truth, you’re already following a predetermined power structure. Its surface is communication; its depth is control. Understanding the boundaries of language means understanding the boundaries of power. Sometimes I pause and think: when I learned to say these words, did I truly become free? Or did I quietly slip myself into someone else’s logic?
+
+Interestingly, most people who use jargon aren’t trying to manipulate. They’re just following the rules to maintain a sense of security. Within a system, not speaking the standard language can make you seem “unprofessional,” while speaking plainly might be misunderstood or ignored. So, consciously or not, everyone gets swept up by the system, and over time, their thinking becomes assimilated. Language is supposed to be a tool for thought, but when jargon becomes the norm, it also defines who gets to speak and whose voice gets amplified. Those who master the language hold the power of discourse, while those who passively learn it struggle to change the narrative at critical moments. Every time I think about this, it gives me a slight chill—realizing that every word I say might unknowingly tie me into an invisible web.
+
+Jargon often starts with good intentions. Words like “growth,” “retrospective,” or “mindset” were originally coined for efficiency, precision, and innovation. But when they become institutionalized and repeatedly repackaged, they shift from tools for thinking into substitutes for thought. Those who use them appear efficient but are actually repeating established patterns; those who don’t risk being excluded from the power network. Language and power intertwine to form the hidden structure within organizations. Every time I become aware of this, I can’t help but pause, take a deep breath, and think about where I want to go next.
+
+Understanding jargon means understanding the logic of how an organization operates. Language may seem simple, but it’s actually a means of control and definition. The story of how newcomers assimilate into an environment tells us that mastering jargon isn’t just about communication skills—it’s about whether you can gain a voice in the organization. True insight doesn’t lie in how many buzzwords you can throw around, but in seeing the structure and boundaries behind the language—and where you stand within them. Jargon isn’t something to fear; it’s simply a mirror reflecting the power structures of modern organizations. Seeing it means you can more clearly decide how to move forward, rather than being swept along passively.

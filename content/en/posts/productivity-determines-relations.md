@@ -1,0 +1,26 @@
+---
+title: "Productivity Determines Relations of Production"
+description: "Exploring how changes in productivity within a team affect interpersonal relationships and power structures, based on Marx's theory that 'productivity determines relations of production'"
+date: 2025-11-02T21:50:00+08:00
+categories: ["Team Collaboration"]
+tags: ["productivity", "relations of production", "team management", "organizational structure", "power structure", "interpersonal relationships", "management practices"]
+draft: false
+---
+
+# Productivity Determines Relations of Production
+
+Team dynamics have always been a puzzle I revisit repeatedly—who influences whom, who gets marginalized, and where those subtle tensions actually come from.
+
+It was a quiet weekend, and I picked up Marx's *A Contribution to the Critique of Political Economy* again. When I came across the line "productivity determines relations of production," something clicked: those inflection points where team atmosphere swings hot and cold—aren't they just micro-level footnotes to this very idea? So I went back over the cases I've observed in recent years, trying to reconstruct how this "invisible lever" actually turns inside the office.
+
+To make the issue clearer, let me simplify it into a minimal model: one manager, Employee A, and Employee B. A is highly capable and proactive; B is average and dependent. The manager has to coordinate resources while balancing morale. On the surface, there are only three relationship lines—manager ↔ A, manager ↔ B, A ↔ B—but that's enough to show us that "whoever's productivity shifts, quietly moves the weight of power." In real organizations, these triads stack up like building blocks: multiple "A and B" pairs within a department, multiple departments within a company, each layer playing out similar tensions and adjustments, just at different scales.
+
+Back to the minimal model. As soon as a project kicks off, conflict emerges. A's high output gives him more say in decisions, but it also inadvertently disrupts the manager's rhythm. The manager is caught in a dilemma—wanting to leverage A's efficiency while fearing the overall pace will be thrown off. Sensing resources and attention tilting toward A, B gradually adopts a defensive posture, occasionally using a "minimum effort" strategy to protect himself. Irritation, withdrawal, anxiety—three emotional threads quietly tangle together. In the short term, this stratification seems reasonable: high performers get a sense of achievement, low performers hold onto their comfort zone. But over time, negative feedback accumulates—A grows restless from a lack of new challenges, B becomes more passive from marginalization, even considering leaving; the manager exhausts patience in constant mediation. If anyone quits, the existing balance shatters immediately: if the manager leaves, the direct contest between A and B escalates; if A leaves, the manager is forced to redistribute power, and B's role may be passively upgraded; if B leaves, A's dominance grows further, and the team's rhythm becomes one-dimensional. Departure isn't just losing one person—it's the entire chain of production relations being unraveled and rewoven in an instant.
+
+This continuous evolution deepened my understanding of the dynamic meaning behind "productivity determines relations of production": whenever someone's productivity changes significantly, power, resources, and influence follow—regardless of anyone's job title. Management practice thus reminds us: team structure, task allocation, and incentive mechanisms must track subtle shifts in productivity as closely as tracking temperature. Otherwise, the vicious cycle of high performers leaving, low performers stagnating, and team vitality declining becomes hard to avoid.
+
+So I started rethinking my management toolkit: shouldn't I set deeper, more expansive goals for A, channeling his "excess capacity" into unexplored territory? Shouldn't I pull B out of repetitive tasks and give him a visible growth ladder to climb? Shouldn't I transform the manager from a "firefighter" back into a "system designer," replacing ad hoc decisions with processes and mechanisms? Every micro-adjustment is essentially a response to new signals from productivity; every delay, meanwhile, lets old relationships continue to drain energy.
+
+I've become increasingly convinced that team management isn't about locking people into fixed boxes—it's about continuously adjusting connections in sync with the pulse of productivity. As long as that sense of flow remains, conflict and turnover risk aren't collapses—they're reminders for the next realignment. In other words, the undercurrent of productivity never stops flowing, and the network of production relations must be constantly woven. The manager's long-term task is to sustain a cycle of "awareness → adjustment → renewed awareness," giving the team both present stability and future flexibility.
+
+Maybe next time I open *A Contribution to the Critique of Political Economy*, I'll gain a new perspective. But for now, this book has already translated its simplest line into daily, tangible, actionable moves—putting the right people in the right relationships, and making sure those relationships can always keep pace with the growth of capability.
