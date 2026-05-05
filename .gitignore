@@ -7,3 +7,5 @@ _creation_rules/
 assets/.DS_Store
 assets/js/.DS_Store
 .DS_Store
+__pycache__/
+*.pyc

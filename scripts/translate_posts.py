@@ -10,9 +10,11 @@ import urllib.error
 from pathlib import Path
 
 DEEPSEEK_API_KEY = os.environ.get("DEEPSEEK_API_KEY")
-MAX_TRANSLATIONS = os.environ.get("MAX_TRANSLATIONS")
-if MAX_TRANSLATIONS is not None:
+MAX_TRANSLATIONS = os.environ.get("MAX_TRANSLATIONS", "").strip()
+if MAX_TRANSLATIONS:
     MAX_TRANSLATIONS = int(MAX_TRANSLATIONS)
+else:
+    MAX_TRANSLATIONS = None
 ZH_DIR = Path("content/zh/posts")
 EN_DIR = Path("content/en/posts")
 CACHE_FILE = Path("scripts/.translation_cache.json")
