@@ -100,4 +100,4 @@ qr_text:
 
 # AI translation notice
 ai_translate_notice:
-  other: "This article is translated from Chinese by AI. Some nuances may differ."
+  other: "Originally written in Chinese, translated by AI. Some nuances may differ from the original."
