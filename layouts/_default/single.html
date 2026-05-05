@@ -39,15 +39,15 @@
     </div>
   </header>
 
+  <div class="post-content">
+    {{ .Content }}
+  </div>
+
   {{ if eq .Lang "en" }}
   <div class="post-ai-notice">
     <p>{{ i18n "ai_translate_notice" }}</p>
   </div>
   {{ end }}
-
-  <div class="post-content">
-    {{ .Content }}
-  </div>
 
   <footer class="post-footer">
     {{- /* 自动文章系列关联 */ -}}
