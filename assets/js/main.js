@@ -4,7 +4,39 @@ document.addEventListener('DOMContentLoaded', function() {
   // Reading Progress Bar
   initReadingProgress();
   
-  // Code Copy Buttons
+// Donate / Reward QR Toggle (click to reveal - anti-scraper)
+function initDonateToggle() {
+  document.querySelectorAll('.donate-wrapper').forEach(function(wrapper) {
+    var toggle = wrapper.querySelector('.donate-toggle');
+    var content = wrapper.querySelector('.donate-content');
+    var qrContainer = wrapper.querySelector('.donate-qr-container');
+    if (!toggle || !content) return;
+
+    toggle.addEventListener('click', function() {
+      var isVisible = content.classList.contains('is-visible');
+      if (isVisible) {
+        content.classList.remove('is-visible');
+        return;
+      }
+
+      content.classList.add('is-visible');
+
+      if (qrContainer && !qrContainer.querySelector('img')) {
+        var src = toggle.getAttribute('data-donate-src');
+        if (src) {
+          var img = document.createElement('img');
+          img.className = 'donate-qr-image';
+          img.alt = '微信赞赏码';
+          img.loading = 'lazy';
+          img.src = src;
+          qrContainer.appendChild(img);
+        }
+      }
+    });
+  });
+}
+
+// Code Copy Buttons
   initCodeCopyButtons();
   
   // Image Lazy Loading
@@ -18,6 +50,9 @@ document.addEventListener('DOMContentLoaded', function() {
   
   // Theme Toggle
   initThemeToggle();
+
+  // Donate / Reward Toggle
+  initDonateToggle();
 });
 
 // Reading Progress Bar

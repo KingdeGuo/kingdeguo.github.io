@@ -1,0 +1,15 @@
+{{- $donateImg := resources.Get "images/donate-wechat.png" | fingerprint -}}
+{{- $donateUrl := "" -}}
+{{- if $donateImg -}}
+  {{- $donateUrl = $donateImg.RelPermalink -}}
+{{- end -}}
+
+<div class="donate-wrapper">
+  <button class="donate-toggle" aria-label="打赏" data-donate-src="{{ $donateUrl }}">
+    赞赏支持
+  </button>
+  <div class="donate-content">
+    <p class="donate-text">如果觉得文章对你有帮助，欢迎打赏</p>
+    <div class="donate-qr-container"></div>
+  </div>
+</div>

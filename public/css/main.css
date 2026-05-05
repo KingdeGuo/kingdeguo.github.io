@@ -1030,6 +1030,85 @@ article.page .post-content li a {
   margin: 0;
 }
 
+/* ===== Donate / Reward Section ===== */
+.donate-wrapper {
+  margin-top: var(--spacing-md);
+}
+
+.donate-toggle {
+  display: inline-block;
+  padding: 6px 18px;
+  border: 1px solid var(--border-color);
+  border-radius: 999px;
+  background: var(--bg-alt);
+  color: var(--text-color);
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.donate-toggle:hover {
+  border-color: var(--accent-color);
+  color: var(--accent-color);
+  background: var(--bg-color);
+}
+
+.donate-content {
+  display: none;
+  margin-top: var(--spacing-sm);
+  text-align: center;
+}
+
+.donate-content.is-visible {
+  display: block;
+}
+
+.donate-text {
+  font-size: 0.8rem;
+  color: var(--text-light);
+  margin-bottom: var(--spacing-sm);
+}
+
+.donate-qr-image {
+  width: 200px;
+  height: auto;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Sidebar donate variant */
+.wechat-qr-sidebar .donate-wrapper {
+  margin-top: var(--spacing-lg);
+  text-align: center;
+}
+
+/* Inline donate variant (article footer) */
+.post-footer .donate-wrapper {
+  max-width: 300px;
+  margin: var(--spacing-xl) auto;
+  text-align: center;
+  padding: var(--spacing-lg);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  background: var(--bg-alt);
+}
+
+.post-footer .donate-toggle {
+  font-size: 0.95rem;
+  padding: 8px 28px;
+}
+
+.post-footer .donate-text {
+  font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+  .post-footer .donate-wrapper {
+    max-width: 100%;
+    margin: var(--spacing-lg) 0;
+  }
+}
+
 /* ===== Homepage Mini Section (Projects) ===== */
 .homepage-mini-section {
   margin-top: var(--spacing-lg);
