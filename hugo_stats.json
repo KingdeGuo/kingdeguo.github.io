@@ -75,6 +75,7 @@
       "page",
       "page-header",
       "post",
+      "post-ai-notice",
       "post-categories",
       "post-comments",
       "post-content",
@@ -124,6 +125,7 @@
       "wechat-qr-sidebar"
     ],
     "ids": [
+      "20232025-organizational-evolution-through-the-lens-of-large-models",
       "20232025从大模型看组织进化论",
       "giscus-comments",
       "lang-switcher",

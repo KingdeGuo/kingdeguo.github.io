@@ -97,6 +97,7 @@ def main():
 
     EN_DIR.mkdir(parents=True, exist_ok=True)
     zh_files = sorted(ZH_DIR.glob("*.md"))
+    zh_files = [f for f in zh_files if f.name != "_index.md"]
     total = len(zh_files)
     start_time = time.time()
 
