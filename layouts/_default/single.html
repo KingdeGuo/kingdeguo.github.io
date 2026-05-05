@@ -4,7 +4,7 @@
     <h1 class="post-title">{{ .Title }}</h1>
     <div class="post-meta">
       <div class="post-meta-primary">
-        <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006年1月2日" }}</time>
+        <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format (i18n "date_format") }}</time>
         {{- $wordCount := .WordCount -}}
         {{- if eq $wordCount 0 -}}
           {{- $wordCount = len (split .Plain " ") -}}
@@ -13,14 +13,14 @@
           {{- $wordCount = len (replaceRE "[^\\p{Han}]" "" .Plain) -}}
         {{- end -}}
         {{- $readingTime := div $wordCount 350 | math.Ceil | default 1 -}}
-        <span class="post-reading-time">阅读时间：{{ $readingTime }} 分钟</span>
-        <span class="post-word-count">字数：{{ $wordCount }} 字</span>
+        <span class="post-reading-time">{{ i18n "reading_time" $readingTime }}</span>
+        <span class="post-word-count">{{ i18n "word_count" $wordCount }}</span>
       </div>
       {{ if or .Params.categories .Params.tags }}
       <div class="post-meta-secondary">
         {{ if .Params.categories }}
         <span class="post-categories">
-          分类：
+          {{ i18n "category_label" }}
           {{ range .Params.categories }}
           <a href="{{ "/categories/" | relLangURL }}{{ . | urlize }}">{{ . }}</a>
           {{ end }}
@@ -28,7 +28,7 @@
         {{ end }}
         {{ if .Params.tags }}
         <span class="post-tags">
-          标签：
+          {{ i18n "tag_label" }}
           {{ range .Params.tags }}
           <a href="{{ "/tags/" | relLangURL }}{{ . | urlize }}">{{ . }}</a>
           {{ end }}
@@ -38,6 +38,12 @@
       {{ end }}
     </div>
   </header>
+
+  {{ if eq .Lang "en" }}
+  <div class="post-ai-notice">
+    <p>{{ i18n "ai_translate_notice" }}</p>
+  </div>
+  {{ end }}
 
   <div class="post-content">
     {{ .Content }}
@@ -50,13 +56,13 @@
       {{- $series_pages := where .Site.RegularPages "Params.series" "intersect" (slice $series_name) -}}
       {{- if gt (len $series_pages) 1 -}}
         <div class="post-series">
-          <h3>系列文章：{{ $series_name }}</h3>
+          <h3>{{ i18n "series_title" }}{{ $series_name }}</h3>
           <ul class="series-list">
             {{- range $index, $page := $series_pages.ByDate -}}
               <li class="series-item{{ if eq $page.Permalink $.Permalink }} current{{ end }}">
                 <a href="{{ $page.Permalink }}">{{ $page.Title }}</a>
                 {{- if eq $page.Permalink $.Permalink -}}
-                  <span class="current-marker">（当前文章）</span>
+                  <span class="current-marker">{{ i18n "current_article" }}</span>
                 {{- end -}}
               </li>
             {{- end -}}
@@ -69,7 +75,7 @@
     {{- $related := .Site.RegularPages.Related . | first 3 -}}
     {{- if $related -}}
       <div class="related-posts">
-        <h3>相关文章</h3>
+        <h3>{{ i18n "related_posts" }}</h3>
         <ul class="related-list">
           {{- range $related -}}
             <li class="related-item">
@@ -102,7 +108,7 @@
               data-emit-metadata="{{ .Site.Params.giscus.emitMetadata }}"
               data-input-position="{{ .Site.Params.giscus.inputPosition }}"
               data-theme="preferred_color_scheme"
-              data-lang="{{ .Site.Params.giscus.lang }}"
+               data-lang="{{ if eq .Lang "en" }}en{{ else }}zh-CN{{ end }}"
               crossorigin="anonymous"
               async>
       </script>

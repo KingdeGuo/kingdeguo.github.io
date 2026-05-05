@@ -26,7 +26,7 @@ function initDonateToggle() {
         if (src) {
           var img = document.createElement('img');
           img.className = 'donate-qr-image';
-          img.alt = '微信赞赏码';
+          img.alt = window.i18n?.donateAlt || '微信赞赏码';
           img.loading = 'lazy';
           img.src = src;
           qrContainer.appendChild(img);
@@ -105,7 +105,7 @@ function initCodeCopyButtons() {
   codeBlocks.forEach((block) => {
     const copyButton = document.createElement('button');
     copyButton.className = 'copy-button';
-    copyButton.textContent = '复制';
+    copyButton.textContent = window.i18n?.copy || '复制';
     copyButton.style.cssText = `
       position: absolute;
       top: 8px;
@@ -144,15 +144,15 @@ function initCodeCopyButtons() {
       
       try {
         await navigator.clipboard.writeText(code);
-        copyButton.textContent = '已复制!';
+        copyButton.textContent = window.i18n?.copied || '已复制!';
         setTimeout(() => {
-          copyButton.textContent = '复制';
+          copyButton.textContent = window.i18n?.copy || '复制';
         }, 2000);
       } catch (err) {
         console.error('复制失败:', err);
-        copyButton.textContent = '复制失败';
+        copyButton.textContent = window.i18n?.copyFailed || '复制失败';
         setTimeout(() => {
-          copyButton.textContent = '复制';
+          copyButton.textContent = window.i18n?.copy || '复制';
         }, 2000);
       }
     });

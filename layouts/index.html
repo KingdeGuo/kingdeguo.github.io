@@ -4,7 +4,7 @@
   <section class="hero">
     <div class="hero-content">
       <h1 class="hero-name">kingdeguo</h1>
-      <p class="hero-tagline">生活很复杂，我想让他简单一点</p>
+      <p class="hero-tagline">{{ i18n "hero_tagline" }}</p>
     </div>
   </section>
 
@@ -18,19 +18,19 @@
       {{ end }}
     </div>
     <div class="recent-posts-footer">
-      <a href="/posts/" class="btn btn-outline">查看全部文章 →</a>
+      <a href="{{ "posts/" | relLangURL }}" class="btn btn-outline">{{ i18n "view_all_posts" }}</a>
     </div>
     <div class="homepage-section-separator"></div>
     {{ with .Site.Data.projects_meta }}
     <div class="homepage-mini-section">
-      <h4 class="mini-section-title">作品</h4>
+      <h4 class="mini-section-title">{{ i18n "section_projects" }}</h4>
       <div class="mini-project-list">
         {{ range first 3 . }}
         <a href="{{ .url | default "#" }}" class="mini-project-item" target="_blank" rel="noopener">{{ .name }}</a>
         {{ end }}
       </div>
       <div class="recent-posts-footer">
-        <a href="/projects/" class="btn btn-outline">查看全部作品 →</a>
+        <a href="{{ "projects/" | relLangURL }}" class="btn btn-outline">{{ i18n "view_all_projects" }}</a>
       </div>
     </div>
     {{ end }}

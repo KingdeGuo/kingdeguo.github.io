@@ -11,7 +11,7 @@
     <h1 class="post-title">{{ $project.name | default .Title }}</h1>
     <div class="project-hero-meta">
       {{ if $project.language }}
-      <span class="project-badge"><strong>语言：</strong>{{ $project.language }}</span>
+      <span class="project-badge"><strong>{{ i18n "project_language" }}</strong>{{ $project.language }}</span>
       {{ end }}
       {{ if $project.stars }}
       <span class="project-badge">★ {{ $project.stars }} Stars</span>
@@ -23,7 +23,7 @@
       <span class="project-badge">{{ $project.license }}</span>
       {{ end }}
       {{ if $project.url }}
-      <a href="{{ $project.url }}" class="project-github-link" target="_blank" rel="noopener">View on GitHub →</a>
+      <a href="{{ $project.url }}" class="project-github-link" target="_blank" rel="noopener">{{ i18n "view_on_github" }}</a>
       {{ end }}
     </div>
   </header>
@@ -39,7 +39,7 @@
   <footer class="post-footer">
     {{ if and (isset $project "readme_content") $project.readme_content }}
     <details class="project-readme">
-      <summary>README</summary>
+      <summary>{{ i18n "readme" }}</summary>
       <pre>{{ $project.readme_content }}</pre>
     </details>
     {{ end }}
@@ -59,9 +59,9 @@
               data-emit-metadata="0"
               data-input-position="bottom"
               data-theme="preferred_color_scheme"
-              data-lang="zh-CN"
-              crossorigin="anonymous"
-              async>
+               data-lang="{{ if eq .Lang "en" }}en{{ else }}zh-CN{{ end }}"
+               crossorigin="anonymous"
+               async>
       </script>
     </div>
   </footer>

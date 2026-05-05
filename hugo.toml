@@ -2,13 +2,12 @@
 # KingdeGuo's Blog - SEO Optimized Hugo Setup
 
 baseURL = "https://www.kingdeguo.com/"
-languageCode = "zh-CN"
 defaultContentLanguage = "zh-CN"
+defaultContentLanguageInSubdir = false
 title = "kingdeguo's blog"
 
 # ===== 站点信息 =====
 [params]
-  description = "个人博客分享技术、生活和读书等内容，专注于量化投资、机器学习、Web开发等领域"
   author = "KingdeGuo"
   email = "kingdeguo@foxmail.com"
   subtitle = "技术分享 • 生活感悟 • 读书笔记"
@@ -26,7 +25,6 @@ title = "kingdeguo's blog"
 [params.seo]
   # 基础SEO
   titleTemplate = "%s | kingdeguo's blog"
-  descriptionTemplate = "%s"
   
   # Open Graph
   openGraph = true
@@ -146,28 +144,53 @@ title = "kingdeguo's blog"
 
 # ===== 菜单配置 =====
 [menu]
-  [[menu.main]]
+
+  [[languages.zh-CN.menu.main]]
     identifier = "home"
     name = "首页"
     url = "/"
     weight = 1
   
-  [[menu.main]]
+  [[languages.zh-CN.menu.main]]
     identifier = "posts"
     name = "所有文章"
     url = "/posts/"
     weight = 2
   
-  [[menu.main]]
+  [[languages.zh-CN.menu.main]]
     identifier = "projects"
     name = "作品"
     url = "/projects/"
     weight = 3
 
-  [[menu.main]]
+  [[languages.zh-CN.menu.main]]
     identifier = "about"
     name = "关于我"
     url = "/about/"
+    weight = 4
+
+  [[languages.en.menu.main]]
+    identifier = "home"
+    name = "Home"
+    url = "/en/"
+    weight = 1
+  
+  [[languages.en.menu.main]]
+    identifier = "posts"
+    name = "All Posts"
+    url = "/en/posts/"
+    weight = 2
+  
+  [[languages.en.menu.main]]
+    identifier = "projects"
+    name = "Projects"
+    url = "/en/projects/"
+    weight = 3
+
+  [[languages.en.menu.main]]
+    identifier = "about"
+    name = "About"
+    url = "/en/about/"
     weight = 4
 
 # ===== 分类和标签 =====
@@ -181,3 +204,17 @@ title = "kingdeguo's blog"
   languageCode = "zh-CN"
   languageName = "中文"
   weight = 1
+  contentDir = "content/zh"
+
+  [languages.zh-CN.params]
+    description = "个人博客分享技术、生活和读书等内容，专注于量化投资、机器学习、Web开发等领域"
+
+[languages.en]
+  languageCode = "en-US"
+  languageName = "English"
+  weight = 2
+  contentDir = "content/en"
+
+  [languages.en.params]
+    description = "Personal blog sharing technology, life, and reading notes, focusing on quantitative investment, machine learning, web development"
+    subtitle = "Tech • Life • Reading"

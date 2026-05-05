@@ -59,7 +59,7 @@
         <a href="/">{{ .Site.Title }}</a>
       </div>
 
-      <button class="hamburger" aria-label="Toggle menu">
+      <button class="hamburger" aria-label='{{ i18n "hamburger_aria" }}'>
         <span></span>
         <span></span>
         <span></span>
@@ -72,7 +72,14 @@
         </li>
         {{ end }}
         <li class="nav-item">
-          <a href="{{ "index.xml" | absURL }}" class="nav-link" target="_blank" rel="noopener">RSS订阅</a>
+          <a href="{{ "index.xml" | absURL }}" class="nav-link" target="_blank" rel="noopener">{{ i18n "rss_subscribe" }}</a>
+        </li>
+        <li class="nav-item nav-lang-switcher">
+          <select id="lang-switcher" onchange="if (this.value) window.location.href=this.value">
+            {{ range $.Site.Home.AllTranslations }}
+            <option value="{{ .RelPermalink }}" {{ if eq .Lang $.Lang }}selected{{ end }}>{{ .Language.LanguageName }}</option>
+            {{ end }}
+          </select>
         </li>
         <li class="nav-item nav-theme-toggle">
           {{ partial "theme-toggle.html" . }}
@@ -103,10 +110,60 @@
         {{ with .Site.Params.github }}
         <a href="https://github.com/{{ . }}" target="_blank" rel="noopener">GitHub</a>
         {{ end }}
-        <a href="{{ "index.xml" | absURL }}" target="_blank" rel="noopener">RSS订阅</a>
+        <a href="{{ "index.xml" | absURL }}" target="_blank" rel="noopener">{{ i18n "rss_subscribe" }}</a>
       </div>
     </div>
   </footer>
+
+  <!-- JS i18n strings -->
+  <script>
+  window.i18n = {
+    copy: '{{ i18n "copy" }}',
+    copied: '{{ i18n "copied" }}',
+    copyFailed: '{{ i18n "copy_failed" }}',
+    noResults: '{{ i18n "no_results" }}',
+    donateAlt: '{{ i18n "donate_alt" }}',
+    currentLang: '{{ .Lang }}',
+    supportedLangs: [{{ range .Site.Languages }}'{{ .Lang }}',{{ end }}]
+  };
+  </script>
+
+  <!-- Browser language detection + language switcher -->
+  <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var switcher = document.getElementById('lang-switcher');
+    if (switcher) {
+      switcher.addEventListener('change', function() {
+        localStorage.setItem('preferred_lang', this.value);
+      });
+      var currentLang = window.i18n.currentLang;
+      for (var i = 0; i < switcher.options.length; i++) {
+        if (switcher.options[i].selected) {
+          switcher.options[i].setAttribute('selected', '');
+          break;
+        }
+      }
+    }
+  });
+
+  (function() {
+    var stored = localStorage.getItem('preferred_lang');
+    if (stored) return;
+
+    var browserLang = (navigator.language || navigator.userLanguage || '').toLowerCase();
+    if (!browserLang) return;
+
+    var currentPath = window.location.pathname;
+
+    if (browserLang.startsWith('en') && !currentPath.startsWith('/en/')) {
+      var enPath = '/en' + (currentPath === '/' ? '/' : currentPath);
+      window.location.href = enPath;
+    } else if (browserLang.startsWith('zh') && currentPath.startsWith('/en/')) {
+      var zhPath = currentPath.replace(/^\/en/, '') || '/';
+      window.location.href = zhPath;
+    }
+  })();
+  </script>
 
   <!-- Scripts -->
   {{ $script := resources.Get "js/main.js" }}

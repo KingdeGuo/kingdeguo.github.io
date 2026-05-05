@@ -1,0 +1,99 @@
+# English UI Translations
+
+# Navigation
+rss_subscribe:
+  other: "RSS"
+hamburger_aria:
+  other: "Toggle menu"
+
+# Homepage
+hero_tagline:
+  other: "Life is complex, I want to make it simpler"
+view_all_posts:
+  other: "View All Posts →"
+view_all_projects:
+  other: "View All Projects →"
+section_projects:
+  other: "Projects"
+
+# List / Search
+search_placeholder:
+  other: "Search articles..."
+search_aria:
+  other: "Search articles"
+no_results:
+  other: "No articles found"
+
+# Article
+date_format:
+  other: "Jan 2, 2006"
+reading_time:
+  other: "Reading time: {{ . }} min"
+word_count:
+  other: "Words: {{ . }}"
+category_label:
+  other: "Category: "
+tag_label:
+  other: "Tags: "
+series_title:
+  other: "Series: "
+current_article:
+  other: " (current)"
+related_posts:
+  other: "Related Posts"
+
+# 404
+not_found:
+  other: "Page not found. It may have been moved or deleted."
+back_home:
+  other: "Back to Home"
+
+# Projects
+no_description:
+  other: "No description"
+view_on_github:
+  other: "View on GitHub →"
+no_projects:
+  other: "No projects yet"
+project_language:
+  other: "Language: "
+readme:
+  other: "README"
+
+# Copy button
+copy:
+  other: "Copy"
+copied:
+  other: "Copied!"
+copy_failed:
+  other: "Copy failed"
+
+# Donate
+donate_alt:
+  other: "WeChat reward QR code"
+
+# Language switcher
+switch_language:
+  other: "Language"
+
+# Theme toggle
+theme_switch_aria:
+  other: "Toggle theme"
+
+# Donate
+donate_aria:
+  other: "Donate"
+donate_button:
+  other: "Support"
+donate_text:
+  other: "If you find this article helpful, feel free to support"
+
+# QR
+qr_alt:
+  other: "WeChat QR code"
+qr_text:
+  other: "Follow my WeChat public account"
+
+# AI translation notice
+ai_translate_notice:
+  other: "This article is translated from Chinese by AI. Some nuances may differ."

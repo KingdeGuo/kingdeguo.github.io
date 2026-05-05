@@ -144,6 +144,10 @@
   {{- end }}
 {{- end }}
 
+{{- /* hreflang alternate links for multilingual SEO */ -}}
+{{- range .AllTranslations -}}
+  <link rel="alternate" hreflang="{{ .Language.LanguageCode }}" href="{{ .Permalink }}" />
+{{- end -}}
 <link rel="alternate" type="application/rss+xml" title="{{ .Site.Title }} RSS" href="{{ "index.xml" | relURL }}">
 <link rel="alternate" type="application/json" title="{{ .Site.Title }} JSON Feed" href="{{ "index.json" | relURL }}">
 
@@ -179,7 +183,7 @@
     <meta property="article:word_count" content="{{ .WordCount }}">
   {{- end -}}
   {{- if .ReadingTime -}}
-    <meta name="readingTime" content="{{ .ReadingTime }} 分钟">
+    <meta name="readingTime" content="{{ .ReadingTime }}">
     <meta property="article:time_required" content="PT{{ .ReadingTime }}M">
   {{- end -}}
 {{- end -}}

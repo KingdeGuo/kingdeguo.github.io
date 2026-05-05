@@ -1,0 +1,99 @@
+# Chinese UI Translations
+
+# Navigation
+rss_subscribe:
+  other: "RSS订阅"
+hamburger_aria:
+  other: "切换菜单"
+
+# Homepage
+hero_tagline:
+  other: "生活很复杂，我想让他简单一点"
+view_all_posts:
+  other: "查看全部文章 →"
+view_all_projects:
+  other: "查看全部作品 →"
+section_projects:
+  other: "作品"
+
+# List / Search
+search_placeholder:
+  other: "输入关键词搜索文章..."
+search_aria:
+  other: "搜索文章"
+no_results:
+  other: "没有找到相关文章"
+
+# Article
+date_format:
+  other: "2006年1月2日"
+reading_time:
+  other: "阅读时间：{{ . }} 分钟"
+word_count:
+  other: "字数：{{ . }} 字"
+category_label:
+  other: "分类："
+tag_label:
+  other: "标签："
+series_title:
+  other: "系列文章："
+current_article:
+  other: "（当前文章）"
+related_posts:
+  other: "相关文章"
+
+# 404
+not_found:
+  other: "找不到页面了，它可能被移动或删除了。"
+back_home:
+  other: "返回首页"
+
+# Projects
+no_description:
+  other: "暂无描述"
+view_on_github:
+  other: "View on GitHub →"
+no_projects:
+  other: "暂无作品展示"
+project_language:
+  other: "语言："
+readme:
+  other: "README"
+
+# Copy button
+copy:
+  other: "复制"
+copied:
+  other: "已复制!"
+copy_failed:
+  other: "复制失败"
+
+# Donate
+donate_alt:
+  other: "微信赞赏码"
+
+# Language switcher
+switch_language:
+  other: "语言"
+
+# Theme toggle
+theme_switch_aria:
+  other: "切换主题"
+
+# Donate
+donate_aria:
+  other: "打赏"
+donate_button:
+  other: "赞赏支持"
+donate_text:
+  other: "如果觉得文章对你有帮助，欢迎打赏"
+
+# QR
+qr_alt:
+  other: "微信公众号二维码"
+qr_text:
+  other: "关注我的公众号"
+
+# AI translation notice
+ai_translate_notice:
+  other: "本文由 AI 从中文翻译而来，可能存在细微差异。"

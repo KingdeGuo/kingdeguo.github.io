@@ -19,7 +19,7 @@
     {{ range $.Site.Data.projects_meta }}
     <div class="project-card" onclick="window.open('{{ .url | default "javascript:void(0)" }}', '_blank')" style="cursor: pointer;">
       <h3 class="project-card-title">{{ .name }}</h3>
-      <p class="project-card-description">{{ .description | default "暂无描述" }}</p>
+        <p class="project-card-description">{{ .description | default (i18n "no_description") }}</p>
       <div class="project-card-meta">
         {{ if .language }}
         <span class="project-lang">{{ .language }}</span>
@@ -28,13 +28,13 @@
         <span class="project-stars">★ {{ .stars }}</span>
         {{ end }}
         {{ if .url }}
-        <span class="project-github-link">View on GitHub →</span>
+        <span class="project-github-link">{{ i18n "view_on_github" }}</span>
         {{ end }}
       </div>
     </div>
     {{ else }}
     <div class="empty-state">
-      <p>暂无作品展示</p>
+      <p>{{ i18n "no_projects" }}</p>
     </div>
     {{ end }}
   </div>

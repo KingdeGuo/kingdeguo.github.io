@@ -1,7 +1,7 @@
 {{ define "main" }}
 <div class="post" style="text-align: center; padding: var(--spacing-xxl) 0;">
   <h1 style="font-size: 4rem; margin-bottom: var(--spacing-sm); color: var(--text-light);">404</h1>
-  <p style="font-size: 1.25rem; color: var(--text-light); margin-bottom: var(--spacing-xl);">找不到页面了，它可能被移动或删除了。</p>
-  <a href="/" class="btn">返回首页</a>
+  <p style="font-size: 1.25rem; color: var(--text-light); margin-bottom: var(--spacing-xl);">{{ i18n "not_found" }}</p>
+  <a href="{{ "/" | relLangURL }}" class="btn">{{ i18n "back_home" }}</a>
 </div>
 {{ end }}
