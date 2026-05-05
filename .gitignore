@@ -9,3 +9,5 @@ assets/js/.DS_Store
 .DS_Store
 __pycache__/
 *.pyc
+public/
+resources/
