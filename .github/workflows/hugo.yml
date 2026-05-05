@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
   pages: write
   id-token: write
 
@@ -25,7 +25,17 @@ jobs:
         with:
           submodules: recursive
           fetch-depth: 0
-      
+
+      - name: Restore previous translations
+        uses: actions/cache@v4
+        with:
+          path: |
+            content/en
+            scripts/.translation_cache.json
+          key: en-translations-${{ hashFiles('content/zh/posts/**') }}
+          restore-keys: |
+            en-translations-
+       
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2
         with:
@@ -40,12 +50,14 @@ jobs:
         run: python3 scripts/translate_posts.py
         env:
           DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
+          MAX_TRANSLATIONS: ${{ vars.MAX_TRANSLATIONS }}
 
       - name: Commit translations back to repo
+        if: github.event_name == 'push'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
+          git remote set-url origin https://x-access-token:${{ secrets.PAT_TOKEN }}@github.com/${{ github.repository }}
           git add content/en/ scripts/.translation_cache.json
           if ! git diff --cached --quiet; then
             git commit -m "chore: auto-translate posts to English [skip ci]"
