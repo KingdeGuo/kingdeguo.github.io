@@ -20,16 +20,6 @@ jobs:
           fetch-depth: 0
           token: ${{ secrets.PAT_TOKEN }}
 
-      - name: Restore previous translations
-        uses: actions/cache@v4
-        with:
-          path: |
-            content/en
-            scripts/.translation_cache.json
-          key: en-translations-${{ hashFiles('content/zh/posts/**') }}
-          restore-keys: |
-            en-translations-
-
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v3
         with:
@@ -45,7 +35,6 @@ jobs:
         run: python3 scripts/translate_posts.py
         env:
           DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
-          MAX_TRANSLATIONS: 1
 
       - name: Commit translations
         run: |
