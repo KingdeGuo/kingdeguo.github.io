@@ -5,7 +5,11 @@ on:
     branches: [ master ]
   workflow_dispatch:
 
-# Allow only one concurrent deployment
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
 concurrency:
   group: "pages"
   cancel-in-progress: false
@@ -25,6 +29,9 @@ jobs:
         with:
           hugo-version: '0.151.0'
           extended: true
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
 
       - name: Fetch GitHub repo info for projects
         run: python3 scripts/fetch_projects.py
@@ -54,12 +61,18 @@ jobs:
       - name: Build with Hugo
         run: hugo --minify --environment production
 
-      - name: Clean old gh-pages branch
-        run: git push origin --delete gh-pages || true
-
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v4
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          github_token: ${{ secrets.PAT_TOKEN }}
-          publish_dir: ./public
-          force_orphan: true
+          path: ./public
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
