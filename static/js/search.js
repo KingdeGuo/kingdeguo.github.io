@@ -22,7 +22,9 @@ document.addEventListener('DOMContentLoaded', function() {
         history.replaceState({}, document.title, url.toString());
     }
 
-    fetch('/index.json')
+    var lang = window.i18n?.currentLang || 'zh-CN';
+    var searchIndex = (lang === 'en') ? '/en/index.json' : '/index.json';
+    fetch(searchIndex)
         .then(r => r.json())
         .then(data => {
             postsData = data;
@@ -62,7 +64,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 
         if (!results.length) {
-            postsContainer.innerHTML = '<div class="no-results">没有找到相关文章</div>';
+            postsContainer.innerHTML = '<div class="no-results">' + (window.i18n?.noResults || '没有找到相关文章') + '</div>';
             updateURLParam(q);
             return;
         }
@@ -126,7 +128,8 @@ document.addEventListener('DOMContentLoaded', function() {
         const groups = {};
         posts.forEach(p => {
             const date = new Date(p.date);
-            const month = date.toLocaleString('zh-CN', { year: 'numeric', month: '2-digit' });
+            var locale = (window.i18n?.currentLang === 'en') ? 'en-US' : 'zh-CN';
+            const month = date.toLocaleString(locale, { year: 'numeric', month: '2-digit' });
             if (!groups[month]) groups[month] = [];
             groups[month].push(p);
         });
