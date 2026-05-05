@@ -49,7 +49,7 @@ title = "kingdeguo's blog"
   
   # 搜索功能
   search = true
-  searchProvider = "lunr"
+  searchProvider = "json"
   
   # 阅读进度
   readingProgress = true

@@ -8,19 +8,13 @@
 
   {{ partial "seo.html" . }}
 
+  <link rel="sitemap" type="application/xml" href="{{ "sitemap.xml" | relURL }}">
   <link rel="icon" type="image/jpeg" href="/icon.jpg">
   <link rel="search" type="application/opensearchdescription+xml" href="{{ "opensearch.xml" | relURL }}" title="{{ .Site.Title }}">
 
   <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2370953792797102"
      crossorigin="anonymous"></script>
-
-  {{- /* AMP Auto Ads — 仅在文章页加载 */ -}}
-  {{ if .IsPage }}
-  <script async custom-element="amp-auto-ads"
-          src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
-  </script>
-  {{ end }}
 
   {{- /* Search Script — 使用 Layout 判断，避免依赖中文标题 */ -}}
   {{ if or (eq .Layout "search") (eq .Type "posts") }}
@@ -46,17 +40,11 @@
   {{ partial "analytics.html" . }}
 </head>
 <body>
-  {{- /* AMP Auto Ads body tag — 仅在文章页显示 */ -}}
-  {{ if .IsPage }}
-  <amp-auto-ads type="adsense"
-          data-ad-client="ca-pub-2370953792797102">
-  </amp-auto-ads>
-  {{ end }}
   <!-- Header -->
   <header class="site-header">
     <nav class="nav">
       <div class="nav-brand">
-        <a href="/">{{ .Site.Title }}</a>
+        <a href="{{ "/" | relLangURL }}">{{ .Site.Title }}</a>
       </div>
 
       <button class="hamburger" aria-label='{{ i18n "hamburger_aria" }}'>
@@ -141,7 +129,6 @@
   <!-- Browser language detection + language toggle -->
   <script>
   (function() {
-    // Browser language auto-redirect (first visit only)
     if (localStorage.getItem('preferred_lang')) return;
 
     var browserLang = (navigator.language || navigator.userLanguage || '').toLowerCase();
@@ -150,9 +137,11 @@
     var currentPath = window.location.pathname;
 
     if (browserLang.startsWith('en') && !currentPath.startsWith('/en/')) {
+      localStorage.setItem('preferred_lang', 'en');
       var enPath = '/en' + (currentPath === '/' ? '/' : currentPath);
       window.location.href = enPath;
     } else if (browserLang.startsWith('zh') && currentPath.startsWith('/en/')) {
+      localStorage.setItem('preferred_lang', 'zh');
       var zhPath = currentPath.replace(/^\/en/, '') || '/';
       window.location.href = zhPath;
     }

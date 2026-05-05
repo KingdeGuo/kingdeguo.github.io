@@ -12,7 +12,7 @@
     <div class="recent-posts-list">
       {{ range first 10 (where .Site.RegularPages "Type" "posts") }}
       <article class="recent-post-item">
-        <time class="recent-post-date" datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time>
+        <time class="recent-post-date" datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format (i18n "date_format") }}</time>
         <h3 class="recent-post-title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
       </article>
       {{ end }}

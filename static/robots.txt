@@ -3,6 +3,7 @@ Allow: /
 
 # Sitemap
 Sitemap: https://www.kingdeguo.com/sitemap.xml
+Sitemap: https://www.kingdeguo.com/en/sitemap.xml
 
 # Disallow admin and private directories
 Disallow: /admin/

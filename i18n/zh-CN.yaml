@@ -23,6 +23,10 @@ search_aria:
   other: "搜索文章"
 no_results:
   other: "没有找到相关文章"
+older_posts:
+  other: "较早文章"
+newer_posts:
+  other: "较新文章"
 
 # Article
 date_format:
@@ -52,7 +56,7 @@ back_home:
 no_description:
   other: "暂无描述"
 view_on_github:
-  other: "View on GitHub →"
+  other: "在 GitHub 上查看 →"
 no_projects:
   other: "暂无作品展示"
 project_language:

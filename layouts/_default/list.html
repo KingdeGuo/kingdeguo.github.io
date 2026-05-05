@@ -1,34 +1,4 @@
 {{ define "main" }}
-{{- /* SEO optimization for search pages */ -}}
-{{- if and (eq .Type "posts") (.Site.Params.seo) -}}
-  {{- if .Site.Params.seo.structuredData -}}
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "SearchResultsPage",
-      "name": "{{ .Title }} - {{ .Site.Title }}",
-      "description": "{{ .Site.Params.description }}",
-      "url": "{{ .Permalink }}",
-      "mainEntity": {
-        "@type": "ItemList",
-        "numberOfItems": {{ len .Pages }},
-        "itemListElement": [
-          {{- range $index, $page := .Pages -}}
-          {{- if gt $index 0 }},{{ end -}}
-          {
-            "@type": "ListItem",
-            "position": {{ add $index 1 }},
-            "url": "{{ $page.Permalink }}",
-            "name": "{{ $page.Title }}"
-          }
-          {{- end -}}
-        ]
-      }
-    }
-    </script>
-  {{- end -}}
-{{- end -}}
-
 <div class="list-page">
   <header class="page-header">
     <h1>{{ .Title }}</h1>
@@ -38,8 +8,9 @@
     </div>
     {{ end }}
   </header>
-  <div class="posts-list" id="posts-list">
-    {{ $pages := .Pages.GroupByDate "2006-01" }}
+  <div class="posts-list" id="posts-list" aria-live="polite">
+    {{- $paginator := .Paginate (where .Pages "Type" "posts") -}}
+    {{- $pages := $paginator.Pages.GroupByDate "2006-01" -}}
     {{ range $pages }}
     <div class="month-group">
       <h3 class="month-title">{{ .Key }}</h3>
@@ -53,5 +24,17 @@
     </div>
     {{ end }}
   </div>
+  {{- if or $paginator.HasPrev $paginator.HasNext -}}
+  <nav class="pagination" aria-label="Pagination">
+    <ul>
+      {{- if $paginator.HasPrev -}}
+      <li class="pagination-prev"><a href="{{ $paginator.Prev.URL }}">← {{ i18n "newer_posts" }}</a></li>
+      {{- end -}}
+      {{- if $paginator.HasNext -}}
+      <li class="pagination-next"><a href="{{ $paginator.Next.URL }}">{{ i18n "older_posts" }} →</a></li>
+      {{- end -}}
+    </ul>
+  </nav>
+  {{- end -}}
 </div>
 {{ end }}

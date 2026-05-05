@@ -1486,3 +1486,47 @@ article.page .post-content li a {
   color: var(--primary-color);
   text-decoration: none;
 }
+
+/* ===== Pagination ===== */
+.pagination {
+  margin-top: 2.5rem;
+  border-top: 1px solid var(--border-color);
+  padding-top: 1.5rem;
+}
+
+.pagination ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  padding: 0;
+  margin: 0;
+}
+
+.pagination a {
+  color: var(--text-color);
+  text-decoration: none;
+  font-size: 0.9rem;
+  padding: 0.4em 0;
+}
+
+.pagination a:hover {
+  color: var(--primary-color);
+}
+
+/* ===== 404 Page ===== */
+.post-404 {
+  text-align: center;
+  padding: var(--spacing-xxl) 0;
+}
+
+.post-404-title {
+  font-size: 4rem;
+  margin-bottom: var(--spacing-sm);
+  color: var(--text-light);
+}
+
+.post-404-message {
+  font-size: 1.25rem;
+  color: var(--text-light);
+  margin-bottom: var(--spacing-xl);
+}

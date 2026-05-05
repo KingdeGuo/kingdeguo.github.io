@@ -23,6 +23,10 @@ search_aria:
   other: "Search articles"
 no_results:
   other: "No articles found"
+older_posts:
+  other: "Older Posts"
+newer_posts:
+  other: "Newer Posts"
 
 # Article
 date_format:

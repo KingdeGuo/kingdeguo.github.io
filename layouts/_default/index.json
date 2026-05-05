@@ -1,7 +1,17 @@
 {{- $.Scratch.Add "index" slice -}}
-{{- range .Site.RegularPages -}}
+{{- range (where .Site.RegularPages "Type" "posts") -}}
     {{- if and (not .Params.private) (not .Params.draft) -}}
-        {{- $.Scratch.Add "index" (dict "title" .Title "content" .Plain "date" (.Date.Format "2006-01-02") "permalink" .Permalink) -}}
+        {{- $entry := dict "title" .Title "content" .Plain "date" (.Date.Format "2006-01-02") "permalink" .Permalink -}}
+        {{- with .Params.tags -}}
+            {{- $entry = merge $entry (dict "tags" .) -}}
+        {{- end -}}
+        {{- with .Params.categories -}}
+            {{- $entry = merge $entry (dict "categories" .) -}}
+        {{- end -}}
+        {{- with .Params.description -}}
+            {{- $entry = merge $entry (dict "description" .) -}}
+        {{- end -}}
+        {{- $.Scratch.Add "index" $entry -}}
     {{- end -}}
 {{- end -}}
 {{- $.Scratch.Get "index" | jsonify -}}

@@ -1,5 +1,6 @@
 ---
 title: "About"
+description: "About KingdeGuo — a developer writing about organizational management, AI, and workplace culture"
 type: "page"
 ---
 
