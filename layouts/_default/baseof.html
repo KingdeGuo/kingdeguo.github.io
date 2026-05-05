@@ -75,11 +75,21 @@
           <a href="{{ "index.xml" | absURL }}" class="nav-link" target="_blank" rel="noopener">{{ i18n "rss_subscribe" }}</a>
         </li>
         <li class="nav-item nav-lang-switcher">
-          <select id="lang-switcher" onchange="if (this.value) window.location.href=this.value">
-            {{ range $.Site.Home.AllTranslations }}
-            <option value="{{ .RelPermalink }}" {{ if eq .Lang $.Lang }}selected{{ end }}>{{ .Language.LanguageName }}</option>
-            {{ end }}
-          </select>
+          {{- if $.IsTranslated -}}
+            {{- range $.Translations -}}
+              <a href="{{ .RelPermalink }}" class="lang-toggle" data-lang="{{ .Lang }}">
+                {{ .Language.LanguageName }}
+              </a>
+            {{- end -}}
+          {{- else -}}
+            {{- range $.Site.Home.AllTranslations -}}
+              {{- if ne .Lang $.Lang -}}
+              <a href="{{ .RelPermalink }}" class="lang-toggle" data-lang="{{ .Lang }}">
+                {{ .Language.LanguageName }}
+              </a>
+              {{- end -}}
+            {{- end -}}
+          {{- end -}}
         </li>
         <li class="nav-item nav-theme-toggle">
           {{ partial "theme-toggle.html" . }}
@@ -128,27 +138,11 @@
   };
   </script>
 
-  <!-- Browser language detection + language switcher -->
+  <!-- Browser language detection + language toggle -->
   <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    var switcher = document.getElementById('lang-switcher');
-    if (switcher) {
-      switcher.addEventListener('change', function() {
-        localStorage.setItem('preferred_lang', this.value);
-      });
-      var currentLang = window.i18n.currentLang;
-      for (var i = 0; i < switcher.options.length; i++) {
-        if (switcher.options[i].selected) {
-          switcher.options[i].setAttribute('selected', '');
-          break;
-        }
-      }
-    }
-  });
-
   (function() {
-    var stored = localStorage.getItem('preferred_lang');
-    if (stored) return;
+    // Browser language auto-redirect (first visit only)
+    if (localStorage.getItem('preferred_lang')) return;
 
     var browserLang = (navigator.language || navigator.userLanguage || '').toLowerCase();
     if (!browserLang) return;
@@ -163,6 +157,16 @@
       window.location.href = zhPath;
     }
   })();
+
+  document.addEventListener('DOMContentLoaded', function() {
+    var toggle = document.querySelector('.lang-toggle');
+    if (!toggle) return;
+    toggle.addEventListener('click', function(e) {
+      e.preventDefault();
+      localStorage.setItem('preferred_lang', toggle.dataset.lang || '');
+      window.location.href = toggle.href;
+    });
+  });
   </script>
 
   <!-- Scripts -->
