@@ -130,9 +130,7 @@ def main():
     failed = 0
 
     if MAX_TRANSLATIONS is not None and MAX_TRANSLATIONS > 0:
-        zh_files = zh_files[:MAX_TRANSLATIONS]
-        total = len(zh_files)
-        print(f"  Test mode: MAX_TRANSLATIONS={MAX_TRANSLATIONS}, only processing first {total} file(s)")
+        print(f"  Test mode: MAX_TRANSLATIONS={MAX_TRANSLATIONS}, will stop after {MAX_TRANSLATIONS} new translation(s)")
 
     gh_group("Translation progress")
     for i, zh_file in enumerate(zh_files, 1):
@@ -161,6 +159,10 @@ def main():
 
         if translated % 5 == 0:
             save_cache(cache)
+
+        if MAX_TRANSLATIONS is not None and translated >= MAX_TRANSLATIONS:
+            print(f"  Stopping after {translated} new translation(s)")
+            break
     gh_endgroup()
 
     save_cache(cache)
