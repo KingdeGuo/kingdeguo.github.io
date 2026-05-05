@@ -2,7 +2,6 @@
 """Translate Chinese blog posts to English using DeepSeek API."""
 
 import os
-import hashlib
 import json
 import time
 import urllib.request
@@ -17,7 +16,6 @@ else:
     MAX_TRANSLATIONS = None
 ZH_DIR = Path("content/zh/posts")
 EN_DIR = Path("content/en/posts")
-CACHE_FILE = Path("scripts/.translation_cache.json")
 
 TRANSLATION_PROMPT = """You are a professional translator specializing in Chinese-to-English translation of blog posts about technology, management, organizational behavior, and workplace culture.
 
@@ -32,20 +30,6 @@ Translate the following Chinese blog post to English. Follow these rules strictl
 
 Here is the content to translate:
 """
-
-
-def file_hash(path):
-    return hashlib.md5(path.read_bytes()).hexdigest()
-
-
-def load_cache():
-    if CACHE_FILE.exists():
-        return json.loads(CACHE_FILE.read_text())
-    return {}
-
-
-def save_cache(cache):
-    CACHE_FILE.write_text(json.dumps(cache, indent=2, ensure_ascii=False))
 
 
 def translate_text(text, retries=3):
@@ -112,7 +96,6 @@ def main():
         exit(1)
 
     EN_DIR.mkdir(parents=True, exist_ok=True)
-    cache = load_cache()
     zh_files = sorted(ZH_DIR.glob("*.md"))
     total = len(zh_files)
     start_time = time.time()
@@ -135,9 +118,8 @@ def main():
     gh_group("Translation progress")
     for i, zh_file in enumerate(zh_files, 1):
         en_file = EN_DIR / zh_file.name
-        fhash = file_hash(zh_file)
 
-        if en_file.exists() and cache.get(zh_file.name) == fhash:
+        if en_file.exists():
             skipped += 1
             if i % 10 == 0 or i == total:
                 print(f"  [{i}/{total}] {translated} translated, {skipped} skipped, {failed} failed")
@@ -153,19 +135,14 @@ def main():
             continue
 
         en_file.write_text(en_content.lstrip(), encoding="utf-8")
-        cache[zh_file.name] = fhash
         translated += 1
         print("OK")
-
-        if translated % 5 == 0:
-            save_cache(cache)
 
         if MAX_TRANSLATIONS is not None and translated >= MAX_TRANSLATIONS:
             print(f"  Stopping after {translated} new translation(s)")
             break
     gh_endgroup()
 
-    save_cache(cache)
     elapsed = format_duration(time.time() - start_time)
 
     print()
