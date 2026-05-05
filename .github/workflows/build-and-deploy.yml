@@ -54,6 +54,9 @@ jobs:
       - name: Build with Hugo
         run: hugo --minify --environment production
 
+      - name: Clean old gh-pages branch
+        run: git push origin --delete gh-pages || true
+
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
