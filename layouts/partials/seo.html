@@ -148,7 +148,7 @@
 {{- range .AllTranslations -}}
   <link rel="alternate" hreflang="{{ .Language.LanguageCode }}" href="{{ .Permalink }}" />
 {{- end -}}
-<link rel="alternate" type="application/rss+xml" title="{{ .Site.Title }} RSS" href="{{ "index.xml" | relURL }}">
+<link rel="alternate" type="application/rss+xml" title="{{ .Site.Title }} RSS" href="{{ with .Site.Home.OutputFormats.Get "RSS" }}{{ .RelPermalink }}{{ end }}">
 <link rel="alternate" type="application/json" title="{{ .Site.Title }} JSON Feed" href="{{ "index.json" | relURL }}">
 
 {{- /* 自动关键词提取和优化 */ -}}

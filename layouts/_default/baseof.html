@@ -72,7 +72,7 @@
         </li>
         {{ end }}
         <li class="nav-item">
-          <a href="{{ "index.xml" | absURL }}" class="nav-link" target="_blank" rel="noopener">{{ i18n "rss_subscribe" }}</a>
+          <a href="{{ with .Site.Home.OutputFormats.Get "RSS" }}{{ .RelPermalink }}{{ end }}" class="nav-link" target="_blank" rel="noopener">{{ i18n "rss_subscribe" }}</a>
         </li>
         <li class="nav-item nav-lang-switcher">
           {{- if $.IsTranslated -}}
@@ -120,7 +120,7 @@
         {{ with .Site.Params.github }}
         <a href="https://github.com/{{ . }}" target="_blank" rel="noopener">GitHub</a>
         {{ end }}
-        <a href="{{ "index.xml" | absURL }}" target="_blank" rel="noopener">{{ i18n "rss_subscribe" }}</a>
+        <a href="{{ with .Site.Home.OutputFormats.Get "RSS" }}{{ .RelPermalink }}{{ end }}" target="_blank" rel="noopener">{{ i18n "rss_subscribe" }}</a>
       </div>
     </div>
   </footer>
